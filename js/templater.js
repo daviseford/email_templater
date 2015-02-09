@@ -17,7 +17,8 @@ $(document).ready(function() {
 	
 	
 	
-	$("#generateHTML").click(function(){
+	$("#story1").submit(function() { 
+		event.preventDefault(); //Stops page from reloading
 		title1 = $.trim($("#title1").val());
 		story1 = $.trim($("#text1").val());
 		title1URL = $.trim($("#title1URL").val());
@@ -26,12 +27,15 @@ $(document).ready(function() {
 		
 		var hrefFix = '<a href="'+title1URL+'" target="_blank">';
 		//var titlehrefFix = '<a href="'+title1URL+'" target="_blank"><h2 style="line-height: 1.14em;margin-top: 0.5em;margin-bottom: 0.5em;color: #0000FF;font-family: Verdana;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;">'+title1+'</h2></a>';
-		var imageRetrieve = '<center>'+hrefFix+'<img src="'+title1IMG+'" width="150" height="150" alt=""></a></center>';
+		var imageRetrieve = '<center>'+hrefFix+'<img src="'+title1IMG+'" class="img_thumb" alt="Story Image"></a></center>';
 		console.log(hrefFix);
 	
 	
 	
 	var myTemplate = $.templates("#emailTmpl");
+	var addDivTmpl = $.templates("#addDivTmpl");
+	
+	var numTmpl = [];
 
 	var stories = [
   		{
@@ -41,15 +45,16 @@ $(document).ready(function() {
 		img: title1IMG,
 		key: title1KEY,
 		insertURL: hrefFix,
-		insertImage : imageRetrieve
+		insertImage : imageRetrieve,
+		additionalContent: true
   		}
 	];
 
 	var html = myTemplate.render(stories);
 
-	$("#resultsDiv").html(html);
-	$("#resultsTextArea").val(html);
-	$("#resultsContainer").show("drop")
+	$("#resultsDiv").html(html); //Renders the HTML version of the email
+	$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+	$("#resultsContainer").show("drop") //Shows the results once everything is ready.
 	});
 
 
