@@ -99,8 +99,8 @@ $(document).ready(function() {
 		$.get("http://daviseford.com/sites/default/files/email_templater/txt/dailybulletin.txt", function(value) {
   		emailTmpl = $.templates(value);
 		addDivTmpl = $.templates("#addDivTmpl"); //Want to move this to external
-		$.templates(addDivTmpl, emailTmpl);
-		html = emailTmpl.render(storyz);
+		$.templates(addDivTmpl, emailTmpl); //adds addDivTmpl as a subtemplate of emailTmpl
+		html = emailTmpl.render(storyz); //renders the template
 		$("#resultsDiv").html(html); //Renders the HTML version of the email
 	    $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
 		});
