@@ -1,0 +1,16 @@
+<!--*** Begin Generated Content Block ***-->
+<div class="content">
+<table bgcolor="">
+<tr>
+<td width="72%">
+{{:linkedTitle}}
+<p class="">{{:story}}</p>
+<p>{{:insertURL}}<img src="http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/1113640941.png" width="149" height="38" alt="Click here to read more"></a></p>
+</td>
+<td class="small" width="28%" style="background-color:#ECF8FF; vertical-align: middle; padding:4px;">
+{{:insertImage}}
+</td>
+</tr>
+</table>
+</div>
+<!--*** End Generated Content Block ***-->

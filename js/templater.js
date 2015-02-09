@@ -3,7 +3,6 @@
 $(document).ready(function() {
 	$("#resultsContainer").hide(); //Hiding our results, as we don't need to see them yet!
 	$("#story2Div").hide(); //Hiding our second story panel.
-	
 	var additionalContentVal = false; //This makes us default to a one-story format.
 	
 	//If this is checked, adds the second story box
@@ -23,7 +22,12 @@ $(document).ready(function() {
 		});
 	}
 	});
-	
+		
+		
+		
+		
+		
+		
 		
 	//$("#story1").submit(function() { 
 	$("#generateHTML").click(function(){
@@ -80,13 +84,40 @@ $(document).ready(function() {
 			//Worked!!!!!!!!!
 		};
 		
-	var myTemplate = $.templates("#emailTmpl");  //Establishing templates for JSRender
+			
+		
+		
+	//var myTemplate = $.templates("#emailTmpl");  //Establishing templates for JSRender
 	var addDivTmpl = $.templates("#addDivTmpl"); //Establishing templates for JSRender
 
-	var html = myTemplate.render(storyz); //Set this var to pass the storyz object to the template.
-
-	$("#resultsDiv").html(html); //Renders the HTML version of the email
-	$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+	//var html = myTemplate.render(storyz); //Set this var to pass the storyz object to the template.
+	
+	
+	
+	var getScripts = function(){	
+		//get our Daily Bulletin template
+		$.get("http://daviseford.com/sites/default/files/email_templater/txt/dailybulletin.txt", function(value) {
+  		emailTmpl = $.templates(value);
+		addDivTmpl = $.templates("#addDivTmpl"); //Want to move this to external
+		$.templates(addDivTmpl, emailTmpl);
+		html = emailTmpl.render(storyz);
+		$("#resultsDiv").html(html); //Renders the HTML version of the email
+	    $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+		});
+	}
+	getScripts();
+	
+	
+	
+	
+	
+	//var html = emailTemplate.render(storyz);
+	//$.templates(addDivTmpl, emailTemplate);
+		
+		
+	//$("#exDiv").html(html);
+	//$("#resultsDiv").html(html); //Renders the HTML version of the email
+	//$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
 	$("#resultsContainer").show("drop"); //Shows the results once everything is ready.
 	console.log(storyz);
 	});
