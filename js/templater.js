@@ -1,33 +1,28 @@
 // JavaScript Document
 
 $(document).ready(function() {
-	$("#resultsContainer").hide();
-	$("#story2Div").hide();
-	var additionalContentVal = false;
+	$("#resultsContainer").hide(); //Hiding our results, as we don't need to see them yet!
+	$("#story2Div").hide(); //Hiding our second story panel.
 	
-//	$( "#additionalContentCheckbox" ).change(function() {
-//		additionalContentVal = true;
-//  		console.log( "Handler for .change() called." );
-//	});
+	var additionalContentVal = false; //This makes us default to a one-story format.
 	
+	//If this is checked, adds the second story box
 	$('#additionalContentCheckbox').click(function(){
     if (this.checked) {
 		additionalContentVal = true;
         console.log("Checked? "+additionalContentVal);
-		$("#story2Div").show();
+		$("#story1Div").removeClass("col-lg-12");
+		$("#story1Div").addClass("col-lg-6");
+		$("#story2Div").show( "fade" );
     } else {
 		additionalContentVal = false;
 		console.log("Checked? "+additionalContentVal);
-		$("#story2Div").hide();
+		$("#story2Div").hide( "fade", function() {
+		$("#story1Div").removeClass("col-lg-6");
+		$("#story1Div").addClass("col-lg-12");
+		});
 	}
 	});
-	
-	
-//	var title2 = $.trim($("#title2").val());
-//	var story2 = $.trim($("#text2").val());
-//	var title2URL = $.trim($("#title2URL").val());
-//	var title2img = $.trim($("#title2img").val());
-//	var title2KEY = $.trim($("#title2KEY").val());
 	
 		
 	//$("#story1").submit(function() { 
@@ -43,7 +38,9 @@ $(document).ready(function() {
 		var imageRetrieve1 = '<center>'+urlInsert1+'<img src="'+title1IMG+'" class="img_thumb" alt="Story Image"></a></center>';
 		
 		
-		
+		//This Object/Array is used with JSRender. 
+		//The template will iterate over the contained "story" array
+		//and spit out as many stories as we have objects in the array.
 		var storyz = {
 		story: [
 		{
@@ -54,15 +51,9 @@ $(document).ready(function() {
 		urlInsert: urlInsert1,
 		linkedTitle: linkedTitle1,
 		insertImage: imageRetrieve1
-		},
+		}
 		]
-		};
-		
-		
-		
-		
-		
-		
+		};		
 		
 		if(additionalContentVal === true) {
 			var title2 = $.trim($("#title2").val());
@@ -75,8 +66,18 @@ $(document).ready(function() {
 			var imageRetrieve2 = '<center>'+urlInsert2+'<img src="'+title2IMG+'" class="img_thumb" alt="Story Image"></a></center>';
 			console.log("Additional content enabled, vars set");
 			
+			//experimental constructor for story
+			function newstory(title, text, url, imageURL, urlInsert, linkedTitle, insertImage) {
+				title: this.title;
+				text: this.titletext;
+				url: this.titleURL;
+				imageURL: this.titleIMG;
+				urlInsert: this.urlInsert;
+				linkedTitle: this.linkedTitle;
+				insertImage: this.imageRetrieve;
+			};
 			
-			var storyz = {
+		 	storyz = {
 				story: [
 				{
 				title: title1,
@@ -100,15 +101,10 @@ $(document).ready(function() {
 				};			
 		};
 		
-		
-	//$("#hereAdd").html(htmlout);	
-	//var html = myTemplate.render(stories);
-	
-	//addDivTmpl.render(storyx); //Render the stories and hopefully put them into the overarching template
-	var myTemplate = $.templates("#emailTmpl");
-	var addDivTmpl = $.templates("#addDivTmpl");
+	var myTemplate = $.templates("#emailTmpl");  //Establishing templates for JSRender
+	var addDivTmpl = $.templates("#addDivTmpl"); //Establishing templates for JSRender
 
-	var html = myTemplate.render(storyz);
+	var html = myTemplate.render(storyz); //Set this var to pass the storyz object to the template.
 
 	$("#resultsDiv").html(html); //Renders the HTML version of the email
 	$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
