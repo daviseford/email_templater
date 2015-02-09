@@ -45,14 +45,15 @@
             </div>-->
             <div class="form-group">
     			<label for="title1IMG">Image URL: </label>
-    			<input class="form-control" type="text" id="title1IMG" name="title1IMG" placeholder="Put the link to the article's IMAGE here. In your browser: Right click -> Copy Image URL."/> 
-                </fieldset>
+    			<input class="form-control" type="text" id="title1IMG" name="title1IMG" placeholder="Put the link to the article's IMAGE here. In your browser: Right click -> Copy Image URL."/> <br />
+                <input type="checkbox" id="additionalContentCheckbox" name="additionalContentCheckbox"/>
+                Additional Story?
          </div> 
-         
     </div>
     <div class="col-lg-12">
     	<p style="text-align:center">
     	 <input type="submit"  id="generateHTML" value="Generate HTML" />
+         </fieldset>
          </form> 
     	</p>
     </div>
@@ -64,7 +65,7 @@
 			  <table bgcolor="">
 					<tr>
 						<td width="72%">
-                        <h4>{{:insertURL}}{{:title}}</a></h4>
+                        {{:linkedTitle}}
 							<p class="">{{:story}}</p>
 							<p>{{:insertURL}}<img src="http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/1113640941.png" width="149" height="38" alt="Click here to read more"></a></p>
                         
@@ -381,7 +382,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 			  <table bgcolor="">
 					<tr>
 						<td width="72%">
-                        <h4>{{:insertURL}}{{:title}}</a></h4>
+                        {{:linkedTitle}}
 							<p class="">{{:story}}</p>
 							<p>{{:insertURL}}<img src="http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/1113640941.png" width="149" height="38" alt="Click here to read more"></a></p>
                         
