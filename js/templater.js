@@ -67,28 +67,7 @@ $(document).ready(function() {
 			console.log("Additional content enabled, vars set");
 			
 			//experimental constructor for story
-			function newstory(title, text, url, imageURL, urlInsert, linkedTitle, insertImage) {
-				title: this.title;
-				text: this.titletext;
-				url: this.titleURL;
-				imageURL: this.titleIMG;
-				urlInsert: this.urlInsert;
-				linkedTitle: this.linkedTitle;
-				insertImage: this.imageRetrieve;
-			};
-			
-		 	storyz = {
-				story: [
-				{
-				title: title1,
-				text: title1text,
-				url: title1URL,
-				imageURL: title1IMG,
-				urlInsert: urlInsert1,
-				linkedTitle: linkedTitle1,
-				insertImage: imageRetrieve1
-				},
-				{
+			var storyTwoTest = {
 				title: title2,
 				text: title2text,
 				url: title2URL,
@@ -96,9 +75,9 @@ $(document).ready(function() {
 				urlInsert: urlInsert2,
 				linkedTitle: linkedTitle2,
 				insertImage: imageRetrieve2
-				}
-				]
-				};			
+				};
+			storyz.story.push(storyTwoTest);
+			//Worked!!!!!!!!!
 		};
 		
 	var myTemplate = $.templates("#emailTmpl");  //Establishing templates for JSRender
