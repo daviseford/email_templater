@@ -101,14 +101,14 @@ $(document).ready(function() {
 		insertImage: imageRetrieve2
 	}
 	]
-	];
+	};
 		
 	var htmlout = addDivTmpl.render(storyx);
 	//$("#hereAdd").html(htmlout);	
 	//var html = myTemplate.render(stories);
 	
 	//addDivTmpl.render(storyx); //Render the stories and hopefully put them into the overarching template
-	var html = myTemplate.render(storyx);
+	var html = myTemplate.render(storyz);
 
 	$("#resultsDiv").html(html); //Renders the HTML version of the email
 	$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
