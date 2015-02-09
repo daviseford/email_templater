@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
 	$("#resultsContainer").hide();
+	var additionalContentVal = false;
 	
 	
 //	var title2 = $.trim($("#title2").val());
@@ -9,9 +10,7 @@ $(document).ready(function() {
 //	var title2URL = $.trim($("#title2URL").val());
 //	var title2img = $.trim($("#title2img").val());
 //	var title2KEY = $.trim($("#title2KEY").val());
-	
-	
-	
+		
 	$("#story1").submit(function() { 
 		event.preventDefault(); //Stops page from reloading
 		var title1 = $.trim($("#title1").val());
@@ -20,7 +19,12 @@ $(document).ready(function() {
 		var title1IMG = $.trim($("#title1IMG").val());
 		var title1KEY = $.trim($("#title1KEY").val());
 		
-		if ($('#story1 input.checkbox_check').is(':checked')) {
+		if ($('#additionalContentCheckbox').is(':checked')) {
+			additionalContentVal = true;
+			console.log("addtl. content "+additionalContentVal);
+		} else {
+			additionalContentVal = false;
+			console.log("Not chedk "+additionalContentVal);
 		};
 		
 		var hrefFix = '<a href="'+title1URL+'" target="_blank">';
@@ -44,11 +48,27 @@ $(document).ready(function() {
 		key: title1KEY,
 		insertURL: hrefFix,
 		insertImage : imageRetrieve,
-		additionalContent: true
+		additionalContent: additionalContentVal
   		}
 	];
-
-	var html = myTemplate.render(stories);
+	
+	var storyx = [
+	{
+		title: "Title 1",
+		text: "Here's some sample story text for Story 1",
+		url: "www.google.com",
+		imageURL: "https://mevans314.files.wordpress.com/2015/01/pizza.jpg?w=650&h=488"
+	},
+	{
+		title: "Title 2",
+		text: "Here's some sample story text for Story 2",
+		url: "www.google.com",
+		imageURL: "https://mevans314.files.wordpress.com/2015/01/pizza.jpg?w=650&h=488"
+	}
+	]
+		
+	var html = addDivTmpl.render(storyx);		
+	//var html = myTemplate.render(stories);
 
 	$("#resultsDiv").html(html); //Renders the HTML version of the email
 	$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
