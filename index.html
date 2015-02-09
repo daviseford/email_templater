@@ -48,6 +48,7 @@
     			<input class="form-control" type="text" id="title1IMG" name="title1IMG" placeholder="Put the link to the article's IMAGE here. In your browser: Right click -> Copy Image URL."/> <br />
                 <input type="checkbox" id="additionalContentCheckbox" name="additionalContentCheckbox"/>
                 Additional Story?
+                </form>
          </div> 
     </div>
     <div class="col-lg-6" id="story2Div">
@@ -77,9 +78,10 @@
     </div>
     <div class="col-lg-12">
     	<p style="text-align:center">
-    	 <input type="submit"  id="generateHTML" value="Generate HTML" />
-         </fieldset>
-         </form> 
+        <button type="button" class="btn btn-primary btn-lg" id="generateHTML">GENERATE HTML</button>
+    	<!--
+        <input type="submit"  id="generateHTML" value="Generate HTML" />
+        -->
     	</p>
     </div>
 </div>
@@ -400,33 +402,11 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 				</table>
 			</div><!-- /content -->
 			
-			<!-- content -->
-			<div class="content">
-				
-			  <table bgcolor="">
-					<tr>
-						<td width="72%">
-                        {{:linkedTitle}}
-							<p class="">{{:story}}</p>
-							<p>{{:insertURL}}<img src="http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/1113640941.png" width="149" height="38" alt="Click here to read more"></a></p>
-                        
-                        
-                        </td>
-						<td class="small" width="28%" style="vertical-align: middle; padding-left:10px; border-left:medium #ECF8FF solid;">
-                        {{:insertImage}}
-                        </td>
-					</tr>
-				</table>
-
+			<!-- /content -->
 			
-			</div><!-- /content -->
-			
-			<!-- content -->
-			{{if additionalContent}}
+			<!-- content-->
 			{{include tmpl="#addDivTmpl" /}}
-			{{/if}}
-			<div id="hereAdd">
-			</div>
+			{{for storyx include tmpl="#addDivTmpl" /}}
 			<!-- /content -->
 			
 			<!-- content -->

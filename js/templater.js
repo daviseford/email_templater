@@ -12,13 +12,13 @@ $(document).ready(function() {
 	
 	$('#additionalContentCheckbox').click(function(){
     if (this.checked) {
+		additionalContentVal = true;
         console.log("Checked? "+additionalContentVal);
 		$("#story2Div").show();
-		additionalContentVal = true;
     } else {
+		additionalContentVal = false;
 		console.log("Checked? "+additionalContentVal);
 		$("#story2Div").hide();
-		additionalContentVal = false;
 	}
 	});
 	
@@ -28,74 +28,87 @@ $(document).ready(function() {
 //	var title2URL = $.trim($("#title2URL").val());
 //	var title2img = $.trim($("#title2img").val());
 //	var title2KEY = $.trim($("#title2KEY").val());
+	
 		
-	$("#story1").submit(function() { 
+	//$("#story1").submit(function() { 
+	$("#generateHTML").click(function(){
 		event.preventDefault(); //Stops page from reloading
 		var title1 = $.trim($("#title1").val());
 		var title1text = $.trim($("#title1text").val());
 		var title1URL = $.trim($("#title1URL").val());
 		var title1IMG = $.trim($("#title1IMG").val());
 		var title1KEY = $.trim($("#title1KEY").val());
+		var urlInsert1 = '<a href="'+title1URL+'" target="_blank">';
+		var linkedTitle1 = '<h4><a href="'+title1URL+'" target="_blank">'+title1+'</a></h4>';
+		var imageRetrieve1 = '<center>'+urlInsert1+'<img src="'+title1IMG+'" class="img_thumb" alt="Story Image"></a></center>';
 		
-		if ($('#additionalContentCheckbox').is(':checked')) {
-			additionalContentVal = true;
-			console.log("addtl. content "+additionalContentVal);
-		} else {
-			additionalContentVal = false;
-			console.log("Not chedk "+additionalContentVal);
-		};
+		if(additionalContentVal === true) {
+			var title2 = $.trim($("#title2").val());
+			var title2text = $.trim($("#title2text").val());
+			var title2URL = $.trim($("#title2URL").val());
+			var title2IMG = $.trim($("#title2IMG").val());
+			var title2KEY = $.trim($("#title2KEY").val());
+			var urlInsert2 = '<a href="'+title2URL+'" target="_blank">';
+			var linkedTitle2 = '<h4><a href="'+title2URL+'" target="_blank">'+title2+'</a></h4>';
+			var imageRetrieve2 = '<center>'+urlInsert2+'<img src="'+title2IMG+'" class="img_thumb" alt="Story Image"></a></center>';
+			console.log("Additiontional content enabled, vars set");
+		}
 		
-		var hrefFix = '<a href="'+title1URL+'" target="_blank">';
-		var linkedTitle = '<h4><a href="'+title1URL+'" target="_blank">'+title1+'</a></h4>';
-		//var titlehrefFix = '<a href="'+title1URL+'" target="_blank"><h2 style="line-height: 1.14em;margin-top: 0.5em;margin-bottom: 0.5em;color: #0000FF;font-family: Verdana;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;">'+title1+'</h2></a>';
-		var imageRetrieve = '<center>'+hrefFix+'<img src="'+title1IMG+'" class="img_thumb" alt="Story Image"></a></center>';
-		console.log(hrefFix);
-	
-	
-	
 	var myTemplate = $.templates("#emailTmpl");
 	var addDivTmpl = $.templates("#addDivTmpl");
 
-	var stories = [
-  		{
-		title: title1,
-		linkedTitle: linkedTitle,	
-    	url: title1URL,
-		story: story1,
-		img: title1IMG,
-		key: title1KEY,
-		insertURL: hrefFix,
-		insertImage : imageRetrieve,
-		additionalContent: additionalContentVal
-  		}
-	];
-	
 	var storyx = [
 	{
-		title: "Title 1",
-		text: "Here's some sample story text for Story 1",
-		url: "www.google.com",
-		imageURL: "https://mevans314.files.wordpress.com/2015/01/pizza.jpg?w=650&h=488"
+		title: title1,
+		text: title1text,
+		url: title1URL,
+		imageURL: title1IMG,
+		urlInsert: urlInsert1,
+		linkedTitle: linkedTitle1,
+		insertImage: imageRetrieve1
+		
 	},
 	{
-		title: "Title 2",
-		text: "Here's some sample story text for Story 2",
-		url: "www.google.com",
-		imageURL: "https://mevans314.files.wordpress.com/2015/01/pizza.jpg?w=650&h=488"
+		title: title2,
+		text: title2text,
+		url: title2URL,
+		imageURL: title2IMG,
+		urlInsert: urlInsert2,
+		linkedTitle: linkedTitle2,
+		insertImage: imageRetrieve2
+	}
+	];
+	
+	var storyz = {
+		story: [
+	{
+		title: title1,
+		text: title1text,
+		url: title1URL,
+		imageURL: title1IMG,
+		urlInsert: urlInsert1,
+		linkedTitle: linkedTitle1,
+		insertImage: imageRetrieve1
+		
 	},
 	{
-		title: "Title 3",
-		text: "Here's some sample story text for Story 3",
-		url: "www.google.com",
-		imageURL: "https://mevans314.files.wordpress.com/2015/01/pizza.jpg?w=650&h=488"
+		title: title2,
+		text: title2text,
+		url: title2URL,
+		imageURL: title2IMG,
+		urlInsert: urlInsert2,
+		linkedTitle: linkedTitle2,
+		insertImage: imageRetrieve2
 	}
 	]
+	];
 		
-	//var htmlout = addDivTmpl.render(storyx);		
+	var htmlout = addDivTmpl.render(storyx);
+	//$("#hereAdd").html(htmlout);	
 	//var html = myTemplate.render(stories);
 	
-	addDivTmpl.render(storyx); //Render the stories and hopefully put them into the overarching template
-	var html = myTemplate.render(stories);
+	//addDivTmpl.render(storyx); //Render the stories and hopefully put them into the overarching template
+	var html = myTemplate.render(storyx);
 
 	$("#resultsDiv").html(html); //Renders the HTML version of the email
 	$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
