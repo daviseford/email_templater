@@ -2,7 +2,25 @@
 
 $(document).ready(function() {
 	$("#resultsContainer").hide();
+	$("#story2Div").hide();
 	var additionalContentVal = false;
+	
+//	$( "#additionalContentCheckbox" ).change(function() {
+//		additionalContentVal = true;
+//  		console.log( "Handler for .change() called." );
+//	});
+	
+	$('#additionalContentCheckbox').click(function(){
+    if (this.checked) {
+        console.log("Checked? "+additionalContentVal);
+		$("#story2Div").show();
+		additionalContentVal = true;
+    } else {
+		console.log("Checked? "+additionalContentVal);
+		$("#story2Div").hide();
+		additionalContentVal = false;
+	}
+	});
 	
 	
 //	var title2 = $.trim($("#title2").val());
@@ -14,7 +32,7 @@ $(document).ready(function() {
 	$("#story1").submit(function() { 
 		event.preventDefault(); //Stops page from reloading
 		var title1 = $.trim($("#title1").val());
-		var story1 = $.trim($("#text1").val());
+		var title1text = $.trim($("#title1text").val());
 		var title1URL = $.trim($("#title1URL").val());
 		var title1IMG = $.trim($("#title1IMG").val());
 		var title1KEY = $.trim($("#title1KEY").val());
@@ -64,11 +82,20 @@ $(document).ready(function() {
 		text: "Here's some sample story text for Story 2",
 		url: "www.google.com",
 		imageURL: "https://mevans314.files.wordpress.com/2015/01/pizza.jpg?w=650&h=488"
+	},
+	{
+		title: "Title 3",
+		text: "Here's some sample story text for Story 3",
+		url: "www.google.com",
+		imageURL: "https://mevans314.files.wordpress.com/2015/01/pizza.jpg?w=650&h=488"
 	}
 	]
 		
-	var html = addDivTmpl.render(storyx);		
+	//var htmlout = addDivTmpl.render(storyx);		
 	//var html = myTemplate.render(stories);
+	
+	addDivTmpl.render(storyx); //Render the stories and hopefully put them into the overarching template
+	var html = myTemplate.render(stories);
 
 	$("#resultsDiv").html(html); //Renders the HTML version of the email
 	$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
