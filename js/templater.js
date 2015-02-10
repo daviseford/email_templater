@@ -29,7 +29,6 @@ $(document).ready(function() {
 		
 		
 		
-	//$("#story1").submit(function() { 
 	$("#generateHTML").click(function(){
 		event.preventDefault(); //Stops page from reloading
 		var title1 = $.trim($("#title1").val());
@@ -94,19 +93,41 @@ $(document).ready(function() {
 	
 	
 	
-	var getScripts = function(){	
+//	var getScripts = function(){	
+//		//get our Daily Bulletin template
+//		$.get("http://daviseford.com/sites/default/files/email_templater/txt/dailybulletin.txt", function(value) {
+//  		emailTmpl = $.templates(value);
+//		addDivTmpl = $.templates("#addDivTmpl"); //Want to move this to external
+//		$.templates(addDivTmpl, emailTmpl); //adds addDivTmpl as a subtemplate of emailTmpl
+//		html = emailTmpl.render(storyz); //renders the template
+//		$("#resultsDiv").html(html); //Renders the HTML version of the email
+//	    $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+//		});
+//	}
+	
+	
+	var getDBmain = function(){	
 		//get our Daily Bulletin template
 		$.get("http://daviseford.com/sites/default/files/email_templater/txt/dailybulletin.txt", function(value) {
   		emailTmpl = $.templates(value);
-		addDivTmpl = $.templates("#addDivTmpl"); //Want to move this to external
-		$.templates(addDivTmpl, emailTmpl); //adds addDivTmpl as a subtemplate of emailTmpl
 		html = emailTmpl.render(storyz); //renders the template
-		$("#resultsDiv").html(html); //Renders the HTML version of the email
-	    $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
 		});
-	}
-	getScripts();
+	};
+	var getDBdiv = function() {
+		$.get("http://daviseford.com/sites/default/files/email_templater/txt/db_addDivTmpl.txt", function(value) {
+		addDivTmpl = $.templates(value); //Want to move this to external	
+		$.templates(addDivTmpl, emailTmpl); //adds addDivTmpl as a subtemplate of emailTmpl
+		});
+	};
+		
 	
+	function getScripts(){
+		getDBmain();
+		getDBdiv();
+		$("#resultsDiv").html(html); //Renders the HTML version of the email
+		$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.	
+	};
+	getScripts();
 	
 	
 	
@@ -115,11 +136,9 @@ $(document).ready(function() {
 	//$.templates(addDivTmpl, emailTemplate);
 		
 		
-	//$("#exDiv").html(html);
 	//$("#resultsDiv").html(html); //Renders the HTML version of the email
 	//$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
 	$("#resultsContainer").show("drop"); //Shows the results once everything is ready.
-	console.log(storyz);
 	});
 
 
