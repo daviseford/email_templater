@@ -22,6 +22,15 @@
     </div>
 </div>
 
+<div class="row" id="optionsDiv">
+    <div class="col-lg-12">
+    <label for="tmplPick">Select a List</label><br>
+    <select name="tmplPick" id="tmplPick">
+        <option value="dailyBulletin" selected="selected">Daily Bulletin</option>
+        <option value="">TBD</option>
+    </select>
+</div>
+
 <div class="row" id="choiceRow">
 	<div class="col-lg-12" id="story1Div">
     	<form id="story1Form" action="#">
@@ -64,7 +73,7 @@
             </div>
             <div class="form-group">
             <label for="title2text">Story #2: </label>
-            <input class="form-control" type="text" size="" rows="3" id="title2text" placeholder="This is where you'll drop the teaser about the story. No more than a couple sentences, please."/>
+            <textarea class="form-control" rows="3" id="title2text" placeholder="This is where you'll drop the teaser about the story. No more than a couple sentences, please."></textarea>
             </div>
             <div class="form-group">
     			<label for="title2URL">Story URL: </label>
@@ -88,16 +97,15 @@
     	</p>
     </div>
 </div>
-
-
-<div class="row" id="resultsContainer">
-	<div class="col-lg-12" id="resultsDiv">
-	</div>    
-	<div class="col-lg-12"><center><p class="alert-info">Copy and paste the code below into SmartFocus.</center></p>
-    	<textarea cols="10" id="resultsTextArea" rows="10"  class="form-control" style="height:800px;"></textarea>
+<div class="container-fluid" id="resultsContainer">
+    <div class="row">
+	    <div class="col-lg-12" id="resultsDiv">
+	    </div>
+	    <div class="col-lg-12"><center><p class="alert-info">Copy and paste the code below into SmartFocus.</center></p>
+    	    <textarea id="resultsTextArea" rows="10" class="form-control" cols="10"></textarea>
+        </div>
     </div>
 </div>
-
 <div class="row">
 	<div class="col-lg-12">
 		<center><p>Developed by Davis Ford 2015</p></center>
@@ -105,6 +113,28 @@
 </div>
 
 </body>
+
+<!--Daily Bulleting Inline Content Generation Block-->
+<script id="db_addDiv" type="text/x-jsrender">
+			<!--*** Begin Generated Content Block ***-->
+			<div class="content">
+			  <table bgcolor="">
+					<tr>
+						<td width="72%">
+                        {{:linkedTitle}}
+							<p class="">{{:text}}</p>
+							<p>{{:insertURL}}<img src="http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/1113640941.png" width="149" height="38" alt="Click here to read more"></a></p>
+                        </td>
+						<td class="small" width="28%" style="background-color:#ECF8FF; vertical-align: middle; padding:4px;">
+                        {{:insertImage}}
+                        </td>
+					</tr>
+				</table>
+			</div>
+			<!--*** End Generated Content Block ***-->
+</script>
+
+
 	<!-- Loading Scripts -->
 	<script src="js/jquery-2.1.3.min.js" type="text/javascript"></script>
     <script src="js/jquery-ui.min.js" type="text/javascript"></script>
@@ -112,4 +142,5 @@
     <script src="js/jsrender.js" type="text/javascript"></script>
     <script src="js/string.min.js" type="text/javascript"></script>
     <script src="js/templater.js" type="text/javascript"></script>
+
 </html>

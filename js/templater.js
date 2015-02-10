@@ -20,31 +20,9 @@ $(document).ready(function() {
 		});
 	}
 	});
-	
-	function getDB(){	
-		//get our Daily Bulletin template
-		$.get("http://daviseford.com/sites/default/files/email_templater/txt/dailybulletin.txt", function(value) {
-  		emailTmpl = $.templates(value);
-		});
-		};	
-		
-	function getDBDiv(){	
-		//get our Daily Bulletin template
-		$.get("http://daviseford.com/sites/default/files/email_templater/txt/db_addDivTmpl.txt", function(value) {
-  		addDivTmpl = $.templates(value);
-		});
-		};
-
-
-    $('#dailyBulletinCheckbox').click(function(){
-        if (this.checked) {
-            getDB();
-            getDBDiv();
-        }
-    });
 
     //**********************
-    //BEGIN TEXT HANDLING **
+    //BEGIN TEXT HANDLING  *
     //**********************
 
     function textFix(){
@@ -86,8 +64,7 @@ $(document).ready(function() {
             alert("Please enter a story");
             return;
         } else {
-            $("#story1 input").each(textFix);
-            $('#title2text').val(textFix());
+            $('#story1Form').find('input').each(textFix);
             var title1 = $.trim($("#title1").val());
             var title1text = $.trim($("#title1text").val());
             var title1URL = $.trim($("#title1URL").val());
@@ -127,7 +104,7 @@ $(document).ready(function() {
 			console.log("Additional content enabled, vars set");
 			
 			//experimental constructor for story
-			var storyTwoTest = {
+			var storyTwo = {
 				title: title2,
 				text: title2text,
 				url: title2URL,
@@ -136,18 +113,44 @@ $(document).ready(function() {
 				linkedTitle: linkedTitle2,
 				insertImage: imageRetrieve2
 				};
-			storyz.story.push(storyTwoTest);
-			};
+			storyz.story.push(storyTwo);
+        }
 
-	function getScripts(){
-		$.templates(addDivTmpl, emailTmpl); //adds addDivTmpl as a subtemplate of emailTmpl
-		html = emailTmpl.render(storyz);
+        function spawnDB() {
+            function getDB() {
+                return $.get("http://daviseford.com/sites/default/files/email_templater/txt/db_Tmpl.txt", function (value) {
+                    db_Tmpl = $.templates(value);
+                });
+            }
+
+            $.when(
+                getDB()
+                //prepareInterface()
+            ).then(function () {
+                    console.log("fire after requests succeed");
+                    $.templates(db_addDiv, db_Tmpl); //adds db_addDiv as a subtemplate of db_Tmpl
+                    html = db_Tmpl.render(storyz);
+                    $("#resultsDiv").html(html); //Renders the HTML version of the email
+                    $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+                }).fail(function () {
+                    console.log("something went wrong!");
+                });
+        }
+        spawnDB();
+
+
+
+
+
+
+        function renderDB(){
+		$.templates(db_addDiv, db_Tmpl); //adds db_addDiv as a subtemplate of db_Tmpl
+		html = db_Tmpl.render(storyz);
 		$("#resultsDiv").html(html); //Renders the HTML version of the email
-		$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.	
-	};
+		$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+        }
 
-	getScripts();
-
+        //renderDB();
 	$("#resultsContainer").show("drop"); //Shows the results once everything is ready.
 	});
 
