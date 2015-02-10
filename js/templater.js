@@ -118,15 +118,16 @@ $(document).ready(function() {
 
         function spawnDB() {
             function getDB() {
-                return $.get("http://daviseford.com/sites/default/files/email_templater/txt/db_Tmpl.txt", function (value) {
+               return $.get("http://daviseford.com/sites/default/files/email_templater/txt/db_Tmpl.txt", function (value) {
                     db_Tmpl = $.templates(value);
                 });
             }
-
             $.when(
                 getDB()
             ).then(function () {
+                    $.templates(db_addDiv, db_Tmpl); //adds db_addDiv as a subtemplate of db_Tmpl
                     console.log("fire after requests succeed");
+                   // db_addDiv = $.templates("#db_addDiv"); //Want to move this to external
                     //$.templates(db_addDiv, db_Tmpl); //adds db_addDiv as a subtemplate of db_Tmpl
                     html = db_Tmpl.render(storyz);
                     $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
@@ -135,21 +136,46 @@ $(document).ready(function() {
                     console.log("something went wrong!");
                 });
         }
-        spawnDB();
+        //spawnDB();
 
-
-
-
-
-
-        function renderDB(){
-		$.templates(db_addDiv, db_Tmpl); //adds db_addDiv as a subtemplate of db_Tmpl
-		html = db_Tmpl.render(storyz);
-		$("#resultsDiv").html(html); //Renders the HTML version of the email
-		$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+        function spawnMR() {
+            function getMR() {
+                return $.get("http://daviseford.com/sites/default/files/email_templater/txt/mr_Tmpl.txt", function (value) {
+                    mr_Tmpl = $.templates(value);
+                });
+            }
+            $.when(
+                getMR()
+            ).then(function () {
+                    $.templates(db_addDiv, mr_Tmpl); //adds db_addDiv as a subtemplate of mr_Tmpl
+                    console.log("fire after requests succeed");
+                    // db_addDiv = $.templates("#db_addDiv"); //Want to move this to external
+                    html = mr_Tmpl.render(storyz);
+                    $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+                    $("#resultsDiv").html(html); //Renders the HTML version of the email
+                }).fail(function () {
+                    console.log("something went wrong!");
+                });
         }
+        //spawnMR();
 
-        //renderDB();
+
+        
+        function getResults(){
+            var x = $('#tmplPick').val();
+            console.log(x);
+            if (x === "DB") {
+                spawnDB();
+                console.log("Spawned DB");
+            } else if (x === "MR"){
+                spawnMR();
+                console.log("Spawned MR");
+            } else {
+                console.log("Error: Didn't spawn anything");
+            }
+        }
+        getResults();
+
 	$("#resultsContainer").show("drop"); //Shows the results once everything is ready.
 	});
 
