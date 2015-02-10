@@ -22,11 +22,23 @@ $(document).ready(function() {
 		});
 	}
 	});
+	
+	function getDB(){	
+		//get our Daily Bulletin template
+		$.get("http://daviseford.com/sites/default/files/email_templater/txt/dailybulletin.txt", function(value) {
+  		emailTmpl = $.templates(value);
+		});
+		};	
 		
+	function getDBDiv(){	
+		//get our Daily Bulletin template
+		$.get("http://daviseford.com/sites/default/files/email_templater/txt/db_addDivTmpl.txt", function(value) {
+  		addDivTmpl = $.templates(value);
+		});
+		};	
 		
-		
-		
-		
+	getDB();	
+	getDBDiv();
 		
 		
 	$("#generateHTML").click(function(){
@@ -80,19 +92,13 @@ $(document).ready(function() {
 				insertImage: imageRetrieve2
 				};
 			storyz.story.push(storyTwoTest);
-			//Worked!!!!!!!!!
-		};
+			};
 		
 			
 		
 		
-	//var myTemplate = $.templates("#emailTmpl");  //Establishing templates for JSRender
-	var addDivTmpl = $.templates("#addDivTmpl"); //Establishing templates for JSRender
+	//var addDivTmpl = $.templates("#addDivTmpl"); //Establishing templates for JSRender
 
-	//var html = myTemplate.render(storyz); //Set this var to pass the storyz object to the template.
-	
-	
-	
 //	var getScripts = function(){	
 //		//get our Daily Bulletin template
 //		$.get("http://daviseford.com/sites/default/files/email_templater/txt/dailybulletin.txt", function(value) {
@@ -106,24 +112,10 @@ $(document).ready(function() {
 //	}
 	
 	
-	var getDBmain = function(){	
-		//get our Daily Bulletin template
-		$.get("http://daviseford.com/sites/default/files/email_templater/txt/dailybulletin.txt", function(value) {
-  		emailTmpl = $.templates(value);
-		html = emailTmpl.render(storyz); //renders the template
-		});
-	};
-	var getDBdiv = function() {
-		$.get("http://daviseford.com/sites/default/files/email_templater/txt/db_addDivTmpl.txt", function(value) {
-		addDivTmpl = $.templates(value); //Want to move this to external	
-		$.templates(addDivTmpl, emailTmpl); //adds addDivTmpl as a subtemplate of emailTmpl
-		});
-	};
-		
-	
 	function getScripts(){
-		getDBmain();
-		getDBdiv();
+		//addDivTmpl = $.templates("#addDivTmpl");
+		$.templates(addDivTmpl, emailTmpl); //adds addDivTmpl as a subtemplate of emailTmpl
+		html = emailTmpl.render(storyz);
 		$("#resultsDiv").html(html); //Renders the HTML version of the email
 		$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.	
 	};
