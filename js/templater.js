@@ -125,13 +125,12 @@ $(document).ready(function() {
 
             $.when(
                 getDB()
-                //prepareInterface()
             ).then(function () {
                     console.log("fire after requests succeed");
-                    $.templates(db_addDiv, db_Tmpl); //adds db_addDiv as a subtemplate of db_Tmpl
+                    //$.templates(db_addDiv, db_Tmpl); //adds db_addDiv as a subtemplate of db_Tmpl
                     html = db_Tmpl.render(storyz);
-                    $("#resultsDiv").html(html); //Renders the HTML version of the email
                     $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+                    $("#resultsDiv").html(html); //Renders the HTML version of the email
                 }).fail(function () {
                     console.log("something went wrong!");
                 });
