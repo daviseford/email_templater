@@ -58,7 +58,6 @@ $(document).ready(function() {
     //checks our template style for us, useful when doing keycodes
     function getTemplateStyle(){
             var x = $('#tmplPick').val();
-            console.log("getTemplateStyle()"+x);
             if (x === "DB") {
                 templateStyle = "DB";
             } else if (x === "MR"){
@@ -68,21 +67,22 @@ $(document).ready(function() {
             } else {
                 console.log("Error: None of above");
             }
+        console.log("getTemplateStyle()"+x);
         }
 
     //checks our product style for us, useful when doing keycodes
     function getProduct(){
-        var x = $('#productSelect').val();
-        console.log("getProduct() "+x);
-        if (x === "") {
+        var b = $('#productSelect').val();
+        if (b === "") {
             prodAd = false;
-        } else if (x === "PW"){
+        } else if (b === "1"){
             prodAd = "productXCOM";
-        } else if (x === "XCOM"){
+        } else if (b === "2"){
             prodAd = "productPW";
         } else {
             console.log("Error: None of above");
         }
+        console.log("getProduct() " + b);
     }
 
     //****************************************************************
@@ -97,7 +97,6 @@ $(document).ready(function() {
             alert("Please enter a story");
         } else {
             getTemplateStyle(); //Start by finding out which template we're using
-            getProduct(); //and which Product we're pitching (if any)
             $('#story1Form').find('input').each(textFix);
             var title1 = $.trim($("#title1").val());
             var title1text = $.trim($("#title1text").val());
@@ -109,32 +108,40 @@ $(document).ready(function() {
             var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
 
 
-            if(templateStyle === "RFAR"){
-                var utmsource = '?utm_source='+title1KEY+'&keycode='+title1KEY+'&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
-                var safeSend = '<a href="http://www.independentlivingnews.com/il/whitelisting.php'+utmsource+'" linkname="safe sender" target="_blank">Add as Safe Sender</a>';
-                var rfarHeader = '<a href="http://www.independentlivingnews.com/preppers'+utmsource+'" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="122" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="602" /></a>';
-                var subILN = '<a href="http://www.survivalproshop.com/publications/subscription-to-independent-living-newsletter.html'+utmsource+'" target="_blank">';
+            if(templateStyle === "RFAR") {
+                var utmsource = '?utm_source=' + title1KEY + '&keycode=' + title1KEY + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
+                var safeSend = '<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>';
+                var rfarHeader = '<a href="http://www.independentlivingnews.com/preppers' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="122" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="602" /></a>';
+                var subILN = '<a href="http://www.survivalproshop.com/publications/subscription-to-independent-living-newsletter.html' + utmsource + '" target="_blank">';
                 //for subILN, prefLink, unsubLink, remember to close with </a>
-                var prefLink = '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k='+title1KEY+'-P" linkname="Email Preferences">';
-                var unsubLink = '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k='+title1KEY+'-U" linkname="Bottom Unsubscribe">';
+                var prefLink = '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + title1KEY + '-P" linkname="Email Preferences">';
+                var unsubLink = '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + title1KEY + '-U" linkname="Bottom Unsubscribe">';
                 title1URL += utmsource; //appends our URL with a tracking code
                 urlInsert1 = '<a href="' + title1URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
                 imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
 
 
                 //product values, should move these later
-                var link_XCOM = '<a href="http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html'+utmsource+'" target="_blank">';
-                var link_PW = '<a href="http://www.independentlivingnews.com/video/pw-vsl.php'+utmsource+'" target="_blank">';
-                if(prodAd === false){
-                    console.log("No product found");
-                } else if(prodAd === "productXCOM"){
+                var link_XCOM = '<a href="http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html' + utmsource + '" target="_blank">';
+                var link_PW = '<a href="http://www.independentlivingnews.com/video/pw-vsl.php' + utmsource + '" target="_blank">';
+                getProduct();
+                if (prodAd === "productXCOM") {
+                    prod_XCOM = true;
+                    prod_PW = false;
                     prodLink = link_XCOM;
-                    console.log("prodLink: " + prodLink);
-                } else if(prodAd === "productPW"){
+                    console.log("XCOM: prodLink: " + prodLink);
+                } else if (prodAd === "productPW") {
+                    prod_XCOM = false;
+                    prod_PW = true;
                     prodLink = link_PW;
-                    console.log("prodLink: " + prodLink);
+                    console.log("PW: prodLink: " + prodLink);
+                } else {
+                    prodLink = "";
+                    prod_XCOM = false;
+                    prod_PW = false;
+                    console.log("No product found");
+                }
             }
-        }
 		
 		//TODO add keycode generator, keycode integration with links
         //TODO add modularity for ads... not sure how possible this is yet, unless i grab a diff version of main Tmpl each time?
@@ -153,13 +160,15 @@ $(document).ready(function() {
                     linkedTitle: linkedTitle1,
                     insertImage: imageRetrieve1
                 }],
-            productAd: prodAd,
+            prodAd: prodAd,
             safeSend: safeSend,
             rfarHeader: rfarHeader,
             subILN: subILN,
             prefLink: prefLink,
             unsubLink: unsubLink,
-            prodLink: prodLink
+            prodLink: prodLink,
+            prod_XCOM: prod_XCOM,
+            prod_PW: prod_PW
         };
 		
 		if(additionalContentVal === true) {

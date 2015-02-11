@@ -86,8 +86,8 @@ width="600">
                         <!-- END DIVIDER -->
                         
                         <!-- START PRODUCT -->
-                        {{if prodAd = productXCOM tmpl="#ad_XCOM" /}}
-                        {{if prodAd = productPW tmpl="#ad_PW" /}}
+                        {{if prod_XCOM tmpl="#ad_XCOM" /}}
+                        {{if prod_PW tmpl="#ad_PW" /}}
                         <!-- END PRODUCT -->
                         
 						<!-- START DIVIDER -->
