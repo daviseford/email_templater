@@ -1,4 +1,5 @@
-<style type="text/css">
+<!-- FIXED -->
+<style type="text/css" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
 /* ------------------------------------- 
 		GLOBAL 
 ------------------------------------- */
@@ -237,48 +238,48 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 }
 </style>
 <!-- If you delete this meta tag, the ground will open and swallow you. -->
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
 
  
-<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;-webkit-font-smoothing: antialiased;-webkit-text-size-adjust: none;height: 100%;width: 100%!important;">
 
 <!-- HEADER -->
-<table class="head-wrap" bgcolor="#999999">
-	<tr>
-		<td></td>
-		<td class="header container" align="">
+<table class="head-wrap" bgcolor="#999999" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+	<tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+		<td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"></td>
+		<td class="header container" align="" style="margin: 0 auto!important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;display: block!important;max-width: 600px!important;clear: both!important;">
 			
 			<!-- /content -->
-			<div class="content">
-				<table bgcolor="#999999" >
-					<tr>
-						<td><a href="http://www.americanlibertypac.com" target="_blank"><img src="http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/355230655.png" width="200" height="43" alt="American Liberty PAC"/></a></td>
-						<td align="right"><h6 class="collapse">American Liberty PAC</h6></td>
+			<div class="content" style="margin: 0 auto;padding: 15px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;max-width: 600px;display: block;">
+				<table bgcolor="#999999" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+					<tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+						<td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"><a href="http://www.americanlibertypac.com" target="_blank" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;color: #2BA6CB;"><img src="http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/355230655.png" width="200" height="43" alt="American Liberty PAC" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;max-width: 100%;"></a></td>
+						<td align="right" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"><h6 class="collapse" style="margin: 0!important;padding: 0;font-family: &quot;HelveticaNeue-Light&quot;, &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;line-height: 1.1;margin-bottom: 15px;color: #444;font-weight: 900;font-size: 14px;text-transform: uppercase;">American Liberty PAC</h6></td>
 					</tr>
 				</table>
 			</div><!-- /content -->
 			
 		</td>
-		<td></td>
+		<td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"></td>
 	</tr>
 </table><!-- /HEADER -->
 
 <!-- BODY -->
-<table class="body-wrap" bgcolor="">
-	<tr>
-		<td></td>
-		<td class="container" align="" bgcolor="#FFFFFF">
+<table class="body-wrap" bgcolor="" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+	<tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+		<td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"></td>
+		<td class="container" align="" bgcolor="#FFFFFF" style="margin: 0 auto!important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;display: block!important;max-width: 600px!important;clear: both!important;">
 			
 			<!-- content -->
-			<div class="content">
-				<table>
-					<tr>
-						<td>
+			<div class="content" style="margin: 0 auto;padding: 15px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;max-width: 600px;display: block;">
+				<table style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+					<tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+						<td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
 							
 							<!-- Banner -->
-							<img src="http://p5tre.emv3.com/IL/0/0/1/1101054001/1686937737.gif" alt="American Liberty PAC" width="600" height="112"  style="display: block; width: 600px; max-width: 600px; height: 112px; padding: auto;">
+							<img src="http://p5tre.emv3.com/IL/0/0/1/1101054001/1686937737.gif" alt="American Liberty PAC" width="600" height="112" style="display: block;width: 600px;max-width: 600px;height: 112px;padding: auto;margin: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
                             <!-- /Banner -->
 						</td>
 					</tr>
@@ -291,13 +292,13 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 			<!-- Generated Content Block End-->
 			
 			<!-- content -->
-			<div class="content"><table bgcolor="">
-				<tr>
+			<div class="content" style="margin: 0 auto;padding: 15px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;max-width: 600px;display: block;"><table bgcolor="" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+				<tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
 
-					<td>
+					<td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
 						
 						<!-- Callout Panel -->
-						<p class="callout"><strong>TAKE ACTION:</strong> Senator Mike Lee's S. J. Res. 2 proposal to amend the U.S. Constitution will force all future governments to balance the budget using prudence and economic responsibility. His Bill would require a two-thirds roll call vote to add any new tax or increase the National Debt. It would also deny the judiciary the power to go around Congress and create new taxes.<center><a href="http://action.americanlibertypac.com/app/write-a-letter?2&engagementId=76012">Click here to send your URGENT Citizen Demand<br /> to your Senators that they MUST PASS S.J.Res.2!</a></center>	</p><!-- /callout panel -->
+						<p class="callout" style="margin: 0;padding: 15px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;margin-bottom: 15px;font-weight: normal;font-size: 14px;line-height: 1.6;background-color: #ECF8FF;"><strong style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">TAKE ACTION:</strong> Senator Mike Lee's S. J. Res. 2 proposal to amend the U.S. Constitution will force all future governments to balance the budget using prudence and economic responsibility. His Bill would require a two-thirds roll call vote to add any new tax or increase the National Debt. It would also deny the judiciary the power to go around Congress and create new taxes.<center style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"><a href="http://action.americanlibertypac.com/app/write-a-letter?2&engagementId=76012" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;color: #2BA6CB;font-weight: bold;">Click here to send your URGENT Citizen Demand<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"> to your Senators that they MUST PASS S.J.Res.2!</a></center>	</p><!-- /callout panel -->
 						
 					</td>
 				</tr>
@@ -308,27 +309,27 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 			<!-- content --><!-- /content -->
 			
 			<!-- content -->
-			<div class="content">
-				<table bgcolor="">
-					<tr>
-						<td>
+			<div class="content" style="margin: 0 auto;padding: 15px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;max-width: 600px;display: block;">
+				<table bgcolor="" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+					<tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+						<td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
 							
 							<!-- social & contact -->
-							<table bgcolor="" class="social" width="100%">
-								<tr>
-									<td>
+							<table bgcolor="" class="social" width="100%" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;background-color: #ebebeb;width: 100%;">
+								<tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+									<td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
 										
 										<!--- column 1 -->
-										<div class="column">
-										  <table bgcolor="" cellpadding="" align="left">
-										<tr>
-											<td>				
-												<p>Yours in Liberty,<br />
-													Adam Bitely<br />
-                                                    Executive Director<br />
+										<div class="column" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 280px;float: left;min-width: 279px;">
+										  <table bgcolor="" cellpadding="" align="left" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+										<tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+											<td style="margin: 0;padding: 15px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">				
+												<p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;">Yours in Liberty,<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+													Adam Bitely<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+                                                    Executive Director<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
                                                     American Liberty PAC</p>
-												<h5 class="">Connect with Us:</h5>
-												<p class=""><a href="https://www.facebook.com/AmericanLibertyPAC" class="soc-btn fb">Facebook</a> <a href="https://twitter.com/uslibertypac" class="soc-btn tw">Twitter</a> 
+												<h5 class="" style="margin: 0;padding: 0;font-family: &quot;HelveticaNeue-Light&quot;, &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;line-height: 1.1;margin-bottom: 15px;color: #000;font-weight: 900;font-size: 17px;">Connect with Us:</h5>
+												<p class="" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;"><a href="https://www.facebook.com/AmericanLibertyPAC" class="soc-btn fb" style="margin: 0;padding: 3px 7px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;color: #FFF;font-size: 12px;margin-bottom: 10px;text-decoration: none;font-weight: bold;display: block;text-align: center;background-color: #3B5998!important;">Facebook</a> <a href="https://twitter.com/uslibertypac" class="soc-btn tw" style="margin: 0;padding: 3px 7px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;color: #FFF;font-size: 12px;margin-bottom: 10px;text-decoration: none;font-weight: bold;display: block;text-align: center;background-color: #1daced!important;">Twitter</a> 
                                                 <!--<a href="#" class="soc-btn gp">Google+</a>-->
                                                 </p>
 						
@@ -339,17 +340,17 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 										</div>
 										
 										<!--- column 2 -->
-										<div class="column">
-										  <table bgcolor="" cellpadding="" align="left">
-										<tr>
-											<td>		
-                							<center><a href="http://americanlibertypac.com/2016-presidential-preference-poll-2/" target="_blank"><img src="http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/1635546051.png" width="200" height="200" alt="Take our Presidential Preference Poll!"/></a></center>
+										<div class="column" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 280px;float: left;min-width: 279px;">
+										  <table bgcolor="" cellpadding="" align="left" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+										<tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+											<td style="margin: 0;padding: 15px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">		
+                							<center style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"><a href="http://americanlibertypac.com/2016-presidential-preference-poll-2/" target="_blank" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;color: #2BA6CB;"><img src="http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/1635546051.png" width="200" height="200" alt="Take our Presidential Preference Poll!" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;max-width: 100%;"></a></center>
 											</td>
 										</tr>
 									</table><!-- /column 2 -->	
 										</div>
 										
-										<div class="clear"></div>
+										<div class="clear" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;display: block;clear: both;"></div>
 	
 	
 									</td>
@@ -363,40 +364,40 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 			
 
 		</td>
-		<td></td>
+		<td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"></td>
 	</tr>
 </table><!-- /BODY -->
 
 <!-- FOOTER -->
-<table class="footer-wrap">
-	<tr>
-		<td></td>
-		<td class="container">
+<table class="footer-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;clear: both!important;">
+	<tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+		<td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"></td>
+		<td class="container" style="margin: 0 auto!important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;display: block!important;max-width: 600px!important;clear: both!important;">
 			
 				<!-- content -->
-				<div class="content">
-					<table>
-						<tr>
-							<td align="center">
-                            <p style="font-size:14px; text-align:center; border:1px solid black; color: black; margin: 15px 25px; padding:4px;">
-                            Paid for by American Liberty PAC<br />
-					          www.AmericanLibertyPAC.com<br />
+				<div class="content" style="margin: 0 auto;padding: 15px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;max-width: 600px;display: block;">
+					<table style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+						<tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+							<td align="center" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+                            <p style="font-size: 14px;text-align: center;border: 1px solid black;color: black;margin: 15px 25px;padding: 4px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;margin-bottom: 10px;font-weight: normal;line-height: 1.6;">
+                            Paid for by American Liberty PAC<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+					          www.AmericanLibertyPAC.com<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
 					          Not authorized by any candidate or candidate's committee.                              </p>
-                              <p style="font-size:12px;">Contributions to American Liberty PAC are not tax-deductible<br />
+                              <p style="font-size: 12px;margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;margin-bottom: 10px;font-weight: normal;line-height: 1.6;">Contributions to American Liberty PAC are not tax-deductible<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
                               for federal income tax purposes.</p>
-                              <p style="font-size:12px;">This email is never sent unsolicited. You have received this AmericanLibertyPAC.com email because you subscribed to it or someone forwarded it to you. 
+                              <p style="font-size: 12px;margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;margin-bottom: 10px;font-weight: normal;line-height: 1.6;">This email is never sent unsolicited. You have received this AmericanLibertyPAC.com email because you subscribed to it or someone forwarded it to you. 
                                 To opt out, see the links below.</p>
-                              <p style="font-size:12px;">
-                              If this email has been forwarded to you and you would like to sign up: <a href="http://news.extras-americanlibertypac.com/HS?a=ENX7Cqvwqst68SA9MKJtFYDnGHxKLk7vWvcStGb5lw8W0bBhOG5mpqVsje_HhdCdElPP" title="GMac3.org subscribe"><b>SUBSCRIBE</b></a><br>
-                                For information on advertising with American Liberty PAC: <a href="http://news.extras-americanlibertypac.com/HS?a=ENX7Cqvwqst68SA9MKJtFYDnGHxKLk7vRPcStGb5lw8W0bBhOG5mpqVsje_HhdCdElPJ" title="American Liberty PAC advertise"><b>ADVERTISE</b></a>
-                                <br>
+                              <p style="font-size: 12px;margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;margin-bottom: 10px;font-weight: normal;line-height: 1.6;">
+                              If this email has been forwarded to you and you would like to sign up: <a href="http://news.extras-americanlibertypac.com/HS?a=ENX7Cqvwqst68SA9MKJtFYDnGHxKLk7vWvcStGb5lw8W0bBhOG5mpqVsje_HhdCdElPP" title="GMac3.org subscribe" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;color: #2BA6CB;"><b style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">SUBSCRIBE</b></a><br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+                                For information on advertising with American Liberty PAC: <a href="http://news.extras-americanlibertypac.com/HS?a=ENX7Cqvwqst68SA9MKJtFYDnGHxKLk7vRPcStGb5lw8W0bBhOG5mpqVsje_HhdCdElPJ" title="American Liberty PAC advertise" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;color: #2BA6CB;"><b style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">ADVERTISE</b></a>
+                                <br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
                                 
-                                We respect your right to privacy. <a href="http://news.extras-americanlibertypac.com/HS?a=ENX7Cqvwqst68SA9MKJtFYDnGHxKLk7vWfcStGb5lw8W0bBhOG5mpqVsje_HhdCdElPS" title="view our policy" ><b>View our policy.</b></a><br>
-                                <br>
-                                This email was sent by: American Liberty PAC 610 S. Boulevard, Tampa, FL 33606<br>
-                              <br></p>
-								<p>
-								  <a style="background-color: transparent;color: #666666;font-family: Arial;font-size: 12px;font-weight: normal;font-style: normal;text-decoration: underline;" href="http://news.extras-americanlibertypac.com/HD?a=ENX7Cqvwqst68SA9MKJtFYDnGHxKLk7vWPcStGb5lw8W0bBhOG5mpqVsje_HhdCdElPN"><center>Unsubscribe from this list (we'll be sorry to see you go!)</center></a>
+                                We respect your right to privacy. <a href="http://news.extras-americanlibertypac.com/HS?a=ENX7Cqvwqst68SA9MKJtFYDnGHxKLk7vWfcStGb5lw8W0bBhOG5mpqVsje_HhdCdElPS" title="view our policy" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;color: #2BA6CB;"><b style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">View our policy.</b></a><br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+                                <br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+                                This email was sent by: American Liberty PAC 610 S. Boulevard, Tampa, FL 33606<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">
+                              <br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"></p>
+								<p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;">
+								  <a style="background-color: transparent;color: #666666;font-family: Arial;font-size: 12px;font-weight: normal;font-style: normal;text-decoration: underline;margin: 0;padding: 0;" href="http://news.extras-americanlibertypac.com/HD?a=ENX7Cqvwqst68SA9MKJtFYDnGHxKLk7vWPcStGb5lw8W0bBhOG5mpqVsje_HhdCdElPN"><center style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;">Unsubscribe from this list (we'll be sorry to see you go!)</center></a>
 								</p>
 							</td>
 						</tr>
@@ -404,6 +405,6 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 				</div>
 				
 		</td>
-		<td></td>
+		<td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;"></td>
 	</tr>
-</table>
+</table></body>

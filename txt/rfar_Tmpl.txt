@@ -1,0 +1,306 @@
+<html>
+<body><meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title></title>
+<!--
+         *******************
+         Begin Masthead with Subscription/Viewability
+         *******************
+         -->
+<table align="center" border="0" cellpadding="5" cellspacing="0" style="-webkit-text-size-adjust:100%; -ms-text-size-
+
+adjust:100%;" width="600">
+	<tbody>
+		<tr>
+			<td align="left" width="325">
+				<span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">Always 
+
+Prepared</span></td>
+			<td align="right" width="275">
+				<span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;"><a 
+
+href="[EMV LINK]17[EMV /LINK]" linkname="safe sender" target="_blank">Add as Safe Sender</a></span></td>
+		</tr>
+	</tbody>
+</table>
+<!--
+         *******************
+         End Masthead
+         Begin 1 pixel border Table
+         This surrounds bulk of email
+         *******************
+         -->
+<table align="center" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; 
+
+background-color:#FFFFFF;" width="600">
+	<tbody>
+		<tr>
+			<td style="border: none;">
+				<!--
+                  *******************
+                  Begin Header Table
+                  *******************
+                  -->
+				<table border="0" cellpadding="0" cellspacing="0" style="display:block; border:none" 
+
+width="600">
+					<tbody>
+						<tr>
+							<td colspan="4" valign="top">
+								<a href="[EMV LINK]18[EMV /LINK]" linkname="Today's Headlines" 
+
+target="new"><img alt="Lee Bellinger's Ready For Anything Report" border="0" height="122" 
+
+src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="602" 
+
+/></a></td>
+						</tr>
+					</tbody>
+				</table>
+				<!--
+                  *******************
+                  End Header Table
+                  *******************
+                  --></td>
+		</tr>
+		<!--
+            *******************
+            Begin Content
+            *******************
+            -->
+		<tr>
+			<td style="border: none">
+				<table align="center" border="0" cellpadding="0" style="font-family:Arial, Helvetica, sans-
+
+serif; font-size:15px; color:#000000;background-color:#FFFFFF;" width="560">
+					<tbody>
+                    
+                    	<!-- START DIVIDER -->
+						<tr>
+							<td colspan="4" height="5px" style="background-color: #E5e5e5">
+							</td>
+						</tr>
+                        <!-- END DIVIDER -->
+                        <!--Template Start -->
+                        {{for story tmpl="#rfar_addDiv" /}}
+                        <!-- Template End -->
+                        <!-- START DIVIDER -->
+						<tr>
+							<td colspan="4" height="5px" style="background-color:#E5e5e5">
+							</td>
+						</tr>
+                        <!-- END DIVIDER -->
+                        
+						<tr>
+							<td colspan="4" style="font-family:Arial, Helvetica, sans-serif; font-
+
+size:20px; color:#000000; padding-top:10px;padding-bottom:10px;">
+								<a href="[EMV LINK]22[EMV /LINK]" target="_blank"><img alt="" 
+
+height="169" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/773980327.jpg" style="float: left; padding-top: 30px; padding-right: 
+
+8px;" width="250" /></a>
+								<p style="text-align: left;">
+									<br />
+									<span style="font-size:14px;"><strong>30-Day Food 
+
+Reserve!</strong> It's the super smart way to secure great tasting, long-lasting emergency comfort food for your family. Mega-
+
+delicious with 20+ year shelf life.<br />
+									AND <strong>The Ultimate Self-Reliance Mega-
+
+Manual</strong> - by far the best guide for dealing with the dangerous times in which we live. <strong><a href="[EMV LINK]23[EMV 
+
+/LINK]" target="_blank">It contains practical strategies you absolutely, positively need right away.</a></strong></span></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" height="5px" style="background-color:#E5e5e5">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" height="200" style="text-align: left; height: 150px; 
+
+text-height: 20; border-right:1px dashed #E5e5e5;">
+								<p>
+									<a href="[EMV LINK]24[EMV /LINK]" target="_blank"><span 
+
+style="font-size:18px;font-weight:bold;">Physical intimacy is good for you. Are you getting enough?</span></a></p>
+								<p style="margin-bottom: 0in; line-height: 100%">
+									Sexual activity boosts your heart rate, guards against 
+
+cancer and infectious disease, relieves stress and improves your confidence and mood. Intimacy is an important aspect of your 
+
+overall health and well being, so make sure you get the most out of it! Find out how your love life stacks up against the 
+
+average American and see if some easy, natural health tips will make the difference.</p>
+								<p>
+									<a href="[EMV LINK]25[EMV /LINK]" target="_blank"><img 
+
+alt="Click here to read more" height="38" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/674042072.png" style="" width="139" 
+
+/></a></p>
+							</td>
+							<td style="text-align: left; height: 25px; text-height: 20; text-
+
+align:justify; border-left:thin #E5e5e5;" width="161">
+								<table align="right" cellpadding="2" cellspacing="2">
+									<tbody>
+										<tr>
+											<td height="125" style="padding: 
+
+5px;background: #eeeeee;border: 1px solid #E5e5e5;border-radius: 3px;-moz-border-radius: 10px;-webkit-border-radius: 10px;" 
+
+width="125">
+												<a href="[EMV LINK]26[EMV 
+
+/LINK]" target="_blank"><img alt="" height="86" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/1872530386.png" style="" 
+
+width="125" /></a></td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" height="5px" style="background-color:#E5e5e5">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table align="center" border="0" cellpadding="0" style="font-family:Arial, Helvetica, sans-
+
+serif; font-size:15px; color:#000000;background-color:#FFFFFF;" width="560">
+					<tbody>
+						<tr>
+							<td colspan="4" style="padding-top:10px;padding-bottom:10px;">
+								<p>
+									Yours in Prudent Preparation,<br />
+									<img alt="Lee Bellinger" height="52" 
+
+src="http://www.independentlivingnews.com/email/images/signature-blue.jpg" width="260" /><br />
+									Lee Bellinger, Publisher<br />
+									<b>Independent Living</b></p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" height="5px" style="background-color:#E5e5e5">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" style="text-align: center; vertical-align:middle; font-
+
+family:Arial, Helvetica, sans-serif; font-size:20px; color:#000000; font-weight:bold;padding-top:10px;padding-bottom:10px;">
+								Not a Subscriber? Want to Share with a Friend?</td>
+						</tr>
+						<tr>
+							<td style="text-align: left; height: 60px;" width="212">
+								<p>
+									<a href="[EMV LINK]27[EMV /LINK]" target="_blank"><img 
+
+alt="" height="270" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/236043171.png" style="" width="244" /></a></p>
+							</td>
+							<td style="text-align: left; height: 60px;" width="296">
+								To try a no-risk, fully guaranteed trial subscription to Lee 
+
+Bellinger's esteemed <strong>Independent Living</strong>, please <a href="[EMV LINK]28[EMV /LINK]" target="_blank">click 
+
+here.</a> If you are not completely satisfied, you are entitled to a FULL and COMPLETE refund on your entire first year 
+
+subscription. Every month you'll receive cutting-edge information on new laws and regulations affecting virtually everything you 
+
+own or do, as well as many truly original life strategies to protect your health and wealth and defend your way of life. <a 
+
+href="[EMV LINK]29[EMV /LINK]" target="_blank">Click here.</a></td>
+						</tr>
+						<tr>
+							<td colspan="4" height="5px" style="background-color:#E5e5e5">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" style="border: none; text-align:center; font-
+
+size:10px;">
+								<hr />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: none">
+			</td>
+		</tr>
+	</tbody>
+</table>
+<!--
+         *******************
+         End Content
+         Begin Product
+         *******************
+         --><!--
+         *******************
+         End Content
+         *******************
+         -->
+<table align="center" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; 
+
+background-color:#FFFFFF;margin-top:10px;" width="600">
+	<tbody>
+		<tr>
+			<td align="center" style="border: none">
+			</td>
+		</tr>
+	</tbody>
+</table>
+<!--
+         *******************
+         End Content
+         Begin Product
+         *******************
+         --><!--
+         *******************
+         End Content
+         *******************
+         -->
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
+	<tbody>
+		<tr>
+			<td align="center">
+				<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">&copy; 
+
+2015 
+
+American Lantern Press<br />
+				377 Rubin Center Drive &#8226; Suite 203 &#8226; Fort Mill, SC &#8226; 29708 &#8226; (877) 371-
+
+1807 </span><br />
+				<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;"><a 
+
+href="[EMV LINK]30[EMV /LINK]" linkname="Is this spam">Mark as Spam</a> (Even though we're not!)<br />
+				Pick what emails you want to receive from us! <a href="[EMV LINK]31[EMV /LINK]" linkname="Email 
+
+Preferences">Email Preferences</a><br />
+				Don't want to receive our information anymore? (We'll miss you!) <a href="[EMV LINK]32[EMV 
+
+/LINK]" linkname="Bottom Unsubscribe">Unsubscribe</a> </span>
+				<p>
+					<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; 
+
+color:#000000;">This copyrighted material may not be republished without express permission. Offer only available through email 
+
+promotion. Offer does not apply to previous orders and may not be combined with any other offer. The information in this email 
+
+is presented for general educational purposes only. </span></p>
+				<p>
+				</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<!--
+         *******************
+         End Footer Table
+         *******************
+         --></body>
+</html>

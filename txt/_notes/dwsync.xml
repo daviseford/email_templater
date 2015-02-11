@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="dailybulletin.txt" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130680506800483260" remote="130680507330000000" Dst="1" />
-<file name="db_addDivTmpl.txt" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130679958734760044" remote="130679958900000000" Dst="1" />
+<file name="db_addDiv.txt" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130681406567921832" remote="130681410490000000" Dst="1" />
+<file name="db_addDiv_old.txt" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130679958734760044" remote="130681405580000000" Dst="1" />
+<file name="db_Tmpl.txt" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130681406530531239" remote="130681410490000000" Dst="1" />
+<file name="db_Tmpl_old.txt" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130680794630609066" remote="130681405590000000" Dst="1" />
+<file name="rfar_addDiv.txt" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130681436090724068" remote="130681438530000000" Dst="1" />
+<file name="rfar_Tmpl.txt" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130681438424412015" remote="130681438530000000" Dst="1" />
 </dwsync>

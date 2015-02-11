@@ -18,7 +18,7 @@
 <div class="container">
 <div class="row" id="welcome">
 	<div class="container-fluid">
-    	<center><h1>Template Generator</h1></center>
+    	<center><h1>Template Generator!</h1></center>
     </div>
 </div>
 
@@ -26,7 +26,8 @@
     <div class="col-lg-12">
     <label for="tmplPick">Select a List</label><br>
     <select name="tmplPick" id="tmplPick">
-        <option value="DB" selected="selected">Daily Bulletin</option>
+        <option value="RFAR" selected="selected">RFAR</option>
+        <option value="DB">Daily Bulletin</option>
         <option value="MR">Must Read</option>
     </select>
 </div>
@@ -58,9 +59,6 @@
 
                 <input type="checkbox" id="additionalContentCheckbox" name="additionalContentCheckbox"/>
                 Additional Story?<br>
-
-                <input type="checkbox" id="dailyBulletinCheckbox" name="dailyBulletinCheckbox"/>
-                Daily Bulletin
                 </form>
          </div> 
     </div>
@@ -132,6 +130,35 @@
 				</table>
 			</div>
 			<!--*** End Generated Content Block ***-->
+</script>
+
+<script id="rfar_addDiv" type="text/x-jsrender">
+<!--BEGIN CONTENT BLOCK -->
+<tr>
+	<td colspan="3" height="200" style="text-align: left; height: 150px; text-height: 20; border-right:1px dashed #E5e5e5;">
+	<p>
+		{{:urlInsert}}<span style="font-size: 18px; font-weight: bold; padding-top:10px;">{{:title}}</span></a>
+    </p>
+	<p style="padding-bottom:10px;">
+    	{{:text}}
+        <br />
+		<br />
+		{{:urlInsert}}<img alt="Click here to read more" height="38" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/674042072.png" style="" width="139" /></a>
+    </p>
+	</td>
+	<td style="text-align: left; height: 25px; text-height: 20; text-align:justify; border-left:thin #E5e5e5;" width="161">
+		<table align="right" cellpadding="2" cellspacing="2">
+			<tbody>
+				<tr>
+					<td height="125" style="padding: 5px;background: #eeeeee;border: 1px solid #E5e5e5;border-radius: 3px;-moz-border-radius: 10px;-webkit-border-radius: 10px;" width="125">
+					{{:insertImage}}
+                    </td>
+				</tr>
+			</tbody>
+		</table>
+	</td>
+</tr>
+ <!--END CONTENT BLOCK -->
 </script>
 
 	<!-- Loading Scripts -->

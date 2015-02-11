@@ -72,7 +72,7 @@ $(document).ready(function() {
             var title1KEY = $.trim($("#title1KEY").val());
             var urlInsert1 = '<a href="' + title1URL + '" target="_blank">';
             var linkedTitle1 = '<h4><a href="' + title1URL + '" target="_blank">' + title1 + '</a></h4>';
-            var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" class="img_thumb" alt="Story Image"></a></center>';
+            var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
         }
 		
 		
@@ -158,6 +158,26 @@ $(document).ready(function() {
         }
         //spawnMR();
 
+        function spawnRFAR() {
+            function getRFAR() {
+                return $.get("http://daviseford.com/sites/default/files/email_templater/txt/rfar_Tmpl.txt", function (value) {
+                    rfar_Tmpl = $.templates(value);
+                });
+            }
+            $.when(
+                getRFAR()
+            ).then(function () {
+                    $.templates(rfar_addDiv, rfar_Tmpl); //adds rfar_addDiv as a subtemplate of rfar_Tmpl
+                    console.log("fire after requests succeed");
+                    html = rfar_Tmpl.render(storyz);
+                    $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+                    $("#resultsDiv").html(html); //Renders the HTML version of the email
+                }).fail(function () {
+                    console.log("something went wrong!");
+                });
+        }
+        //spawnRFAR();
+
 
         //getResults() is responsible for reading the template selection box
         //and spawning the correct template
@@ -171,6 +191,9 @@ $(document).ready(function() {
             } else if (x === "MR"){
                 spawnMR();
                 console.log("Spawned MR");
+            } else if (x === "RFAR"){
+                spawnRFAR();
+                console.log("Spawned RFAR");
             } else {
                 console.log("Error: Didn't spawn anything");
             }
