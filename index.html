@@ -27,18 +27,28 @@
     <label for="tmplPick">Select a List</label><br>
     <select name="tmplPick" id="tmplPick">
         <option value="RFAR" selected="selected">RFAR</option>
-        <option value="DB">Daily Bulletin</option>
-        <option value="MR">Must Read</option>
+        <!--<option value="DB">Daily Bulletin</option>
+        <option value="MR">Must Read</option>-->
     </select>
+        <label for="productSelect">Select a Product (buggy)</label><br>
+        <select name="productSelect" id="productSelect">
+            <option value="" selected="selected">None</option>
+            <option value="PW">Power Whisperer - PW</option>
+            <option value="XCOM">Extreme Combo - XCOM</option>
+        </select>
 </div>
 
 <div class="row" id="choiceRow">
 	<div class="col-lg-12" id="story1Div">
     	<form id="story1Form" action="#">
         <fieldset>
+            <div class="form-group" id="keycodeDiv">
+                <label for="title1KEY">Keycode: </label>
+                <input class="form-control" type="text" id="title1KEY" name="title1KEY"/>
+            </div>
         	<div class="form-group">
     			<label for="title1">Title #1: </label>
-    			<input class="form-control" type="text" id="title1" name="title1" placeholder="Max Length: 28 Characters" maxlength="28"/>            
+    			<input class="form-control" type="text" id="title1" name="title1" placeholder="Max Length: 28 Characters" required/>
             </div>
             <div class="form-group">
                 <label for="title1text">Story #1: </label>
@@ -48,11 +58,6 @@
     			<label for="title1URL">Story URL: </label>
     			<input class="form-control" type="text" id="title1URL" name="title1URL" placeholder="Put the link to the ARTICLE here. It will automagically link everything necessary."/> 
             </div>
-<!--            <div class="form-group">
-    			<label for="title1KEY">Keycode: </label>
-    			<input class="form-control" type="text" id="title1KEY" name="title1KEY"/> 
-                </form>           
-            </div>-->
             <div class="form-group">
     			<label for="title1IMG">Image URL: </label>
     			<input class="form-control" type="text" id="title1IMG" name="title1IMG" placeholder="Link to the article's IMAGE here. In your browser: Right click -> Copy Image URL."/> <br />
@@ -77,10 +82,6 @@
     			<label for="title2URL">Story URL: </label>
     			<input class="form-control" type="text" id="title2URL" name="title2URL" placeholder="Put the link to the ARTICLE here. It will automagically link everything necessary."/> 
             </div>
-<!--            <div class="form-group">
-    			<label for="title2KEY">Keycode: </label>
-    			<input class="form-control" type="text" id="title2KEY" name="title2KEY"/>   
-            </div>-->
             <div class="form-group">
     			<label for="title2IMG">Image URL: </label>
     			<input class="form-control" type="text" id="title2IMG" name="title2IMG" placeholder="Link to the article's IMAGE here. In your browser: Right click -> Copy Image URL."/>
@@ -159,6 +160,44 @@
 	</td>
 </tr>
  <!--END CONTENT BLOCK -->
+</script>
+
+
+<script type="text/x-jsrender" id="ad_XCOM">
+<!-- START XCOM-->
+	<tr>
+		<td colspan="4" style="font-family:Arial, Helvetica, sans-serif; font-size:20px; color:#000000; padding-top:10px;padding-bottom:10px;">
+			{{:prodLink}}<img alt="" height="169" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/773980327.jpg" style="float: left; padding-top: 30px; padding-right: 8px;" width="250" /></a>
+			<p style="text-align: left;">
+			<br />
+			<span style="font-size:14px;"><strong>30-Day Food Reserve!</strong> It’s the super smart way to secure great tasting, long-lasting emergency comfort food for your family. Mega-delicious with 20+ year shelf life.<br />
+			AND <strong>The Ultimate Self-Reliance Mega-Manual</strong> - by far the best guide for dealing with the dangerous times in which we live. <strong>{{:prodLink}}It contains practical strategies you absolutely, positively need right away.</a></strong></span></p>
+		</td>
+	</tr>
+<!-- END XCOM -->
+</script>
+
+<script type="text/x-jsrender" id="ad_PW">
+<!-- START PW-->
+<tr>
+	<td colspan="4" style="text-align: center; vertical-align:middle; font-family:Arial, Helvetica, sans-serif; font-size:20px; color:#000000; padding-top:10px;padding-bottom:10px;">
+		{{:prodLink}}
+           <img alt="" height="211" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/746551224.png" style="float: left;" width="200" />
+         </a>
+		<p>
+        	<span style="font-size:14px;">
+            <em>If the U.S. Power Grid takes a hit, war breaks out, or another form of destructive social chaos endures, a noisy gasoline generator just won't do. You'll need a quiet and discreet source of power to ensure your home doesn't become a looting zone.
+            <br />
+			<br />
+            This is an information-packed video. Leave some time to watch it. I promise you won’t regret it.&nbsp;	<br />
+			<br />
+			{{:prodLink}}
+            <strong>Watch my FREE seminar on the coming electricity crisis in America!</strong></a></em>
+            </span>
+        </p>
+	</td>
+</tr>
+<!-- END PW-->
 </script>
 
 	<!-- Loading Scripts -->
