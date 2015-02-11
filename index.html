@@ -23,19 +23,25 @@
 </div>
 
 <div class="row" id="optionsDiv">
-    <div class="col-lg-12">
-    <label for="tmplPick">Select a List</label><br>
-    <select name="tmplPick" id="tmplPick">
-        <option value="RFAR" selected="selected">RFAR</option>
-        <!--<option value="DB">Daily Bulletin</option>
-        <option value="MR">Must Read</option>-->
-    </select>
-        <label for="productSelect">Select a Product (buggy)</label><br>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-4">
+        <label for="tmplPick">1. Select a List: </label>
+        <select name="tmplPick" id="tmplPick">
+            <option value="RFAR" selected="selected">RFAR</option>
+            <!--<option value="DB">Daily Bulletin</option>
+            <option value="MR">Must Read</option>-->
+            </select>
+    </div>
+    <div class="col-lg-4">
+        <label for="productSelect">2. Select a Product: </label>
         <select name="productSelect" id="productSelect">
             <option value="" selected="selected">None</option>
             <option value="1">Extreme Combo - XCOM</option>
             <option value="2">Power Whisperer - PW</option>
+            <option value="3">Survival Kit in a CAN</option>
         </select>
+    </div>
+    <div class="col-lg-2"></div>
 </div>
 
 <div class="row" id="choiceRow">
@@ -198,6 +204,33 @@
 	</td>
 </tr>
 <!-- END PW-->
+</script>
+
+<script type="text/x-jsrender" id="ad_CAN">
+<!-- START CAN-->
+<tr>
+    <td colspan="4" style="text-align: center; vertical-align:middle; font-family:Arial, Helvetica, sans-serif; font-size:20px; color:#000000; padding-top:10px;padding-bottom:10px;">
+        {{:prodLink}}
+        <img alt="" height="256" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/1898042509.jpg" style="float: left;" width="212" />
+        </a>
+        <br />
+        <span style="font-size:14px;">
+        <strong>Independent Living</strong> is at the forefront of alternative solutions for everyday problems.
+        <br />
+		<br />
+		{{:prodLink}}
+        <strong>Please check out my popular Emergency Automotive Survival Kits. </strong>
+            </a>
+            <br />
+        <br />
+        These must-have gems fit right in your glove box and contain some 38 must-have emergency items in case you are ever stranded in your car.
+        <br />
+		<br />
+        They’re great to hand out to loved ones.
+        </span>
+    </td>
+</tr>
+<!-- END CAN-->
 </script>
 
 	<!-- Loading Scripts -->

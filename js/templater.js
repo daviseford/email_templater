@@ -7,6 +7,9 @@ $(document).ready(function() {
 	var prodAd = false;
     var templateStyle = $('#tmplPick').val();
 
+    $('#productSelect').selectmenu({width:125});
+    $('#tmplPick').selectmenu({width:200});
+
 
 	//If this is checked, adds the second story box
 	$('#additionalContentCheckbox').click(function(){
@@ -71,19 +74,21 @@ $(document).ready(function() {
         }
 
     //checks our product style for us, useful when doing keycodes
-    function getProduct(){
-        var b = $('#productSelect').val();
-        if (b === "") {
-            prodAd = false;
-        } else if (b === "1"){
+    function getProduct() {
+        var b;
+        b = $('#productSelect').val();
+        if (b === "1") {
             prodAd = "productXCOM";
-        } else if (b === "2"){
+        } else if (b === "2") {
             prodAd = "productPW";
+        } else if (b === "3") {
+            prodAd = "productCAN";
         } else {
+            prodAd = false;
             console.log("Error: None of above");
         }
-        console.log("getProduct() " + b);
     }
+
 
     //****************************************************************
     //
@@ -108,7 +113,7 @@ $(document).ready(function() {
             var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
 
 
-            if(templateStyle === "RFAR") {
+            if (templateStyle === "RFAR") {
                 var utmsource = '?utm_source=' + title1KEY + '&keycode=' + title1KEY + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
                 var safeSend = '<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>';
                 var rfarHeader = '<a href="http://www.independentlivingnews.com/preppers' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="122" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="602" /></a>';
@@ -124,17 +129,35 @@ $(document).ready(function() {
                 //product values, should move these later
                 var link_XCOM = '<a href="http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html' + utmsource + '" target="_blank">';
                 var link_PW = '<a href="http://www.independentlivingnews.com/video/pw-vsl.php' + utmsource + '" target="_blank">';
+                var link_USR = '<a href="http://www.independentlivingnews.com/video/usr-video-3p.php' + utmsource + '" target="_blank">';
+                var link_GAB = '<a href="http://www.independentlivingnews.com/video/great-american-blackout-ihnp.php' + utmsource + '" target="_blank">';
+                var link_FOOD = '<a href="http://www.independentlivingnews.com/video/comfort-food-reserve.php' + utmsource + '" target="_blank">';
+                var link_CSG = '<a href="https://www.independentlivingnews.com/video/csg-video.php' + utmsource + '" target="_blank">';
+                var link_LPL = '<a href="http://www.independentlivingnews.com/video/lpl-video.php' + utmsource + '" target="_blank">';
+                var link_EPACK = '<a href="http://www.independentlivingnews.com/video/epack2-video.php' + utmsource + '" target="_blank">';
+                var link_STREK = '<a href="http://www.independentlivingnews.com/video/suntrek/' + utmsource + '" target="_blank">';
+                var link_MSR = '<a href="http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html' + utmsource + '" target="_blank">';
+                var link_FFL = '<a href="http://www.independentlivingnews.com/video/ffl-vsl.php' + utmsource + '" target="_blank">';
+                var link_CAN = '<a href="http://www.survivalproshop.com/survival-essentials/survival-kit-in-a-can.html' + utmsource + '" target="_blank">';
+                var prod_XCOM = false;
+                var prod_PW = false;
+                var prod_CAN = false;
+                var prodLink = false;
                 getProduct();
+
+
                 if (prodAd === "productXCOM") {
                     prod_XCOM = true;
-                    prod_PW = false;
                     prodLink = link_XCOM;
                     console.log("XCOM: prodLink: " + prodLink);
                 } else if (prodAd === "productPW") {
-                    prod_XCOM = false;
                     prod_PW = true;
                     prodLink = link_PW;
                     console.log("PW: prodLink: " + prodLink);
+                } else if (prodAd === "productCAN") {
+                    prod_CAN = true;
+                    prodLink = link_CAN;
+                    console.log("CAN: prodLink: " + prodLink);
                 } else {
                     prodLink = "";
                     prod_XCOM = false;
@@ -168,7 +191,8 @@ $(document).ready(function() {
             unsubLink: unsubLink,
             prodLink: prodLink,
             prod_XCOM: prod_XCOM,
-            prod_PW: prod_PW
+            prod_PW: prod_PW,
+            prod_CAN: prod_CAN
         };
 		
 		if(additionalContentVal === true) {
