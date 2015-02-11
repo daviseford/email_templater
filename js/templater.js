@@ -103,7 +103,7 @@ $(document).ready(function() {
 			var imageRetrieve2 = '<center>'+urlInsert2+'<img src="'+title2IMG+'" class="img_thumb" alt="Story Image"></a></center>';
 			console.log("Additional content enabled, vars set");
 			
-			//experimental constructor for story
+			//constructor for story
 			var storyTwo = {
 				title: title2,
 				text: title2text,
@@ -149,7 +149,6 @@ $(document).ready(function() {
             ).then(function () {
                     $.templates(db_addDiv, mr_Tmpl); //adds db_addDiv as a subtemplate of mr_Tmpl
                     console.log("fire after requests succeed");
-                    // db_addDiv = $.templates("#db_addDiv"); //Want to move this to external
                     html = mr_Tmpl.render(storyz);
                     $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                     $("#resultsDiv").html(html); //Renders the HTML version of the email
@@ -160,7 +159,9 @@ $(document).ready(function() {
         //spawnMR();
 
 
-        
+        //getResults() is responsible for reading the template selection box
+        //and spawning the correct template
+        //will probably be revised in the future, as it's a bit hacky and inelegant
         function getResults(){
             var x = $('#tmplPick').val();
             console.log(x);
