@@ -18,7 +18,7 @@
 <div class="container">
 <div class="row" id="welcome">
 	<div class="container-fluid">
-    	<center><h1>Template Generator!</h1></center>
+    	<center><h1>Template Generator</h1></center>
     </div>
 </div>
 
@@ -28,6 +28,7 @@
         <label for="tmplPick">1. Select a List: </label>
         <select name="tmplPick" id="tmplPick">
             <option value="RFAR" selected="selected">RFAR</option>
+            <!-- TODO add at least one more option -->
             <!--<option value="DB">Daily Bulletin</option>
             <option value="MR">Must Read</option>-->
             </select>
@@ -39,6 +40,9 @@
             <option value="1">Extreme Combo - XCOM</option>
             <option value="2">Power Whisperer - PW</option>
             <option value="3">Survival Kit in a CAN</option>
+            <!--TODO add more menu options here, use the legend. -->
+
+
         </select>
     </div>
     <div class="col-lg-2"></div>
@@ -91,6 +95,7 @@
             <div class="form-group">
     			<label for="title2IMG">Image URL: </label>
     			<input class="form-control" type="text" id="title2IMG" name="title2IMG" placeholder="Link to the article's IMAGE here. In your browser: Right click -> Copy Image URL."/>
+                <!--TODO These instructions are redundant, only need to see them once (in first column). At least shortn them -->
                 </form>
          </div> 
     </div>
@@ -107,7 +112,9 @@
 	    <div class="col-lg-12" id="resultsDiv">
 	    </div>
 	    <div class="col-lg-12"><center><p class="alert-info">Copy and paste the code below into SmartFocus.</center></p>
+            <!-- TODO make url -->
     	    <textarea id="resultsTextArea" rows="10" class="form-control" cols="10"></textarea>
+            <!-- TODO add a "Copy to Clipboard" function, I'll need to use Flash -->
         </div>
     </div>
 </div>
