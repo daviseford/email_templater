@@ -249,7 +249,7 @@ $(document).ready(function() {
 
             }
 
-		//TODO add keycode generator, keycode integration with links
+		//TODO add keycode generator to page
 
 		//This Object/Array is used with JSRender.
 		//The template will iterate over the contained "story" array
@@ -360,7 +360,7 @@ $(document).ready(function() {
         }
         //spawnMR();
 
-        function spawnRFAR() {
+        function spawnRFAR() { //TODO could probably replace this with the new loader https://github.com/stevenmhunt/tmpl.loader
             function getRFAR() {
                 return $.get("http://daviseford.com/sites/default/files/email_templater/txt/rfar_Tmpl.htm", function (value) {
                     rfar_Tmpl = $.templates(value);
