@@ -75,7 +75,7 @@ width="600">
                         <!-- END DIVIDER -->
                         
                         <!--Template Start -->
-                        {{for story tmpl="#rfar_addDiv" /}}
+                        {{for story tmpl="addDiv_templates_RFAR" /}}
                         <!-- Template End -->
                         
                         <!-- START DIVIDER -->
@@ -86,10 +86,11 @@ width="600">
                         <!-- END DIVIDER -->
                         
                         <!-- START PRODUCT -->
-                        {{if prod_XCOM tmpl="#ad_XCOM" /}}
-                        {{if prod_PW tmpl="#ad_PW" /}}
-                        {{if prod_CAN tmpl="#ad_CAN" /}}
-                        {{if prod_EPACK tmpl="#epack_Tmpl" /}}
+                        {{if prod_Tmpl.prod_XCOM tmpl="ad_templates_XCOM" /}}
+                        {{if prod_Tmpl.prod_PW tmpl="ad_templates_PW" /}}
+                        {{if prod_Tmpl.prod_CAN tmpl="ad_templates_CAN" /}}
+                        {{if prod_Tmpl.prod_EPACK tmpl="ad_templates_EPACK" /}}
+                        {{if prod_Tmpl.prod_USR tmpl="#ad_templates_USR" /}}
                         <!-- END PRODUCT -->
                         
 						<!-- START DIVIDER -->

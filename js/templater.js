@@ -45,7 +45,7 @@ $(document).ready(function() {
             var splitUTM = $.trim($(this).val().split('?utm_source')[0]);
             $(this).val(splitUTM);
             console.log("Fixed string with utmCheck"); //Not necessary, just for keeping track
-        } else if(S(inputVal).contains('See more at:')) {
+        } else if(S(inputVal).contains(' - See more at:')) {
             var splitSeeMore = $.trim($(this).val().split(' - See more at:')[0]);
             $(this).val(splitSeeMore);
             console.log("Fixed string with SeeMoreCheck"); //Not necessary, just for keeping track
@@ -75,6 +75,7 @@ $(document).ready(function() {
 
 
 
+
     //****************************************************************
     //
     //BEGIN POST-BUTTON CLICK ACTIONS
@@ -82,7 +83,7 @@ $(document).ready(function() {
     //****************************************************************
 	$("#generateHTML").click(function(){
 		var storyz;
-        event.preventDefault(); //Stops page from reloading
+       // event.preventDefault(); //Stops page from reloading
         if($("#title1").val() === "") {
             alert("Please enter a story");
         } else {
@@ -111,25 +112,12 @@ $(document).ready(function() {
                 imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
 
 
-                //product values, should move these later
-                var link_XCOM = '<a href="http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html' + utmsource + '" target="_blank">';
-                var link_PW = '<a href="http://www.independentlivingnews.com/video/pw-vsl.php' + utmsource + '" target="_blank">';
-                var link_USR = '<a href="http://www.independentlivingnews.com/video/usr-video-3p.php' + utmsource + '" target="_blank">';
-                var link_GAB = '<a href="http://www.independentlivingnews.com/video/great-american-blackout-ihnp.php' + utmsource + '" target="_blank">';
-                var link_FOOD = '<a href="http://www.independentlivingnews.com/video/comfort-food-reserve.php' + utmsource + '" target="_blank">';
-                var link_CSG = '<a href="https://www.independentlivingnews.com/video/csg-video.php' + utmsource + '" target="_blank">';
-                var link_LPL = '<a href="http://www.independentlivingnews.com/video/lpl-video.php' + utmsource + '" target="_blank">';
-                var link_EPACK = '<a href="http://www.independentlivingnews.com/video/epack2-video.php' + utmsource + '" target="_blank">';
-                var link_STREK = '<a href="http://www.independentlivingnews.com/video/suntrek/' + utmsource + '" target="_blank">';
-                var link_MSR = '<a href="http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html' + utmsource + '" target="_blank">';
-                var link_FFL = '<a href="http://www.independentlivingnews.com/video/ffl-vsl.php' + utmsource + '" target="_blank">';
-                var link_CAN = '<a href="http://www.survivalproshop.com/survival-essentials/survival-kit-in-a-can.html' + utmsource + '" target="_blank">';
-
                 //template values. true = desplayed
                 var prod_XCOM = false;
                 var prod_PW = false;
                 var prod_CAN = false;
                 var prod_EPACK = false;
+                var prod_USR = false;
                 var prodLink = false;
                 var productReference;
 
@@ -225,13 +213,24 @@ $(document).ready(function() {
                     if (b === "XCOM") {
                         prodLink = productReference.XCOM.link;
                         prod_XCOM = true;
+                        console.log("XCOM: prodLink: " + prodLink);
                     } else if (b === "PW") {
-                        prodAd = "productPW";
+                        prodLink = productReference.PW.link;
+                        prod_PW = true;
+                        console.log("PW: prodLink: " + prodLink);
                     } else if (b === "CAN") {
-                        prodAd = "productCAN";
+                        prodLink = productReference.CAN.link;
+                        prod_CAN = true;
+                        console.log("CAN: prodLink: " + prodLink);
                     } else if (b === "EPACK") {
-                        prodAd = "productEPACK";
-                    }else {
+                        prodLink = productReference.EPACK.link;
+                        prod_EPACK = true;
+                        console.log("EPACK: prodLink: " + prodLink);
+                    } else if (b === "USR") {
+                        prodLink = productReference.USR.link;
+                        prod_USR = true;
+                        console.log("USR: prodLink: " + prodLink);
+                    } else {
                         prodAd = false;
                         console.log("Error: None of above");
                     }
@@ -239,36 +238,9 @@ $(document).ready(function() {
 
                 getProduct();
 
-
-                //if (prodAd === "productXCOM") {
-                //    prod_XCOM = true;
-                //    prodLink = productReference.XCOM.link;
-                //    console.log("XCOM: prodLink: " + prodLink);
-                //} else if (prodAd === "productPW") {
-                //    prod_PW = true;
-                //    prodLink = productReference.PW.link;
-                //    prodLink = link_PW;
-                //    console.log("PW: prodLink: " + prodLink);
-                //} else if (prodAd === "productCAN") {
-                //    prod_CAN = true;
-                //    prodLink = productReference.CAN.link;
-                //    prodLink = link_CAN;
-                //    console.log("CAN: prodLink: " + prodLink);
-                //} else if (prodAd === "productEPACK") {
-                //    prod_EPACK = true;
-                //    prodLink = productReference.EPACK.link;
-                //    prodLink = link_EPACK;
-                //    console.log("EPACK: prodLink: " + prodLink);
-                //}else {
-                //    prodLink = "";
-                //    prod_XCOM = false;
-                //    prod_PW = false;
-                //    console.log("No product found");
-                //}
             }
 
 		//TODO add keycode generator, keycode integration with links
-        //TODO add modularity for ads... not sure how possible this is yet, unless i grab a diff version of main Tmpl each time?
 
 		//This Object/Array is used with JSRender.
 		//The template will iterate over the contained "story" array
@@ -291,10 +263,13 @@ $(document).ready(function() {
             prefLink: prefLink,
             unsubLink: unsubLink,
             prodLink: prodLink,
-            prod_XCOM: prod_XCOM,
-            prod_PW: prod_PW,
-            prod_CAN: prod_CAN,
-            prod_EPACK: prod_EPACK
+            prod_Tmpl: {
+                prod_XCOM: prod_XCOM,
+                prod_PW: prod_PW,
+                prod_CAN: prod_CAN,
+                prod_EPACK: prod_EPACK,
+                prod_USR: prod_USR
+            }
         };
 
 		if(additionalContentVal === true) {
