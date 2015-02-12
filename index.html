@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Davis Ford">
-	<title>emplate Generator</title>
+	<title>Template Generator</title>
 
 
 </head>
@@ -20,7 +20,7 @@
 
 <div class="row" id="optionsDiv">
     <div class="col-lg-4">
-        <label for="tmplPick">1. Select a List: </label>
+        <label for="tmplPick">1. Select a List</label><br>
         <select name="tmplPick" id="tmplPick">
             <option value="RFAR" selected="selected">RFAR</option>
             <!-- TODO add at least one more option -->
@@ -29,18 +29,18 @@
             </select>
     </div>
     <div class="col-lg-4">
-        <label for="productSelect">2. Select a Product: </label>
+        <label for="productSelect">2. Select a Product</label><br>
         <select name="productSelect" id="productSelect">
             <option value="" selected="selected">None</option>
             <option value="1">Extreme Combo - XCOM</option>
             <option value="2">Power Whisperer - PW</option>
             <option value="3">Survival Kit in a CAN</option>
+            <option value="4">EPACK</option>
             <!--TODO add more menu options here, use the legend. -->
-
-
         </select>
     </div>
-    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+    </div>
 </div>
 
 <div class="row" id="choiceRow">
@@ -244,6 +244,25 @@
 </tr>
 <!-- END CAN-->
 </script>
+
+<script type="text/x-jsrender" id="ad_EPACK">
+<!-- START EPACK -->
+<tr>
+	<td colspan="4" style="font-family:Arial, Helvetica, sans-serif; font-size:20px; color:#000000; padding-top:10px;padding-bottom:10px;">
+		{{:prodLink}}
+        <img alt="" height="195" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/510917645.png" style="float: left; padding-top: 30px; padding-right: 8px;" width="250" />
+        </a>
+		<p style="text-align: left;">
+			<span style="font-size:14px;">My {{:prodLink}}<strong>E-PACK</strong></a> will prepare you for staying put in your home in an emergency. It will help you survive until help arrives if you are ever stranded in your car.<br />
+									<br />
+									But by far the single most important feature of my {{:prodLink}}<strong>Total Home Evacuation and Emergency Barter Pack</strong></a> is that it lets you get on the road in the critical first moments of an emergency. You simply grab it and go. Way before the general populace wakes up to the fact that trouble is brewing and panics!
+            </span>
+       	</p>
+	</td>
+</tr>
+<!-- END EPACK -->
+</script>
+
 
 <!-- Loading CSS-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>

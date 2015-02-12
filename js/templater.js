@@ -7,9 +7,8 @@ $(document).ready(function() {
 	var prodAd = false;
     var templateStyle = $('#tmplPick').val();
 
-
-    $('#productSelect').selectmenu({width:150});
-    $('#tmplPick').selectmenu({width:250});
+    $('#productSelect').selectmenu({width:225});
+    $('#tmplPick').selectmenu({width:225});
 
 
 	//If this is checked, adds the second story box
@@ -74,21 +73,6 @@ $(document).ready(function() {
         console.log("getTemplateStyle()"+x);
         }
 
-    //checks our product style for us, useful when doing keycodes
-    function getProduct() {
-        var b;
-        b = $('#productSelect').val();
-        if (b === "1") {
-            prodAd = "productXCOM";
-        } else if (b === "2") {
-            prodAd = "productPW";
-        } else if (b === "3") {
-            prodAd = "productCAN";
-        } else {
-            prodAd = false;
-            console.log("Error: None of above");
-        }
-    }
 
 
     //****************************************************************
@@ -140,37 +124,164 @@ $(document).ready(function() {
                 var link_MSR = '<a href="http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html' + utmsource + '" target="_blank">';
                 var link_FFL = '<a href="http://www.independentlivingnews.com/video/ffl-vsl.php' + utmsource + '" target="_blank">';
                 var link_CAN = '<a href="http://www.survivalproshop.com/survival-essentials/survival-kit-in-a-can.html' + utmsource + '" target="_blank">';
+
+                //template values. true = desplayed
                 var prod_XCOM = false;
                 var prod_PW = false;
                 var prod_CAN = false;
+                var prod_EPACK = false;
                 var prodLink = false;
+                var updateCurr;
+
+
+                var productReference = {
+                    current: {
+                        link: '',
+                        shortcode: '',
+                        longcode: '',
+                        selected: false,
+                        prodLink: ""
+                    },
+                    USR: {
+                        link:'<a href="http://www.independentlivingnews.com/video/usr-video-3p.php' + utmsource + '" target="_blank">',
+                        shortcode: 'USR',
+                        longcode: 'Ultimate Self Reliance Manual',
+                        selected: false
+                    },
+                    GAB: {
+                        link:'<a href="http://www.independentlivingnews.com/video/great-american-blackout-ihnp.php' + utmsource + '" target="_blank">',
+                        shortcode: 'GAB',
+                        longcode: 'Great American Blackout',
+                        selected: false
+                    },
+                    FOOD: {
+                        link:'<a href="http://www.independentlivingnews.com/video/comfort-food-reserve.php' + utmsource + '" target="_blank">',
+                        shortcode: 'FOOD',
+                        longcode: 'Comfort Food Reserve',
+                        selected: false
+                    },
+                    CSG: {
+                        link:'<a href="https://www.independentlivingnews.com/video/csg-video.php' + utmsource + '" target="_blank">',
+                        shortcode: 'CSG',
+                        longcode: 'Colloidal Silver Generator',
+                        selected: false
+                    },
+                    LPL: {
+                        link:'<a href="http://www.independentlivingnews.com/video/lpl-video.php' + utmsource + '" target="_blank">',
+                        shortcode: 'LPL',
+                        longcode: 'Low Profile Living Manual',
+                        selected: false
+                    },
+                    EPACK: {
+                        link:'<a href="http://www.independentlivingnews.com/video/epack2-video.php' + utmsource + '" target="_blank">',
+                        shortcode: 'EPACK',
+                        longcode: 'Emergency Pack',
+                        selected: false
+                    },
+                    STREK: {
+                        link:'<a href="http://www.independentlivingnews.com/video/suntrek/' + utmsource + '" target="_blank">',
+                        shortcode: 'STREK',
+                        longcode: 'Sun Trek',
+                        selected: false
+                    },
+                    MSR: {
+                        link:'<a href="http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html' + utmsource + '" target="_blank">',
+                        shortcode: 'MSR',
+                        longcode: 'Medical Self Reliance Mega Manual',
+                        selected: false
+                    },
+                    FFL: {
+                        link:'<a href="http://www.independentlivingnews.com/video/ffl-vsl.php' + utmsource + '" target="_blank">',
+                        shortcode: 'FFL',
+                        longcode: 'Freedom Fortress Library',
+                        selected: false
+                    },
+                    XCOM: {
+                        link: '<a href="http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html' + utmsource + '" target="_blank">',
+                        shortcode: 'XCOM',
+                        longcode: 'Extreme Weather Combo',
+                        updateR: function(){
+                            var k = this;
+                            productReference.current.link = k.link;
+                            productReference.current.shortcode = k.shortcode;
+                            productReference.current.longcode = k.longcode;
+                            console.log("k="+k)
+                        },
+                        selected: false
+                    },
+                    PW: {
+                        link: '<a href="http://www.independentlivingnews.com/video/pw-vsl.php' + utmsource + '" target="_blank">',
+                        shortCode: 'PW',
+                        longCode: 'Power Whisperer',
+                        selected: false
+                    },
+                    CAN: {
+                        link: '<a href="http://www.survivalproshop.com/survival-essentials/survival-kit-in-a-can.html' + utmsource + '" target="_blank">',
+                        shortCode: 'CAN',
+                        longCode: 'Survival Can in a Kit',
+                        selected: false
+                    },
+                };
+                console.log("YO");
+
+                productReference.XCOM.updateR();
+                console.log(productReference.current.link);
+
+
+
+
+                //checks our product style for us, useful when doing keycodes
+                function getProduct() {
+                    var b;
+                    b = $('#productSelect').val();
+                    if (b === "1") {
+                        prodLink = productReference.XCOM.link;
+                    } else if (b === "2") {
+                        prodAd = "productPW";
+                    } else if (b === "3") {
+                        prodAd = "productCAN";
+                    } else if (b === "4") {
+                        prodAd = "productEPACK";
+                    }else {
+                        prodAd = false;
+                        console.log("Error: None of above");
+                    }
+                }
+
                 getProduct();
 
 
                 if (prodAd === "productXCOM") {
                     prod_XCOM = true;
-                    prodLink = link_XCOM;
+                    prodLink = productReference.XCOM.link;
                     console.log("XCOM: prodLink: " + prodLink);
                 } else if (prodAd === "productPW") {
                     prod_PW = true;
+                    prodLink = productReference.PW.link;
                     prodLink = link_PW;
                     console.log("PW: prodLink: " + prodLink);
                 } else if (prodAd === "productCAN") {
                     prod_CAN = true;
+                    prodLink = productReference.CAN.link;
                     prodLink = link_CAN;
                     console.log("CAN: prodLink: " + prodLink);
-                } else {
+                } else if (prodAd === "productEPACK") {
+                    prod_EPACK = true;
+                    prodLink = productReference.EPACK.link;
+                    prodLink = link_EPACK;
+                    console.log("EPACK: prodLink: " + prodLink);
+                }else {
                     prodLink = "";
                     prod_XCOM = false;
                     prod_PW = false;
                     console.log("No product found");
                 }
             }
-		
+
 		//TODO add keycode generator, keycode integration with links
         //TODO add modularity for ads... not sure how possible this is yet, unless i grab a diff version of main Tmpl each time?
 
-		//This Object/Array is used with JSRender. 
+		//This Object/Array is used with JSRender.
 		//The template will iterate over the contained "story" array
 		//and spit out as many stories as we have objects in the array.
         storyz = {
@@ -193,9 +304,10 @@ $(document).ready(function() {
             prodLink: prodLink,
             prod_XCOM: prod_XCOM,
             prod_PW: prod_PW,
-            prod_CAN: prod_CAN
+            prod_CAN: prod_CAN,
+            prod_EPACK: prod_EPACK
         };
-		
+
 		if(additionalContentVal === true) {
 			var title2 = $.trim($("#title2").val());
 			var title2text = $.trim($("#title2text").val());
@@ -211,7 +323,7 @@ $(document).ready(function() {
                 urlInsert2 = '<a href="' + title2URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
                 imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
             }
-			
+
 			//constructor for story
 			var storyTwo = {
 				title: title2,
@@ -276,8 +388,7 @@ $(document).ready(function() {
             $.when(
                 getRFAR()
             ).then(function () {
-                    $.templates(rfar_addDiv, rfar_Tmpl); //adds rfar_addDiv as a subtemplate of rfar_Tmpl
-                    product1 = $.templates("#product1");
+                   // $.templates(rfar_addDiv, rfar_Tmpl); //adds rfar_addDiv as a subtemplate of rfar_Tmpl
                     console.log("fire after requests succeed");
                     html = rfar_Tmpl.render(storyz);
                     $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
