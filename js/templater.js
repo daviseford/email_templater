@@ -239,7 +239,11 @@ $(document).ready(function() {
                         prodLink = productReference.FFL.link;
                         prod_FFL = true;
                         console.log("FFL: prodLink: " + prodLink);
-                    }else {
+                    } else if (b === "STREK") {
+                        prodLink = productReference.STREK.link;
+                        prod_STREK = true;
+                        console.log("STREK: prodLink: " + prodLink);
+                    } else {
                         prodAd = false;
                         console.log("Error: None of above");
                     }
