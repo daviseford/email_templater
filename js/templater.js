@@ -112,12 +112,21 @@ $(document).ready(function() {
                 imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
 
 
-                //template values. true = desplayed
-                var prod_XCOM = false;
-                var prod_PW = false;
-                var prod_CAN = false;
-                var prod_EPACK = false;
+                //template values. true = displayed
                 var prod_USR = false;
+                var prod_MSR = false;
+                var prod_XCOM = false;
+                var prod_LPL = false;
+                var prod_FFL = false;
+                var prod_GAB = false;
+                var prod_SUB = false;
+                var prod_PW = false;
+                var prod_FOOD = false;
+                var prod_CSG = false;
+                var prod_EPACK = false;
+                var prod_CAN = false;
+                var prod_STREK = false;
+                //TODO eventually pull all this together
                 var prodLink = false;
                 var productReference;
 
@@ -181,12 +190,6 @@ $(document).ready(function() {
                         link: '<a href="http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html' + utmsource + '" target="_blank">',
                         shortcode: 'XCOM',
                         longcode: 'Extreme Weather Combo',
-                        updateR: function(){
-                            var k = this;
-                            prodLink = this.link;
-                            this.selected = true;
-                            console.log("ProdLink="+prodLink)
-                        },
                         selected: false
                     },
                     PW: {
@@ -206,7 +209,9 @@ $(document).ready(function() {
 
 
 
-                //checks our product style for us, useful when doing keycodes
+                //This pulls the currently selected Product
+                //and checks it against the product codes
+                //It then sets prod_XXX to true so the template engine knows to render it
                 function getProduct() {
                     var b;
                     b = $('#productSelect').val();
@@ -230,7 +235,11 @@ $(document).ready(function() {
                         prodLink = productReference.USR.link;
                         prod_USR = true;
                         console.log("USR: prodLink: " + prodLink);
-                    } else {
+                    } else if (b === "FFL") {
+                        prodLink = productReference.FFL.link;
+                        prod_FFL = true;
+                        console.log("FFL: prodLink: " + prodLink);
+                    }else {
                         prodAd = false;
                         console.log("Error: None of above");
                     }
@@ -263,12 +272,20 @@ $(document).ready(function() {
             prefLink: prefLink,
             unsubLink: unsubLink,
             prodLink: prodLink,
-            prod_Tmpl: {
+            prod_Tmpl: {                    //DON'T FORGET TO UPDATE THIS WITH EACH PRODUCT
+                prod_USR: prod_USR,
+                prod_MSR: prod_MSR,
                 prod_XCOM: prod_XCOM,
+                prod_LPL: prod_LPL,
+                prod_FFL: prod_FFL,
+                prod_GAB: prod_GAB,
+                prod_SUB: prod_SUB,
                 prod_PW: prod_PW,
-                prod_CAN: prod_CAN,
+                prod_FOOD: prod_FOOD,
+                prod_CSG: prod_CSG,
                 prod_EPACK: prod_EPACK,
-                prod_USR: prod_USR
+                prod_CAN: prod_CAN,
+                prod_STREK: prod_STREK
             }
         };
 
@@ -345,14 +362,13 @@ $(document).ready(function() {
 
         function spawnRFAR() {
             function getRFAR() {
-                return $.get("http://daviseford.com/sites/default/files/email_templater/txt/rfar_Tmpl.txt", function (value) {
+                return $.get("http://daviseford.com/sites/default/files/email_templater/txt/rfar_Tmpl.htm", function (value) {
                     rfar_Tmpl = $.templates(value);
                 });
             }
             $.when(
                 getRFAR()
             ).then(function () {
-                   // $.templates(rfar_addDiv, rfar_Tmpl); //adds rfar_addDiv as a subtemplate of rfar_Tmpl
                     console.log("fire after requests succeed");
                     html = rfar_Tmpl.render(storyz);
                     $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.

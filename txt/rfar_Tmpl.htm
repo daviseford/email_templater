@@ -1,6 +1,7 @@
 <html>
 <body><meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title></title>
+<title>{{:title1KEY}}}}</title>
+<!-- the above title might be a little cutesy, let's see if it works -->
 <!--
          *******************
          Begin Masthead with Subscription/Viewability
@@ -86,11 +87,12 @@ width="600">
                         <!-- END DIVIDER -->
                         
                         <!-- START PRODUCT -->
+                        {{if prod_Tmpl.prod_FFL tmpl="ad_templates_FFL" /}}
                         {{if prod_Tmpl.prod_XCOM tmpl="ad_templates_XCOM" /}}
                         {{if prod_Tmpl.prod_PW tmpl="ad_templates_PW" /}}
                         {{if prod_Tmpl.prod_CAN tmpl="ad_templates_CAN" /}}
                         {{if prod_Tmpl.prod_EPACK tmpl="ad_templates_EPACK" /}}
-                        {{if prod_Tmpl.prod_USR tmpl="#ad_templates_USR" /}}
+                        {{if prod_Tmpl.prod_USR tmpl="ad_templates_USR" /}}
                         <!-- END PRODUCT -->
                         
 						<!-- START DIVIDER -->
