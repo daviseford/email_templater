@@ -7,6 +7,7 @@ $(document).ready(function() {
 	var prodAd = false;
     var templateStyle = $('#tmplPick').val();
 
+
     $('#productSelect').selectmenu({width:125});
     $('#tmplPick').selectmenu({width:200});
 
