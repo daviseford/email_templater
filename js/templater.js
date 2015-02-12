@@ -131,17 +131,10 @@ $(document).ready(function() {
                 var prod_CAN = false;
                 var prod_EPACK = false;
                 var prodLink = false;
-                var updateCurr;
+                var productReference;
 
 
-                var productReference = {
-                    current: {
-                        link: '',
-                        shortcode: '',
-                        longcode: '',
-                        selected: false,
-                        prodLink: ""
-                    },
+                productReference = {
                     USR: {
                         link:'<a href="http://www.independentlivingnews.com/video/usr-video-3p.php' + utmsource + '" target="_blank">',
                         shortcode: 'USR',
@@ -202,10 +195,9 @@ $(document).ready(function() {
                         longcode: 'Extreme Weather Combo',
                         updateR: function(){
                             var k = this;
-                            productReference.current.link = k.link;
-                            productReference.current.shortcode = k.shortcode;
-                            productReference.current.longcode = k.longcode;
-                            console.log("k="+k)
+                            prodLink = this.link;
+                            this.selected = true;
+                            console.log("ProdLink="+prodLink)
                         },
                         selected: false
                     },
@@ -220,12 +212,8 @@ $(document).ready(function() {
                         shortCode: 'CAN',
                         longCode: 'Survival Can in a Kit',
                         selected: false
-                    },
+                    }
                 };
-                console.log("YO");
-
-                productReference.XCOM.updateR();
-                console.log(productReference.current.link);
 
 
 
@@ -234,13 +222,14 @@ $(document).ready(function() {
                 function getProduct() {
                     var b;
                     b = $('#productSelect').val();
-                    if (b === "1") {
+                    if (b === "XCOM") {
                         prodLink = productReference.XCOM.link;
-                    } else if (b === "2") {
+                        prod_XCOM = true;
+                    } else if (b === "PW") {
                         prodAd = "productPW";
-                    } else if (b === "3") {
+                    } else if (b === "CAN") {
                         prodAd = "productCAN";
-                    } else if (b === "4") {
+                    } else if (b === "EPACK") {
                         prodAd = "productEPACK";
                     }else {
                         prodAd = false;
@@ -251,31 +240,31 @@ $(document).ready(function() {
                 getProduct();
 
 
-                if (prodAd === "productXCOM") {
-                    prod_XCOM = true;
-                    prodLink = productReference.XCOM.link;
-                    console.log("XCOM: prodLink: " + prodLink);
-                } else if (prodAd === "productPW") {
-                    prod_PW = true;
-                    prodLink = productReference.PW.link;
-                    prodLink = link_PW;
-                    console.log("PW: prodLink: " + prodLink);
-                } else if (prodAd === "productCAN") {
-                    prod_CAN = true;
-                    prodLink = productReference.CAN.link;
-                    prodLink = link_CAN;
-                    console.log("CAN: prodLink: " + prodLink);
-                } else if (prodAd === "productEPACK") {
-                    prod_EPACK = true;
-                    prodLink = productReference.EPACK.link;
-                    prodLink = link_EPACK;
-                    console.log("EPACK: prodLink: " + prodLink);
-                }else {
-                    prodLink = "";
-                    prod_XCOM = false;
-                    prod_PW = false;
-                    console.log("No product found");
-                }
+                //if (prodAd === "productXCOM") {
+                //    prod_XCOM = true;
+                //    prodLink = productReference.XCOM.link;
+                //    console.log("XCOM: prodLink: " + prodLink);
+                //} else if (prodAd === "productPW") {
+                //    prod_PW = true;
+                //    prodLink = productReference.PW.link;
+                //    prodLink = link_PW;
+                //    console.log("PW: prodLink: " + prodLink);
+                //} else if (prodAd === "productCAN") {
+                //    prod_CAN = true;
+                //    prodLink = productReference.CAN.link;
+                //    prodLink = link_CAN;
+                //    console.log("CAN: prodLink: " + prodLink);
+                //} else if (prodAd === "productEPACK") {
+                //    prod_EPACK = true;
+                //    prodLink = productReference.EPACK.link;
+                //    prodLink = link_EPACK;
+                //    console.log("EPACK: prodLink: " + prodLink);
+                //}else {
+                //    prodLink = "";
+                //    prod_XCOM = false;
+                //    prod_PW = false;
+                //    console.log("No product found");
+                //}
             }
 
 		//TODO add keycode generator, keycode integration with links
