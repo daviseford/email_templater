@@ -8,8 +8,8 @@ $(document).ready(function() {
     var templateStyle = $('#tmplPick').val();
 
 
-    $('#productSelect').selectmenu({width:125});
-    $('#tmplPick').selectmenu({width:200});
+    $('#productSelect').selectmenu({width:150});
+    $('#tmplPick').selectmenu({width:250});
 
 
 	//If this is checked, adds the second story box
