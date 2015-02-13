@@ -108,6 +108,7 @@ width="600">
                         {{if rfarSettings.prod_EPACK === 1 tmpl="ad_templates_EPACK1"}}
                         {{else}}
                             {{if rfarSettings.prod_EPACK === 2 tmpl="ad_templates_EPACK2" /}}
+                            {{if rfarSettings.prod_EPACK === 3 tmpl="ad_templates_EPACK3" /}}
                         {{/if}}
 
                         {{if rfarSettings.prod_USR === 1 tmpl="ad_templates_USR1"}}
@@ -118,6 +119,16 @@ width="600">
                         {{if rfarSettings.prod_STREK  === 1 tmpl="ad_templates_STREK1"}}
                         {{else}}
                             {{if rfarSettings.prod_STREK === 2 tmpl="ad_templates_STREK2" /}}
+                        {{/if}}
+
+                        {{if rfarSettings.prod_GAB  === 1 tmpl="ad_templates_GAB1"}}
+                        {{else}}
+                            {{if rfarSettings.prod_GAB === 2 tmpl="ad_templates_GAB2" /}}
+                        {{/if}}
+
+                        {{if rfarSettings.prod_LPL  === 1 tmpl="ad_templates_LPL1"}}
+                        {{else}}
+                            {{if rfarSettings.prod_LPL === 2 tmpl="ad_templates_LPL2" /}}
                         {{/if}}
                         <!-- END PRODUCT -->
                         
