@@ -8,7 +8,7 @@ $(document).ready(function() {
     $('#tmplPick')
         .selectmenu({width:225})
         .selectmenu({
-            change: function( event, ui ) {
+            change: function() {
                 getTemplateStyle();
             }
         });
@@ -145,7 +145,6 @@ $(document).ready(function() {
                 var prod_EPACK = false;
                 var prod_CAN = false;
                 var prod_STREK = false;
-                var prod_STREK2 = false;
                 //TODO eventually pull all this together
                 var prodLink = false;
                 var productReference;
@@ -262,7 +261,7 @@ $(document).ready(function() {
                     } else if (b === "EPACK3") {
                         prodLink = productReference.EPACK.link;
                         prod_EPACK = 3;
-                    }  else if (b === "EPACK4") {
+                    } else if (b === "EPACK4") {
                         prodLink = productReference.EPACK.link;
                         prod_EPACK = 4;
                     } else if (b === "USR1") {
@@ -271,7 +270,13 @@ $(document).ready(function() {
                     } else if (b === "USR2") {
                         prodLink = productReference.USR.link;
                         prod_USR = 2;
-                    } else if (b === "FFL1") {
+                    } else if (b === "LPL1") {
+                        prodLink = productReference.LPL.link;
+                        prod_LPL = 1;
+                    } else if (b === "LPL2") {
+                        prodLink = productReference.LPL.link;
+                        prod_LPL = 2;
+                    }  else if (b === "FFL1") {
                         prodLink = productReference.FFL.link;
                         prod_FFL = 1;
                     } else if (b === "FFL2") {
@@ -357,10 +362,12 @@ $(document).ready(function() {
                 prod_CAN: prod_CAN,
                 prod_STREK: prod_STREK
             },
-            mrSettings: {
-                mrButton: false
+            whatsGood: function(){
+                console.log("prodLink: " + this.prodLink + "prod_LPL: " +this.prod_LPL);
             }
         };
+
+
 
 		if(additionalContentVal === true) {
 			var title2 = $.trim($("#title2").val());
@@ -443,6 +450,7 @@ $(document).ready(function() {
         getResults();
 
 	$("#resultsContainer").show("drop"); //Shows the results once everything is ready.
+            storyz.whatsGood();
         }}
         )
     });
