@@ -126,6 +126,7 @@ $(document).ready(function() {
                 var prod_EPACK = false;
                 var prod_CAN = false;
                 var prod_STREK = false;
+                var prod_STREK2 = false;
                 //TODO eventually pull all this together
                 var prodLink = false;
                 var productReference;
@@ -243,6 +244,10 @@ $(document).ready(function() {
                         prodLink = productReference.STREK.link;
                         prod_STREK = true;
                         console.log("STREK: prodLink: " + prodLink);
+                    }  else if (b === "STREK2") {
+                        prodLink = productReference.STREK.link;
+                        prod_STREK2 = true;
+                        console.log("STREK2: prodLink: " + prodLink);
                     } else {
                         prodAd = false;
                         console.log("Error: None of above");
@@ -289,7 +294,8 @@ $(document).ready(function() {
                 prod_CSG: prod_CSG,
                 prod_EPACK: prod_EPACK,
                 prod_CAN: prod_CAN,
-                prod_STREK: prod_STREK
+                prod_STREK: prod_STREK,
+                prod_STREK2: prod_STREK2
             }
         };
 
