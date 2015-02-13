@@ -28,33 +28,42 @@
             <option value="MR">Must Read</option>
             </select>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4" id="productDiv">
         <label for="productSelect">2. Select a Product</label><br>
         <select name="productSelect" id="productSelect">
             <option value="" selected="selected">None</option>
             <optgroup label="Ultimate Self Reliance Mega Manual">
                 <option value="USR1">USR - Image with copy</option>
-                <option value="USR2">USR - GIF - 468x60</option>
+                <option value="USR2">USR - GIF 468x60</option>
             </optgroup>
             <!-- <optgroup label="MSR"> <option value="MSR">Medical Self Reliance Mega Manual</option></optgroup> -->
             <optgroup label="Extreme Weather Combo">
                 <option value="XCOM1">XCOM - Image with copy</option>
                 <option value="XCOM2">XCOM - Banner (White + Green)</option>
             </optgroup>
-            <!-- <optgroup label="LPL"> <option value="LPL">Low Profile Living Manual</option></optgroup> -->
+
+            <optgroup label="Low Profile Living Manual">
+                <option value="LPL1">LPL - Image with copy</option>
+                <option value="LPL2">LPL - Banner 560x56</option>
+            </optgroup>
+
             <optgroup label="Freedom Fortress Library">
                 <option value="FFL1">FFL - Image with copy</option>
             </optgroup>
-            <!-- <optgroup label=""> <option value="GAB1">Great American Blackout</option></optgroup> -->
+            <optgroup label="Great American Blackout">
+                <option value="GAB1">GAB - Image with copy</option>
+            </optgroup>
             <!-- <optgroup label=""> <option value="SUB1">Digital Newsletter Subscription</option></optgroup>  -->
             <optgroup label="Power Whisperer">
                 <option value="PW1">PW - Image with copy</option>
+                <option value="PW2">PW - Banner 560x56</option>
             </optgroup>
             <!-- <optgroup label=""><option value="FOOD">30 Day Emergency Food Reserve</option></optgroup>  -->
             <!-- <optgroup label=""><option value="CSG">Colloidal Silver Generator Kit</option></optgroup>  -->
             <optgroup label="EPACK">
                 <option value="EPACK1">EPACK - Image with copy</option>
                 <option value="EPACK2">EPACK - Banner (Evacuation)</option>
+                <option value="EPACK3">EPACK - Banner 560x56</option>
             </optgroup>
 
             <optgroup label="Sun Trek">
@@ -67,19 +76,17 @@
             </optgroup>
         </select>
     </div>
-    <div class="col-lg-4">
-
+    <div class="col-lg-4" id="keycodeDiv">
+        <form id="story1Form" action="#">
+            <label for="title1KEY">Keycode: </label>
+            <input class="form-control" type="text" id="title1KEY" name="title1KEY"/>
+            <p><a href="http://daviseford.com/sites/default/files/ALP_link_fixer/fix_links.html" alt="" target="_blank">Need a keycode?</a></p>
     </div>
 </div>
 
 <div class="row" id="choiceRow">
 	<div class="col-lg-12" id="story1Div">
-    	<form id="story1Form" action="#">
         <fieldset>
-            <div class="form-group" id="keycodeDiv">
-                <label for="title1KEY">Keycode: </label>
-                <input class="form-control" type="text" id="title1KEY" name="title1KEY"/>
-            </div>
         	<div class="form-group">
     			<label for="title1">Title #1: </label>
     			<input class="form-control" type="text" id="title1" name="title1" placeholder="Max Length: 28 Characters" required/>

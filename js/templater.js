@@ -5,7 +5,24 @@ $(document).ready(function() {
 	$("#story2Div").hide(); //Hiding our second story panel.
 	var additionalContentVal = false; //This makes us default to a one-story format.
     var templateStyle = $('#tmplPick').val();
-    $('#tmplPick').selectmenu({width:225});
+    $('#tmplPick')
+        .selectmenu({width:225})
+        .selectmenu({
+            change: function( event, ui ) {
+                getTemplateStyle();
+            }
+        });
+
+    function rfarLayoutDisplay(value){  //value = true, false
+        if(value === false){
+            $('#productDiv').hide();
+            $('#keycodeDiv').hide();
+        } else if(value === true) {
+            $('#productDiv').show();
+            $('#keycodeDiv').show();
+        }
+
+    }
     $('#productSelect')
         .selectmenu()
         .selectmenu('menuWidget')
@@ -65,8 +82,10 @@ $(document).ready(function() {
                 templateStyle = "DB";
             } else if (x === "MR"){
                 templateStyle = "MR";
+                rfarLayoutDisplay(false);
             } else if (x === "RFAR"){
                 templateStyle = "RFAR";
+                rfarLayoutDisplay(true);
             } else {
                 console.log("Error: None of above");
             }
@@ -212,7 +231,7 @@ $(document).ready(function() {
 
                 //This pulls the currently selected Product
                 //and checks it against the product codes
-                //It then sets prod_XXX to true so the template engine knows to render it
+                //It then sets prod_XXX to a number so the template engine knows to render it
                 function getProduct() {
                     var b;
                     b = $('#productSelect').val();
@@ -220,11 +239,17 @@ $(document).ready(function() {
                         prodLink = productReference.XCOM.link;
                         prod_XCOM = 1;
                     } else if (b === "XCOM2") {
-                        prodLink = productReference.PW.link;
+                        prodLink = productReference.XCOM.link;
                         prod_XCOM = 2;
-                    }else if (b === "PW1") {
+                    } else if (b === "PW1") {
                         prodLink = productReference.PW.link;
                         prod_PW = 1;
+                    } else if (b === "PW2") {
+                        prodLink = productReference.PW.link;
+                        prod_PW = 2;
+                    } else if (b === "PW3") {
+                        prodLink = productReference.PW.link;
+                        prod_PW = 3;
                     } else if (b === "CAN1") {
                         prodLink = productReference.CAN.link;
                         prod_CAN = 1;
@@ -234,6 +259,9 @@ $(document).ready(function() {
                     } else if (b === "EPACK2") {
                         prodLink = productReference.EPACK.link;
                         prod_EPACK = 2;
+                    } else if (b === "EPACK3") {
+                        prodLink = productReference.EPACK.link;
+                        prod_EPACK = 3;
                     } else if (b === "USR1") {
                         prodLink = productReference.USR.link;
                         prod_USR = 1;
@@ -243,12 +271,21 @@ $(document).ready(function() {
                     } else if (b === "FFL1") {
                         prodLink = productReference.FFL.link;
                         prod_FFL = 1;
+                    } else if (b === "FFL2") {
+                        prodLink = productReference.FFL.link;
+                        prod_FFL = 2;
                     } else if (b === "STREK1") {
                         prodLink = productReference.STREK.link;
                         prod_STREK = 1;
-                    }  else if (b === "STREK2") {
+                    } else if (b === "STREK2") {
                         prodLink = productReference.STREK.link;
-                        prod_STREK2 = 2;
+                        prod_STREK = 2;
+                    } else if (b === "GAB1") {
+                        prodLink = productReference.GAB.link;
+                        prod_GAB = 1;
+                    } else if (b === "GAB2") {
+                        prodLink = productReference.GAB.link;
+                        prod_GAB = 2;
                     } else {
                         console.log("Error: None of above");
                     }
