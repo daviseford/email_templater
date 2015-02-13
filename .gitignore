@@ -41,11 +41,14 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-_notes/dwsync.xml
+_notes/
 css/images/_notes/dwsync.xml
 js/_notes/dwsync.xml
-images/_notes/dwsync.xml
+images/_notes/
 daily_bull.html
+RFAR_Template(new).html
+rfar_convert.html
+product_templates.html
 txt/_notes/dwsync.xml
 txt/_notes/dwsync.xml
 txt/_notes/dwsync.xml
@@ -57,3 +60,5 @@ txt/_notes/dwsync.xml
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
 .idea/workspace.xml
+.idea/
+images/ads/
