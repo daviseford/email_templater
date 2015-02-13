@@ -32,12 +32,12 @@ $(document).ready(function() {
 	$('#additionalContentCheckbox').click(function(){
     if (this.checked) {
 		additionalContentVal = true;
-        console.log("Checked? "+additionalContentVal);
+        console.log("Additional Content: "+additionalContentVal);
 		$("#story1Div").removeClass("col-lg-12").addClass("col-lg-6");
 		$("#story2Div").show( "fade" );
     } else {
 		additionalContentVal = false;
-		console.log("Checked? "+additionalContentVal);
+		console.log("Additional Content: "+additionalContentVal);
 		$("#story2Div").hide( "fade", function() {
 		$("#story1Div").removeClass("col-lg-6").addClass("col-lg-12");
 		});
@@ -87,7 +87,7 @@ $(document).ready(function() {
                 templateStyle = "RFAR";
                 rfarLayoutDisplay(true);
             } else {
-                console.log("Error: None of above");
+                console.log("getTemplateStyle() - Error: None of above");
             }
         console.log("getTemplateStyle()"+x);
         }
@@ -311,7 +311,7 @@ $(document).ready(function() {
                         prodLink = productReference.MSR.link;
                         prod_MSR = 2;
                     } else {
-                        console.log("Error: None of above");
+                        console.log("getProduct() - None of above");
                     }
                 }
 
@@ -370,7 +370,6 @@ $(document).ready(function() {
 			var urlInsert2 = '<a href="'+title2URL+'" target="_blank">';
 			var linkedTitle2 = '<h4><a href="'+title2URL+'" target="_blank">'+title2+'</a></h4>';
 			var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
-			console.log("Additional content enabled, vars set");
 
             if(templateStyle === "RFAR"){
                 title2URL += utmsource; //appends our URL with a tracking code
@@ -400,15 +399,13 @@ $(document).ready(function() {
             $.when(
                 getMR()
             ).then(function () {
-                    console.log("fire after requests succeed");
                     var html = mr_Tmpl.render(storyz);
                     $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                     $("#resultsDiv").html(html); //Renders the HTML version of the email
                 }).fail(function () {
-                    console.log("something went wrong!");
+                    console.log("spawnMR(): Something went wrong!");
                 });
         }
-        //spawnMR();
 
         function spawnRFAR() { //TODO could probably replace this with the new loader https://github.com/stevenmhunt/tmpl.loader
             function getRFAR() {
@@ -419,15 +416,13 @@ $(document).ready(function() {
             $.when(
                 getRFAR()
             ).then(function () {
-                    console.log("fire after requests succeed");
                     var html = rfar_Tmpl.render(storyz);
                     $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                     $("#resultsDiv").html(html); //Renders the HTML version of the email
                 }).fail(function () {
-                    console.log("something went wrong!");
+                    console.log("spawnRFAR(): Something went wrong!");
                 });
         }
-        //spawnRFAR();
 
 
         //getResults() is responsible for reading the template selection box
@@ -435,15 +430,14 @@ $(document).ready(function() {
         //will probably be revised in the future, as it's a bit hacky and inelegant
         function getResults(){
             var x = $('#tmplPick').val();
-            console.log(x);
             if (x === "MR"){
                 spawnMR();
-                console.log("Spawned MR");
+                console.log("getResults(): Spawned MR");
             } else if (x === "RFAR"){
                 spawnRFAR();
-                console.log("Spawned RFAR");
+                console.log("getResults(): Spawned RFAR");
             } else {
-                console.log("Error: Didn't spawn anything");
+                console.log("getResults(): Error: Didn't spawn anything");
             }
         }
         getResults();
