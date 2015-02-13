@@ -4,12 +4,12 @@ $(document).ready(function() {
 	$("#resultsContainer").hide(); //Hiding our results, as we don't need to see them yet!
 	$("#story2Div").hide(); //Hiding our second story panel.
 	var additionalContentVal = false; //This makes us default to a one-story format.
-	var prodAd = false;
     var templateStyle = $('#tmplPick').val();
-
-    $('#productSelect').selectmenu({width:225});
     $('#tmplPick').selectmenu({width:225});
-
+    $('#productSelect')
+        .selectmenu()
+        .selectmenu('menuWidget')
+            .addClass('overflow');
 
 	//If this is checked, adds the second story box
 	$('#additionalContentCheckbox').click(function(){
@@ -134,7 +134,7 @@ $(document).ready(function() {
 
                 productReference = {
                     USR: {
-                        link:'<a href="http://www.independentlivingnews.com/video/usr-video-3p.php' + utmsource + '" target="_blank">',
+                        link:'<a href="http://www.independentlivingnews.com/video/usr-video.php' + utmsource + '" target="_blank">',
                         shortcode: 'USR',
                         longcode: 'Ultimate Self Reliance Manual',
                         selected: false
@@ -216,40 +216,40 @@ $(document).ready(function() {
                 function getProduct() {
                     var b;
                     b = $('#productSelect').val();
-                    if (b === "XCOM") {
+                    if (b === "XCOM1") {
                         prodLink = productReference.XCOM.link;
-                        prod_XCOM = true;
-                        console.log("XCOM: prodLink: " + prodLink);
-                    } else if (b === "PW") {
+                        prod_XCOM = 1;
+                    } else if (b === "XCOM2") {
                         prodLink = productReference.PW.link;
-                        prod_PW = true;
-                        console.log("PW: prodLink: " + prodLink);
-                    } else if (b === "CAN") {
+                        prod_XCOM = 2;
+                    }else if (b === "PW1") {
+                        prodLink = productReference.PW.link;
+                        prod_PW = 1;
+                    } else if (b === "CAN1") {
                         prodLink = productReference.CAN.link;
-                        prod_CAN = true;
-                        console.log("CAN: prodLink: " + prodLink);
-                    } else if (b === "EPACK") {
+                        prod_CAN = 1;
+                    } else if (b === "EPACK1") {
                         prodLink = productReference.EPACK.link;
-                        prod_EPACK = true;
-                        console.log("EPACK: prodLink: " + prodLink);
-                    } else if (b === "USR") {
+                        prod_EPACK = 1;
+                    } else if (b === "EPACK2") {
+                        prodLink = productReference.EPACK.link;
+                        prod_EPACK = 2;
+                    } else if (b === "USR1") {
                         prodLink = productReference.USR.link;
-                        prod_USR = true;
-                        console.log("USR: prodLink: " + prodLink);
-                    } else if (b === "FFL") {
+                        prod_USR = 1;
+                    }  else if (b === "USR2") {
+                        prodLink = productReference.USR.link;
+                        prod_USR = 2;
+                    } else if (b === "FFL1") {
                         prodLink = productReference.FFL.link;
-                        prod_FFL = true;
-                        console.log("FFL: prodLink: " + prodLink);
-                    } else if (b === "STREK") {
+                        prod_FFL = 1;
+                    } else if (b === "STREK1") {
                         prodLink = productReference.STREK.link;
-                        prod_STREK = true;
-                        console.log("STREK: prodLink: " + prodLink);
+                        prod_STREK = 1;
                     }  else if (b === "STREK2") {
                         prodLink = productReference.STREK.link;
-                        prod_STREK2 = true;
-                        console.log("STREK2: prodLink: " + prodLink);
+                        prod_STREK2 = 2;
                     } else {
-                        prodAd = false;
                         console.log("Error: None of above");
                     }
                 }
@@ -257,6 +257,7 @@ $(document).ready(function() {
                 getProduct();
 
             }
+            //END RFAR IF
 
 		//TODO add keycode generator to page
 
@@ -274,14 +275,13 @@ $(document).ready(function() {
                     linkedTitle: linkedTitle1,
                     insertImage: imageRetrieve1
                 }],
-            prodAd: prodAd,
-            safeSend: safeSend,
-            rfarHeader: rfarHeader,
-            subILN: subILN,
-            prefLink: prefLink,
-            unsubLink: unsubLink,
-            prodLink: prodLink,
-            prod_Tmpl: {                    //DON'T FORGET TO UPDATE THIS WITH EACH PRODUCT
+            rfarSettings: {
+                rfarHeader: rfarHeader,
+                subILN: subILN,
+                prefLink: prefLink,
+                unsubLink: unsubLink,
+                prodLink: prodLink,
+                safeSend: safeSend,                //DON'T FORGET TO UPDATE THIS WITH EACH PRODUCT
                 prod_USR: prod_USR,
                 prod_MSR: prod_MSR,
                 prod_XCOM: prod_XCOM,
@@ -294,8 +294,10 @@ $(document).ready(function() {
                 prod_CSG: prod_CSG,
                 prod_EPACK: prod_EPACK,
                 prod_CAN: prod_CAN,
-                prod_STREK: prod_STREK,
-                prod_STREK2: prod_STREK2
+                prod_STREK: prod_STREK
+            },
+            mrSettings: {
+                mrButton: false
             }
         };
 
@@ -328,40 +330,17 @@ $(document).ready(function() {
 			storyz.story.push(storyTwo);
         }
 
-        function spawnDB() {
-            function getDB() {
-               return $.get("http://daviseford.com/sites/default/files/email_templater/txt/db_Tmpl.txt", function (value) {
-                    db_Tmpl = $.templates(value);
-                });
-            }
-            $.when(
-                getDB()
-            ).then(function () {
-                    $.templates(db_addDiv, db_Tmpl); //adds db_addDiv as a subtemplate of db_Tmpl
-                    console.log("fire after requests succeed");
-                   // db_addDiv = $.templates("#db_addDiv"); //Want to move this to external
-                    //$.templates(db_addDiv, db_Tmpl); //adds db_addDiv as a subtemplate of db_Tmpl
-                    html = db_Tmpl.render(storyz);
-                    $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
-                    $("#resultsDiv").html(html); //Renders the HTML version of the email
-                }).fail(function () {
-                    console.log("something went wrong!");
-                });
-        }
-        //spawnDB();
-
         function spawnMR() {
             function getMR() {
-                return $.get("http://daviseford.com/sites/default/files/email_templater/txt/mr_Tmpl.txt", function (value) {
+                return $.get("http://daviseford.com/sites/default/files/email_templater/txt/mr_Tmpl.htm", function (value) {
                     mr_Tmpl = $.templates(value);
                 });
             }
             $.when(
                 getMR()
             ).then(function () {
-                    $.templates(db_addDiv, mr_Tmpl); //adds db_addDiv as a subtemplate of mr_Tmpl
                     console.log("fire after requests succeed");
-                    html = mr_Tmpl.render(storyz);
+                    var html = mr_Tmpl.render(storyz);
                     $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                     $("#resultsDiv").html(html); //Renders the HTML version of the email
                 }).fail(function () {
@@ -380,7 +359,7 @@ $(document).ready(function() {
                 getRFAR()
             ).then(function () {
                     console.log("fire after requests succeed");
-                    html = rfar_Tmpl.render(storyz);
+                    var html = rfar_Tmpl.render(storyz);
                     $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                     $("#resultsDiv").html(html); //Renders the HTML version of the email
                 }).fail(function () {
@@ -396,10 +375,7 @@ $(document).ready(function() {
         function getResults(){
             var x = $('#tmplPick').val();
             console.log(x);
-            if (x === "DB") {
-                spawnDB();
-                console.log("Spawned DB");
-            } else if (x === "MR"){
+            if (x === "MR"){
                 spawnMR();
                 console.log("Spawned MR");
             } else if (x === "RFAR"){

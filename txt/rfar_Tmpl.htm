@@ -1,7 +1,5 @@
 <html>
 <body><meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title>{{:title1KEY}}}}</title>
-<!-- the above title might be a little cutesy, let's see if it works -->
 <!--
          *******************
          Begin Masthead with Subscription/Viewability
@@ -17,7 +15,7 @@
             </td>
 			<td align="right" width="275">
 				<span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">				
-                {{:safeSend}}
+                {{:rfarSettings.safeSend}}
                 </span>
             </td>
 		</tr>
@@ -46,7 +44,7 @@ width="600">
 						<tr>
 							<td colspan="4" valign="top">
                             <!-- BEGIN HEADER -->
-                            {{:rfarHeader}}
+                            {{:rfarSettings.rfarHeader}}
                             <!-- END HEADER -->
 							</td>
 						</tr>
@@ -87,19 +85,40 @@ width="600">
                         <!-- END DIVIDER -->
                         
                         <!-- START PRODUCT -->
-                        {{if prod_Tmpl.prod_FFL tmpl="ad_templates_FFL" /}}
-                        {{if prod_Tmpl.prod_XCOM tmpl="ad_templates_XCOM" /}}
-                        {{if prod_Tmpl.prod_PW tmpl="ad_templates_PW" /}}
-                        {{if prod_Tmpl.prod_CAN tmpl="ad_templates_CAN" /}}
-                        {{if prod_Tmpl.prod_EPACK tmpl="ad_templates_EPACK" /}}
+                        {{if rfarSettings.prod_FFL === 1 tmpl="ad_templates_FFL1"}}
+                        {{else}}
+                            {{if rfarSettings.prod_FFL === 2 tmpl="ad_templates_FFL2" /}}
+                        {{/if}}
 
-                        <!-- experimental -->
-                        {{if prod_Tmpl.prod_USR tmpl="ad_templates_USR" /}}
+                        {{if rfarSettings.prod_XCOM === 1 tmpl="ad_templates_XCOM1"}}
+                        {{else}}
+                            {{if rfarSettings.prod_XCOM === 2 tmpl="ad_templates_XCOM2" /}}
+                        {{/if}}
 
+                        {{if rfarSettings.prod_PW === 1 tmpl="ad_templates_PW1"}}
+                        {{else}}
+                            {{if rfarSettings.prod_PW === 2 tmpl="ad_templates_PW2" /}}
+                        {{/if}}
 
+                        {{if rfarSettings.prod_CAN=== 1 tmpl="ad_templates_CAN1"}}
+                        {{else}}
+                            {{if rfarSettings.prod_CAN === 2 tmpl="ad_templates_CAN2" /}}
+                        {{/if}}
 
-                        {{if prod_Tmpl.prod_STREK tmpl="ad_templates_STREK1" /}}
-                        {{if prod_Tmpl.prod_STREK2 tmpl="ad_templates_STREK2" /}}
+                        {{if rfarSettings.prod_EPACK === 1 tmpl="ad_templates_EPACK1"}}
+                        {{else}}
+                            {{if rfarSettings.prod_EPACK === 2 tmpl="ad_templates_EPACK2" /}}
+                        {{/if}}
+
+                        {{if rfarSettings.prod_USR === 1 tmpl="ad_templates_USR1"}}
+                        {{else}}
+                            {{if rfarSettings.prod_USR === 2 tmpl="ad_templates_USR2" /}}
+                        {{/if}}
+
+                        {{if rfarSettings.prod_STREK  === 1 tmpl="ad_templates_STREK1"}}
+                        {{else}}
+                            {{if rfarSettings.prod_STREK === 2 tmpl="ad_templates_STREK2" /}}
+                        {{/if}}
                         <!-- END PRODUCT -->
                         
 						<!-- START DIVIDER -->
@@ -134,13 +153,13 @@ width="600">
 						<tr>
 							<td style="text-align: left; height: 60px;" width="212">
 								<p>
-									{{:subILN}}
+									{{:rfarSettings.subILN}}
                                     <img alt="Subscribe to Independent Living" height="270" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/236043171.png" width="244" />
                                     </a>
                              	</p>
 							</td>
 							<td style="text-align: left; height: 60px;" width="296">
-								To try a no-risk, fully guaranteed trial subscription to Lee Bellinger's esteemed <strong>Independent Living</strong>, please {{:subILN}}click here.</a> If you are not completely satisfied, you are entitled to a FULL and COMPLETE refund on your entire first year subscription. Every month you'll receive cutting-edge information on new laws and regulations affecting virtually everything you own or do, as well as many truly original life strategies to protect your health and wealth and defend your way of life. {{:subILN}} Click here.</a></td>
+								To try a no-risk, fully guaranteed trial subscription to Lee Bellinger's esteemed <strong>Independent Living</strong>, please {{:rfarSettings.subILN}}click here.</a> If you are not completely satisfied, you are entitled to a FULL and COMPLETE refund on your entire first year subscription. Every month you'll receive cutting-edge information on new laws and regulations affecting virtually everything you own or do, as well as many truly original life strategies to protect your health and wealth and defend your way of life. {{:rfarSettings.subILN}} Click here.</a></td>
 						</tr>
 						<tr>
 							<td colspan="4" height="5px" style="background-color:#E5e5e5">
@@ -207,8 +226,8 @@ American Lantern Press<br />
 1807 </span><br />
 	<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">
     <a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam">Mark as Spam</a> (Even though we're not!)<br />
-				Pick what emails you want to receive from us! {{:prefLink}}Email Preferences</a><br />
-				Don't want to receive our information anymore? (We'll miss you!) {{:unsubLink}}Unsubscribe</a> </span>
+				Pick what emails you want to receive from us! {{:rfarSettings.prefLink}}Email Preferences</a><br />
+				Don't want to receive our information anymore? (We'll miss you!) {{:rfarSettings.unsubLink}}Unsubscribe</a> </span>
 				<p>
 					<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">This copyrighted material may not be republished without express permission. Offer only available through email promotion. Offer does not apply to previous orders and may not be combined with any other offer. The information in this email is presented for general educational purposes only. </span></p>
 				<p>
