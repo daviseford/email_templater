@@ -262,10 +262,13 @@ $(document).ready(function() {
                     } else if (b === "EPACK3") {
                         prodLink = productReference.EPACK.link;
                         prod_EPACK = 3;
+                    }  else if (b === "EPACK4") {
+                        prodLink = productReference.EPACK.link;
+                        prod_EPACK = 4;
                     } else if (b === "USR1") {
                         prodLink = productReference.USR.link;
                         prod_USR = 1;
-                    }  else if (b === "USR2") {
+                    } else if (b === "USR2") {
                         prodLink = productReference.USR.link;
                         prod_USR = 2;
                     } else if (b === "FFL1") {
@@ -286,6 +289,27 @@ $(document).ready(function() {
                     } else if (b === "GAB2") {
                         prodLink = productReference.GAB.link;
                         prod_GAB = 2;
+                    } else if (b === "CSG1") {
+                        prodLink = productReference.CSG.link;
+                        prod_CSG = 1;
+                    } else if (b === "CSG2") {
+                        prodLink = productReference.CSG.link;
+                        prod_CSG = 2;
+                    } else if (b === "FOOD1") {
+                        prodLink = productReference.FOOD.link;
+                        prod_FOOD = 1;
+                    } else if (b === "FOOD2") {
+                        prodLink = productReference.FOOD.link;
+                        prod_FOOD = 2;
+                    } else if (b === "FOOD3") {
+                        prodLink = productReference.FOOD.link;
+                        prod_FOOD = 3;
+                    } else if (b === "MSR1") {
+                        prodLink = productReference.MSR.link;
+                        prod_MSR = 1;
+                    } else if (b === "MSR2") {
+                        prodLink = productReference.MSR.link;
+                        prod_MSR = 2;
                     } else {
                         console.log("Error: None of above");
                     }
