@@ -1,12 +1,12 @@
 // JavaScript Document
 
-$(document).ready(function() {
+$(document).ready(function () {
 	$("#resultsContainer").hide(); //Hiding our results, as we don't need to see them yet!
 	$("#story2Div").hide(); //Hiding our second story panel.
 	var additionalContentVal = false; //This makes us default to a one-story format.
     var templateStyle = $('#tmplPick').val();
     $('#tmplPick')
-        .selectmenu({width:225})
+        .selectmenu({width: 225})
         .selectmenu({
             change: function() {
                 getTemplateStyle();
@@ -109,6 +109,7 @@ $(document).ready(function() {
             getTemplateStyle(); //Start by finding out which template we're using
             $('#story1Form').find('input').each(textFix);
             var title1 = $.trim($("#title1").val());
+            //noinspection JSLint
             var title1text = $.trim($("#title1text").val());
             var title1URL = $.trim($("#title1URL").val());
             var title1IMG = $.trim($("#title1IMG").val());
@@ -228,6 +229,7 @@ $(document).ready(function() {
 
 
 
+
                 //This pulls the currently selected Product
                 //and checks it against the product codes
                 //It then sets prod_XXX to a number so the template engine knows to render it
@@ -276,7 +278,7 @@ $(document).ready(function() {
                     } else if (b === "LPL2") {
                         prodLink = productReference.LPL.link;
                         prod_LPL = 2;
-                    }  else if (b === "FFL1") {
+                    } else if (b === "FFL1") {
                         prodLink = productReference.FFL.link;
                         prod_FFL = 1;
                     } else if (b === "FFL2") {
@@ -326,6 +328,36 @@ $(document).ready(function() {
             //END RFAR IF
 
 		//TODO add keycode generator to page
+
+
+            //TODO /doing, making a optgroup generator. This way I can cut down on havign to updatee so much across three files -
+            //TODO so it should spawn
+            //<optgroup label="Colloidal Silver Generator Kit">
+            //<option value="CSG1">CSG - Banner 560x56</option>
+            //<option value="CSG2">CSG - Image with copy</option>
+            //</optgroup>
+            //TODO actually do this
+            //function getRep(x) {
+            //    var keys = [];
+            //    var that = this;
+            //    var optionValueRep = '<option value="' + x.shortcode + '">'+ x.longcode + '</option>';
+            //    var optGroupSpawnRep = '<optgroup label="' + x.longcode + '">';
+            //    var optGroupRep = '</optgroup>';
+            //    console.log("1: " + optionValueRep);
+            //    console.log("2: " + optGroupSpawnRep);
+            //    console.log("3: " + optGroupRep);
+            //    var html = optionValueRep + optGroupSpawnRep + optGroupRep;
+            //    $('#testResults').html(html);
+            //
+            //
+            //}
+
+            //probably delete up above later
+
+
+
+
+
 
 		//This Object/Array is used with JSRender.
 		//The template will iterate over the contained "story" array
@@ -450,7 +482,8 @@ $(document).ready(function() {
         getResults();
 
 	$("#resultsContainer").show("drop"); //Shows the results once everything is ready.
-            storyz.whatsGood();
+            //storyz.whatsGood();
+            //TODO deal with this whatsGood nonsense
         }}
         )
     });
