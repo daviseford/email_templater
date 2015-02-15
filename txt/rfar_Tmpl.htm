@@ -1,10 +1,7 @@
 <html>
-<body><meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<!--
-         *******************
-         Begin Masthead with Subscription/Viewability
-         *******************
-         -->
+<body>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
 <table align="center" border="0" cellpadding="5" cellspacing="0" style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;" width="600">
 	<tbody>
 		<tr>
@@ -21,13 +18,7 @@
 		</tr>
 	</tbody>
 </table>
-<!--
-         *******************
-         End Masthead
-         Begin 1 pixel border Table
-         This surrounds bulk of email
-         *******************
-         -->
+
 <table align="center" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; background-color:#FFFFFF;" width="600">
 	<tbody>
 		<tr>
@@ -37,9 +28,7 @@
                   Begin Header Table
                   *******************
                   -->
-				<table border="0" cellpadding="0" cellspacing="0" style="display:block; border:none" 
-
-width="600">
+				<table border="0" cellpadding="0" cellspacing="0" style="display:block; border:none" width="600">
 					<tbody>
 						<tr>
 							<td colspan="4" valign="top">
@@ -170,6 +159,8 @@ width="600">
                             {{if rfarSettings.prod_FOOD === 5 tmpl="ad_templates_FOOD5" /}}
                         {{/if}}
 
+                        {{for storyTwo tmpl="addDiv_templates_RFAR" /}}
+
 
                         <!-- END PRODUCT -->
                         
@@ -232,16 +223,7 @@ width="600">
 		</tr>
 	</tbody>
 </table>
-<!--
-         *******************
-         End Content
-         Begin Product
-         *******************
-         --><!--
-         *******************
-         End Content
-         *******************
-         -->
+
 <table align="center" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; 
 
 background-color:#FFFFFF;margin-top:10px;" width="600">
@@ -252,34 +234,23 @@ background-color:#FFFFFF;margin-top:10px;" width="600">
 		</tr>
 	</tbody>
 </table>
-<!--
-         *******************
-         End Content
-         Begin Product
-         *******************
-         --><!--
-         *******************
-         End Content
-         *******************
-         -->
+
 <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
 	<tbody>
 		<tr>
 			<td align="center">
-				<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">&copy; 
-
-2015 
-
-American Lantern Press<br />
-				377 Rubin Center Drive &#8226; Suite 203 &#8226; Fort Mill, SC &#8226; 29708 &#8226; (877) 371-
-
-1807 </span><br />
+				<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">&copy;2015 American Lantern Press<br />
+				377 Rubin Center Drive &#8226; Suite 203 &#8226; Fort Mill, SC &#8226; 29708 &#8226; (877) 371-1807
+                </span>
+                <br />
 	<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">
     <a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam">Mark as Spam</a> (Even though we're not!)<br />
 				Pick what emails you want to receive from us! {{:rfarSettings.prefLink}}Email Preferences</a><br />
 				Don't want to receive our information anymore? (We'll miss you!) {{:rfarSettings.unsubLink}}Unsubscribe</a> </span>
 				<p>
-					<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">This copyrighted material may not be republished without express permission. Offer only available through email promotion. Offer does not apply to previous orders and may not be combined with any other offer. The information in this email is presented for general educational purposes only. </span></p>
+					<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">This copyrighted material may not be republished without express permission. Offer only available through email promotion. Offer does not apply to previous orders and may not be combined with any other offer. The information in this email is presented for general educational purposes only.
+                    </span>
+                </p>
 				<p>
 				</p>
 			</td>
