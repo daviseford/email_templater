@@ -54,25 +54,11 @@
 			<td style="border: none">
 				<table align="center" border="0" cellpadding="0" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#000000;background-color:#FFFFFF;" width="560">
 					<tbody>
-                    
-                    	<!-- START DIVIDER -->
-						<tr>
-							<td colspan="4" height="5px" style="background-color: #E5e5e5">
-							</td>
-						</tr>
-                        <!-- END DIVIDER -->
-                        
-                        <!--Template Start -->
+
+                        <!-- START FIRST CONTENT BLOCK -->
                         {{for story tmpl="addDiv_templates_RFAR" /}}
-                        <!-- Template End -->
-                        
-                        <!-- START DIVIDER -->
-						<tr>
-							<td colspan="4" height="5px" style="background-color:#E5e5e5">
-							</td>
-						</tr>
-                        <!-- END DIVIDER -->
-                        
+                        <!-- END FIRST CONTENT BLOCK -->
+
                         <!-- START PRODUCT -->
                         {{if rfarSettings.prod_CSG === 1 tmpl="ad_templates_CSG1"}}
                         {{else}}
@@ -158,18 +144,11 @@
                             {{if rfarSettings.prod_FOOD === 4 tmpl="ad_templates_FOOD4" /}}
                             {{if rfarSettings.prod_FOOD === 5 tmpl="ad_templates_FOOD5" /}}
                         {{/if}}
-
-                        {{for storyTwo tmpl="addDiv_templates_RFAR" /}}
-
-
                         <!-- END PRODUCT -->
-                        
-						<!-- START DIVIDER -->
-						<tr>
-							<td colspan="4" height="5px" style="background-color:#E5e5e5">
-							</td>
-						</tr>
-                        <!-- END DIVIDER -->
+
+                        <!-- START OPTIONAL SECOND BLOCK -->
+                        {{for storyTwo tmpl="addDiv_templates_RFAR" /}}
+                        <!-- END OPTIONAL SECOND BLOCK -->
                         
 					</tbody>
 				</table>
