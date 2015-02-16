@@ -3,6 +3,39 @@
 $(document).ready(function () {
 	$("#resultsContainer").hide(); //Hiding our results, as we don't need to see them yet!
 	$("#story2Div").hide(); //Hiding our second story panel.
+    $("#emailHTML")
+        .button()
+        .hide();
+
+
+    	function makeDownloadBtn() {
+            $("#emailHTML")
+                .show()
+                .click(function(){
+                    //trying some ajax?
+                    $.ajax({
+                        type: "POST",
+                        url: "https://mandrillapp.com/api/1.0/messages/send.json",
+                        data: {
+                            'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                            'message': {
+                                'from_email': 'digitalmedia@wjmassociates.com',
+                                'to': [
+                                    {
+                                        'email': 'dford@wjmassociates.com',
+                                        'name': 'Davis Ford',
+                                        'type': 'to'
+                                    }
+                                ],
+                                'autotext': 'true',
+                                'subject': $("#title1KEY").val(),
+                                'html': $("#resultsDiv").html()
+                            }}
+                    }).done(function(response) {
+                        console.log(response); // if you're into that sorta thing
+                    });
+                });
+        }
 
 
 
@@ -294,102 +327,6 @@ $(document).ready(function () {
                         }
 
                     }
-
-
-                    //This pulls the currently selected Product
-                    //and checks it against the product codes
-                    //It then sets prod_XXX to a number so the template engine knows to render it
-                    function getProduct() {
-                        var b;
-                        b = $('#productSelect').val();
-                        if (b === "XCOM1") {
-                            prodLink = productReference.XCOM.link;
-                            prod_XCOM = 1;
-                        } else if (b === "XCOM2") {
-                            prodLink = productReference.XCOM.link;
-                            prod_XCOM = 2;
-                        } else if (b === "PW1") {
-                            prodLink = productReference.PW.link;
-                            prod_PW = 1;
-                        } else if (b === "PW2") {
-                            prodLink = productReference.PW.link;
-                            prod_PW = 2;
-                        } else if (b === "PW3") {
-                            prodLink = productReference.PW.link;
-                            prod_PW = 3;
-                        } else if (b === "CAN1") {
-                            prodLink = productReference.CAN.link;
-                            prod_CAN = 1;
-                        } else if (b === "EPACK1") {
-                            prodLink = productReference.EPACK.link;
-                            prod_EPACK = 1;
-                        } else if (b === "EPACK2") {
-                            prodLink = productReference.EPACK.link;
-                            prod_EPACK = 2;
-                        } else if (b === "EPACK3") {
-                            prodLink = productReference.EPACK.link;
-                            prod_EPACK = 3;
-                        } else if (b === "EPACK4") {
-                            prodLink = productReference.EPACK.link;
-                            prod_EPACK = 4;
-                        } else if (b === "USR1") {
-                            prodLink = productReference.USR.link;
-                            prod_USR = 1;
-                        } else if (b === "USR2") {
-                            prodLink = productReference.USR.link;
-                            prod_USR = 2;
-                        } else if (b === "LPL1") {
-                            prodLink = productReference.LPL.link;
-                            prod_LPL = 1;
-                        } else if (b === "LPL2") {
-                            prodLink = productReference.LPL.link;
-                            prod_LPL = 2;
-                        } else if (b === "FFL1") {
-                            prodLink = productReference.FFL.link;
-                            prod_FFL = 1;
-                        } else if (b === "FFL2") {
-                            prodLink = productReference.FFL.link;
-                            prod_FFL = 2;
-                        } else if (b === "STREK1") {
-                            prodLink = productReference.STREK.link;
-                            prod_STREK = 1;
-                        } else if (b === "STREK2") {
-                            prodLink = productReference.STREK.link;
-                            prod_STREK = 2;
-                        } else if (b === "GAB1") {
-                            prodLink = productReference.GAB.link;
-                            prod_GAB = 1;
-                        } else if (b === "GAB2") {
-                            prodLink = productReference.GAB.link;
-                            prod_GAB = 2;
-                        } else if (b === "CSG1") {
-                            prodLink = productReference.CSG.link;
-                            prod_CSG = 1;
-                        } else if (b === "CSG2") {
-                            prodLink = productReference.CSG.link;
-                            prod_CSG = 2;
-                        } else if (b === "FOOD1") {
-                            prodLink = productReference.FOOD.link;
-                            prod_FOOD = 1;
-                        } else if (b === "FOOD2") {
-                            prodLink = productReference.FOOD.link;
-                            prod_FOOD = 2;
-                        } else if (b === "FOOD3") {
-                            prodLink = productReference.FOOD.link;
-                            prod_FOOD = 3;
-                        } else if (b === "MSR1") {
-                            prodLink = productReference.MSR.link;
-                            prod_MSR = 1;
-                        } else if (b === "MSR2") {
-                            prodLink = productReference.MSR.link;
-                            prod_MSR = 2;
-                        } else {
-                            console.log("getProduct() - None of above");
-                        }
-                    }
-
-                    //getProduct();
-
                 }
                 //END RFAR IF
 
@@ -531,6 +468,7 @@ $(document).ready(function () {
                             var html = rfar_db_Tmpl.render(storyz);
                             $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                             $("#resultsDiv").html(html); //Renders the HTML version of the email
+                            makeDownloadBtn();
                         }).fail(function () {
                             console.log("spawnRFARDB(): Something went wrong!");
                         });
@@ -541,8 +479,7 @@ $(document).ready(function () {
                 //and spawning the correct template
                 //will probably be revised in the future, as it's a bit hacky and inelegant
                 function getResults() {
-                    //var x = $('#tmplPick').val(); remove if not needed
-                    var y = [$('#listSelect').val(), $('#tmplSelect').val(),];
+                    var y = [$('#listSelect').val(), $('#tmplSelect').val()];
                     var x = y.join('');
                     console.log('x = '+x);
                     if (x === "MR") {
@@ -561,6 +498,7 @@ $(document).ready(function () {
                 $("#resultsContainer").show("drop"); //Shows the results once everything is ready.
                 //storyz.whatsGood();
                 //TODO deal with this whatsGood nonsense
+
             }}
         )
     });
