@@ -20,13 +20,24 @@
 
 <div class="row" id="optionsDiv">
     <div class="col-lg-4">
-        <label for="tmplPick">1. Select a List</label><br>
+
+        <center>STEP 1<br>
+            Pick the mailing date
+            <span id="inlinedate"></span>
+            <br />
+        </center>
+
+
+        <label for="tmplPick">STEP 2<br />Select an Email</label><br>
         <select name="tmplPick" id="tmplPick">
             <option value="RFAR" selected="selected">RFAR</option>
             <!-- TODO add at least one more option -->
             <!--<option value="DB">Daily Bulletin</option>-->
             <option value="MR">Must Read</option>
             </select>
+
+
+        <select
     </div>
     <div class="col-lg-4" id="productDiv">
         <label for="productSelect">2. Select a Product</label><br>
@@ -90,18 +101,17 @@
             </optgroup>
         </select>
 
-
-    </div>
-    <!-- Add some sort of thumbnail preview -->
-    <div class="col-lg-4" id="previewDiv">
         <form id="story1Form" action="#">
             <label for="title1KEY">Keycode: </label>
             <input class="form-control" type="text" id="title1KEY" name="title1KEY"/>
             <p><a href="http://daviseford.com/sites/default/files/ALP_link_fixer/fix_links.html" alt="" target="_blank">Need a keycode?</a></p>
+
+    </div>
+    <div class="col-lg-4" id="previewDiv">
     </div>
 </div>
 
-
+    <!-- Add some sort of thumbnail preview -->
 <div class="row" id="choiceRow">
 	<div class="col-lg-12" id="story1Div">
         <fieldset>

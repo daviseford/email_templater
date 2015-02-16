@@ -3,6 +3,29 @@
 $(document).ready(function () {
 	$("#resultsContainer").hide(); //Hiding our results, as we don't need to see them yet!
 	$("#story2Div").hide(); //Hiding our second story panel.
+
+    //Establishing the datepicker
+    $( "#inlinedate" ).datepicker({
+        dateFormat: "ymmdd" //Outputs as YYMMDD
+    });
+
+    //This handles generating the keycode. It simply joins all of the necessary values from an array.
+    function makeKeyCode() {
+        var keycodeGeneration = [$("#inlinedate").val(),$("#list").val(),$("#email").val(),$("#product").val()];
+        //This array stores our Keycode values, to be used shortly.
+        //$("#keycodefield").val(keycodeGeneration.join(""));
+        var currKeyCode = keycodeGeneration.join("");
+
+        //keycodeGeneration[3] = Product Selection
+        //Since the form ID's are set up with links as values, we can just grab the value of a matching form
+        //It's trimmed in the end just to be safe, not really necessary though
+        //For example - if keycodeGeneration[3] = SUB, this grabs the value of "#SUB", which is the link to the product
+        //$("#ProductInput").val(currProduct); //Sets up our product link in the "#inputForm"
+        console.log(currKeyCode)
+    });
+
+
+
 	var additionalContentVal = false; //This makes us default to a one-story format.
     var templateStyle = $('#tmplPick').val();
     $('#tmplPick')
@@ -12,14 +35,12 @@ $(document).ready(function () {
                 getTemplateStyle();
             }
         });
-
+    //hides RFAR-specific stuff if it's not selected
     function rfarLayoutDisplay(value){  //value = true, false
         if(value === false){
             $('#productDiv').hide();
-            $('#keycodeDiv').hide();
         } else if(value === true) {
             $('#productDiv').show();
-            $('#keycodeDiv').show();
         }
 
     }
