@@ -4,31 +4,13 @@ $(document).ready(function () {
 	$("#resultsContainer").hide(); //Hiding our results, as we don't need to see them yet!
 	$("#story2Div").hide(); //Hiding our second story panel.
 
-    //Establishing the datepicker
-    $( "#inlinedate" ).datepicker({
-        dateFormat: "ymmdd" //Outputs as YYMMDD
-    });
 
-    //This handles generating the keycode. It simply joins all of the necessary values from an array.
-    function makeKeyCode() {
-        var keycodeGeneration = [$("#inlinedate").val(),$("#list").val(),$("#email").val(),$("#product").val()];
-        //This array stores our Keycode values, to be used shortly.
-        //$("#keycodefield").val(keycodeGeneration.join(""));
-        var currKeyCode = keycodeGeneration.join("");
-
-        //keycodeGeneration[3] = Product Selection
-        //Since the form ID's are set up with links as values, we can just grab the value of a matching form
-        //It's trimmed in the end just to be safe, not really necessary though
-        //For example - if keycodeGeneration[3] = SUB, this grabs the value of "#SUB", which is the link to the product
-        //$("#ProductInput").val(currProduct); //Sets up our product link in the "#inputForm"
-        console.log(currKeyCode)
-    });
 
 
 
 	var additionalContentVal = false; //This makes us default to a one-story format.
-    var templateStyle = $('#tmplPick').val();
-    $('#tmplPick')
+    var templateStyle = $('#tmplSelect').val();
+    $('#tmplSelect')
         .selectmenu({width: 225})
         .selectmenu({
             change: function() {
@@ -44,12 +26,47 @@ $(document).ready(function () {
         }
 
     }
+    //setting up other menus
+    //Establishing the datepicker
+    $( "#inlinedate" ).datepicker({
+        dateFormat: "ymmdd" //Outputs as YYMMDD
+    });
+    //setting up other menus
+    $('#listSelect').selectmenu({width: 150});
+
+    //setting up productSelect menu (with overflow because there's lots of products)
     $('#productSelect')
         .selectmenu()
         .selectmenu('menuWidget')
             .addClass('overflow');
 
-	//If this is checked, adds the second story box
+
+    //This handles generating the keycode. It simply joins all of the necessary values from an array.
+    function makeKeyCode() {
+        var keycodeGeneration = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
+        //This array stores our Keycode values, to be used shortly.
+        //$("#keycodefield").val(keycodeGeneration.join(""));
+        var currKeyCode = keycodeGeneration.join("");
+
+        //keycodeGeneration[3] = Product Selection
+        //Since the form ID's are set up with links as values, we can just grab the value of a matching form
+        //It's trimmed in the end just to be safe, not really necessary though
+        //For example - if keycodeGeneration[3] = SUB, this grabs the value of "#SUB", which is the link to the product
+        $("#title1KEY")
+            .val(currKeyCode)
+            .effect('highlight', 'slow'); //Sets up our product link in the "#inputForm"
+        console.log(currKeyCode);
+    }
+
+    $('#generateKeyCodeBtn')
+        .button()
+        .click(function(){
+            event.preventDefault();
+            makeKeyCode();
+    });
+
+
+    //If this is checked, adds the second story box
 	$('#additionalContentCheckbox').click(function(){
     if (this.checked) {
 		additionalContentVal = true;
@@ -98,20 +115,23 @@ $(document).ready(function () {
 
     //checks our template style for us, useful when doing keycodes
     function getTemplateStyle(){
-            var x = $('#tmplPick').val();
+        var y = [$('#listSelect').val(), $('#tmplSelect').val()];
+        var x = y.join('');
+        console.log('x = '+x);
             if (x === "DB") {
                 templateStyle = "DB";
             } else if (x === "MR"){
                 templateStyle = "MR";
                 rfarLayoutDisplay(false);
-            } else if (x === "RFAR"){
-                templateStyle = "RFAR";
+            } else if (x === "RFARDB"){
+                templateStyle = "RFARDB";
                 rfarLayoutDisplay(true);
             } else {
                 console.log("getTemplateStyle() - Error: None of above");
             }
         console.log("getTemplateStyle()"+x);
         }
+
 
 
 
@@ -129,18 +149,20 @@ $(document).ready(function () {
             } else {
                 getTemplateStyle(); //Start by finding out which template we're using
                 $('#story1Form').find('input').each(textFix);
+                var subjectLine = $.trim($('#subjectInput').val());
                 var title1 = $.trim($("#title1").val());
                 //noinspection JSLint
                 var title1text = $.trim($("#title1text").val());
                 var title1URL = $.trim($("#title1URL").val());
                 var title1IMG = $.trim($("#title1IMG").val());
-                var title1KEY = $.trim($("#title1KEY").val());
                 var urlInsert1 = '<a href="' + title1URL + '" target="_blank">';
                 var linkedTitle1 = '<h4><a href="' + title1URL + '" target="_blank">' + title1 + '</a></h4>';
                 var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
 
 
-                if (templateStyle === "RFAR") {
+                if (templateStyle === "RFARDB") {
+                    makeKeyCode();
+                    var title1KEY = $.trim($("#title1KEY").val());
                     var utmsource = '?utm_source=' + title1KEY + '&keycode=' + title1KEY + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
                     var safeSend = '<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>';
                     var rfarHeader = '<a href="http://www.independentlivingnews.com/preppers' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="122" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="602" /></a>';
@@ -151,6 +173,7 @@ $(document).ready(function () {
                     title1URL += utmsource; //appends our URL with a tracking code
                     urlInsert1 = '<a href="' + title1URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
                     imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
+
 
 
                     //template values. true = displayed
@@ -173,64 +196,68 @@ $(document).ready(function () {
 
 
                     productReference = {
+                        current: {
+                            link: '',
+                            shortCode: ''
+                        },
                         USR: {
                             link: '<a href="http://www.independentlivingnews.com/video/usr-video.php' + utmsource + '" target="_blank">',
-                            shortcode: 'USR',
-                            longcode: 'Ultimate Self Reliance Manual',
+                            shortCode: 'USR',
+                            longCode: 'Ultimate Self Reliance Manual',
                             selected: false
                         },
                         GAB: {
                             link: '<a href="http://www.independentlivingnews.com/video/great-american-blackout-ihnp.php' + utmsource + '" target="_blank">',
-                            shortcode: 'GAB',
-                            longcode: 'Great American Blackout',
+                            shortCode: 'GAB',
+                            longCode: 'Great American Blackout',
                             selected: false
                         },
                         FOOD: {
                             link: '<a href="http://www.independentlivingnews.com/video/comfort-food-reserve.php' + utmsource + '" target="_blank">',
-                            shortcode: 'FOOD',
-                            longcode: 'Comfort Food Reserve',
+                            shortCode: 'FOOD',
+                            longCode: 'Comfort Food Reserve',
                             selected: false
                         },
                         CSG: {
                             link: '<a href="https://www.independentlivingnews.com/video/csg-video.php' + utmsource + '" target="_blank">',
-                            shortcode: 'CSG',
-                            longcode: 'Colloidal Silver Generator',
+                            shortCode: 'CSG',
+                            longCode: 'Colloidal Silver Generator',
                             selected: false
                         },
                         LPL: {
                             link: '<a href="http://www.independentlivingnews.com/video/lpl-video.php' + utmsource + '" target="_blank">',
-                            shortcode: 'LPL',
-                            longcode: 'Low Profile Living Manual',
+                            shortCode: 'LPL',
+                            longCode: 'Low Profile Living Manual',
                             selected: false
                         },
                         EPACK: {
                             link: '<a href="http://www.independentlivingnews.com/video/epack2-video.php' + utmsource + '" target="_blank">',
-                            shortcode: 'EPACK',
-                            longcode: 'Emergency Pack',
+                            shortCode: 'EPACK',
+                            longCode: 'Emergency Pack',
                             selected: false
                         },
                         STREK: {
                             link: '<a href="http://www.independentlivingnews.com/video/suntrek/' + utmsource + '" target="_blank">',
-                            shortcode: 'STREK',
-                            longcode: 'Sun Trek',
+                            shortCode: 'STREK',
+                            longCode: 'Sun Trek',
                             selected: false
                         },
                         MSR: {
                             link: '<a href="http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html' + utmsource + '" target="_blank">',
-                            shortcode: 'MSR',
-                            longcode: 'Medical Self Reliance Mega Manual',
+                            shortCode: 'MSR',
+                            longCode: 'Medical Self Reliance Mega Manual',
                             selected: false
                         },
                         FFL: {
                             link: '<a href="http://www.independentlivingnews.com/video/ffl-vsl.php' + utmsource + '" target="_blank">',
-                            shortcode: 'FFL',
-                            longcode: 'Freedom Fortress Library',
+                            shortCode: 'FFL',
+                            longCode: 'Freedom Fortress Library',
                             selected: false
                         },
                         XCOM: {
                             link: '<a href="http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html' + utmsource + '" target="_blank">',
-                            shortcode: 'XCOM',
-                            longcode: 'Extreme Weather Combo',
+                            shortCode: 'XCOM',
+                            longCode: 'Extreme Weather Combo',
                             selected: false
                         },
                         PW: {
@@ -246,6 +273,30 @@ $(document).ready(function () {
                             selected: false
                         }
                     };
+
+                    function newGetProduct() {
+                        var b;
+                        var current = {};
+                        b = $('#productSelect').val();
+                        var c = S(b).right(1); //gives us our ad template number TODO expand to accomodate more than 9
+                        console.log('c= ' + c.toFloat());
+                        var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
+                        var e = d.toString();
+                        console.log('e = ' + e);
+                        var f = productReference[e].link;
+                        var g = productReference[e].shortCode;
+                        var h = productReference[e].longCode;
+                        productReference[e].selected = d;
+                        console.log('f='+f);
+                        console.log('g='+g);
+                        productReference.current.link = f; //current product link updated to whatever the product link is
+                        productReference.current.shortCode = g; //current product link updated to whatever the product shortCode is
+                        productReference.current.longCode = h; //current product link updated to whatever the product longCode is
+                        productReference.current.tmplNum = c; //current product link updated to whatever the product longCode is
+
+                    }
+                    newGetProduct();
+                    console.log(productReference.current);
 
 
                     //This pulls the currently selected Product
@@ -340,10 +391,11 @@ $(document).ready(function () {
                         }
                     }
 
-                    getProduct();
+                    //getProduct();
 
                 }
                 //END RFAR IF
+
 
                 //TODO add keycode generator to page
 
@@ -358,8 +410,8 @@ $(document).ready(function () {
                 //function getRep(x) {
                 //    var keys = [];
                 //    var that = this;
-                //    var optionValueRep = '<option value="' + x.shortcode + '">'+ x.longcode + '</option>';
-                //    var optGroupSpawnRep = '<optgroup label="' + x.longcode + '">';
+                //    var optionValueRep = '<option value="' + x.shortCode + '">'+ x.longCode + '</option>';
+                //    var optGroupSpawnRep = '<optgroup label="' + x.longCode + '">';
                 //    var optGroupRep = '</optgroup>';
                 //    console.log("1: " + optionValueRep);
                 //    console.log("2: " + optGroupSpawnRep);
@@ -408,6 +460,10 @@ $(document).ready(function () {
                         prod_CAN: prod_CAN,
                         prod_STREK: prod_STREK
                     },
+                    smartFocus: {
+                        title: subjectLine,
+                        keycode: title1KEY
+                    }
                 };
 
 
@@ -420,7 +476,7 @@ $(document).ready(function () {
                     var linkedTitle2 = '<h4><a href="' + title2URL + '" target="_blank">' + title2 + '</a></h4>';
                     var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
 
-                    if (templateStyle === "RFAR") {
+                    if (templateStyle === "RFARDB") {
                         title2URL += utmsource; //appends our URL with a tracking code
                         urlInsert2 = '<a href="' + title2URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
                         imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
@@ -457,21 +513,21 @@ $(document).ready(function () {
                         });
                 }
 
-                function spawnRFAR() { //TODO could probably replace this with the new loader https://github.com/stevenmhunt/tmpl.loader
-                    function getRFAR() {
-                        return $.get("http://daviseford.com/sites/default/files/email_templater/txt/rfar_Tmpl.htm", function (value) {
-                            rfar_Tmpl = $.templates(value);
+                function spawnRFARDB() { //TODO could probably replace this with the new loader https://github.com/stevenmhunt/tmpl.loader
+                    function getRFARDB() {
+                        return $.get("http://daviseford.com/sites/default/files/email_templater/txt/rfar_db_Tmpl.htm", function (value) {
+                            rfar_db_Tmpl = $.templates(value);
                         });
                     }
 
                     $.when(
-                        getRFAR()
+                        getRFARDB()
                     ).then(function () {
-                            var html = rfar_Tmpl.render(storyz);
+                            var html = rfar_db_Tmpl.render(storyz);
                             $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                             $("#resultsDiv").html(html); //Renders the HTML version of the email
                         }).fail(function () {
-                            console.log("spawnRFAR(): Something went wrong!");
+                            console.log("spawnRFARDB(): Something went wrong!");
                         });
                 }
 
@@ -480,13 +536,16 @@ $(document).ready(function () {
                 //and spawning the correct template
                 //will probably be revised in the future, as it's a bit hacky and inelegant
                 function getResults() {
-                    var x = $('#tmplPick').val();
+                    //var x = $('#tmplPick').val(); remove if not needed
+                    var y = [$('#listSelect').val(), $('#tmplSelect').val(),];
+                    var x = y.join('');
+                    console.log('x = '+x);
                     if (x === "MR") {
                         spawnMR();
                         console.log("getResults(): Spawned MR");
-                    } else if (x === "RFAR") {
-                        spawnRFAR();
-                        console.log("getResults(): Spawned RFAR");
+                    } else if (x === "RFARDB") {
+                        spawnRFARDB();
+                        console.log("getResults(): Spawned RFARDB");
                     } else {
                         console.log("getResults(): Error: Didn't spawn anything");
                     }

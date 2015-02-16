@@ -21,26 +21,36 @@
 <div class="row" id="optionsDiv">
     <div class="col-lg-4">
 
-        <center>STEP 1<br>
-            Pick the mailing date
+        <center><label for="inlinedate">STEP 1<br>
+            Pick the mailing date</label>
             <span id="inlinedate"></span>
             <br />
         </center>
 
+    </div>
+    <div class="col-lg-4" id="productDiv">
 
-        <label for="tmplPick">STEP 2<br />Select an Email</label><br>
-        <select name="tmplPick" id="tmplPick">
+        <label for="listSelect">STEP 2<br />Select a List</label><br>
+        <select name="listSelect" id="listSelect">
             <option value="RFAR" selected="selected">RFAR</option>
             <!-- TODO add at least one more option -->
             <!--<option value="DB">Daily Bulletin</option>-->
-            <option value="MR">Must Read</option>
-            </select>
+            <!-- <option value="MR">Must Read</option> -->
+        </select>
+
+        <br />
+
+        <label for="tmplSelect">STEP 3<br />Select an Email</label><br>
+        <select name="tmplSelect" id="tmplSelect">
+            <option value="DB" selected="selected">Daily Bulletin</option>
+            <!-- TODO add at least one more option -->
+            <!-- <option value="MR">Must Read</option> -->
+        </select>
+
+        <br />
 
 
-        <select
-    </div>
-    <div class="col-lg-4" id="productDiv">
-        <label for="productSelect">2. Select a Product</label><br>
+        <label for="productSelect">STEP 4<br />Select a Product</label><br>
         <select name="productSelect" id="productSelect">
             <option value="" selected="selected">None</option>
             <optgroup label="Ultimate Self Reliance Manual">
@@ -97,21 +107,41 @@
             </optgroup>
 
             <optgroup label="Survival Kit in a Can">
-                <option value="CAN">CAN - Image with copy</option>
+                <option value="CAN1">CAN - Image with copy</option>
             </optgroup>
         </select>
 
+    </div>
+    <div class="col-lg-4" id="keycodeDiv">
+
         <form id="story1Form" action="#">
             <label for="title1KEY">Keycode: </label>
-            <input class="form-control" type="text" id="title1KEY" name="title1KEY"/>
-            <p><a href="http://daviseford.com/sites/default/files/ALP_link_fixer/fix_links.html" alt="" target="_blank">Need a keycode?</a></p>
+            <input class="form-control" type="text" id="title1KEY" name="title1KEY" placeholder="Leave this field blank if you want it generated."/>
+            <br />
+            <br />
+            <br />
 
-    </div>
-    <div class="col-lg-4" id="previewDiv">
+            <center>
+                <button class="btn btn-primary btn-lg" id="generateKeyCodeBtn">Generate Keycode</button>
+                <br />
+                <br />
+                <p>Note: you don't <i>need</i> to hit this, but you should do it to double check your keycode before hitting 'Generate HTMK'</p>
+            </center>
     </div>
 </div>
 
     <!-- Add some sort of thumbnail preview -->
+
+    <!--this is for subject line I guess -->
+    <div class="row">
+        <div class="col-lg-12" id="subjectLine">
+                <div class="form-group">
+                    <label for="subjectInput">Subject Line: </label>
+                    <input class="form-control" type="text" id="subjectInput" name="subjectInput" placeholder="" required/>
+                </div>
+        </div>
+    </div>
+
 <div class="row" id="choiceRow">
 	<div class="col-lg-12" id="story1Div">
         <fieldset>
