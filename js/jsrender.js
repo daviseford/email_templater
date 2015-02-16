@@ -343,7 +343,7 @@ informal pre V1.0 commit counter: 61 */
 			? (view.getRsc("converters", converter) || error("Unknown converter: '" + converter + "'"))
 			: converter);
 
-		args = !args.length && !tagCtx.index // On the opening tag with no args, bind to the current data context
+		args = !args.length && !tagCtx.index // On the opening tag with no args, bind to the currentProduct data context
 			? [view.data]
 			: converter
 				? args.slice() // If there is a converter, use a copy of the tagCtx.args array for rendering, and replace the args[0] in
@@ -1137,7 +1137,7 @@ informal pre V1.0 commit counter: 61 */
 				if (block) {
 					stack.push(current);
 					current = newNode;
-					current[8] = loc; // Store current location of open tag, to be able to add contentMarkup when we reach closing tag
+					current[8] = loc; // Store currentProduct location of open tag, to be able to add contentMarkup when we reach closing tag
 				}
 			} else if (closeBlock) {
 				blockTagCheck(closeBlock !== current[0] && current[0] !== "else" && closeBlock);
@@ -1379,7 +1379,7 @@ informal pre V1.0 commit counter: 61 */
 			// "a.b().c^d().e.f().g" - which has four chained paths, "a.b()", "^c.d()", ".e.f()" and ".g"
 			parenDepth = 0,
 			fnCall = {}, // We are in a function call
-			pathStart = {}; // tracks the start of the current path such as c^d() in the above example
+			pathStart = {}; // tracks the start of the currentProduct path such as c^d() in the above example
 
 		return (params + (tmpl ? " " : ""))
 			.replace(rParams, parseTokens);
@@ -1622,7 +1622,7 @@ informal pre V1.0 commit counter: 61 */
 		onError: function(e, view, fallback) {
 			// Can override using $.views.settings({onError: function(...) {...}});
 			if (view) {
-				// For render errors, e is an exception thrown in compiled template, and view is the current view. For other errors, e is an error string.
+				// For render errors, e is an exception thrown in compiled template, and view is the currentProduct view. For other errors, e is an error string.
 				e = fallback === undefined
 					? "{Error: " + e + "}"
 					: $isFunction(fallback)
@@ -1647,8 +1647,8 @@ informal pre V1.0 commit counter: 61 */
 					ret = (self.rendering.done || !val && (arguments.length || !self.tagCtx.index))
 						? ""
 						: (self.rendering.done = true, self.selected = self.tagCtx.index,
-							// Test is satisfied, so render content on current context. We call tagCtx.render() rather than return undefined
-							// (which would also render the tmpl/content on the current context but would iterate if it is an array)
+							// Test is satisfied, so render content on currentProduct context. We call tagCtx.render() rather than return undefined
+							// (which would also render the tmpl/content on the currentProduct context but would iterate if it is an array)
 							self.tagCtx.render(self.tagCtx.view, true)); // no arg, so renders against parentView.data
 				return ret;
 			},
@@ -1681,7 +1681,7 @@ informal pre V1.0 commit counter: 61 */
 
 				if (!self.rendering.done) {
 					if (finalElse = !arguments.length) {
-						val = tagCtx.view.data; // For the final else, defaults to current data without iteration.
+						val = tagCtx.view.data; // For the final else, defaults to currentProduct data without iteration.
 					}
 					if (val !== undefined) {
 						result += tagCtx.render(val, finalElse); // Iterates except on final else, if data is an array. (Use {{include}} to compose templates without array iteration)

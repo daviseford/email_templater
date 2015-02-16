@@ -196,10 +196,6 @@ $(document).ready(function () {
 
 
                     productReference = {
-                        current: {
-                            link: '',
-                            shortCode: ''
-                        },
                         USR: {
                             link: '<a href="http://www.independentlivingnews.com/video/usr-video.php' + utmsource + '" target="_blank">',
                             shortCode: 'USR',
@@ -278,25 +274,26 @@ $(document).ready(function () {
                         var b;
                         var current = {};
                         b = $('#productSelect').val();
-                        var c = S(b).right(1); //gives us our ad template number TODO expand to accomodate more than 9
-                        console.log('c= ' + c.toFloat());
-                        var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
-                        var e = d.toString();
-                        console.log('e = ' + e);
-                        var f = productReference[e].link;
-                        var g = productReference[e].shortCode;
-                        var h = productReference[e].longCode;
-                        productReference[e].selected = d;
-                        console.log('f='+f);
-                        console.log('g='+g);
-                        productReference.current.link = f; //current product link updated to whatever the product link is
-                        productReference.current.shortCode = g; //current product link updated to whatever the product shortCode is
-                        productReference.current.longCode = h; //current product link updated to whatever the product longCode is
-                        productReference.current.tmplNum = c; //current product link updated to whatever the product longCode is
+                        if (b !== '' && b !== null) {
+                            var c = S(b).right(1).toInt(); //gives us our ad template number TODO expand to accomodate more than 9
+                            console.log("c="+c);
+                            var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
+                            var e = d.toString();
+                            console.log('e = ' + e);
+                            var f = productReference[e].link;
+                            var g = productReference[e].shortCode;
+                            var h = productReference[e].longCode;
+                            productReference[e].selected = d;
+                            console.log('f=' + f);
+                            console.log('g=' + g);
+                            storyz.currentProduct.link = f; //currentProduct product link updated to whatever the product link is
+                            storyz.currentProduct.shortCode = g; //currentProduct product link updated to whatever the product shortCode is
+                            storyz.currentProduct.longCode = h; //currentProduct product link updated to whatever the product longCode is
+                            storyz.currentProduct.tmplNum = c; //currentProduct product link updated to whatever the product longCode is
+                            storyz.currentProduct.enabled = true;
+                        }
 
                     }
-                    newGetProduct();
-                    console.log(productReference.current);
 
 
                     //This pulls the currently selected Product
@@ -463,8 +460,16 @@ $(document).ready(function () {
                     smartFocus: {
                         title: subjectLine,
                         keycode: title1KEY
+                    },
+                    currentProduct: {
+                        link: '',
+                        shortCode: '',
+                        longcode: '',
+                        enabled: false
                     }
                 };
+                newGetProduct();
+                console.log(storyz.currentProduct);
 
 
                 if (additionalContentVal === true) {
