@@ -103,7 +103,6 @@ $(document).ready(function () {
 	$("#generateHTML").click(function(){
 		var storyz;
        // event.preventDefault(); //Stops page from reloading
-            var storyTwoTest;
             if ($("#title1").val() === "") {
                 alert("Please enter a story");
             } else {
@@ -388,9 +387,6 @@ $(document).ready(function () {
                         prod_CAN: prod_CAN,
                         prod_STREK: prod_STREK
                     },
-                    whatsGood: function () {
-                        console.log("prodLink: " + this.prodLink + "prod_LPL: " + this.prod_LPL);
-                    }
                 };
 
 
@@ -409,6 +405,7 @@ $(document).ready(function () {
                         imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
                     }
 
+                    //we push this to storyz so we can render our second story
                     storyz.storyTwo = [{
                         title: title2,
                         text: title2text,
