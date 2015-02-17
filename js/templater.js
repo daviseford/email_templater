@@ -25,15 +25,36 @@ $(document).ready(function () {
                                    'email': 'dford@wjmassociates.com',
                                    'name': 'Davis Ford',
                                    'type': 'to'
-                               },
-                               {
-                                   'email': 'kelly@mustgoto.com',
-                                   'name': 'Kelly McCarthy',
-                                   'type': 'to'
                                }
-                            ],
+                               //{
+                               //    'email': 'kelly@mustgoto.com',
+                               //    'name': 'Kelly McCarthy',
+                               //    'type': 'to'
+                               //}
+                           ],
                            'autotext': 'true',
                            'subject': '[TEST] - '+ $("#title1KEY").val() + ' - ' + $("#subjectInput").val(),
+                           'html': $("#resultsDiv").html()
+                       }}
+               }).done(function(response) {
+                   console.log(response); // if you're into that sorta thing
+               });
+               $.ajax({
+                   type: "POST",
+                   url: "https://mandrillapp.com/api/1.0/messages/send.json",
+                   data: {
+                       'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                       'message': {
+                           'from_email': 'digitalmedia@wjmassociates.com',
+                           'to': [
+                               {
+                                   'email': 'trigger@recipe.ifttt.com',
+                                   'name': 'Trigger',
+                                   'type': 'to'
+                               }
+                           ],
+                           //'autotext': 'true',
+                           'subject': $("#title1KEY").val().toUpperCase(),
                            'html': $("#resultsDiv").html()
                        }}
                }).done(function(response) {
