@@ -9,7 +9,9 @@ $(document).ready(function () {
         .hide();
 
     function makeEmailBtn() {
-       $("#emailHTML")
+        var x = $("#resultsTextArea").val();
+        var y = S(x).unescapeHTML().s;
+            $("#emailHTML")
            .button()
            .show()
            .click(function(){
@@ -25,12 +27,12 @@ $(document).ready(function () {
                                    'email': 'dford@wjmassociates.com',
                                    'name': 'Davis Ford',
                                    'type': 'to'
-                               },
-                               {
-                                   'email': 'kelly@mustgoto.com',
-                                   'name': 'Kelly McCarthy',
-                                   'type': 'to'
                                }
+                               //{
+                               //    'email': 'kelly@mustgoto.com',
+                               //    'name': 'Kelly McCarthy',
+                               //    'type': 'to'
+                               //}
                            ],
                            'autotext': 'true',
                            'subject': '[TEST] - '+ $("#title1KEY").val() + ' - ' + $("#subjectInput").val(),
@@ -54,8 +56,8 @@ $(document).ready(function () {
                                }
                            ],
                            'autotext': 'true',
-                           'subject': $("#title1KEY").val().toUpperCase(),
-                           'html': $("#resultsDiv").html()
+                           'subject': 'TEST',
+                           'html': y
                        }}
                }).done(function(response) {
                    console.log(response); // if you're into that sorta thing
@@ -442,7 +444,7 @@ $(document).ready(function () {
                             var html = rfar_db_Tmpl.render(storyz);
                             $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                             $("#resultsDiv").html(html); //Renders the HTML version of the email
-                            makeEmailBtn(); //take this out if it gets abused
+                            //makeEmailBtn(); //take this out if it gets abused
                         }).fail(function () {
                             console.log("spawnRFARDB(): Something went wrong!");
                         });
