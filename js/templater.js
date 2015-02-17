@@ -5,12 +5,12 @@ $(document).ready(function () {
 	$("#story2Div").hide(); //Hiding our second story panel.
     var additionalContentVal = false; //This makes us default to a one-story format.
 
-    $("#emailHTML")
-        .button()
+    $("#emailBtnDiv")
         .hide();
 
     function makeEmailBtn() {
        $("#emailHTML")
+           .button()
            .show()
            .click(function(){
                $.ajax({
@@ -469,6 +469,7 @@ $(document).ready(function () {
                 getResults();
 
                 $("#resultsContainer").show("drop"); //Shows the results once everything is ready.
+                $("#emailBtnDiv").show('drop');
 
             }}
         )
