@@ -3,45 +3,49 @@
 $(document).ready(function () {
 	$("#resultsContainer").hide(); //Hiding our results, as we don't need to see them yet!
 	$("#story2Div").hide(); //Hiding our second story panel.
+    var additionalContentVal = false; //This makes us default to a one-story format.
+
     $("#emailHTML")
         .button()
         .hide();
 
+    function makeEmailBtn() {
+       $("#emailHTML")
+           .show()
+           .click(function(){
+               $.ajax({
+                   type: "POST",
+                   url: "https://mandrillapp.com/api/1.0/messages/send.json",
+                   data: {
+                       'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                       'message': {
+                           'from_email': 'digitalmedia@wjmassociates.com',
+                           'to': [
+                               {
+                                   'email': 'dford@wjmassociates.com',
+                                   'name': 'Davis Ford',
+                                   'type': 'to'
+                               },
+                               {
+                                   'email': 'kelly@mustgoto.com',
+                                   'name': 'Kelly McCarthy',
+                                   'type': 'to'
+                               }
+                            ],
+                           'autotext': 'true',
+                           'subject': '[TEST] - '+ $("#title1KEY").val() + ' - ' + $("#subjectInput").val(),
+                           'html': $("#resultsDiv").html()
+                       }}
+               }).done(function(response) {
+                   console.log(response); // if you're into that sorta thing
+               });
+           });
+    }
 
-    	function makeDownloadBtn() {
-            $("#emailHTML")
-                .show()
-                .click(function(){
-                    //trying some ajax?
-                    $.ajax({
-                        type: "POST",
-                        url: "https://mandrillapp.com/api/1.0/messages/send.json",
-                        data: {
-                            'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
-                            'message': {
-                                'from_email': 'digitalmedia@wjmassociates.com',
-                                'to': [
-                                    {
-                                        'email': 'dford@wjmassociates.com',
-                                        'name': 'Davis Ford',
-                                        'type': 'to'
-                                    }
-                                ],
-                                'autotext': 'true',
-                                'subject': $("#title1KEY").val(),
-                                'html': $("#resultsDiv").html()
-                            }}
-                    }).done(function(response) {
-                        console.log(response); // if you're into that sorta thing
-                    });
-                });
-        }
 
 
 
 
-
-	var additionalContentVal = false; //This makes us default to a one-story format.
     var templateStyle = $('#tmplSelect').val();
     $('#tmplSelect')
         .selectmenu({width: 225})
@@ -80,15 +84,9 @@ $(document).ready(function () {
         //This array stores our Keycode values, to be used shortly.
         //$("#keycodefield").val(keycodeGeneration.join(""));
         var currKeyCode = keycodeGeneration.join("");
-
-        //keycodeGeneration[3] = Product Selection
-        //Since the form ID's are set up with links as values, we can just grab the value of a matching form
-        //It's trimmed in the end just to be safe, not really necessary though
-        //For example - if keycodeGeneration[3] = SUB, this grabs the value of "#SUB", which is the link to the product
         $("#title1KEY")
             .val(currKeyCode)
             .effect('highlight', 'slow'); //Sets up our product link in the "#inputForm"
-        console.log(currKeyCode);
     }
 
     $('#generateKeyCodeBtn')
@@ -165,10 +163,6 @@ $(document).ready(function () {
         console.log("getTemplateStyle()"+x);
         }
 
-
-
-
-
     //****************************************************************
     //
     //BEGIN POST-BUTTON CLICK ACTIONS
@@ -184,7 +178,6 @@ $(document).ready(function () {
                 $('#story1Form').find('input').each(textFix);
                 var subjectLine = $.trim($('#subjectInput').val());
                 var title1 = $.trim($("#title1").val());
-                //noinspection JSLint
                 var title1text = $.trim($("#title1text").val());
                 var title1URL = $.trim($("#title1URL").val());
                 var title1IMG = $.trim($("#title1IMG").val());
@@ -207,26 +200,7 @@ $(document).ready(function () {
                     urlInsert1 = '<a href="' + title1URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
                     imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
 
-
-
-                    //template values. true = displayed
-                    var prod_USR = false;
-                    var prod_MSR = false;
-                    var prod_XCOM = false;
-                    var prod_LPL = false;
-                    var prod_FFL = false;
-                    var prod_GAB = false;
-                    var prod_SUB = false;
-                    var prod_PW = false;
-                    var prod_FOOD = false;
-                    var prod_CSG = false;
-                    var prod_EPACK = false;
-                    var prod_CAN = false;
-                    var prod_STREK = false;
-                    //TODO eventually pull all this together
-                    var prodLink = false;
                     var productReference;
-
 
                     productReference = {
                         USR: {
@@ -303,35 +277,28 @@ $(document).ready(function () {
                         }
                     };
 
-                    function newGetProduct() {
+                    function getProduct() {
                         var b;
-                        var current = {};
                         b = $('#productSelect').val();
                         if (b !== '' && b !== null) {
                             var c = S(b).right(1).toInt(); //gives us our ad template number TODO expand to accomodate more than 9
-                            console.log("c="+c);
                             var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
                             var e = d.toString();
-                            console.log('e = ' + e);
                             var f = productReference[e].link;
                             var g = productReference[e].shortCode;
                             var h = productReference[e].longCode;
                             productReference[e].selected = d;
-                            console.log('f=' + f);
-                            console.log('g=' + g);
                             storyz.currentProduct.link = f; //currentProduct product link updated to whatever the product link is
                             storyz.currentProduct.shortCode = g; //currentProduct product link updated to whatever the product shortCode is
                             storyz.currentProduct.longCode = h; //currentProduct product link updated to whatever the product longCode is
                             storyz.currentProduct.tmplNum = c; //currentProduct product link updated to whatever the product longCode is
                             storyz.currentProduct.enabled = true;
                         }
-
                     }
                 }
                 //END RFAR IF
 
 
-                //TODO add keycode generator to page
 
 
                 //TODO /doing, making a optgroup generator. This way I can cut down on havign to updatee so much across three files -
@@ -378,21 +345,7 @@ $(document).ready(function () {
                         subILN: subILN,
                         prefLink: prefLink,
                         unsubLink: unsubLink,
-                        prodLink: prodLink,
-                        safeSend: safeSend,                //DON'T FORGET TO UPDATE THIS WITH EACH PRODUCT
-                        prod_USR: prod_USR,
-                        prod_MSR: prod_MSR,
-                        prod_XCOM: prod_XCOM,
-                        prod_LPL: prod_LPL,
-                        prod_FFL: prod_FFL,
-                        prod_GAB: prod_GAB,
-                        prod_SUB: prod_SUB,
-                        prod_PW: prod_PW,
-                        prod_FOOD: prod_FOOD,
-                        prod_CSG: prod_CSG,
-                        prod_EPACK: prod_EPACK,
-                        prod_CAN: prod_CAN,
-                        prod_STREK: prod_STREK
+                        safeSend: safeSend                //DON'T FORGET TO UPDATE THIS WITH EACH PRODUCT
                     },
                     smartFocus: {
                         title: subjectLine,
@@ -401,11 +354,11 @@ $(document).ready(function () {
                     currentProduct: {
                         link: '',
                         shortCode: '',
-                        longcode: '',
+                        longCode: '',
                         enabled: false
                     }
                 };
-                newGetProduct();
+                getProduct();
                 console.log(storyz.currentProduct);
 
 
@@ -468,7 +421,7 @@ $(document).ready(function () {
                             var html = rfar_db_Tmpl.render(storyz);
                             $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                             $("#resultsDiv").html(html); //Renders the HTML version of the email
-                            makeDownloadBtn();
+                            makeEmailBtn(); //take this out if it gets abused
                         }).fail(function () {
                             console.log("spawnRFARDB(): Something went wrong!");
                         });
@@ -481,7 +434,6 @@ $(document).ready(function () {
                 function getResults() {
                     var y = [$('#listSelect').val(), $('#tmplSelect').val()];
                     var x = y.join('');
-                    console.log('x = '+x);
                     if (x === "MR") {
                         spawnMR();
                         console.log("getResults(): Spawned MR");
@@ -496,8 +448,6 @@ $(document).ready(function () {
                 getResults();
 
                 $("#resultsContainer").show("drop"); //Shows the results once everything is ready.
-                //storyz.whatsGood();
-                //TODO deal with this whatsGood nonsense
 
             }}
         )
