@@ -53,7 +53,7 @@ $(document).ready(function () {
                                    'type': 'to'
                                }
                            ],
-                           //'autotext': 'true',
+                           'autotext': 'true',
                            'subject': $("#title1KEY").val().toUpperCase(),
                            'html': $("#resultsDiv").html()
                        }}
@@ -89,7 +89,6 @@ $(document).ready(function () {
     $( "#inlinedate" ).datepicker({
         dateFormat: "ymmdd" //Outputs as YYMMDD
     });
-    //setting up other menus
     $('#listSelect').selectmenu({width: 150});
 
     //setting up productSelect menu (with overflow because there's lots of products)
@@ -100,7 +99,8 @@ $(document).ready(function () {
 
 
     //This handles generating the keycode. It simply joins all of the necessary values from an array.
-    function makeKeyCode() {
+    function makeKeyCode(event) {
+        event.preventDefault();
         var keycodeGeneration = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
         //This array stores our Keycode values, to be used shortly.
         //$("#keycodefield").val(keycodeGeneration.join(""));
@@ -111,10 +111,9 @@ $(document).ready(function () {
     }
 
     $('#generateKeyCodeBtn')
-        .button()
-        .click(function(){
-            event.preventDefault();
-            makeKeyCode();
+        .button({icons: { primary: "ui-icon-gear"}})
+        .click(function(event){
+            makeKeyCode(event);
     });
 
 
@@ -189,9 +188,9 @@ $(document).ready(function () {
     //BEGIN POST-BUTTON CLICK ACTIONS
     //
     //****************************************************************
-	$("#generateHTML").click(function(){
+	$("#generateHTML").click(function(event){
 		var storyz;
-       // event.preventDefault(); //Stops page from reloading
+        event.preventDefault(); //Stops page from reloading
             if ($("#title1").val() === "") {
                 alert("Please enter a story");
             } else {
@@ -208,7 +207,7 @@ $(document).ready(function () {
 
 
                 if (templateStyle === "RFARDB") {
-                    makeKeyCode();
+                    makeKeyCode(event);
                     var title1KEY = $.trim($("#title1KEY").val());
                     var utmsource = '?utm_source=' + title1KEY + '&keycode=' + title1KEY + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
                     var safeSend = '<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>';
