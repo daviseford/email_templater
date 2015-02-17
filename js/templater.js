@@ -25,12 +25,12 @@ $(document).ready(function () {
                                    'email': 'dford@wjmassociates.com',
                                    'name': 'Davis Ford',
                                    'type': 'to'
+                               },
+                               {
+                                   'email': 'kelly@mustgoto.com',
+                                   'name': 'Kelly McCarthy',
+                                   'type': 'to'
                                }
-                               //{
-                               //    'email': 'kelly@mustgoto.com',
-                               //    'name': 'Kelly McCarthy',
-                               //    'type': 'to'
-                               //}
                            ],
                            'autotext': 'true',
                            'subject': '[TEST] - '+ $("#title1KEY").val() + ' - ' + $("#subjectInput").val(),
@@ -213,7 +213,7 @@ $(document).ready(function () {
                     var utmsource = '?utm_source=' + title1KEY + '&keycode=' + title1KEY + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
                     var safeSend = '<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>';
                     var rfarHeader = '<a href="http://www.independentlivingnews.com/preppers' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="122" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="602" /></a>';
-                    var subILN = '<a href="http://www.survivalproshop.com/publications/subscription-to-independent-living-newsletter.html' + utmsource + '" target="_blank">';
+                    var subILN = '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">';
                     //for subILN, prefLink, unsubLink, remember to close with </a>
                     var prefLink = '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + title1KEY + '-P" linkname="Email Preferences">';
                     var unsubLink = '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + title1KEY + '-U" linkname="Bottom Unsubscribe">';
@@ -360,7 +360,8 @@ $(document).ready(function () {
                             urlInsert: urlInsert1,
                             linkedTitle: linkedTitle1,
                             insertImage: imageRetrieve1
-                        }],
+                        }
+                    ],
                     rfarSettings: {
                         rfarHeader: rfarHeader,
                         subILN: subILN,
