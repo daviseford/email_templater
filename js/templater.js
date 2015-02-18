@@ -1,10 +1,17 @@
 // JavaScript Document
 
 $(document).ready(function () {
+    //*******************************
+    // DOCUMENT AND VAR SETUP
+    //*******************************
 	$("#resultsContainer").hide(); //Hiding our results, as we don't need to see them yet!
 	$("#story2Div").hide(); //Hiding our second story panel.
     var additionalContentVal = false; //This makes us default to a one-story format.
 
+
+    //*******************************
+    // BUTTON AND MENU SETUP START
+    //*******************************
     $("#emailBtnDiv")
         .hide();
 
@@ -65,28 +72,6 @@ $(document).ready(function () {
            });
     }
 
-
-
-
-
-    var templateStyle = $('#tmplSelect').val();
-    $('#tmplSelect')
-        .selectmenu({width: 225})
-        .selectmenu({
-            change: function() {
-                getTemplateStyle();
-            }
-        });
-    //hides RFAR-specific stuff if it's not selected
-    function rfarLayoutDisplay(value){  //value = true, false
-        if(value === false){
-            $('#productDiv').hide();
-        } else if(value === true) {
-            $('#productDiv').show();
-        }
-
-    }
-    //setting up other menus
     //Establishing the datepicker
     $( "#inlinedate" ).datepicker({
         dateFormat: "ymmdd" //Outputs as YYMMDD
@@ -97,9 +82,53 @@ $(document).ready(function () {
     $('#productSelect')
         .selectmenu()
         .selectmenu('menuWidget')
-            .addClass('overflow');
+        .addClass('overflow');
+
+    $('#generateKeyCodeBtn')
+        .button({icons: { primary: "ui-icon-gear"}})
+        .click(function(event){
+            makeKeyCode(event);
+        });
+
+    //If this is checked, adds the second story box
+    $('#additionalContentCheckbox').click(function(){
+        if (this.checked) {
+            additionalContentVal = true;
+            console.log("Additional Content: "+additionalContentVal);
+            $("#story1Div").removeClass("col-lg-12 col-md-12").addClass("col-lg-6 col-md-6");
+            $("#story2Div").show( "fade" );
+        } else {
+            additionalContentVal = false;
+            console.log("Additional Content: "+additionalContentVal);
+            $("#story2Div").hide( "fade", function() {
+                $("#story1Div").removeClass("col-lg-6 col-md-6").addClass("col-lg-12 col-md-12");
+            });
+        }
+    });
+
+    var templateStyle = $('#tmplSelect').val();
+    $('#tmplSelect')
+        .selectmenu({width: 225})
+        .selectmenu({
+            change: function() {
+                getTemplateStyle();
+            }
+        });
 
 
+    //*******************************
+    // GETTERS AND FUNCTIONS
+    //*******************************
+
+    //hides RFAR-specific stuff if it's not selected
+    function rfarLayoutDisplay(value){  //value = true OR false
+        if(value === false){
+            $('#productDiv').hide();
+        } else if(value === true) {
+            $('#productDiv').show();
+        }
+
+    }
     //This handles generating the keycode. It simply joins all of the necessary values from an array.
     function makeKeyCode(event) {
         event.preventDefault();
@@ -112,28 +141,25 @@ $(document).ready(function () {
             .effect('highlight', 'slow'); //Sets up our product link in the "#inputForm"
     }
 
-    $('#generateKeyCodeBtn')
-        .button({icons: { primary: "ui-icon-gear"}})
-        .click(function(event){
-            makeKeyCode(event);
-    });
+    //checks our template style for us, useful when doing keycodes
+    function getTemplateStyle(){
+        var y = [$('#listSelect').val(), $('#tmplSelect').val()];
+        var x = y.join('');
+        console.log('x = '+x);
+        if (x === "DB") {
+            templateStyle = "DB";
+        } else if (x === "MR"){
+            templateStyle = "MR";
+            rfarLayoutDisplay(false);
+        } else if (x === "RFARDB"){
+            templateStyle = "RFARDB";
+            rfarLayoutDisplay(true);
+        } else {
+            console.log("getTemplateStyle() - Error: None of above");
+        }
+        console.log("getTemplateStyle()"+x);
+    }
 
-
-    //If this is checked, adds the second story box
-	$('#additionalContentCheckbox').click(function(){
-    if (this.checked) {
-		additionalContentVal = true;
-        console.log("Additional Content: "+additionalContentVal);
-		$("#story1Div").removeClass("col-lg-12").addClass("col-lg-6");
-		$("#story2Div").show( "fade" );
-    } else {
-		additionalContentVal = false;
-		console.log("Additional Content: "+additionalContentVal);
-		$("#story2Div").hide( "fade", function() {
-		$("#story1Div").removeClass("col-lg-6").addClass("col-lg-12");
-		});
-	}
-	});
 
     //**********************
     //BEGIN TEXT HANDLING  *
@@ -165,31 +191,9 @@ $(document).ready(function () {
     //Additionally, it strips existing UTM codes away, which is Kelly-proof (hopefully)
 
 
-
-    //checks our template style for us, useful when doing keycodes
-    function getTemplateStyle(){
-        var y = [$('#listSelect').val(), $('#tmplSelect').val()];
-        var x = y.join('');
-        console.log('x = '+x);
-            if (x === "DB") {
-                templateStyle = "DB";
-            } else if (x === "MR"){
-                templateStyle = "MR";
-                rfarLayoutDisplay(false);
-            } else if (x === "RFARDB"){
-                templateStyle = "RFARDB";
-                rfarLayoutDisplay(true);
-            } else {
-                console.log("getTemplateStyle() - Error: None of above");
-            }
-        console.log("getTemplateStyle()"+x);
-        }
-
-    //****************************************************************
-    //
+    //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
-    //
-    //****************************************************************
+    //********************************
 	$("#generateHTML").click(function(event){
 		var storyz;
         event.preventDefault(); //Stops page from reloading
@@ -386,6 +390,7 @@ $(document).ready(function () {
 
 
                 if (additionalContentVal === true) {
+                    $('#story2Form').find('input').each(textFix);
                     var title2 = $.trim($("#title2").val());
                     var title2text = $.trim($("#title2text").val());
                     var title2URL = $.trim($("#title2URL").val());
@@ -412,6 +417,7 @@ $(document).ready(function () {
                     }];
 
                 }
+                //END ADDITIONAL CONTENT = TRUE
 
                 function spawnMR() {
                     function getMR() {
@@ -471,7 +477,7 @@ $(document).ready(function () {
                 getResults();
 
                 $("#resultsContainer").show("drop"); //Shows the results once everything is ready.
-                $("#emailBtnDiv").show('drop');
+                //$("#emailBtnDiv").show('drop');
 
             }}
         )
