@@ -1,5 +1,4 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
 <!-- SUBJECT LINE: {{:smartFocus.title}}-->
 <!-- KEYCODE: {{:smartFocus.keycode}} -->
 <!-- PRODUCT: {{:currentProduct.longCode}} -->
@@ -14,7 +13,8 @@
 			<td align="right" width="275">
 				<span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">
                 {{:ILNDB.safeSend}}
-                </span></td>
+                </span>
+            </td>
 		</tr>
 	</tbody>
 </table>
@@ -45,11 +45,7 @@
 						</tr>
 					</tbody>
 				</table>
-				<!--
-                  *******************
-                  End Header Table
-                  *******************
-                  --></td>
+            </td>
 		</tr>
 		<!--
             *******************
@@ -58,26 +54,29 @@
             -->
 		<tr>
 			<td style="border: none">
-				<table align="center" border="0" cellpadding="0" style="font-family: Verdana, Geneva, sans-serif;font-size: 16.5px;color:#000000;background-color:#FFFFFF;" width="560">
+				<table align="center" border="0" cellpadding="0" style="font-family: Verdana, Geneva, sans-serif;font-size: 16px;color:#000000;background-color:#FFFFFF;" width="560">
 					<tbody>
-						<tr>
-							<td style="text-align:left;">
-								{{for story tmpl="addDiv_templates_ILNDB" /}}
-                                <!-- START OPTIONAL SECOND BLOCK -->
-                        		{{for storyTwo tmpl="addDiv_templates_ILNDB" /}}
-                        		<!-- END OPTIONAL SECOND BLOCK -->
-							</td>
-						</tr>
+						{{for story tmpl="addDiv_templates_ILNDB" /}}
+                        <!-- START OPTIONAL SECOND BLOCK -->
+                        {{for storyTwo tmpl="addDiv_templates_ILNDB" /}}
+                        <!-- END OPTIONAL SECOND BLOCK -->
+                                
+                                               
 						<tr>
 							<td height="128" style="padding-top:20px;">
-                            	<hr />
-                                <br />                               
 								Yours in independence,<br />
 								<img alt="Lee Bellinger" height="52" src="http://www.independentlivingnews.com/email/images/signature-blue.jpg" width="260" /><br />
 								Lee Bellinger, Publisher<br />
 								<b>Independent Living</b><br />
 								<br />
-								<hr />
+                                
+							<!-- START DIVIDER -->
+							<tr>
+   		 						<td colspan="4" height="5px" style="background-color:#E5e5e5;">
+    							</td>
+							</tr>
+							<!-- END DIVIDER -->
+                        
 									<!-- START PRODUCT -->
 
                         {{if currentProduct.enabled}}
@@ -165,12 +164,21 @@
                                 {{if currentProduct.tmplNum === 4 tmpl="ad_templates_FOOD4" /}}
                                 {{if currentProduct.tmplNum === 5 tmpl="ad_templates_FOOD5" /}}
                             {{/if}}
-
+                            {{if currentProduct.shortCode === 'SUB'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_SUB1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_SUB2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_SUB3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_SUB4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_SUB5" /}}
+                            {{/if}}
                         {{/if}}
-                        <hr />
-							</td>
+                       
+                       <!-- START DIVIDER -->
+						<tr>
+   		 					<td colspan="4" height="5px" style="background-color:#E5e5e5;">
+    						</td>
 						</tr>
-					</tbody>
+                    </tbody>
 				</table>
 			</td>
 		</tr>
@@ -181,12 +189,11 @@
          End Content
          *******************
          -->
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="560">
 	<tbody>
 		<tr>
 			<td align="center">
-            <hr />
-            <br />
+                <br />
 				<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">&copy;2015 American Lantern Press<br />
 				377 Rubin Center Drive &#8226; Suite 203 &#8226; Fort Mill, SC &#8226; 29708 &#8226; (877) 371-1807
                 </span>
@@ -210,8 +217,3 @@
 		</tr>
 	</tbody>
 </table>
-<!--
-         *******************
-         End Footer Table
-         *******************
-         -->

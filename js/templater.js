@@ -211,6 +211,7 @@ $(document).ready(function () {
     // .html | .stml | ?utm_source |  - See more at:
     //Additionally, it strips existing UTM codes away, which is Kelly-proof (hopefully)
 
+    //TODO Fix fucking Outlook issues. Use Litmus. Gonna have to hack away at the way I draw the ILN pic
 
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
@@ -232,19 +233,19 @@ $(document).ready(function () {
                 var title1IMG = $("#title1IMG").val();
                 var urlInsert1 = '<a href="' + title1URL + '" target="_blank">';
                 var linkedTitle1 = '<h4><a href="' + title1URL + '" target="_blank">' + title1 + '</a></h4>';
-                var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
-                var title1KEY = $.trim($("#title1KEY").val());
-                keycodeArray[0] = title1KEY;
+                var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image" height="125" width="125"></a></center>';
 
 
 
                 if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
                     var utmsource = '?utm_source=' + title1KEY + '&keycode=' + title1KEY + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
                     var codedURL = title1URL + utmsource; //appends our URL with a tracking code
+                    var title1KEY = $.trim($("#title1KEY").val());
+                    keycodeArray[0] = title1KEY;
                     urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
 
                     if (templateStyle === "ILNDB"){
-                        imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 200px; max-width: 200px;" alt="Story Image"></a></center>';
+                        imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 200px; max-width: 200px; border: 3px solid #E5e5e5;" height="200" width="200" alt="Story Image"></a></center>';
                     }
 
                     var productReference;
@@ -321,6 +322,12 @@ $(document).ready(function () {
                             shortCode: 'CAN',
                             longCode: 'Survival Can in a Kit',
                             selected: false
+                        },
+                        SUB: {
+                            link: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">',
+                            shortCode: 'SUB',
+                            longCode: 'Subscription to Independent Living News',
+                            selected: false
                         }
                     };
 
@@ -343,7 +350,7 @@ $(document).ready(function () {
                         }
                     }
                 }
-                //END RFAR IF
+                //END ALP IF
 
 
 
