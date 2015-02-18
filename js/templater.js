@@ -106,7 +106,6 @@ $(document).ready(function () {
         }
     });
 
-    var templateStyle = $('#tmplSelect').val();
     $('#tmplSelect')
         .selectmenu({width: 225})
         .selectmenu({
@@ -115,10 +114,30 @@ $(document).ready(function () {
             }
         });
 
+    //setting up our story boxes
+    var editor1 = new wysihtml5.Editor("title1text-textarea", { // id of textarea element
+        toolbar:      "wysihtml-toolbar1", // id of toolbar element
+        parserRules:  wysihtml5ParserRules // defined in parser rules set
+    });
+    var editor2 = new wysihtml5.Editor("title2text-textarea", { // id of textarea element
+        toolbar:      "wysihtml-toolbar2", // id of toolbar element
+        parserRules:  wysihtml5ParserRules // defined in parser rules set
+    });
+
+
 
     //*******************************
     // GETTERS AND FUNCTIONS
     //*******************************
+    function ilnLayoutDisplay(value){
+        if(value === false){
+            $("#title1label").text("Title 1: ")
+        } else if(value === true) {
+            $("#title1label").text("Modal Headline: ")
+        }
+    }
+
+
 
     //hides RFAR-specific stuff if it's not selected
     function rfarLayoutDisplay(value){  //value = true OR false
@@ -145,20 +164,22 @@ $(document).ready(function () {
     function getTemplateStyle(){
         var y = [$('#listSelect').val(), $('#tmplSelect').val()];
         var x = y.join('');
-        console.log('x = '+x);
         if (x === "DB") {
             templateStyle = "DB";
-        } else if (x === "MR"){
-            templateStyle = "MR";
-            rfarLayoutDisplay(false);
+        } else if (x === "ILNDB"){
+            templateStyle = "ILNDB";
+            rfarLayoutDisplay(true);
+            ilnLayoutDisplay(true);
         } else if (x === "RFARDB"){
             templateStyle = "RFARDB";
             rfarLayoutDisplay(true);
+            ilnLayoutDisplay(false);
         } else {
             console.log("getTemplateStyle() - Error: None of above");
         }
         console.log("getTemplateStyle()"+x);
     }
+
 
 
     //**********************
@@ -195,36 +216,36 @@ $(document).ready(function () {
     //BEGIN POST-BUTTON CLICK ACTIONS
     //********************************
 	$("#generateHTML").click(function(event){
-		var storyz;
+		    var storyz;
+            var keycodeArray = [];
+            makeKeyCode(event);
         event.preventDefault(); //Stops page from reloading
             if ($("#title1").val() === "") {
                 alert("Please enter a story");
             } else {
                 getTemplateStyle(); //Start by finding out which template we're using
                 $('#story1Form').find('input').each(textFix);
-                var subjectLine = $.trim($('#subjectInput').val());
-                var title1 = $.trim($("#title1").val());
-                var title1text = $.trim($("#title1text").val());
-                var title1URL = $.trim($("#title1URL").val());
-                var title1IMG = $.trim($("#title1IMG").val());
+                var subjectLine = $('#subjectInput').val();
+                var title1 = $("#title1").val();
+                var title1text = $("#title1text-textarea").val();
+                var title1URL = $("#title1URL").val();
+                var title1IMG = $("#title1IMG").val();
                 var urlInsert1 = '<a href="' + title1URL + '" target="_blank">';
                 var linkedTitle1 = '<h4><a href="' + title1URL + '" target="_blank">' + title1 + '</a></h4>';
                 var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
+                var title1KEY = $.trim($("#title1KEY").val());
+                keycodeArray[0] = title1KEY;
 
 
-                if (templateStyle === "RFARDB") {
-                    makeKeyCode(event);
-                    var title1KEY = $.trim($("#title1KEY").val());
+
+                if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
                     var utmsource = '?utm_source=' + title1KEY + '&keycode=' + title1KEY + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
-                    var safeSend = '<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>';
-                    var rfarHeader = '<a href="http://www.independentlivingnews.com/preppers' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="122" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="602" /></a>';
-                    var subILN = '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">';
-                    //for subILN, prefLink, unsubLink, remember to close with </a>
-                    var prefLink = '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + title1KEY + '-P" linkname="Email Preferences">';
-                    var unsubLink = '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + title1KEY + '-U" linkname="Bottom Unsubscribe">';
-                    title1URL += utmsource; //appends our URL with a tracking code
-                    urlInsert1 = '<a href="' + title1URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
-                    imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 125px; max-width: 125px;" alt="Story Image"></a></center>';
+                    var codedURL = title1URL + utmsource; //appends our URL with a tracking code
+                    urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
+
+                    if (templateStyle === "ILNDB"){
+                        imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 200px; max-width: 200px;" alt="Story Image"></a></center>';
+                    }
 
                     var productReference;
 
@@ -327,6 +348,8 @@ $(document).ready(function () {
 
 
 
+
+
                 //TODO /doing, making a optgroup generator. This way I can cut down on havign to updatee so much across three files -
                 //TODO so it should spawn
                 //<optgroup label="Colloidal Silver Generator Kit">
@@ -367,16 +390,26 @@ $(document).ready(function () {
                             insertImage: imageRetrieve1
                         }
                     ],
-                    rfarSettings: {
-                        rfarHeader: rfarHeader,
-                        subILN: subILN,
-                        prefLink: prefLink,
-                        unsubLink: unsubLink,
-                        safeSend: safeSend                //DON'T FORGET TO UPDATE THIS WITH EACH PRODUCT
-                    },
                     smartFocus: {
                         title: subjectLine,
                         keycode: title1KEY
+                    },
+                    RFARDB: {
+                        keycode: title1KEY,
+                        utmSource: '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]',
+                        safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
+                        rfarHeader: '<a href="http://www.independentlivingnews.com/preppers' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="122" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="602" /></a>',
+                        subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">',
+                        prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">',
+                        unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">'
+                    },
+                    ILNDB: {
+                        ilnHeader: '<a href="http://www.independentlivingnews.com' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="121" src="http://www.independentlivingnews.com/email/images/ILN_LB_header.jpg" style="display:block;" width="600" /></a>',
+                        safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
+                        subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">',
+                        prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">',
+                        unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">',
+                        modalLink: '<a href="' + codedURL + '" linkname="Modal Headline" target="_blank"><span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">' + title1 + '</span></a>'
                     },
                     currentProduct: {
                         link: '',
@@ -392,7 +425,7 @@ $(document).ready(function () {
                 if (additionalContentVal === true) {
                     $('#story2Form').find('input').each(textFix);
                     var title2 = $.trim($("#title2").val());
-                    var title2text = $.trim($("#title2text").val());
+                    var title2text = $.trim($("#title2text-textarea").val());
                     var title2URL = $.trim($("#title2URL").val());
                     var title2IMG = $.trim($("#title2IMG").val());
                     var urlInsert2 = '<a href="' + title2URL + '" target="_blank">';
@@ -419,21 +452,21 @@ $(document).ready(function () {
                 }
                 //END ADDITIONAL CONTENT = TRUE
 
-                function spawnMR() {
-                    function getMR() {
-                        return $.get("http://daviseford.com/sites/default/files/email_templater/txt/mr_Tmpl.htm", function (value) {
-                            mr_Tmpl = $.templates(value);
+                function spawnILNDB() {
+                    function getILNDB() {
+                        return $.get("http://daviseford.com/sites/default/files/email_templater/txt/iln_db_Tmpl.htm", function (value) {
+                            iln_db_Tmpl = $.templates(value);
                         });
                     }
 
                     $.when(
-                        getMR()
+                        getILNDB()
                     ).then(function () {
-                            var html = mr_Tmpl.render(storyz);
+                            var html = iln_db_Tmpl.render(storyz);
                             $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                             $("#resultsDiv").html(html); //Renders the HTML version of the email
                         }).fail(function () {
-                            console.log("spawnMR(): Something went wrong!");
+                            console.log("spawnILNDB(): Something went wrong!");
                         });
                 }
 
@@ -463,9 +496,9 @@ $(document).ready(function () {
                 function getResults() {
                     var y = [$('#listSelect').val(), $('#tmplSelect').val()];
                     var x = y.join('');
-                    if (x === "MR") {
-                        spawnMR();
-                        console.log("getResults(): Spawned MR");
+                    if (x === "ILNDB") {
+                        spawnILNDB();
+                        console.log("getResults(): Spawned ILNDB");
                     } else if (x === "RFARDB") {
                         spawnRFARDB();
                         console.log("getResults(): Spawned RFARDB");

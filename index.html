@@ -34,7 +34,7 @@
             <select name="listSelect" id="listSelect">
                 <option value="RFAR" selected="selected">RFAR</option>
                 <!-- TODO add at least one more option -->
-                <!--<option value="DB">Daily Bulletin</option>-->
+                <option value="ILN">ILN</option>
                 <!-- <option value="MR">Must Read</option> -->
             </select>
 
@@ -115,7 +115,7 @@
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" id="keycodeDiv">
 
 
-                <label for="title1KEY">Keycode: </label>
+                <label for="title1KEY">Keycode</label>
                 <input class="form-control" type="text" id="title1KEY" name="title1KEY" placeholder="Leave this field blank if you want it generated."/>
                 <br />
                 <br />
@@ -146,13 +146,28 @@
         <div class="col-lg-12" id="story1Div">
             <form id="story1Form" action="#">
             <fieldset>
-                <div class="form-group">
-                    <label for="title1">Title #1: </label>
+                <div class="form-group" id="labelTest">
+                    <label id="title1label" for="title1">Title #1: </label>
                     <input class="form-control" type="text" id="title1" name="title1"/>
                 </div>
                 <div class="form-group">
-                    <label for="title1text">Story #1: </label>
-                    <textarea class="form-control" rows="3" id="title1text" placeholder="This is where you'll drop the teaser about the story. No more than a couple sentences, please." maxlength="600"></textarea>
+                    <label for="title1text-textarea">Story #1: </label>
+                    <textarea class="form-control" cols="3" rows="3" id="title1text-textarea" style="width: 100%; height: auto;"></textarea>
+                    <div id="title1text-div" data-placeholder="Enter your text ..."></div>
+                    <div id="wysihtml-toolbar1" style="display: none;">
+                        <a data-wysihtml5-command="bold">bold</a>
+                        <a data-wysihtml5-command="italic">italic</a>
+
+                        <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
+                        <a data-wysihtml5-command="createLink">insert link</a>
+                        <div data-wysihtml5-dialog="createLink" style="display: none;">
+                            <label>
+                                Link:
+                                <input data-wysihtml5-dialog-field="href" value="http://" class="text">
+                            </label>
+                            <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="title1URL">Story URL: </label>
@@ -176,8 +191,23 @@
                         <input class="form-control" type="text" id="title2" name="title2"/>
                     </div>
                     <div class="form-group">
-                        <label for="title2text">Story #2: </label>
-                        <textarea class="form-control" rows="3" id="title2text"></textarea>
+                        <label for="title2text-textarea">Story #2: </label>
+                        <textarea class="form-control" cols="3" rows="3" id="title2text-textarea" style="width: 100%; height: auto"></textarea>
+                        <div id="title2text-div" data-placeholder="Enter your text ..."></div>
+                        <div id="wysihtml-toolbar2" style="display: none;">
+                            <a data-wysihtml5-command="bold">bold</a>
+                            <a data-wysihtml5-command="italic">italic</a>
+
+                            <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
+                            <a data-wysihtml5-command="createLink">insert link</a>
+                            <div data-wysihtml5-dialog="createLink" style="display: none;">
+                                <label>
+                                    Link:
+                                    <input data-wysihtml5-dialog-field="href" value="http://" class="text">
+                                </label>
+                                <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="title2URL">Story URL: </label>
@@ -232,12 +262,11 @@
         </center>
     </div>
     <div class="col-lg-12" id="testResults"></div>
+    </div>
 </div>
 
 </body>
 
-<!-- TODO http://www.independentlivingnews.com/diy/ use art
-read more button from iln -->
 <!-- Loading CSS-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"/>
@@ -253,6 +282,8 @@ read more button from iln -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/string.js/3.0.0/string.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/jsrender/1.0pre35/jsrender.min.js" type="text/javascript"></script>
 <script src="js/tmpl.loader.js" type="text/javascript"></script>
+<script src="js/wysihtml-toolbar.min.js" type="text/javascript"></script>
+<script src="js/advanced.js" type="text/javascript"></script>
 <script src="js/templater.js" type="text/javascript"></script>
 
 
