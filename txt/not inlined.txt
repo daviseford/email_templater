@@ -18,7 +18,8 @@
     	{{:text}}
         <br />
 		<br />
-		{{:urlInsert}}<img alt="Read more on ILN" height="31" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/92328665.png" style="" width="120" /></a>
+		{{:urlInsert}}
+        <img alt="Read more on ILN" height="31" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/92328665.png" style="" width="120" /></a>
     </p>
                            
                           </td>
@@ -31,8 +32,10 @@
 
                       <table class="three columns">
                         <tr>
-                          <td>
+                          <td class="center panel">
+                          <center>
                             {{:insertImage}}
+                            </center>
                           </td>
                           <td class="expander"></td>
                         </tr>
@@ -41,3 +44,575 @@
                     </td>
                   </tr>
                 </table>
+                
+                <table class="container">
+            <tr>
+              <td>
+
+                <table class="row">
+                  <tr>
+                    <td class="wrapper last">
+
+                      <table class="twelve columns">
+                        <tr>
+                          <td class="panel">
+                           
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+                </td>
+                </tr>
+                </table>
+                <!-- END RFARDB -->
+
+
+<!-- template RFARDB -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="nine columns">
+                        <tr>
+                          <td>
+                          
+                            <p>
+						{{:urlInsert}}<span style="font-size: 18px; font-weight: bold; padding-top:10px;">{{:title}}</span></a>
+    </p>
+	<p style="padding-bottom:30px;">
+    	{{:text}}
+        <br />
+		<br />
+		{{:urlInsert}}
+        <img alt="Read more on ILN" height="31" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/92328665.png" style="" width="120" /></a>
+    </p>
+                           
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="three columns">
+                        <tr>
+                          <td class="center panel">
+                          <center>
+                            {{:insertImage}}
+                            </center>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>              
+                <!-- END RFARDB -->
+
+
+
+<!-- template CSG2 -->
+<!-- START CSG2 -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:currentProduct.link}}
+                            <img alt="Colloidal Silver Generator Kit" height="259" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/1427572950.jpg" class="center" width="311" />
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td>
+                            <br />With my 9-volt battery powered <strong>Colloidal Silver Generator</strong> you can instantly produce fresh anti-bacterial, anti-fungal, disease-killing colloidal silver -- wherever you are.<br />
+			<br />
+			You can use it internally, externally, to sterilize surfaces, to purify water; in fact there are many, many practical health uses for the potent nanoparticles in colloidal silver. <center><strong>{{:currentProduct.link}}Watch my video here. </a></strong></center>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END CSG2 -->
+                
+                <!-- START LPL1 -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:currentProduct.link}}
+                            <img alt="Low Profile Living Manual" height="256" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/102091510.jpg" class="center" width="212" />
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td><strong>Independent Living</strong> is at the forefront of alternative solutions for everyday problems.<br />
+									<br />
+			In my <strong>Low Profile Living</strong> manual, we've exposed all the latest secrets on government spying, and show you how to stay off their radar.<br />
+			<br />
+			<center>
+            <strong>Newly updated!</strong>
+            </center>
+            <br />
+            
+            {{:currentProduct.link}}Lee Bellinger's <strong>Ultimate Guide to Low Profile Living</strong> offers 253 cutting edge strategies to help you reclaim and defend your privacy.</a>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END LPL1 -->
+                
+                
+                <!-- START GAB1 -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:currentProduct.link}}
+                            <img alt="Great American Blackout" height="225" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/150901286.png" class="center" width="300" />
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td><span style="font-size:12px;">In the true spirit of <strong>Independent Living</strong>, I have prepared a confidential self-reliant briefing that will improve your family's safety. Just as it has mine. Because there's no way around it. A major government-created electricity "crisis" is brewing. {{:currentProduct.link}}<strong>The Great American Blackout</strong></a> is just one evil ‘blackhat” hacker away. You need to prepare for EVERYTHING that zero power could entail for you and your loved ones. 
+									<br />
+                                    <center>
+			{{:currentProduct.link}}My solutions are practical, inexpensive, and potentially life-saving.
+            <br />My briefing is long, but there’s nothing like it anywhere else
+            and I promise not to waste your time. </center></span></a>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END GAB1 -->
+                
+                <!-- START STREK1 -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:currentProduct.link}}
+                            <img alt="Sun Trek" height="241" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/1049476670.png" class="center" width="250" />
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td><span style="font-size:14px;">
+            The <strong>Sun Trek</strong> is designed with you in mind.
+            <br />
+			<br />
+			This high-tech, smart technology, military durable, portable solar generator is easy to use, simple to maintain, and light enough for you to take anywhere.To maximize utility, we gave the <strong>Sun Trek</strong> multiple charging options, and equipped it with resettable breakers.
+            <br />
+			<br />
+			{{:currentProduct.link}}
+                <strong>
+                    You'll never have to replace any fuses, and you won't be out of luck or without power just because it's cloudy.
+                </strong>
+            </a>
+        </span>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END STREK1 -->
+                
+                <!-- START FFL1 -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:currentProduct.link}}
+                            <img alt="Freedom Fortress Library" height="170" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/425779564.jpg" class="center" width="303" />
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td><span style="font-size:14px;">My {{:currentProduct.link}}<strong>Freedom Fortress Library</strong></a> contains a secret formula. It’s not medical. Or based on metaphysics. Or yoga. Or other trendy forms of stress relief. It’s about defeating anxiety’s root causes by strengthening your personal and financial defenses with proven tactics. My researchers have finally cracked the code. </span><br />
+            <br />
+            <br />
+            {{:currentProduct.link}}
+                <span style="font-size:14px;">
+                    <strong>Disarm every single threat posed to your family by big government</strong>
+                    <br>
+            <strong>Learn this hands-on, tested strategy.</strong>
+                </span>
+            </a>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END FFL1 -->
+                
+                <!-- START XCOM1 -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:currentProduct.link}}
+                            <img alt="Extreme Comfort Food Reserve Combo - With Ultimate Self Reliance Mega Manual" height="169" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/773980327.jpg" class="center" width="250" />
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td><span style="font-size:14px;"><strong>30-Day Food Reserve!</strong> It’s the super smart way to secure great tasting, long-lasting emergency comfort food for your family. Mega-delicious with 20+ year shelf life.<br />
+			AND <strong>The Ultimate Self-Reliance Mega-Manual</strong> - by far the best guide for dealing with the dangerous times in which we live. <strong>{{:currentProduct.link}}It contains practical strategies you absolutely, positively need right away.</a></strong></span>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END XCOM1 -->
+                
+                <!-- START PW1 -->
+                 <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:currentProduct.link}}
+                            <img alt="Power Whisperer" height="211" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/746551224.png" class="center" width="200" />
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td><span style="font-size:14px;">
+            <em>If the U.S. Power Grid takes a hit, war breaks out, or another form of destructive social chaos endures, a noisy gasoline generator will not cut it. You'll need a quiet and discreet source of power to ensure your home doesn't become a looting zone.
+            <br />
+			<br />
+            This is an information-packed video. Leave some time to watch it. I promise you won’t regret it.&nbsp;	<br />
+			<br />
+			{{:currentProduct.link}}
+            <strong>Watch my FREE seminar on the coming electricity crisis in America!</strong></a></em>
+            </span>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END PW1 -->
+                
+                <!-- START CAN1 -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:currentProduct.link}}
+                            <img alt="Survival Kit In A Can" height="256" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/1898042509.jpg" class="center" width="212" />
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td><span style="font-size:14px;">
+        <strong>Independent Living</strong> is at the forefront of alternative solutions for everyday problems.
+        <br />
+		<br />
+		{{:currentProduct.link}}
+        <strong>Please check out my popular Emergency Automotive Survival Kits. </strong>
+        </a>
+        <br />
+        <br />
+        These must-have gems fit right in your glove box and contain some 38 must-have emergency items in case you are ever stranded in your car.
+        <br />
+		<br />
+        They’re great to hand out to loved ones. 
+        </span>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END CAN1 -->
+                
+                <!-- START EPACK1 -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:currentProduct.link}}
+                           <img alt="EPACK" height="195" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/510917645.png" class="center" width="250" />
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td><span style="font-size:14px;">My {{:currentProduct.link}}<strong>E-PACK</strong></a> will prepare you for staying put in your home in an emergency. It will help you survive until help arrives if you are ever stranded in your car.<br />
+									<br />
+									But by far the single most important feature of my {{:currentProduct.link}}<strong>Total Home Evacuation and Emergency Barter Pack</strong></a> is that it lets you get on the road in the critical first moments of an emergency. You simply grab it and go. Way before the general populace wakes up to the fact that trouble is brewing and panics!
+            </span>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END EPACK1 -->
+                
+                <!-- START USR1 -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:currentProduct.link}}
+                           <img alt="Ultimate Self Reliance Manual" height="272" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/158505455.jpg" class="center" width="250" />
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td>
+			<p><span style="font-size:14px;">
+			  We are on our own. No one in authority is looking out for our interests. It is up to us to preserve, protect, and defend what's ours. If we don't do it, no one else will. From humble beginnings, <strong>Independent Living</strong> has become America's fastest growing independent financial and personal liberty publication. We did it by delivering real-world solutions that motivated individuals can use to protect themselves from large and complex threats. Helping you achieve Total Personal Sovereignty is where my unparalleled <strong>Ultimate Self Reliance Mega-Manual</strong> package shines its brightest. 
+			  </span>			  </p>
+			<p><br />
+			  {{:currentProduct.link}}
+			  <span style="font-size:14px;">
+			    <center><strong>
+			      Set aside a few minutes and watch my video. I won’t waste your time.
+			      </strong></center>
+			    </span></p>
+			</a>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END USR1 -->
+                
+                <!-- START MSR2 -->
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:currentProduct.link}}
+                           <img alt="Medical Self Reliance Mega Manual" height="216" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/388427470.jpg" class="center" width="225" />
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td>
+			<p style="text-align: left;">
+    	    <span style="font-size:14px;">
+    	        <em><strong>Independent Living</strong></em> is at the forefront of alternative solutions for everyday problems. Like healthcare. Going forward, we recognize that it will be politics not medicine that decree how you and your family get your allocation of government-directed healthcare. Scarcity and widespread dysfunction are poised to become the "new normal" in healthcare for the masses. <strong>{{:currentProduct.link}}Learn about our savvy, medical survivor techniques in Lee’s very special report.</a></strong>
+            </span>
+        </p>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END MSR2 -->
+                
+                <!-- START SUB1 -->
+                <table class="row">
+                  <tr>
+                     <td class="wrapper last">
+
+                      <table class="twelve columns">
+                        <tr>
+                          <td class="center panel">
+                          <center>
+                            <h5>Not A Subscriber? Want To Share With A Friend?</h5>
+                          </center>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                
+                
+                
+                
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="six columns">
+                        <tr>
+                          <td class="center">
+                          {{:RFARDB.subILN}}
+                            <img alt="Subscribe to Independent Living" height="270" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/236043171.png" width="244" class="center"/>
+                            </a>
+
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="six columns">
+                        <tr>
+                          <td>
+                            <br />To try a no-risk, fully guaranteed trial subscription to Lee Bellinger's esteemed <strong>Independent Living</strong>, please {{:RFARDB.subILN}}click here.</a> If you are not completely satisfied, you are entitled to a FULL and COMPLETE refund on your entire first year subscription. Every month you'll receive cutting-edge information on new laws and regulations affecting virtually everything you own or do, as well as many truly original life strategies to protect your health and wealth and defend your way of life. {{:RFARDB.subILN}} Click here.</a>
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
+                <!-- END SUB1 -->
+               
