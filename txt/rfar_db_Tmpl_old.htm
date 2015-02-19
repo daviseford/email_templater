@@ -1,0 +1,266 @@
+<html>
+<body style="background-color:#DFDFDF;">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<!-- SUBJECT LINE: {{:smartFocus.title}}-->
+<!-- KEYCODE: {{:smartFocus.keycode}} -->
+<!-- PRODUCT: {{:currentProduct.longCode}} -->
+<title>{{:smartFocus.title}}</title>
+<table align="center" border="0" cellpadding="5" cellspacing="0" style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;" width="600">
+	<tbody>
+		<tr>
+			<td align="left" width="325">
+				<span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">
+                	Always Prepared
+                </span>
+            </td>
+			<td align="right" width="275">
+				<span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">				
+                {{:RFARDB.safeSend}}
+                </span>
+            </td>
+		</tr>
+	</tbody>
+</table>
+
+<table align="center" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; background-color:#FFFFFF;" width="600">
+	<tbody>
+		<tr>
+			<td style="border: none;">
+				<!--
+                  *******************
+                  Begin Header Table
+                  *******************
+                  -->
+				<table border="0" cellpadding="0" cellspacing="0" style="display:block; border:none" width="600">
+					<tbody>
+						<tr>
+							<td colspan="4" valign="top">
+                            <!-- BEGIN HEADER -->
+                            {{:RFARDB.rfarHeader}}
+                            <!-- END HEADER -->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<!--
+                  *******************
+                  End Header Table
+                  *******************
+                  --></td>
+		</tr>
+		<!--
+            *******************
+            Begin Content
+            *******************
+            -->
+		<tr>
+			<td style="border: none">
+				<table align="center" border="0" cellpadding="0" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#000000;background-color:#FFFFFF;" width="560">
+					<tbody>
+
+                        <!-- START FIRST CONTENT BLOCK -->
+                        {{for story tmpl="addDiv_templates_RFARDB" /}}
+
+                        <!-- END FIRST CONTENT BLOCK -->
+
+                        <!-- START PRODUCT -->
+
+                        {{if currentProduct.enabled}}
+                            {{if currentProduct.shortCode === 'CSG'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_CSG1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_CSG2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_CSG3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_CSG4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_CSG5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'FFL'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_FFL1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_FFL2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_FFL3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_FFL4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_FFL5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'XCOM'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_XCOM1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_XCOM2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_XCOM3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_XCOM4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_XCOM5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'PW'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_PW1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_PW2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_PW3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_PW4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_PW5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'CAN'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_CAN1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_CAN2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_CAN3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_CAN4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_CAN5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'EPACK'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_EPACK1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_EPACK2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_EPACK3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_EPACK4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_EPACK5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'USR'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_USR1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_USR2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_USR3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_USR4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_USR5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'STREK'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_STREK1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_STREK2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_STREK3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_STREK4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_STREK5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'GAB'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_GAB1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_GAB2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_GAB3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_GAB4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_GAB5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'LPL'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_LPL1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_LPL2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_LPL3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_LPL4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_LPL5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'MSR'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_MSR1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_MSR2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_MSR3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_MSR4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_MSR5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'FOOD'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_FOOD1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_FOOD2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_FOOD3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_FOOD4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_FOOD5" /}}
+                            {{/if}}
+                            {{if currentProduct.shortCode === 'SUB'}}
+                                {{if currentProduct.tmplNum === 1 tmpl="ad_templates_SUB1" /}}
+                                {{if currentProduct.tmplNum === 2 tmpl="ad_templates_SUB2" /}}
+                                {{if currentProduct.tmplNum === 3 tmpl="ad_templates_SUB3" /}}
+                                {{if currentProduct.tmplNum === 4 tmpl="ad_templates_SUB4" /}}
+                                {{if currentProduct.tmplNum === 5 tmpl="ad_templates_SUB5" /}}
+                            {{/if}}
+                        {{/if}}
+
+
+                        <!-- START OPTIONAL SECOND BLOCK -->
+                        {{for storyTwo tmpl="addDiv_templates_RFARDB" /}}
+                        <!-- END OPTIONAL SECOND BLOCK -->
+
+					</tbody>
+				</table>
+				<table align="center" border="0" cellpadding="0" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#000000;background-color:#FFFFFF;" width="560">
+                    <tr>
+                        <td colspan="4" height="5px" style="background-color:#E5e5e5">
+                        </td>
+                    </tr>
+					<tbody>
+						<tr>
+							<td colspan="4" style="padding-top:10px;padding-bottom:10px;">
+								<p>
+									Yours in Prudent Preparation,<br />
+									<img alt="Lee Bellinger" height="52" src="http://www.independentlivingnews.com/email/images/signature-blue.jpg" width="260" /><br />
+									Lee Bellinger, Publisher<br />
+									<b>Independent Living</b>
+                                </p>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" height="5px" style="background-color:#E5e5e5">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" style="text-align: center; vertical-align:middle; font-family:Arial, Helvetica, sans-serif; font-size:20px; color:#000000; font-weight:bold;padding-top:10px;padding-bottom:10px;">
+								Not a Subscriber? Want to Share with a Friend?</td>
+						</tr>
+						<tr>
+							<td style="text-align: left; height: 60px;" width="212">
+								<p>
+									{{:RFARDB.subILN}}
+                                    <img alt="Subscribe to Independent Living" height="270" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/236043171.png" width="244" />
+                                    </a>
+                             	</p>
+							</td>
+							<td style="text-align: left; height: 60px;" width="296">
+								To try a no-risk, fully guaranteed trial subscription to Lee Bellinger's esteemed <strong>Independent Living</strong>, please {{:RFARDB.subILN}}click here.</a> If you are not completely satisfied, you are entitled to a FULL and COMPLETE refund on your entire first year subscription. Every month you'll receive cutting-edge information on new laws and regulations affecting virtually everything you own or do, as well as many truly original life strategies to protect your health and wealth and defend your way of life. {{:RFARDB.subILN}} Click here.</a></td>
+						</tr>
+						<tr>
+							<td colspan="4" height="5px" style="background-color:#E5e5e5">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" style="border: none; text-align:center; font-size:10px;">
+								<hr />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td style="border: none">
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<table align="center" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; 
+
+background-color:#FFFFFF;margin-top:10px;" width="600">
+	<tbody>
+		<tr>
+			<td align="center" style="border: none">
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
+	<tbody>
+		<tr>
+			<td align="center">
+				<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">&copy;2015 American Lantern Press<br />
+				377 Rubin Center Drive &#8226; Suite 203 &#8226; Fort Mill, SC &#8226; 29708 &#8226; (877) 371-1807
+                </span>
+                <br />
+	<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">
+    <a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam">Mark as Spam</a> (Even though we're not!)<br />
+				Pick what emails you want to receive from us! {{:RFARDB.prefLink}}Email Preferences</a><br />
+				Don't want to receive our information anymore? (We'll miss you!) {{:RFARDB.unsubLink}}Unsubscribe</a> </span>
+				<p>
+					<span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">
+                        This copyrighted material may not be republished without express permission. Offer only available through email promotion. Offer does not apply to previous orders and may not be combined with any other offer. The information in this email is presented for general educational purposes only.
+                    </span>
+                    <br />
+                    <span style="font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000000;">
+                        {{:smartFocus.keycode}}
+                    </span>
+                </p>
+				<p>
+				</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<!--
+         *******************
+         End Footer Table
+         *******************
+         -->

@@ -1,0 +1,43 @@
+<!-- template RFARDB -->
+<table class="container">
+            <tr>
+              <td>
+
+                <table class="row">
+                  <tr>
+                    <td class="wrapper">
+
+                      <table class="nine columns">
+                        <tr>
+                          <td>
+                          
+                            <p>
+						{{:urlInsert}}<span style="font-size: 18px; font-weight: bold; padding-top:10px;">{{:title}}</span></a>
+    </p>
+	<p style="padding-bottom:30px;">
+    	{{:text}}
+        <br />
+		<br />
+		{{:urlInsert}}<img alt="Read more on ILN" height="31" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/92328665.png" style="" width="120" /></a>
+    </p>
+                           
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                    <td class="wrapper last">
+
+                      <table class="three columns">
+                        <tr>
+                          <td>
+                            {{:insertImage}}
+                          </td>
+                          <td class="expander"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+                  </tr>
+                </table>
