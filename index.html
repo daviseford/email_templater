@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Davis Ford">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Davis Ford" />
     <title>Template Generator</title>
 
 
@@ -181,7 +181,6 @@
                     <label for="title1IMG">Image URL: </label>
                     <input class="form-control" type="text" id="title1IMG" name="title1IMG" placeholder="Link to the article's IMAGE here. In your browser: Right click -> Copy Image URL."/> <br />
 
-
                     <input type="checkbox" id="additionalContentCheckbox" name="additionalContentCheckbox"/>
                     Additional Story?<br>
             </fieldset>
@@ -225,6 +224,7 @@
             </form>
         </div>
     </div>
+
 <div class="row">
     <div class="col-lg-12">
         <p style="text-align:center">
@@ -232,42 +232,41 @@
         </p>
     </div>
 </div>
-<div class="container-fluid" id="resultsContainer">
+<div class="container-fluid" id="resultsContainer1">
     <div class="row">
         <div class="col-lg-12" id="resultsDiv">
         </div>
+    </div>
+</div>
+<div class="container" id="resultsContainer2">
+    <div class="row">
         <div class="col-lg-12">
             <center>
+                <br />
                 <p class="alert-info">Copy and paste the code below into SmartFocus.</p>
-            </center>
-            <!-- TODO make url -->
             <textarea id="resultsTextArea" rows="10" class="form-control" cols="10"></textarea>
             <!-- TODO add a "Copy to Clipboard" function, I'll need to use Flash -->
             <!--http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript-->
-
-
-
-
-
-
+            </center>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <center><p>Developed by Davis Ford 2015</p></center>
-    <div class="col-lg-12" id="emailBtnDiv">
-        <center>
-            <p><button class="btn btn-primary btn-lg" id="emailHTML">Send Test Email</button></p>
-            <p>This button will send a test email to kelly@mustgoto.com and Davis.
-                <br />Please don't abuse it, we only get 500 sends a month.</p>
-            <p>Only use to verify that the email looks good. I still need to receive the raw HTML above.</p>
-        </center>
-    </div>
-    <div class="col-lg-12" id="testResults"></div>
-    </div>
+    <div class="row">
+        <div class="col-lg-12" id="emailBtnDiv">
+            <center>
+                <br />
+                <p><strong>ONLY CLICK THIS IF YOU WANT TO SUBMIT THE EMAIL.</strong></p>
+                <p><button class="btn btn-primary btn-lg" id="emailHTML">Submit Email</button></p>
+                <p>This button will upload this email to Dropbox, and send Davis a copy.
+                    <br />Please don't abuse it</p>
+            </center>
+        </div>
+        <div class="col-lg-12">
+            <center><p>Developed by Davis Ford 2015</p></center>
+        </div>
 </div>
+
 
 </body>
 

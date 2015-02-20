@@ -1,55 +1,56 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!-- SUBJECT LINE: {{:smartFocus.title}}-->
-<!-- KEYCODE: {{:smartFocus.keycode}} -->
-<!-- PRODUCT: {{:currentProduct.longCode}} -->
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <!-- SUBJECT LINE: {{:smartFocus.title}}-->
+    <!-- KEYCODE: {{:smartFocus.keycode}} -->
+    <!-- PRODUCT: {{:currentProduct.longCode}} -->
     <title>{{:smartFocus.title}}</title>
-  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-  <meta name='viewport' content='width=device-width' />
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+  <meta name='viewport' content='width=device-width'>
   <style>
 
-#outlook a {
-  padding:0;
-}
+#outlook a { 
+  padding:0; 
+} 
 
-body{
-  width:100% !important;
+body{ 
+  width:100% !important; 
   min-width: 100%;
-  -webkit-text-size-adjust:100%;
-  -ms-text-size-adjust:100%;
-  margin:0;
+  -webkit-text-size-adjust:100%; 
+  -ms-text-size-adjust:100%; 
+  margin:0; 
   padding:0;
 }
 
-.ExternalClass {
+.ExternalClass { 
   width:100%;
+} 
+
+.ExternalClass, 
+.ExternalClass p, 
+.ExternalClass span, 
+.ExternalClass font, 
+.ExternalClass td, 
+.ExternalClass div { 
+  line-height: 100%; 
+} 
+
+#backgroundTable { 
+  margin:0; 
+  padding:0; 
+  width:100% !important; 
+  line-height: 100% !important; 
 }
 
-.ExternalClass,
-.ExternalClass p,
-.ExternalClass span,
-.ExternalClass font,
-.ExternalClass td,
-.ExternalClass div {
-  line-height: 100%;
-}
-
-#backgroundTable {
-  margin:0;
-  padding:0;
-  width:100% !important;
-  line-height: 100% !important;
-}
-
-img {
-  outline:none;
-  text-decoration:none;
+img { 
+  outline:none; 
+  text-decoration:none; 
   -ms-interpolation-mode: bicubic;
   width: auto;
-  max-width: 100%;
-  float: left;
-  clear: both;
+  max-width: 100%; 
+  float: left; 
+  clear: both; 
   display: block;
 }
 
@@ -58,7 +59,7 @@ center {
   min-width: 580px;
 }
 
-a img {
+a img { 
   border: none;
 }
 
@@ -71,12 +72,12 @@ table {
   border-collapse: collapse;
 }
 
-td {
+td { 
   word-break: break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   hyphens: auto;
-  border-collapse: collapse !important;
+  border-collapse: collapse !important; 
 }
 
 table, tr, td {
@@ -86,11 +87,13 @@ table, tr, td {
 }
 
 hr {
-  color: #d9d9d9;
-  background-color: #d9d9d9;
-  height: 1px;
+  color: #d9d9d9; 
+  background-color: #d9d9d9; 
+  height: 1px; 
   border: none;
 }
+
+/* Responsive Grid */
 
 table.body {
   height: 100%;
@@ -103,8 +106,8 @@ table.container {
   text-align: inherit;
 }
 
-table.row {
-  padding: 0px;
+table.row { 
+  padding: 0px; 
   width: 100%;
   position: relative;
 }
@@ -125,7 +128,7 @@ table.column {
 
 table.columns td,
 table.column td {
-  padding: 0px 0px 10px;
+  padding: 0px 0px 10px; 
 }
 
 table.columns td.sub-columns,
@@ -246,6 +249,8 @@ table.column .text-pad-right {
   padding-right: 10px;
 }
 
+/* Block Grid */
+
 .block-grid {
   width: 100%;
   max-width: 580px;
@@ -284,6 +289,8 @@ table.column .text-pad-right {
   width:52px;
 }
 
+/* Alignment & Visibility Classes */
+
 table.center, td.center {
   text-align: center;
 }
@@ -313,13 +320,15 @@ img.center {
   display: none;
 }
 
-body, table.body, h1, h2, h3, h4, h5, h6, p, td {
+/* Typography */
+
+body, table.body, h1, h2, h3, h4, h5, h6, p, td { 
   color: #222222;
-  font-family: "Helvetica", "Arial", sans-serif;
-  font-weight: normal;
-  padding:0;
+  font-family: "Helvetica", "Arial", sans-serif; 
+  font-weight: normal; 
+  padding:0; 
   margin: 0;
-  text-align: left;
+  text-align: left; 
   line-height: 1.3;
 }
 
@@ -340,7 +349,7 @@ p.lead, p.lede, p.leed {
   line-height:21px;
 }
 
-p {
+p { 
   margin-bottom: 10px;
 }
 
@@ -349,48 +358,50 @@ small {
 }
 
 a {
-  color: #2ba6cb;
+  color: #2ba6cb; 
   text-decoration: none;
 }
 
-a:hover {
+a:hover { 
   color: #2795b6 !important;
 }
 
-a:active {
+a:active { 
   color: #2795b6 !important;
 }
 
-a:visited {
+a:visited { 
   color: #2ba6cb !important;
 }
 
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
+h1 a, 
+h2 a, 
+h3 a, 
+h4 a, 
+h5 a, 
 h6 a {
   color: #2ba6cb;
 }
 
-h1 a:active,
-h2 a:active,
-h3 a:active,
-h4 a:active,
-h5 a:active,
-h6 a:active {
-  color: #2ba6cb !important;
-}
+h1 a:active, 
+h2 a:active,  
+h3 a:active, 
+h4 a:active, 
+h5 a:active, 
+h6 a:active { 
+  color: #2ba6cb !important; 
+} 
 
-h1 a:visited,
-h2 a:visited,
-h3 a:visited,
-h4 a:visited,
-h5 a:visited,
-h6 a:visited {
-  color: #2ba6cb !important;
-}
+h1 a:visited, 
+h2 a:visited,  
+h3 a:visited, 
+h4 a:visited, 
+h5 a:visited, 
+h6 a:visited { 
+  color: #2ba6cb !important; 
+} 
+
+/* Panels */
 
 .panel {
   background: #f2f2f2;
@@ -405,6 +416,8 @@ h6 a:visited {
 .sub-grid td.sub-columns {
   padding-bottom: 0;
 }
+
+/* Buttons */
 
 table.button,
 table.tiny-button,
@@ -510,7 +523,7 @@ table.medium-button td a:visited,
 table.large-button:hover td a,
 table.large-button:active td a,
 table.large-button td a:visited {
-  color: #ffffff !important;
+  color: #ffffff !important; 
 }
 
 table.secondary td {
@@ -564,9 +577,13 @@ table.round td {
   border-radius: 500px;
 }
 
+/* Outlook First */
+
 body.outlook p {
   display: inline !important;
 }
+
+/*  Media Queries */
 
 @media only screen and (max-width: 600px) {
 
@@ -794,6 +811,7 @@ body.outlook p {
                       </td>
                     </tr>
                   </table>
+
                 </center>
               </td>
             </tr>
@@ -812,7 +830,9 @@ body.outlook p {
                 <tr style="padding: 0;vertical-align: top;text-align: left;">
                   <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse !important;">
                   <center>
+                  <!-- BEGIN HEADER -->
                   {{:RFARDB.rfarHeader}}
+                  <!-- END HEADER -->
                   </center>
 
                   </td>
@@ -831,10 +851,12 @@ body.outlook p {
 
 
 
+<!-- START DIVIDER -->
 <table class="container" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: inherit;width: 580px;margin: 0 auto;">
             <tr style="padding: 0;vertical-align: top;text-align: left;">
               <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse !important;">
 
+                <!-- START DIVIDER -->
 <table class="row" style="border-spacing: 0;border-collapse: collapse;padding: 0px;vertical-align: top;text-align: left;width: 100%;position: relative;display: block;">
     <tr style="padding: 0;vertical-align: top;text-align: left;">
         <td class="wrapper last" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;padding-right: 0px;border-collapse: collapse !important;">
@@ -850,10 +872,16 @@ body.outlook p {
         </td>
     </tr>
 </table>
+                  <!-- END DIVIDER -->
+
+                  <!-- START FIRST CONTENT BLOCK -->
                   {{for story tmpl="addDiv_templates_RFARDB" /}}
 
+                  <!-- END FIRST CONTENT BLOCK -->
 
+                  <!-- START PRODUCT -->
                   {{if currentProduct.enabled}}
+                  <!-- START DIVIDER -->
                   <table class="row" style="border-spacing: 0;border-collapse: collapse;padding: 0px;vertical-align: top;text-align: left;width: 100%;position: relative;display: block;">
                       <tr style="padding: 0;vertical-align: top;text-align: left;">
                           <td class="wrapper last" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;padding-right: 0px;border-collapse: collapse !important;">
@@ -869,6 +897,7 @@ body.outlook p {
                           </td>
                       </tr>
                   </table>
+                  <!-- END DIVIDER -->
                   {{if currentProduct.shortCode === 'CSG'}}
                   {{if currentProduct.tmplNum === 1 tmpl="ad_templates_CSG1" /}}
                   {{if currentProduct.tmplNum === 2 tmpl="ad_templates_CSG2" /}}
@@ -960,6 +989,7 @@ body.outlook p {
                   {{if currentProduct.tmplNum === 4 tmpl="ad_templates_SUB4" /}}
                   {{if currentProduct.tmplNum === 5 tmpl="ad_templates_SUB5" /}}
                   {{/if}}
+                  <!-- START DIVIDER -->
                   <table class="row" style="border-spacing: 0;border-collapse: collapse;padding: 0px;vertical-align: top;text-align: left;width: 100%;position: relative;display: block;">
                       <tr style="padding: 0;vertical-align: top;text-align: left;">
                           <td class="wrapper last" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;padding-right: 0px;border-collapse: collapse !important;">
@@ -975,10 +1005,12 @@ body.outlook p {
                           </td>
                       </tr>
                   </table>
+                  <!-- END DIVIDER -->
                   {{/if}}
-
+                  <!-- START OPTIONAL SECOND BLOCK -->
                   {{for storyTwo tmpl="addDiv_templates_RFARDB" /}}
-
+                  <!-- END OPTIONAL SECOND BLOCK -->
+<!-- START DIVIDER -->
 <table class="row" style="border-spacing: 0;border-collapse: collapse;padding: 0px;vertical-align: top;text-align: left;width: 100%;position: relative;display: block;">
     <tr style="padding: 0;vertical-align: top;text-align: left;">
         <td class="wrapper last" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;padding-right: 0px;border-collapse: collapse !important;">
@@ -994,6 +1026,7 @@ body.outlook p {
         </td>
     </tr>
 </table>
+                 <!-- END DIVIDER -->
                  
  <table class="row" style="border-spacing: 0;border-collapse: collapse;padding: 0px;vertical-align: top;text-align: left;width: 100%;position: relative;display: block;">
      <tr style="padding: 0;vertical-align: top;text-align: left;">
@@ -1003,10 +1036,10 @@ body.outlook p {
                  <tr style="padding: 0;vertical-align: top;text-align: left;">
                      <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse !important;">
 
-                         <p style="margin: 0;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
-                             Yours in Prudent Preparation,</p>
-                             <img alt="Lee Bellinger" height="52" src="http://www.independentlivingnews.com/email/images/signature-blue.jpg" width="260" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: auto;max-width: 100%;float: left;clear: both;display: block;">
-                             <p style="margin: 0;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">Lee Bellinger, Publisher</p>
+                         <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
+                             Yours in Prudent Preparation,<br>
+                             <img alt="Lee Bellinger" height="52" src="http://www.independentlivingnews.com/email/images/signature-blue.jpg" width="260" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: auto;max-width: 100%;float: left;clear: both;display: block;"><br>
+                             Lee Bellinger, Publisher<br>
                              <b>Independent Living</b>
                          </p>
 
@@ -1093,60 +1126,22 @@ body.outlook p {
                      <td align="center" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse !important;">
                          <span style="font-size:10px; text-align:center">
                              <center style="width: 100%;min-width: 580px;">
-                                 &copy;2015 American Lantern Press
-                             </center>
-                         </span>
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
+                                 &copy;2015 American Lantern Press<br>
                                  377 Rubin Center Drive &#8226; Suite 203 &#8226; Fort Mill, SC &#8226; 29708 &#8226; (877) 371-1807
-                             </center>
-                         </span>
+                                 <br>
 	
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 {{:RFARDB.spamLink}} (Even though we're not!)
-                             </center>
-                         </span>
-                             
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 Pick what emails you want to receive from us! {{:RFARDB.prefLink}}
-                             </center>
-                         </span>
-                                 
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 Don't want to receive our information anymore? (We'll miss you!) {{:RFARDB.unsubLink}}
-                             </center>
-                         </span>
+                                 <a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam" style="color: #2ba6cb;text-decoration: none;">Mark as Spam</a> (Even though we're not!)<br>
+                                 Pick what emails you want to receive from us! {{:RFARDB.prefLink}}Email Preferences</a><br>
+                                 Don't want to receive our information anymore? (We'll miss you!) {{:RFARDB.unsubLink}}Unsubscribe</a>
 					
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 This copyrighted material may not be republished without express permission.
+                                 <br>This copyrighted material may not be republished without express permission.
+                                 <br> Offer only available through email promotion.
+                                 <br>Offer does not apply to previous orders and may not be combined with any other offer.
+                                 <br>The information in this email is presented for general educational purposes only.
+                                 <br>
+                                 {{:smartFocus.keycode}}
                              </center>
                          </span>
-                                 
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 Offer only available through email promotion.
-                             </center>
-                         </span>
-                                 
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 Offer does not apply to previous orders and may not be combined with any other offer.
-                             </center>
-                         </span>
-                                 
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 The information in this email is presented for general educational purposes only.
-                             </center>
-                         </span>
-                                 
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">{{:smartFocus.keycode}}</center></span>
-                         
                      </td>
                      <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
                  </tr>
@@ -1155,6 +1150,8 @@ body.outlook p {
          </td>
      </tr>
  </table>
+
+                  <!-- container end below -->
               </td>
             </tr>
 </table>

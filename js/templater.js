@@ -4,7 +4,8 @@ $(document).ready(function () {
     //*******************************
     // DOCUMENT AND VAR SETUP
     //*******************************
-	$("#resultsContainer").hide(); //Hiding our results, as we don't need to see them yet!
+	$("#resultsContainer1").hide(); //Hiding our results, as we don't need to see them yet!
+    $("#resultsContainer2").hide();
 	$("#story2Div").hide(); //Hiding our second story panel.
     var additionalContentVal = false; //This makes us default to a one-story format.
 
@@ -17,60 +18,67 @@ $(document).ready(function () {
 
     function makeEmailBtn() {
         var x = $("#resultsTextArea").val();
-        var y = S(x).unescapeHTML().s;
+        var y;
+        var z = $("#title1KEY").val();
+        y = S(x).unescapeHTML().s;
+        z = z.toUpperCase();
             $("#emailHTML")
            .button()
            .show()
-           .click(function(){
-               $.ajax({
-                   type: "POST",
-                   url: "https://mandrillapp.com/api/1.0/messages/send.json",
-                   data: {
-                       'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
-                       'message': {
-                           'from_email': 'digitalmedia@wjmassociates.com',
-                           'to': [
-                               {
-                                   'email': 'dford@wjmassociates.com',
-                                   'name': 'Davis Ford',
-                                   'type': 'to'
-                               }
-                               //{
-                               //    'email': 'kelly@mustgoto.com',
-                               //    'name': 'Kelly McCarthy',
-                               //    'type': 'to'
-                               //}
-                           ],
-                           'autotext': 'true',
-                           'subject': '[TEST] - '+ $("#title1KEY").val() + ' - ' + $("#subjectInput").val(),
-                           'html': $("#resultsDiv").html()
-                       }}
-               }).done(function(response) {
-                   console.log(response); // if you're into that sorta thing
-               });
-               $.ajax({
-                   type: "POST",
-                   url: "https://mandrillapp.com/api/1.0/messages/send.json",
-                   data: {
-                       'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
-                       'message': {
-                           'from_email': 'digitalmedia@wjmassociates.com',
-                           'to': [
-                               {
-                                   'email': 'trigger@recipe.ifttt.com',
-                                   'name': 'Trigger',
-                                   'type': 'to'
-                               }
-                           ],
-                           'autotext': 'true',
-                           'subject': 'TEST',
-                           'html': y
-                       }}
-               }).done(function(response) {
-                   console.log(response); // if you're into that sorta thing
-               });
-           });
+           .click(sendEmail())
     }
+    function sendEmail(){
+        var x = $("#resultsTextArea").val();
+        var y;
+        var z = $("#title1KEY").val();
+        y = S(x).unescapeHTML().s;
+        z = z.toUpperCase();
+        $.ajax({
+            type: "POST",
+            dataType: "text",
+            processData: "false",
+            url: "https://mandrillapp.com/api/1.0/messages/send.json",
+            data: {
+                'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                'message': {
+                    'from_email': 'digitalmedia@wjmassociates.com',
+                    'to': [
+                        {
+                            'email': 'trigger@recipe.ifttt.com',
+                            'name': 'Trigger',
+                            'type': 'to'
+                        }
+                    ],
+                    'autotext': 'true',
+                    'subject': z,
+                    'text': y
+                }}
+        }).done(function(response) {
+            console.log(response); // if you're into that sorta thing
+        });
+        $.ajax({
+            type: "POST",
+            dataType: "text",
+            url: "https://mandrillapp.com/api/1.0/messages/send.json",
+            data: {
+                'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                'message': {
+                    'from_email': 'digitalmedia@wjmassociates.com',
+                    'to': [
+                        {
+                            'email': 'dford@wjmassociates.com',
+                            'name': 'Davis Ford',
+                            'type': 'to'
+                        }
+                    ],
+                    'autotext': 'true',
+                    'subject': '[SUBMISSION] ' + z,
+                    'text': y
+                }}
+        }).done(function(response) {
+            console.log(response); // if you're into that sorta thing
+        });
+    };
 
     //Establishing the datepicker
     $( "#inlinedate" ).datepicker({
@@ -136,7 +144,6 @@ $(document).ready(function () {
             $("#title1label").text("Modal Headline: ")
         }
     }
-
 
 
     //hides RFAR-specific stuff if it's not selected
@@ -211,7 +218,23 @@ $(document).ready(function () {
     // .html | .stml | ?utm_source |  - See more at:
     //Additionally, it strips existing UTM codes away, which is Kelly-proof (hopefully)
 
-    //TODO Fix fucking Outlook issues. Use Litmus. Gonna have to hack away at the way I draw the ILN pic
+    //sanitizeRender takes the value of our template and removes the head, body, html, and style sections.
+    //I used string replace because simply removing the tags was not enough.
+    //With the template I'm using, there are two style sections, that's why I have two if's instead of a while.
+    //That might be a dumb explanation.
+    function sanitizeRender(content){
+        var that = this;
+        if(S(content).contains('<style>')) {
+            content = content.replace(/<style>[\s\S]*?<\/style>/, '');
+            console.log("sanitizeRender(1)");
+            if(S(content).contains('<style>')) {
+                content = content.replace(/<style>[\s\S]*?<\/style>/, '');
+                console.log("sanitizeRender(2)");
+            }
+        }
+        //console.log((S(content).stripTags('html', 'head', 'body').s));
+        return (S(content).stripTags('html', 'head', 'body').s);
+    }
 
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
@@ -238,11 +261,12 @@ $(document).ready(function () {
 
 
                 if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
+                    var title1KEY = $.trim($("#title1KEY").val());
                     var utmsource = '?utm_source=' + title1KEY + '&keycode=' + title1KEY + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
                     var codedURL = title1URL + utmsource; //appends our URL with a tracking code
-                    var title1KEY = $.trim($("#title1KEY").val());
                     keycodeArray[0] = title1KEY;
                     urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
+                    var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
 
                     if (templateStyle === "ILNDB"){
                         imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 200px; max-width: 200px; border: 3px solid #E5e5e5;" height="200" width="200" alt="Story Image"></a></center>';
@@ -252,7 +276,7 @@ $(document).ready(function () {
 
                     productReference = {
                         USR: {
-                            link: '<a href="http://www.independentlivingnews.com/video/usr-video.php' + utmsource + '" target="_blank">',
+                            link: '<a href="http://www.independentlivingnews.com/video/usr-vsl.php' + utmsource + '" target="_blank">',
                             shortCode: 'USR',
                             longCode: 'Ultimate Self Reliance Manual',
                             selected: false
@@ -407,8 +431,9 @@ $(document).ready(function () {
                         safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
                         rfarHeader: '<a href="http://www.independentlivingnews.com/preppers' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="118" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="580" /></a>',
                         subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">',
-                        prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">',
-                        unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">'
+                        prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">Email Preferences</a>',
+                        unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">Unsubscribe</a>',
+                        spamLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam" style="color: #2ba6cb;text-decoration: none;">Mark as Spam</a>'
                     },
                     ILNDB: {
                         ilnHeader: '<a href="http://www.independentlivingnews.com' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="121" src="http://www.independentlivingnews.com/email/images/ILN_LB_header.jpg" style="display:block;" width="600" /></a>',
@@ -439,7 +464,7 @@ $(document).ready(function () {
                     var linkedTitle2 = '<h4><a href="' + title2URL + '" target="_blank">' + title2 + '</a></h4>';
                     var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" width="125" height="125" alt="Story Image"></a></center>';
 
-                    if (templateStyle === "RFARDB") {
+                    if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
                         title2URL += utmsource; //appends our URL with a tracking code
                         urlInsert2 = '<a href="' + title2URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
                         imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 130px; max-width: 130px;" width="130" height="130" alt="Story Image"></a></center>';
@@ -471,7 +496,7 @@ $(document).ready(function () {
                     ).then(function () {
                             var html = iln_db_Tmpl.render(storyz);
                             $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
-                            $("#resultsDiv").html(html); //Renders the HTML version of the email
+                            $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
                         }).fail(function () {
                             console.log("spawnILNDB(): Something went wrong!");
                         });
@@ -489,8 +514,8 @@ $(document).ready(function () {
                     ).then(function () {
                             var html = rfar_db_Tmpl.render(storyz);
                             $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
-                            $("#resultsDiv").html(html); //Renders the HTML version of the email
-                            //makeEmailBtn(); //take this out if it gets abused
+                            $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
+                            makeEmailBtn(); //take this out if it gets abused
                         }).fail(function () {
                             console.log("spawnRFARDB(): Something went wrong!");
                         });
@@ -516,8 +541,9 @@ $(document).ready(function () {
 
                 getResults();
 
-                $("#resultsContainer").show("drop"); //Shows the results once everything is ready.
-                //$("#emailBtnDiv").show('drop');
+                $("#resultsContainer1").show("drop"); //Shows the results once everything is ready.
+                $("#resultsContainer2").show("drop"); //Shows the results once everything is ready.
+                $("#emailBtnDiv").show('drop');
 
             }}
         )
