@@ -17,15 +17,12 @@ $(document).ready(function () {
         .hide();
 
     function makeEmailBtn() {
-        var x = $("#resultsTextArea").val();
-        var y;
-        var z = $("#title1KEY").val();
-        y = S(x).unescapeHTML().s;
-        z = z.toUpperCase();
             $("#emailHTML")
            .button()
            .show()
-           .click(sendEmail())
+           .click(function() {
+                    sendEmail();
+                })
     }
     function sendEmail(){
         var x = $("#resultsTextArea").val();
