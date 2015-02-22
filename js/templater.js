@@ -77,6 +77,34 @@ $(document).ready(function () {
         });
     };
 
+
+
+    //TODO /doing, making a optgroup generator. This way I can cut down on havign to updatee so much across three files -
+    //TODO so it should spawn
+    //<optgroup label="Colloidal Silver Generator Kit">
+    //<option value="CSG1">CSG - Banner 560x56</option>
+    //<option value="CSG2">CSG - Image with copy</option>
+    //</optgroup>
+    //TODO actually do this
+    //function getRep(x) {
+    //    var keys = [];
+    //    var that = this;
+    //    var optionValueRep = '<option value="' + x.shortCode + '">'+ x.longCode + '</option>';
+    //    var optGroupSpawnRep = '<optgroup label="' + x.longCode + '">';
+    //    var optGroupRep = '</optgroup>';
+    //    console.log("1: " + optionValueRep);
+    //    console.log("2: " + optGroupSpawnRep);
+    //    console.log("3: " + optGroupRep);
+    //    var html = optionValueRep + optGroupSpawnRep + optGroupRep;
+    //    $('#testResults').html(html);
+    //
+    //
+    //}
+
+    //probably delete up above later
+
+
+
     //Establishing the datepicker
     $( "#inlinedate" ).datepicker({
         dateFormat: "ymmdd" //Outputs as YYMMDD
@@ -378,29 +406,7 @@ $(document).ready(function () {
 
 
 
-                //TODO /doing, making a optgroup generator. This way I can cut down on havign to updatee so much across three files -
-                //TODO so it should spawn
-                //<optgroup label="Colloidal Silver Generator Kit">
-                //<option value="CSG1">CSG - Banner 560x56</option>
-                //<option value="CSG2">CSG - Image with copy</option>
-                //</optgroup>
-                //TODO actually do this
-                //function getRep(x) {
-                //    var keys = [];
-                //    var that = this;
-                //    var optionValueRep = '<option value="' + x.shortCode + '">'+ x.longCode + '</option>';
-                //    var optGroupSpawnRep = '<optgroup label="' + x.longCode + '">';
-                //    var optGroupRep = '</optgroup>';
-                //    console.log("1: " + optionValueRep);
-                //    console.log("2: " + optGroupSpawnRep);
-                //    console.log("3: " + optGroupRep);
-                //    var html = optionValueRep + optGroupSpawnRep + optGroupRep;
-                //    $('#testResults').html(html);
-                //
-                //
-                //}
 
-                //probably delete up above later
 
 
                 //This Object/Array is used with JSRender.
