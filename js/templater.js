@@ -212,6 +212,187 @@ $(document).ready(function () {
         console.log("getTemplateStyle()"+x);
     }
 
+    function secondStorySetup() {
+        $('#story2Form').find('input').each(textFix);
+        var title2 = $.trim($("#title2").val());
+        var title2text = $.trim($("#title2text-textarea").val());
+        var title2URL = $.trim($("#title2URL").val());
+        var title2IMG = $.trim($("#title2IMG").val());
+        var urlInsert2 = '<a href="' + title2URL + '" target="_blank">';
+        var linkedTitle2 = '<h4><a href="' + title2URL + '" target="_blank">' + title2 + '</a></h4>';
+        var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" width="125" height="125" alt="Story Image"></a></center>';
+
+        if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
+            title2URL += utmsource; //appends our URL with a tracking code
+            urlInsert2 = '<a href="' + title2URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
+            imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 130px; max-width: 130px;" width="130" height="130" alt="Story Image"></a></center>';
+        }
+
+        //we push this to storyz so we can render our second story
+        storyz.storyTwo = [{
+            title: title2,
+            text: title2text,
+            url: title2URL,
+            imageURL: title2IMG,
+            urlInsert: urlInsert2,
+            linkedTitle: linkedTitle2,
+            insertImage: imageRetrieve2
+        }];
+    }
+
+    function firstStorySetup() {
+        $('#story1Form').find('input').each(textFix);
+        var subjectLine = $('#subjectInput').val();
+        var title1 = $("#title1").val();
+        var title1text = $("#title1text-textarea").val();
+        var title1URL = $("#title1URL").val();
+        var title1IMG = $("#title1IMG").val();
+        var urlInsert1 = '<a href="' + title1URL + '" target="_blank">';
+        var linkedTitle1 = '<h4><a href="' + title1URL + '" target="_blank">' + title1 + '</a></h4>';
+        var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
+        var keycodeArray = [];
+
+        if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
+            var title1KEY = $.trim($("#title1KEY").val());
+            var utmsource = '?utm_source=' + title1KEY + '&keycode=' + title1KEY + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
+            var codedURL = title1URL + utmsource; //appends our URL with a tracking code
+            keycodeArray[0] = title1KEY;
+            urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
+            imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
+
+            var productReference;
+
+            productReference = {
+                USR: {
+                    link: '<a href="http://www.independentlivingnews.com/video/usr-vsl.php' + utmsource + '" target="_blank">',
+                    shortCode: 'USR',
+                    longCode: 'Ultimate Self Reliance Manual'
+                },
+                GAB: {
+                    link: '<a href="http://www.independentlivingnews.com/video/great-american-blackout-ihnp.php' + utmsource + '" target="_blank">',
+                    shortCode: 'GAB',
+                    longCode: 'Great American Blackout'
+                },
+                FOOD: {
+                    link: '<a href="http://www.independentlivingnews.com/video/comfort-food-reserve.php' + utmsource + '" target="_blank">',
+                    shortCode: 'FOOD',
+                    longCode: 'Comfort Food Reserve'
+                },
+                CSG: {
+                    link: '<a href="https://www.independentlivingnews.com/video/csg-video.php' + utmsource + '" target="_blank">',
+                    shortCode: 'CSG',
+                    longCode: 'Colloidal Silver Generator'
+                },
+                LPL: {
+                    link: '<a href="http://www.independentlivingnews.com/video/lpl-video.php' + utmsource + '" target="_blank">',
+                    shortCode: 'LPL',
+                    longCode: 'Low Profile Living Manual'
+                },
+                EPACK: {
+                    link: '<a href="http://www.independentlivingnews.com/video/epack2-video.php' + utmsource + '" target="_blank">',
+                    shortCode: 'EPACK',
+                    longCode: 'Emergency Pack'
+                },
+                STREK: {
+                    link: '<a href="http://www.independentlivingnews.com/video/suntrek/' + utmsource + '" target="_blank">',
+                    shortCode: 'STREK',
+                    longCode: 'Sun Trek'
+                },
+                MSR: {
+                    link: '<a href="http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html' + utmsource + '" target="_blank">',
+                    shortCode: 'MSR',
+                    longCode: 'Medical Self Reliance Mega Manual'
+                },
+                FFL: {
+                    link: '<a href="http://www.independentlivingnews.com/video/ffl-vsl.php' + utmsource + '" target="_blank">',
+                    shortCode: 'FFL',
+                    longCode: 'Freedom Fortress Library'
+                },
+                XCOM: {
+                    link: '<a href="http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html' + utmsource + '" target="_blank">',
+                    shortCode: 'XCOM',
+                    longCode: 'Extreme Weather Combo'
+                },
+                PW: {
+                    link: '<a href="http://www.independentlivingnews.com/video/pw-vsl.php' + utmsource + '" target="_blank">',
+                    shortCode: 'PW',
+                    longCode: 'Power Whisperer'
+                },
+                CAN: {
+                    link: '<a href="http://www.survivalproshop.com/survival-essentials/survival-kit-in-a-can.html' + utmsource + '" target="_blank">',
+                    shortCode: 'CAN',
+                    longCode: 'Survival Can in a Kit'
+                },
+                SUB: {
+                    link: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">',
+                    shortCode: 'SUB',
+                    longCode: 'Subscription to Independent Living News'
+                }
+            };
+            function getProduct() {
+                var b;
+                b = $('#productSelect').val();
+                if (b !== '' && b !== null) {
+                    var c = S(b).right(1).toInt(); //gives us our ad template number
+                    var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
+                    var e = d.toString();
+                    var f = productReference[e].link;
+                    var g = productReference[e].shortCode;
+                    var h = productReference[e].longCode;
+                    storyz.currentProduct.link = f; //currentProduct product link updated to whatever the product link is
+                    storyz.currentProduct.shortCode = g; //currentProduct product link updated to whatever the product shortCode is
+                    storyz.currentProduct.longCode = h; //currentProduct product link updated to whatever the product longCode is
+                    storyz.currentProduct.tmplNum = c; //currentProduct product link updated to whatever the product longCode is
+                    storyz.currentProduct.enabled = true;
+                }
+            }
+        }
+        //This Object/Array is used with JSRender.
+        //The template will iterate over the contained "story" array
+        //and spit out as many stories as we have objects in the array.
+        storyz = {
+            story: [
+                {
+                    title: title1,
+                    text: title1text,
+                    url: title1URL,
+                    imageURL: title1IMG,
+                    urlInsert: urlInsert1,
+                    linkedTitle: linkedTitle1,
+                    insertImage: imageRetrieve1
+                }
+            ],
+            smartFocus: {
+                title: subjectLine,
+                ALP: {
+                    keycode: title1KEY,
+                    safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
+                    prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">Email Preferences</a>',
+                    unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">Unsubscribe</a>',
+                    spamLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam" style="color: #2ba6cb;text-decoration: none;">Mark as Spam</a>'
+                }
+            },
+            RFARDB: {
+                rfarHeader: '<a href="http://www.independentlivingnews.com/preppers' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="118" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="580" /></a>',
+                subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">'
+            },
+            ILNDB: {
+                ilnHeader: '<a href="http://www.independentlivingnews.com' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="117" src="http://www.independentlivingnews.com/email/images/ILN_LB_header.jpg" style="display:block;" width="580" /></a>',
+                modalLink: '<a href="' + codedURL + '" linkname="Modal Headline" target="_blank"><span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">' + title1 + '</span></a>'
+                },
+            currentProduct: {
+                link: '',
+                shortCode: '',
+                longCode: '',
+                enabled: false
+            }
+        };
+        getProduct();
+        console.log(storyz.currentProduct);
+    }
+
+
+
 
 
     //**********************
@@ -265,227 +446,17 @@ $(document).ready(function () {
     //BEGIN POST-BUTTON CLICK ACTIONS
     //********************************
 	$("#generateHTML").click(function(event){
-		    var storyz;
-            var keycodeArray = [];
-            makeKeyCode(event);
         event.preventDefault(); //Stops page from reloading
             if ($("#title1").val() === "") {
                 alert("Please enter a story");
             } else {
+                makeKeyCode(event);
                 getTemplateStyle(); //Start by finding out which template we're using
-                $('#story1Form').find('input').each(textFix);
-                var subjectLine = $('#subjectInput').val();
-                var title1 = $("#title1").val();
-                var title1text = $("#title1text-textarea").val();
-                var title1URL = $("#title1URL").val();
-                var title1IMG = $("#title1IMG").val();
-                var urlInsert1 = '<a href="' + title1URL + '" target="_blank">';
-                var linkedTitle1 = '<h4><a href="' + title1URL + '" target="_blank">' + title1 + '</a></h4>';
-                var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
-
-
-
-                if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
-                    var title1KEY = $.trim($("#title1KEY").val());
-                    var utmsource = '?utm_source=' + title1KEY + '&keycode=' + title1KEY + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
-                    var codedURL = title1URL + utmsource; //appends our URL with a tracking code
-                    keycodeArray[0] = title1KEY;
-                    urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
-                    var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
-
-                    if (templateStyle === "ILNDB"){
-                        imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 200px; max-width: 200px; border: 3px solid #E5e5e5;" height="200" width="200" alt="Story Image"></a></center>';
-                    }
-
-                    var productReference;
-
-                    productReference = {
-                        USR: {
-                            link: '<a href="http://www.independentlivingnews.com/video/usr-vsl.php' + utmsource + '" target="_blank">',
-                            shortCode: 'USR',
-                            longCode: 'Ultimate Self Reliance Manual',
-                            selected: false
-                        },
-                        GAB: {
-                            link: '<a href="http://www.independentlivingnews.com/video/great-american-blackout-ihnp.php' + utmsource + '" target="_blank">',
-                            shortCode: 'GAB',
-                            longCode: 'Great American Blackout',
-                            selected: false
-                        },
-                        FOOD: {
-                            link: '<a href="http://www.independentlivingnews.com/video/comfort-food-reserve.php' + utmsource + '" target="_blank">',
-                            shortCode: 'FOOD',
-                            longCode: 'Comfort Food Reserve',
-                            selected: false
-                        },
-                        CSG: {
-                            link: '<a href="https://www.independentlivingnews.com/video/csg-video.php' + utmsource + '" target="_blank">',
-                            shortCode: 'CSG',
-                            longCode: 'Colloidal Silver Generator',
-                            selected: false
-                        },
-                        LPL: {
-                            link: '<a href="http://www.independentlivingnews.com/video/lpl-video.php' + utmsource + '" target="_blank">',
-                            shortCode: 'LPL',
-                            longCode: 'Low Profile Living Manual',
-                            selected: false
-                        },
-                        EPACK: {
-                            link: '<a href="http://www.independentlivingnews.com/video/epack2-video.php' + utmsource + '" target="_blank">',
-                            shortCode: 'EPACK',
-                            longCode: 'Emergency Pack',
-                            selected: false
-                        },
-                        STREK: {
-                            link: '<a href="http://www.independentlivingnews.com/video/suntrek/' + utmsource + '" target="_blank">',
-                            shortCode: 'STREK',
-                            longCode: 'Sun Trek',
-                            selected: false
-                        },
-                        MSR: {
-                            link: '<a href="http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html' + utmsource + '" target="_blank">',
-                            shortCode: 'MSR',
-                            longCode: 'Medical Self Reliance Mega Manual',
-                            selected: false
-                        },
-                        FFL: {
-                            link: '<a href="http://www.independentlivingnews.com/video/ffl-vsl.php' + utmsource + '" target="_blank">',
-                            shortCode: 'FFL',
-                            longCode: 'Freedom Fortress Library',
-                            selected: false
-                        },
-                        XCOM: {
-                            link: '<a href="http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html' + utmsource + '" target="_blank">',
-                            shortCode: 'XCOM',
-                            longCode: 'Extreme Weather Combo',
-                            selected: false
-                        },
-                        PW: {
-                            link: '<a href="http://www.independentlivingnews.com/video/pw-vsl.php' + utmsource + '" target="_blank">',
-                            shortCode: 'PW',
-                            longCode: 'Power Whisperer',
-                            selected: false
-                        },
-                        CAN: {
-                            link: '<a href="http://www.survivalproshop.com/survival-essentials/survival-kit-in-a-can.html' + utmsource + '" target="_blank">',
-                            shortCode: 'CAN',
-                            longCode: 'Survival Can in a Kit',
-                            selected: false
-                        },
-                        SUB: {
-                            link: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">',
-                            shortCode: 'SUB',
-                            longCode: 'Subscription to Independent Living News',
-                            selected: false
-                        }
-                    };
-
-                    function getProduct() {
-                        var b;
-                        b = $('#productSelect').val();
-                        if (b !== '' && b !== null) {
-                            var c = S(b).right(1).toInt(); //gives us our ad template number TODO expand to accomodate more than 9
-                            var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
-                            var e = d.toString();
-                            var f = productReference[e].link;
-                            var g = productReference[e].shortCode;
-                            var h = productReference[e].longCode;
-                            productReference[e].selected = d;
-                            storyz.currentProduct.link = f; //currentProduct product link updated to whatever the product link is
-                            storyz.currentProduct.shortCode = g; //currentProduct product link updated to whatever the product shortCode is
-                            storyz.currentProduct.longCode = h; //currentProduct product link updated to whatever the product longCode is
-                            storyz.currentProduct.tmplNum = c; //currentProduct product link updated to whatever the product longCode is
-                            storyz.currentProduct.enabled = true;
-                        }
-                    }
-                }
-                //END ALP IF
-
-
-
-
-
-
-
-
-
-                //This Object/Array is used with JSRender.
-                //The template will iterate over the contained "story" array
-                //and spit out as many stories as we have objects in the array.
-                storyz = {
-                    story: [
-                        {
-                            title: title1,
-                            text: title1text,
-                            url: title1URL,
-                            imageURL: title1IMG,
-                            urlInsert: urlInsert1,
-                            linkedTitle: linkedTitle1,
-                            insertImage: imageRetrieve1
-                        }
-                    ],
-                    smartFocus: {
-                        title: subjectLine,
-                        keycode: title1KEY
-                    },
-                    RFARDB: {
-                        keycode: title1KEY,
-                        utmSource: '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]',
-                        safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
-                        rfarHeader: '<a href="http://www.independentlivingnews.com/preppers' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="118" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="580" /></a>',
-                        subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">',
-                        prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">Email Preferences</a>',
-                        unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">Unsubscribe</a>',
-                        spamLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam" style="color: #2ba6cb;text-decoration: none;">Mark as Spam</a>'
-                    },
-                    ILNDB: {
-                        ilnHeader: '<a href="http://www.independentlivingnews.com' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="121" src="http://www.independentlivingnews.com/email/images/ILN_LB_header.jpg" style="display:block;" width="600" /></a>',
-                        safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
-                        subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">',
-                        prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">',
-                        unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">',
-                        modalLink: '<a href="' + codedURL + '" linkname="Modal Headline" target="_blank"><span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">' + title1 + '</span></a>'
-                    },
-                    currentProduct: {
-                        link: '',
-                        shortCode: '',
-                        longCode: '',
-                        enabled: false
-                    }
-                };
-                getProduct();
-                console.log(storyz.currentProduct);
-
+                firstStorySetup();
 
                 if (additionalContentVal === true) {
-                    $('#story2Form').find('input').each(textFix);
-                    var title2 = $.trim($("#title2").val());
-                    var title2text = $.trim($("#title2text-textarea").val());
-                    var title2URL = $.trim($("#title2URL").val());
-                    var title2IMG = $.trim($("#title2IMG").val());
-                    var urlInsert2 = '<a href="' + title2URL + '" target="_blank">';
-                    var linkedTitle2 = '<h4><a href="' + title2URL + '" target="_blank">' + title2 + '</a></h4>';
-                    var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" width="125" height="125" alt="Story Image"></a></center>';
-
-                    if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
-                        title2URL += utmsource; //appends our URL with a tracking code
-                        urlInsert2 = '<a href="' + title2URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
-                        imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 130px; max-width: 130px;" width="130" height="130" alt="Story Image"></a></center>';
-                    }
-
-                    //we push this to storyz so we can render our second story
-                    storyz.storyTwo = [{
-                        title: title2,
-                        text: title2text,
-                        url: title2URL,
-                        imageURL: title2IMG,
-                        urlInsert: urlInsert2,
-                        linkedTitle: linkedTitle2,
-                        insertImage: imageRetrieve2
-                    }];
-
+                    secondStorySetup();
                 }
-                //END ADDITIONAL CONTENT = TRUE
 
                 function spawnILNDB() {
                     function getILNDB() {
@@ -505,7 +476,7 @@ $(document).ready(function () {
                         });
                 }
 
-                function spawnRFARDB() { //TODO could probably replace this with the new loader https://github.com/stevenmhunt/tmpl.loader
+                function spawnRFARDB() { //could probably replace this with the new loader https://github.com/stevenmhunt/tmpl.loader
                     function getRFARDB() {
                         return $.get("http://daviseford.com/sites/default/files/email_templater/txt/rfar_db_Tmpl.htm", function (value) {
                             rfar_db_Tmpl = $.templates(value);

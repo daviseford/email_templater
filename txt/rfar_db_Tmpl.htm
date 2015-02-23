@@ -784,7 +784,7 @@ body.outlook p {
                             </td>
                             <td class="six sub-columns last" style="text-align: right;vertical-align: middle;word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;min-width: 0px;padding-right: 0px;width: 50%;border-collapse: collapse !important;">
                               <span class="right-text-pad" style="font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #FFF;padding-right: 10px;">
-                				{{:RFARDB.safeSend}}
+                				{{:smartFocus.ALP.safeSend}}
                 				</span>
                             </td>
                             <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
@@ -1000,7 +1000,6 @@ body.outlook p {
                              <img alt="Lee Bellinger" height="52" src="http://www.independentlivingnews.com/email/images/signature-blue.jpg" width="260" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: auto;max-width: 100%;float: left;clear: both;display: block;">
                              <p style="margin: 0;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">Lee Bellinger, Publisher</p>
                              <b>Independent Living</b>
-                         </p>
 
                      </td>
                      <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
@@ -1083,61 +1082,8 @@ body.outlook p {
              <table class="twelve columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 580px;">
                  <tr style="padding: 0;vertical-align: top;text-align: left;">
                      <td align="center" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse !important;">
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 &copy;2015 American Lantern Press
-                             </center>
-                         </span>
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 377 Rubin Center Drive &#8226; Suite 203 &#8226; Fort Mill, SC &#8226; 29708 &#8226; (877) 371-1807
-                             </center>
-                         </span>
-	
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 {{:RFARDB.spamLink}} (Even though we're not!)
-                             </center>
-                         </span>
-                             
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 Pick what emails you want to receive from us! {{:RFARDB.prefLink}}
-                             </center>
-                         </span>
-                                 
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 Don't want to receive our information anymore? (We'll miss you!) {{:RFARDB.unsubLink}}
-                             </center>
-                         </span>
-					
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 This copyrighted material may not be republished without express permission.
-                             </center>
-                         </span>
-                                 
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 Offer only available through email promotion.
-                             </center>
-                         </span>
-                                 
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 Offer does not apply to previous orders and may not be combined with any other offer.
-                             </center>
-                         </span>
-                                 
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">
-                                 The information in this email is presented for general educational purposes only.
-                             </center>
-                         </span>
-                                 
-                         <span style="font-size:10px; text-align:center">
-                             <center style="width: 100%;min-width: 580px;">{{:smartFocus.keycode}}</center></span>
+
+                         {{for smartFocus.ALP tmpl="addDiv_templates_ALPFOOTER" /}}
                          
                      </td>
                      <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
