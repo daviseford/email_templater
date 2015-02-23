@@ -265,34 +265,6 @@ $(document).ready(function () {
         }
     }
 
-    function secondStorySetup() {
-        $('#story2Form').find('input').each(textFix);
-        var title2 = $.trim($("#title2").val());
-        var title2text = $.trim($("#title2text-textarea").val());
-        var title2URL = $.trim($("#title2URL").val());
-        var title2IMG = $.trim($("#title2IMG").val());
-        var urlInsert2 = '<a href="' + title2URL + '" target="_blank">';
-        var linkedTitle2 = '<h4><a href="' + title2URL + '" target="_blank">' + title2 + '</a></h4>';
-        var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" width="125" height="125" alt="Story Image"></a></center>';
-
-        if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
-            title2URL += utmsource; //appends our URL with a tracking code
-            urlInsert2 = '<a href="' + title2URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
-            imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 130px; max-width: 130px;" width="130" height="130" alt="Story Image"></a></center>';
-        }
-
-        //we push this to storyz so we can render our second story
-        storyz.storyTwo = [{
-            title: title2,
-            text: title2text,
-            url: title2URL,
-            imageURL: title2IMG,
-            urlInsert: urlInsert2,
-            linkedTitle: linkedTitle2,
-            insertImage: imageRetrieve2
-        }];
-    }
-
     function firstStorySetup() {
         $('#story1Form').find('input').each(textFix);
         var subjectLine = $('#subjectInput').val();
@@ -306,10 +278,12 @@ $(document).ready(function () {
         var keycodeArray = [];
 
         if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
-            var title1KEY = $.trim($("#title1KEY").val());
-            var utmsource = '?utm_source=' + title1KEY + '&keycode=' + title1KEY + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
+            keycodeArray[0]= $.trim($("#title1KEY").val());
+            //var title1KEY = $.trim($("#title1KEY").val());
+            var utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
             var codedURL = title1URL + utmsource; //appends our URL with a tracking code
-            keycodeArray[0] = title1KEY;
+            //keycodeArray[0] = title1KEY;
+            //keycodeArray[0]= $.trim($("#title1KEY").val());
             urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
             imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
 
@@ -389,15 +363,19 @@ $(document).ready(function () {
                 if (b !== '' && b !== null) {
                     var c = S(b).right(1).toInt(); //gives us our ad template number
                     var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
-                    var e = d.toString();
+                    var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
                     var f = productReference[e].link;
-                    var g = productReference[e].shortCode;
+                    var g = productReference[e].shortCode; //This is the same as writing productReference.XCOM.longCode
                     var h = productReference[e].longCode;
-                    storyz.currentProduct.link = f; //currentProduct product link updated to whatever the product link is
-                    storyz.currentProduct.shortCode = g; //currentProduct product link updated to whatever the product shortCode is
-                    storyz.currentProduct.longCode = h; //currentProduct product link updated to whatever the product longCode is
-                    storyz.currentProduct.tmplNum = c; //currentProduct product link updated to whatever the product longCode is
-                    storyz.currentProduct.enabled = true;
+                    storyz.currentProduct = {
+                        link: f,
+                        shortCode: g,
+                        longCode: h,
+                        tmplNum: c,
+                        keyCode: keycodeArray,
+                        utm: utmsource.toString(),
+                        enabled: true
+                    };
                 }
             }
         }
@@ -419,7 +397,7 @@ $(document).ready(function () {
             smartFocus: {
                 title: subjectLine,
                 ALP: {
-                    keycode: title1KEY,
+                    utmString: utmsource.toString(),
                     safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
                     prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">Email Preferences</a>',
                     unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">Unsubscribe</a>',
@@ -433,16 +411,46 @@ $(document).ready(function () {
             ILNDB: {
                 ilnHeader: '<a href="http://www.independentlivingnews.com' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="117" src="http://www.independentlivingnews.com/email/images/ILN_LB_header.jpg" style="display:block;" width="580" /></a>',
                 modalLink: '<a href="' + codedURL + '" linkname="Modal Headline" target="_blank"><span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">' + title1 + '</span></a>'
-                },
+            },
             currentProduct: {
                 link: '',
                 shortCode: '',
                 longCode: '',
+                keyCode: '',
+                utm: '',
                 enabled: false
             }
         };
         getProduct();
         console.log(storyz.currentProduct);
+    }
+
+    function secondStorySetup() {
+        $('#story2Form').find('input').each(textFix);
+        var title2 = $.trim($("#title2").val());
+        var title2text = $.trim($("#title2text-textarea").val());
+        var title2URL = $.trim($("#title2URL").val());
+        var title2IMG = $.trim($("#title2IMG").val());
+        var urlInsert2 = '<a href="' + title2URL + '" target="_blank">';
+        var linkedTitle2 = '<h4><a href="' + title2URL + '" target="_blank">' + title2 + '</a></h4>';
+        var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" width="125" height="125" alt="Story Image"></a></center>';
+
+        if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
+            title2URL += storyz.currentProduct.utm; //appends our URL with a tracking code
+            urlInsert2 = '<a href="' + title2URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
+            imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 130px; max-width: 130px;" width="130" height="130" alt="Story Image"></a></center>';
+        }
+
+        //we push this directly to storyz so we can render our second story
+        storyz.storyTwo = [{
+            title: title2,
+            text: title2text,
+            url: title2URL,
+            imageURL: title2IMG,
+            urlInsert: urlInsert2,
+            linkedTitle: linkedTitle2,
+            insertImage: imageRetrieve2
+        }];
     }
 
 
@@ -455,19 +463,15 @@ $(document).ready(function () {
         if(S(inputVal).contains('.stml')) {
             var splitSTML = $.trim($(this).val().split('.stml')[0]); //split the value into two parts of an array.
             $(this).val(splitSTML+".stml");	//re-add the .stml ending
-            console.log("Fixed string with stmlCheck"); //Not necessary, just for keeping track
         } else if(S(inputVal).contains('.html')) {
             var splitHTML = $.trim($(this).val().split('.html')[0]);
             $(this).val(splitHTML+".html");
-            console.log("Fixed string with htmlCheck"); //Not necessary, just for keeping track
         } else if(S(inputVal).contains('?utm_source')) {
             var splitUTM = $.trim($(this).val().split('?utm_source')[0]);
             $(this).val(splitUTM);
-            console.log("Fixed string with utmCheck"); //Not necessary, just for keeping track
         } else if(S(inputVal).contains(' - See more at:')) {
             var splitSeeMore = $.trim($(this).val().split(' - See more at:')[0]);
             $(this).val(splitSeeMore);
-            console.log("Fixed string with SeeMoreCheck"); //Not necessary, just for keeping track
         }
 
     }
@@ -477,16 +481,21 @@ $(document).ready(function () {
 
     //sanitizeRender takes the value of our template and removes the head, body, html, and style sections.
     //I used string replace because simply removing the tags was not enough.
-    //With the template I'm using, there are two style sections, that's why I have two if's instead of a while.
-    //That might be a dumb explanation.
     function sanitizeRender(content){
         var that = this;
         if(S(content).contains('<style>')) {
-            content = content.replace(/<style>[\s\S]*?<\/style>/, '');
-            console.log("sanitizeRender(1)");
-            if(S(content).contains('<style>')) {
-                content = content.replace(/<style>[\s\S]*?<\/style>/, '');
-                console.log("sanitizeRender(2)");
+            //content = content.replace(/<style>[\s\S]*?<\/style>/, '');
+            //console.log("sanitizeRender(1)");
+            var x = true;
+            var i = 0;
+            while (x === true) {
+                if (S(content).contains('<style>')) {
+                    content = content.replace(/<style>[\s\S]*?<\/style>/, '');
+                    i++;
+                    console.log("sanitizeRender() used " + i + " times.");
+                } else {
+                    x = false;
+                }
             }
         }
         //console.log((S(content).stripTags('html', 'head', 'body').s));
