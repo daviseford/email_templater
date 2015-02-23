@@ -85,7 +85,6 @@ $(document).ready(function () {
     //<option value="CSG1">CSG - Banner 560x56</option>
     //<option value="CSG2">CSG - Image with copy</option>
     //</optgroup>
-    //TODO actually do this
     //function getRep(x) {
     //    var keys = [];
     //    var that = this;
@@ -212,6 +211,60 @@ $(document).ready(function () {
         console.log("getTemplateStyle()"+x);
     }
 
+    function spawnILNDB() {
+        function getILNDB() {
+            return $.get("http://daviseford.com/sites/default/files/email_templater/txt/iln_db_Tmpl.htm", function (value) {
+                iln_db_Tmpl = $.templates(value);
+            });
+        }
+
+        $.when(
+            getILNDB()
+        ).then(function () {
+                var html = iln_db_Tmpl.render(storyz);
+                $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+                $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
+            }).fail(function () {
+                console.log("spawnILNDB(): Something went wrong!");
+            });
+    }
+
+    function spawnRFARDB() { //could probably replace this with the new loader https://github.com/stevenmhunt/tmpl.loader
+        function getRFARDB() {
+            return $.get("http://daviseford.com/sites/default/files/email_templater/txt/rfar_db_Tmpl.htm", function (value) {
+                rfar_db_Tmpl = $.templates(value);
+            });
+        }
+
+        $.when(
+            getRFARDB()
+        ).then(function () {
+                var html = rfar_db_Tmpl.render(storyz);
+                $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+                $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
+                makeEmailBtn(); //take this out if it gets abused
+            }).fail(function () {
+                console.log("spawnRFARDB(): Something went wrong!");
+            });
+    }
+
+    //getResults() is responsible for reading the template selection box
+    //and spawning the correct template
+    //will probably be revised in the future, as it's a bit hacky and inelegant
+    function getResults() {
+        var y = [$('#listSelect').val(), $('#tmplSelect').val()];
+        var x = y.join('');
+        if (x === "ILNDB") {
+            spawnILNDB();
+            console.log("getResults(): Spawned ILNDB");
+        } else if (x === "RFARDB") {
+            spawnRFARDB();
+            console.log("getResults(): Spawned RFARDB");
+        } else {
+            console.log("getResults(): Error: Didn't spawn anything");
+        }
+    }
+
     function secondStorySetup() {
         $('#story2Form').find('input').each(textFix);
         var title2 = $.trim($("#title2").val());
@@ -329,6 +382,7 @@ $(document).ready(function () {
                     longCode: 'Subscription to Independent Living News'
                 }
             };
+
             function getProduct() {
                 var b;
                 b = $('#productSelect').val();
@@ -392,9 +446,6 @@ $(document).ready(function () {
     }
 
 
-
-
-
     //**********************
     //BEGIN TEXT HANDLING  *
     //**********************
@@ -456,61 +507,6 @@ $(document).ready(function () {
 
                 if (additionalContentVal === true) {
                     secondStorySetup();
-                }
-
-                function spawnILNDB() {
-                    function getILNDB() {
-                        return $.get("http://daviseford.com/sites/default/files/email_templater/txt/iln_db_Tmpl.htm", function (value) {
-                            iln_db_Tmpl = $.templates(value);
-                        });
-                    }
-
-                    $.when(
-                        getILNDB()
-                    ).then(function () {
-                            var html = iln_db_Tmpl.render(storyz);
-                            $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
-                            $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
-                        }).fail(function () {
-                            console.log("spawnILNDB(): Something went wrong!");
-                        });
-                }
-
-                function spawnRFARDB() { //could probably replace this with the new loader https://github.com/stevenmhunt/tmpl.loader
-                    function getRFARDB() {
-                        return $.get("http://daviseford.com/sites/default/files/email_templater/txt/rfar_db_Tmpl.htm", function (value) {
-                            rfar_db_Tmpl = $.templates(value);
-                        });
-                    }
-
-                    $.when(
-                        getRFARDB()
-                    ).then(function () {
-                            var html = rfar_db_Tmpl.render(storyz);
-                            $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
-                            $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
-                            makeEmailBtn(); //take this out if it gets abused
-                        }).fail(function () {
-                            console.log("spawnRFARDB(): Something went wrong!");
-                        });
-                }
-
-
-                //getResults() is responsible for reading the template selection box
-                //and spawning the correct template
-                //will probably be revised in the future, as it's a bit hacky and inelegant
-                function getResults() {
-                    var y = [$('#listSelect').val(), $('#tmplSelect').val()];
-                    var x = y.join('');
-                    if (x === "ILNDB") {
-                        spawnILNDB();
-                        console.log("getResults(): Spawned ILNDB");
-                    } else if (x === "RFARDB") {
-                        spawnRFARDB();
-                        console.log("getResults(): Spawned RFARDB");
-                    } else {
-                        console.log("getResults(): Error: Didn't spawn anything");
-                    }
                 }
 
                 getResults();
