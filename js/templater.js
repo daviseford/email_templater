@@ -279,11 +279,8 @@ $(document).ready(function () {
 
         if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
             keycodeArray[0]= $.trim($("#title1KEY").val());
-            //var title1KEY = $.trim($("#title1KEY").val());
             var utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
             var codedURL = title1URL + utmsource; //appends our URL with a tracking code
-            //keycodeArray[0] = title1KEY;
-            //keycodeArray[0]= $.trim($("#title1KEY").val());
             urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
             imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
 
@@ -485,8 +482,6 @@ $(document).ready(function () {
     function sanitizeRender(content){
         var that = this;
         if(S(content).contains('<style>')) {
-            //content = content.replace(/<style>[\s\S]*?<\/style>/, '');
-            //console.log("sanitizeRender(1)");
             var x = true;
             var i = 0;
             while (x === true) {
@@ -499,7 +494,6 @@ $(document).ready(function () {
                 }
             }
         }
-        //console.log((S(content).stripTags('html', 'head', 'body').s));
         return (S(content).stripTags('html', 'head', 'body').s);
     }
 
