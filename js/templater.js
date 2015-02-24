@@ -195,16 +195,16 @@ $(document).ready(function () {
     function getTemplateStyle(){
         var y = [$('#listSelect').val(), $('#tmplSelect').val()];
         var x = y.join('');
-        if (x === "DB") {
-            templateStyle = "DB";
+        if (x === "ALPACDB") {
+            templateStyle = "ALPACDB";
         } else if (x === "ILNDB"){
             templateStyle = "ILNDB";
-            rfarLayoutDisplay(true);
-            ilnLayoutDisplay(true);
+            //rfarLayoutDisplay(true);
+            //ilnLayoutDisplay(true);
         } else if (x === "RFARDB"){
             templateStyle = "RFARDB";
-            rfarLayoutDisplay(true);
-            ilnLayoutDisplay(false);
+            //rfarLayoutDisplay(true);
+            //ilnLayoutDisplay(false);
         } else {
             console.log("getTemplateStyle() - Error: None of above");
         }
@@ -217,13 +217,13 @@ $(document).ready(function () {
                 iln_db_Tmpl = $.templates(value);
             });
         }
-
         $.when(
             getILNDB()
         ).then(function () {
                 var html = iln_db_Tmpl.render(storyz);
                 $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                 $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
+                makeEmailBtn(); //take this out if it gets abused
             }).fail(function () {
                 console.log("spawnILNDB(): Something went wrong!");
             });
@@ -248,6 +248,25 @@ $(document).ready(function () {
             });
     }
 
+    function spawnALPACDB() {
+        function getALPACDB() {
+            return $.get("http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm", function (value) {
+                alpac_db_Tmpl = $.templates(value);
+            });
+        }
+
+        $.when(
+            getALPACDB()
+        ).then(function () {
+                var html = alpac_db_Tmpl.render(storyz);
+                $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+                $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
+                makeEmailBtn(); //take this out if it gets abused
+            }).fail(function () {
+                console.log("spawnALPACDB(): Something went wrong!");
+            });
+    }
+
     //getResults() is responsible for reading the template selection box
     //and spawning the correct template
     //will probably be revised in the future, as it's a bit hacky and inelegant
@@ -260,6 +279,9 @@ $(document).ready(function () {
         } else if (x === "RFARDB") {
             spawnRFARDB();
             console.log("getResults(): Spawned RFARDB");
+        } else if (x === "ALPACDB") {
+            spawnALPACDB();
+            console.log("getResults(): Spawned ALPACDB");
         } else {
             console.log("getResults(): Error: Didn't spawn anything");
         }
@@ -276,9 +298,31 @@ $(document).ready(function () {
         var linkedTitle1 = '<h4><a href="' + title1URL + '" target="_blank">' + title1 + '</a></h4>';
         var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
         var keycodeArray = [];
+        keycodeArray[0]= $.trim($("#title1KEY").val());
+
+        function getProduct() {
+            var b;
+            b = $('#productSelect').val();
+            if (b !== '' && b !== null) {
+                var c = S(b).right(1).toInt(); //gives us our ad template number
+                var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
+                var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
+                var f = productReference[e].link;
+                var g = productReference[e].shortCode; //This is the same as writing productReference.XCOM.longCode
+                var h = productReference[e].longCode;
+                storyz.currentProduct = {
+                    link: f,
+                    shortCode: g,
+                    longCode: h,
+                    tmplNum: c,
+                    keyCode: keycodeArray,
+                    utm: utmsource.toString(),
+                    enabled: true
+                };
+            }
+        }
 
         if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
-            keycodeArray[0]= $.trim($("#title1KEY").val());
             var utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
             var codedURL = title1URL + utmsource; //appends our URL with a tracking code
             urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
@@ -354,27 +398,23 @@ $(document).ready(function () {
                 }
             };
 
-            function getProduct() {
-                var b;
-                b = $('#productSelect').val();
-                if (b !== '' && b !== null) {
-                    var c = S(b).right(1).toInt(); //gives us our ad template number
-                    var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
-                    var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
-                    var f = productReference[e].link;
-                    var g = productReference[e].shortCode; //This is the same as writing productReference.XCOM.longCode
-                    var h = productReference[e].longCode;
-                    storyz.currentProduct = {
-                        link: f,
-                        shortCode: g,
-                        longCode: h,
-                        tmplNum: c,
-                        keyCode: keycodeArray,
-                        utm: utmsource.toString(),
-                        enabled: true
-                    };
+        }
+        if (templateStyle === "ALPACDB"){
+            var utmsource = '?utm_source=' + keycodeArray + '&utm_medium=email&utm_campaign=' + keycodeArray;
+            var codedURL = title1URL + utmsource; //appends our URL with a tracking code
+            urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
+            imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
+
+            var productReference;
+
+            productReference = {
+                PPP: {
+                    link: '<a href="http://americanlibertypac.com/2016-presidential-preference-poll-2/' + utmsource + '" target="_blank" alt="Presidential Preference Poll 2016">',
+                    shortCode: 'PPP',
+                    longCode: 'Presidential Preference Poll 2016'
                 }
             }
+
         }
         //This Object/Array is used with JSRender.
         //The template will iterate over the contained "story" array
@@ -393,6 +433,10 @@ $(document).ready(function () {
             ],
             smartFocus: {
                 title: subjectLine,
+                ALPAC: {
+                    keycode: keycodeArray,
+                    utmString: utmsource.toString()
+                },
                 ALP: {
                     keycode: keycodeArray,
                     utmString: utmsource.toString(),
@@ -401,6 +445,10 @@ $(document).ready(function () {
                     unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">Unsubscribe</a>',
                     spamLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam" style="color: #2ba6cb;text-decoration: none;">Mark as Spam</a>'
                 }
+            },
+            ALPACDB: {
+                homepage: '<a href="http://www.americanlibertypac.com' + utmsource + '" target="new">Visit ALPAC</a>',
+                alpacHeader: '<a href="http://www.americanlibertypac.com' + utmsource + '" target="new"><img src="http://p5tre.emv3.com/IL/0/0/1/1101054001/1686937737.gif" alt="American Liberty PAC" width="580" height="108" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block;" align="left" />'
             },
             RFARDB: {
                 rfarHeader: '<a href="http://www.independentlivingnews.com/preppers' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="118" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="580" /></a>',
@@ -497,6 +545,57 @@ $(document).ready(function () {
         return (S(content).stripTags('html', 'head', 'body').s);
     }
 
+    //TODO RSS attempt - in progress
+    function getRSS() {
+        var rss = [];
+        var i = 0;
+        $.ajax({
+            url      : document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://americanlibertypac.com/feed/'),
+            dataType : 'json',
+            success  : function (data) {
+                if (data.responseData.feed && data.responseData.feed.entries) {
+                    $.each(data.responseData.feed.entries, function (i, e) {
+                        //console.log("------------------------");
+                        //console.log("title      : " + e.title);
+                        //console.log("link    : " + e.link);
+                        //console.log("description: " + e.description);
+                        //console.log("content: " + e.content);
+                        //console.log("comments: " + e.comments);
+
+                        function newRSS(storyNum, title, link, imgsrc){
+                            this.storyNum = storyNum;
+                            this.title = title;
+                            this.link = link;
+                            this.imgsrc = imgsrc;
+                        }
+
+                        var a = e.title;
+                        var b = e.link;
+
+                        var content = document.createElement("content");
+                        content.innerHTML = e.content;
+                        var images = $(content).find('img').map(function(){
+                            return $(this).attr('src')
+                        }).get();
+                        if (images.length !== 0) {
+                            console.log('<img src="' + images[0] + '"/>');
+                        }
+                        var setupRSS = [];
+                        setupRSS[i] = new newRSS(i, a, b, images[0]);
+
+                        console.log("------------------------");
+                        console.log('Story Number: '+ setupRSS[i].storyNum);
+                        console.log('Title: '+ setupRSS[i].title);
+                        console.log('Link: '+ setupRSS[i].link);
+                        console.log('Image Source: '+ setupRSS[i].imgsrc);
+                        console.log("------------------------");
+                        i++;
+                    });
+                }
+            }
+        });
+    }
+
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
     //********************************
@@ -518,6 +617,7 @@ $(document).ready(function () {
                 $("#resultsContainer1").show("drop"); //Shows the results once everything is ready.
                 $("#resultsContainer2").show("drop"); //Shows the results once everything is ready.
                 $("#emailBtnDiv").show('drop');
+                getRSS();
 
             }}
         )
