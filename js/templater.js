@@ -24,58 +24,60 @@ $(document).ready(function () {
                     sendEmail();
                 })
     }
-    function sendEmail(){
+    function sendEmail() {
         var x = $("#resultsTextArea").val();
-        var y;
         var z = $("#title1KEY").val();
-        y = S(x).unescapeHTML().s;
+        var y = S(x).unescapeHTML().s;
         z = z.toUpperCase();
-        $.ajax({
-            type: "POST",
-            dataType: "text",
-            processData: "false",
-            url: "https://mandrillapp.com/api/1.0/messages/send.json",
-            data: {
-                'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
-                'message': {
-                    'from_email': 'digitalmedia@wjmassociates.com',
-                    'to': [
-                        {
-                            'email': 'trigger@recipe.ifttt.com',
-                            'name': 'Trigger',
-                            'type': 'to'
-                        }
-                    ],
-                    'autotext': 'true',
-                    'subject': z,
-                    'text': y
-                }}
-        }).done(function(response) {
-            console.log(response); // if you're into that sorta thing
-        });
-        $.ajax({
-            type: "POST",
-            dataType: "text",
-            url: "https://mandrillapp.com/api/1.0/messages/send.json",
-            data: {
-                'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
-                'message': {
-                    'from_email': 'digitalmedia@wjmassociates.com',
-                    'to': [
-                        {
-                            'email': 'dford@wjmassociates.com',
-                            'name': 'Davis Ford',
-                            'type': 'to'
-                        }
-                    ],
-                    'autotext': 'true',
-                    'subject': '[SUBMISSION] ' + z,
-                    'text': y
-                }}
-        }).done(function(response) {
-            console.log(response); // if you're into that sorta thing
-        });
-    };
+            $.ajax({
+                type: "POST",
+                dataType: "text",
+                processData: "false",
+                url: "https://mandrillapp.com/api/1.0/messages/send.json",
+                data: {
+                    'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                    'message': {
+                        'from_email': 'digitalmedia@wjmassociates.com',
+                        'to': [
+                            {
+                                'email': 'trigger@recipe.ifttt.com',
+                                'name': 'Trigger',
+                                'type': 'to'
+                            }
+                        ],
+                        'autotext': 'true',
+                        'subject': z,
+                        'text': y
+                    }
+                }
+            }).done(function (response) {
+                console.log(response); // if you're into that sorta thing
+            });
+            $.ajax({
+                type: "POST",
+                dataType: "text",
+                url: "https://mandrillapp.com/api/1.0/messages/send.json",
+                data: {
+                    'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                    'message': {
+                        'from_email': 'digitalmedia@wjmassociates.com',
+                        'to': [
+                            {
+                                'email': 'dford@wjmassociates.com',
+                                'name': 'Davis Ford',
+                                'type': 'to'
+                            }
+                        ],
+                        'autotext': 'true',
+                        'subject': '[SUBMISSION] ' + z,
+                        'text': y
+                    }
+                }
+            }).done(function (response) {
+                console.log(response); // if you're into that sorta thing
+                $('#emailHTML').text('Email Sent!').effect('highlight', 'fast');
+            });
+        }
 
 
 
@@ -547,7 +549,6 @@ $(document).ready(function () {
 
     //TODO RSS attempt - in progress
     function getRSS() {
-        var rss = [];
         var i = 0;
         $.ajax({
             url      : document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://americanlibertypac.com/feed/'),
@@ -555,33 +556,23 @@ $(document).ready(function () {
             success  : function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
-                        //console.log("------------------------");
-                        //console.log("title      : " + e.title);
-                        //console.log("link    : " + e.link);
-                        //console.log("description: " + e.description);
-                        //console.log("content: " + e.content);
-                        //console.log("comments: " + e.comments);
+                        var setupRSS = [];
+                        var a = e.title;
+                        var b = e.link;
+                        var content = document.createElement("content");
+                        content.innerHTML = e.content;
+                        var images = $(content).find('img').map(function(){
+                            return $(this).attr('src')
+                        }).get();
 
-                        function newRSS(storyNum, title, link, imgsrc){
+                        function RSS_Maker(storyNum, title, link, imgsrc){
                             this.storyNum = storyNum;
                             this.title = title;
                             this.link = link;
                             this.imgsrc = imgsrc;
                         }
 
-                        var a = e.title;
-                        var b = e.link;
-
-                        var content = document.createElement("content");
-                        content.innerHTML = e.content;
-                        var images = $(content).find('img').map(function(){
-                            return $(this).attr('src')
-                        }).get();
-                        if (images.length !== 0) {
-                            console.log('<img src="' + images[0] + '"/>');
-                        }
-                        var setupRSS = [];
-                        setupRSS[i] = new newRSS(i, a, b, images[0]);
+                        setupRSS[i] = new RSS_Maker(i, a, b, images[0]);
 
                         console.log("------------------------");
                         console.log('Story Number: '+ setupRSS[i].storyNum);
@@ -589,6 +580,15 @@ $(document).ready(function () {
                         console.log('Link: '+ setupRSS[i].link);
                         console.log('Image Source: '+ setupRSS[i].imgsrc);
                         console.log("------------------------");
+                        if (templateStyle === "ALPACDB") {
+                            $('#rssPreview').append(
+                                '<div><p>Story Number - ' + setupRSS[i].storyNum + '<br />' +
+                                'Title - ' + setupRSS[i].title + '<br />' +
+                                'Link - ' + setupRSS[i].link + '<br />' +
+                                'Image Link - ' + setupRSS[i].imgsrc +
+                                '</p></div>'
+                            );
+                        }
                         i++;
                     });
                 }
@@ -617,7 +617,7 @@ $(document).ready(function () {
                 $("#resultsContainer1").show("drop"); //Shows the results once everything is ready.
                 $("#resultsContainer2").show("drop"); //Shows the results once everything is ready.
                 $("#emailBtnDiv").show('drop');
-                getRSS();
+                //getRSS();
 
             }}
         )
