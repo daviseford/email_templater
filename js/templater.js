@@ -397,6 +397,7 @@ $(document).ready(function () {
             smartFocus: {
                 title: subjectLine,
                 ALP: {
+                    keycode: keycodeArray,
                     utmString: utmsource.toString(),
                     safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
                     prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">Email Preferences</a>',

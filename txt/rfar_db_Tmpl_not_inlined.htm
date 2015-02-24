@@ -789,12 +789,12 @@ body.outlook p {
 
                   <table class="container">
                     <tr>
-                      <td class="wrapper last">
+                      <td class="wrapper">
 
                         <table class="twelve columns">
                           <tr>
                             <td class="six sub-columns">
-                            <span class="left-text-pad" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">
+                            <span class="left-text-pad" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#FFF;">
                               Always Prepared
                               </span>
                             </td>
@@ -816,20 +816,15 @@ body.outlook p {
             </tr>
           </table>
           
-          <table class="row"> <!-- Styles go on the row -->
-  <tr>
-    <td class="center" align="center"> <!-- Center the container -->
-      <center>
 
         <table class="container"> <!-- Container restricts the content width -->
           <tr>
             <td class="wrapper last"> <!-- Wrapper stays on the inner table -->
-
               <table class="twelve columns">
                 <tr>
                   <td>
                   <!-- BEGIN HEADER -->
-                  {{:RFARDB.rfarHeader}}
+                  <img alt="Lee Bellingers Ready For Anything Report" border="0" height="118" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" width="580" />
                   <!-- END HEADER -->
 
                   </td>
@@ -840,11 +835,6 @@ body.outlook p {
             </td>
           </tr>
         </table>
-
-      </center>
-    </td>
-  </tr>
-</table>
 
 
 
@@ -871,9 +861,50 @@ body.outlook p {
                 </table>                
                  <!-- END DIVIDER -->
                  
-                 <!-- CONTENT
-                 		GOES
-                 		HERE -->
+                 <!-- template RFARDB -->
+<table class="row">
+    <tr>
+        <td class="wrapper">
+
+            <table class="nine columns">
+                <tr>
+                    <td class="left-text-pad">
+                          
+                        <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
+                            {{:urlInsert}}<span style="font-size: 18px; font-weight: bold; padding-top:10px;">{{:title}}</span></a>
+                        </p>
+                        <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
+                            {{:text}}
+                        </p>
+                        <p></p>
+                        <p style="padding-bottom: 30px;margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
+                            {{:urlInsert}}
+                            <img alt="Read more on ILN" height="31" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/92328665.png" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: auto;max-width: 100%;float: left;clear: both;display: block;" width="120"></a>
+                        </p>
+                           
+                    </td>
+                    <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
+                </tr>
+            </table>
+
+        </td>
+        <td class="wrapper last" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;padding-right: 0px;border-collapse: collapse !important;">
+
+            <table class="three columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 130px;">
+                <tr style="padding: 0;vertical-align: top;text-align: left;">
+                    <td class="center panel" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px !important;vertical-align: top;text-align: center;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;background: #f2f2f2;border: 1px solid #d9d9d9;border-collapse: collapse !important;">
+                        <center style="width: 100%;min-width: 110px;">
+                            {{:insertImage}}
+                        </center>
+                    </td>
+                    <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0 !important;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse !important;"></td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+<!-- END RFARDB -->
                                  
                 
 
