@@ -29,6 +29,7 @@ $(document).ready(function () {
         var z = $("#title1KEY").val();
         var y = S(x).unescapeHTML().s;
         z = z.toUpperCase();
+        var i = true;
             $.ajax({
                 type: "POST",
                 dataType: "text",
@@ -117,6 +118,7 @@ $(document).ready(function () {
         .selectmenu()
         .selectmenu('menuWidget')
         .addClass('overflow');
+
 
     $('#generateKeyCodeBtn')
         .button({icons: { primary: "ui-icon-gear"}})
@@ -458,7 +460,7 @@ $(document).ready(function () {
             },
             ILNDB: {
                 ilnHeader: '<a href="http://www.independentlivingnews.com' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="117" src="http://www.independentlivingnews.com/email/images/ILN_LB_header.jpg" style="display:block;" width="580" /></a>',
-                modalLink: '<a href="' + codedURL + '" linkname="Modal Headline" target="_blank"><span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">' + title1 + '</span></a>'
+                modalLink: '<a href="' + codedURL + '" linkname="Modal Headline" target="_blank"><span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#ffffff;">' + title1 + '</span></a>'
             },
             currentProduct: {
                 link: '',
@@ -547,56 +549,85 @@ $(document).ready(function () {
         return (S(content).stripTags('html', 'head', 'body').s);
     }
 
+
+    function btnSet(x) {
+        $('#title1').val(setupRSS[x].title);
+        $('#title1URL').val(setupRSS[x].link);
+        $('#title1IMG').val(setupRSS[x].imgsrc);
+    }
+
+
+    $('#getRSSBtn')
+        .button()
+        .click(function(event){
+            getRSS(event);
+        });
+
+    function rssButtons(){
+        console.log("running");
+        $("#rssBtn0").slideDown()
+            .button()
+            .click(function(){
+            console.log('hello?');
+                $('#title1').val(setupRSS[0].title);
+                $('#title1URL').val(setupRSS[0].link);
+                $('#title1IMG').val(setupRSS[0].imgsrc);
+                alert('junk');
+            })
+    }
+
+    function RSS_Maker(storyNum, title, link, imgsrc){
+        this.storyNum = storyNum;
+        this.title = title;
+        this.link = link;
+        this.imgsrc = imgsrc;
+    }
+
     //TODO RSS attempt - in progress
-    function getRSS() {
-        var i = 0;
+    function getRSS(event) {
+        event.preventDefault();
+        var q = 0;
+        var setupRSS = [];
         $.ajax({
             url      : document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://americanlibertypac.com/feed/'),
             dataType : 'json',
             success  : function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
-                        var setupRSS = [];
+                        console.log(i);
                         var a = e.title;
                         var b = e.link;
+
+                        console.log(publicArray);
+
+                        //this chunk grabs img src values from the RSS feed
                         var content = document.createElement("content");
                         content.innerHTML = e.content;
                         var images = $(content).find('img').map(function(){
                             return $(this).attr('src')
                         }).get();
 
-                        function RSS_Maker(storyNum, title, link, imgsrc){
-                            this.storyNum = storyNum;
-                            this.title = title;
-                            this.link = link;
-                            this.imgsrc = imgsrc;
-                        }
-
-                        setupRSS[i] = new RSS_Maker(i, a, b, images[0]);
-
-                        console.log("------------------------");
-                        console.log('Story Number: '+ setupRSS[i].storyNum);
-                        console.log('Title: '+ setupRSS[i].title);
-                        console.log('Link: '+ setupRSS[i].link);
-                        console.log('Image Source: '+ setupRSS[i].imgsrc);
+                        //setupRSS[q] = new RSS_Maker(q, a, b, images[0]);
+                        var x = new RSS_Maker(q, a, b, images[0]);
+                        setupRSS.push(x);
 
                         var divID = 'rssStory' + setupRSS[i].storyNum;
                         var btnID = 'rssBtn' + setupRSS[i].storyNum;
                         console.log(divID + " and btnID" + btnID);
 
-                        if (templateStyle === "ALPACDB") {
+
+                        if (q < 4) { //don't know how many results I want displayed yet
                             $('#rssPreview').append(
-                                '<div class="col-lg-4" id="' + divID + '"><p>Story Number - ' + setupRSS[i].storyNum + '<br />' +
-                                'Title - ' + setupRSS[i].title + '<br />' +
-                                'Link - ' + setupRSS[i].link + '<br />' +
-                                'Image Link - ' + setupRSS[i].imgsrc + '<br />' +
-                                'Image Thumb - <img src="' + setupRSS[i].imgsrc + '" width="100" height="100" />' +
-                                '</p>' +
-                                '<p><center><button class="btn btn-primary btn-lg" id="' + btnID + '">Use as Story</button>' +
+                                '<div class="col-lg-3" id="' + divID + '"><p><img src="' + setupRSS[i].imgsrc + '" width="75" height="75" style="float: left"/>' +
+                                setupRSS[i].title +
+                                '<br /><center><button type="button" value="' + i + '" class="btn btn-primary btn-sm" id="' + btnID + '">Use as Story #1</button>' +
                                 '</center></p></div>'
                             );
+
                         }
-                        i++; // increment by one to keep the loop ticking up
+
+                        console.log('img ' + setupRSS[i].imgsrc);
+                        q++; // increment by one to keep the loop ticking up
                     });
                 }
             }
@@ -624,7 +655,7 @@ $(document).ready(function () {
                 $("#resultsContainer1").show("drop"); //Shows the results once everything is ready.
                 $("#resultsContainer2").show("drop"); //Shows the results once everything is ready.
                 $("#emailBtnDiv").show('drop');
-                //getRSS();
+
 
             }}
         )
