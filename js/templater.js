@@ -582,12 +582,13 @@ $(document).ready(function () {
         this.link = link;
         this.imgsrc = imgsrc;
     }
+    var setupRSS = [];
+
 
     //TODO RSS attempt - in progress
     function getRSS(event) {
         event.preventDefault();
         var q = 0;
-        var setupRSS = [];
         $.ajax({
             url      : document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://americanlibertypac.com/feed/'),
             dataType : 'json',
@@ -598,7 +599,6 @@ $(document).ready(function () {
                         var a = e.title;
                         var b = e.link;
 
-                        console.log(publicArray);
 
                         //this chunk grabs img src values from the RSS feed
                         var content = document.createElement("content");
@@ -614,7 +614,6 @@ $(document).ready(function () {
                         var divID = 'rssStory' + setupRSS[i].storyNum;
                         var btnID = 'rssBtn' + setupRSS[i].storyNum;
                         console.log(divID + " and btnID" + btnID);
-
 
                         if (q < 4) { //don't know how many results I want displayed yet
                             $('#rssPreview').append(
