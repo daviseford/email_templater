@@ -550,12 +550,6 @@ $(document).ready(function () {
     }
 
 
-    function btnSet(x) {
-        $('#title1').val(setupRSS[x].title);
-        $('#title1URL').val(setupRSS[x].link);
-        $('#title1IMG').val(setupRSS[x].imgsrc);
-    }
-
 
     $('#getRSSBtn')
         .button()
@@ -563,18 +557,6 @@ $(document).ready(function () {
             getRSS(event);
         });
 
-    function rssButtons(){
-        console.log("running");
-        $("#rssBtn0").slideDown()
-            .button()
-            .click(function(){
-            console.log('hello?');
-                $('#title1').val(setupRSS[0].title);
-                $('#title1URL').val(setupRSS[0].link);
-                $('#title1IMG').val(setupRSS[0].imgsrc);
-                alert('junk');
-            })
-    }
 
     function RSS_Maker(storyNum, title, link, imgsrc){
         this.storyNum = storyNum;
@@ -583,6 +565,7 @@ $(document).ready(function () {
         this.imgsrc = imgsrc;
     }
     var setupRSS = [];
+    publicArray = [];
 
 
     //TODO RSS attempt - in progress
@@ -590,20 +573,19 @@ $(document).ready(function () {
         event.preventDefault();
         var q = 0;
         $.ajax({
-            url      : document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://americanlibertypac.com/feed/'),
-            dataType : 'json',
-            success  : function (data) {
+            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://americanlibertypac.com/feed/'),
+            dataType: 'json',
+            success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
                         console.log(i);
                         var a = e.title;
                         var b = e.link;
 
-
                         //this chunk grabs img src values from the RSS feed
                         var content = document.createElement("content");
                         content.innerHTML = e.content;
-                        var images = $(content).find('img').map(function(){
+                        var images = $(content).find('img').map(function () {
                             return $(this).attr('src')
                         }).get();
 
@@ -614,6 +596,14 @@ $(document).ready(function () {
                         var divID = 'rssStory' + setupRSS[i].storyNum;
                         var btnID = 'rssBtn' + setupRSS[i].storyNum;
                         console.log(divID + " and btnID" + btnID);
+
+                        publicArray[i] = {
+                            title: a,
+                            link: b,
+                            imgsrc: images
+                        };
+                        console.log('a ' + publicArray[i].title);
+                        console.log('i ' + publicArray[i].imgsrc);
 
                         if (q < 4) { //don't know how many results I want displayed yet
                             $('#rssPreview').append(
@@ -627,11 +617,28 @@ $(document).ready(function () {
 
                         console.log('img ' + setupRSS[i].imgsrc);
                         q++; // increment by one to keep the loop ticking up
-                    });
+                    })
                 }
             }
-        });
-    }
+        }).done(function() {  //TODO SUCCESS WORK ON LATER
+            function buttonTest(e) {
+                $('#rssBtn'+e).click(function () {
+                    $('#title1').val(publicArray[e].title);
+                    $('#title1URL').val(publicArray[e].link);
+                    $('#title1IMG').val(publicArray[e].imgsrc);
+                })
+            }
+            for(n=0; n <4; n++){
+                buttonTest(n);
+            }
+            //$('#rssBtn0').click(function () {
+            //    $('#title1').val(publicArray[0].title);
+            //    $('#title1URL').val(publicArray[0].link);
+            //    $('#title1IMG').val(publicArray[0].imgsrc);
+            //    })
+            })
+        }
+
 
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
@@ -658,4 +665,4 @@ $(document).ready(function () {
 
             }}
         )
-    });
+    });;;
