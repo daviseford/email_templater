@@ -582,10 +582,11 @@ $(document).ready(function () {
                         console.log("------------------------");
                         if (templateStyle === "ALPACDB") {
                             $('#rssPreview').append(
-                                '<div><p>Story Number - ' + setupRSS[i].storyNum + '<br />' +
+                                '<div class="col-lg-4"><p>Story Number - ' + setupRSS[i].storyNum + '<br />' +
                                 'Title - ' + setupRSS[i].title + '<br />' +
                                 'Link - ' + setupRSS[i].link + '<br />' +
-                                'Image Link - ' + setupRSS[i].imgsrc +
+                                'Image Link - ' + setupRSS[i].imgsrc + '<br />' +
+                                'Image Thumb - <img src="' + setupRSS[i].imgsrc + '" width="100" height="100" />' +
                                 '</p></div>'
                             );
                         }
