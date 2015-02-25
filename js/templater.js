@@ -579,18 +579,24 @@ $(document).ready(function () {
                         console.log('Title: '+ setupRSS[i].title);
                         console.log('Link: '+ setupRSS[i].link);
                         console.log('Image Source: '+ setupRSS[i].imgsrc);
-                        console.log("------------------------");
+
+                        var divID = 'rssStory' + setupRSS[i].storyNum;
+                        var btnID = 'rssBtn' + setupRSS[i].storyNum;
+                        console.log(divID + " and btnID" + btnID);
+
                         if (templateStyle === "ALPACDB") {
                             $('#rssPreview').append(
-                                '<div class="col-lg-4"><p>Story Number - ' + setupRSS[i].storyNum + '<br />' +
+                                '<div class="col-lg-4" id="' + divID + '"><p>Story Number - ' + setupRSS[i].storyNum + '<br />' +
                                 'Title - ' + setupRSS[i].title + '<br />' +
                                 'Link - ' + setupRSS[i].link + '<br />' +
                                 'Image Link - ' + setupRSS[i].imgsrc + '<br />' +
                                 'Image Thumb - <img src="' + setupRSS[i].imgsrc + '" width="100" height="100" />' +
-                                '</p></div>'
+                                '</p>' +
+                                '<p><center><button class="btn btn-primary btn-lg" id="' + btnID + '">Use as Story</button>' +
+                                '</center></p></div>'
                             );
                         }
-                        i++;
+                        i++; // increment by one to keep the loop ticking up
                     });
                 }
             }
