@@ -583,14 +583,14 @@ $(document).ready(function () {
             // Check if the current width is larger than the max
             if(width > maxWidth && width >= height ){
                 ratio = maxWidth / width;   // get ratio for scaling image
-                console.log('RESIZE ---------W---');
+                console.log('RESIZE ----WIDTH---');
                 console.log("width", maxWidth);
                 console.log("height", height * ratio);  // Scale height based on ratio
                 imgHeight[x] = height * ratio;    // Reset height to match scaled image
                 imgWidth[x] = maxWidth;    // Reset width to match scaled image
             } else if(height > maxHeight) {
                 ratio = maxHeight / height; // get ratio for scaling image
-                console.log('RESIZE ----------H--');
+                console.log('RESIZE -----HEIGHT--');
                 console.log("height", maxHeight);   // Set new height
                 console.log("width", width * ratio);    // Scale width based on ratio
                 imgWidth[x] = width * ratio;    // Reset width to match scaled image
