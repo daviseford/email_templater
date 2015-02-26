@@ -7,80 +7,17 @@ $(document).ready(function () {
 	$("#resultsContainer1").hide(); //Hiding our results, as we don't need to see them yet!
     $("#resultsContainer2").hide();
 	$("#story2Div").hide(); //Hiding our second story panel.
+    $("#emailBtnDiv").hide();
+    $("#rssPreview").hide();
     var additionalContentVal = false; //This makes us default to a one-story format.
+    publicArray = [];
+    imgHeight = [];
+    imgWidth = [];
 
 
     //*******************************
     // BUTTON AND MENU SETUP START
     //*******************************
-    $("#emailBtnDiv")
-        .hide();
-
-    function makeEmailBtn() {
-            $("#emailHTML")
-           .button()
-           .show()
-           .click(function() {
-                    sendEmail();
-                })
-    }
-    function sendEmail() {
-        var x = $("#resultsTextArea").val();
-        var z = $("#title1KEY").val();
-        var y = S(x).unescapeHTML().s;
-        z = z.toUpperCase();
-        var i = true;
-            $.ajax({
-                type: "POST",
-                dataType: "text",
-                processData: "false",
-                url: "https://mandrillapp.com/api/1.0/messages/send.json",
-                data: {
-                    'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
-                    'message': {
-                        'from_email': 'digitalmedia@wjmassociates.com',
-                        'to': [
-                            {
-                                'email': 'trigger@recipe.ifttt.com',
-                                'name': 'Trigger',
-                                'type': 'to'
-                            }
-                        ],
-                        'autotext': 'true',
-                        'subject': z,
-                        'text': y
-                    }
-                }
-            }).done(function (response) {
-                console.log(response); // if you're into that sorta thing
-            });
-            $.ajax({
-                type: "POST",
-                dataType: "text",
-                url: "https://mandrillapp.com/api/1.0/messages/send.json",
-                data: {
-                    'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
-                    'message': {
-                        'from_email': 'digitalmedia@wjmassociates.com',
-                        'to': [
-                            {
-                                'email': 'dford@wjmassociates.com',
-                                'name': 'Davis Ford',
-                                'type': 'to'
-                            }
-                        ],
-                        'autotext': 'true',
-                        'subject': '[SUBMISSION] ' + z,
-                        'text': y
-                    }
-                }
-            }).done(function (response) {
-                console.log(response); // if you're into that sorta thing
-                $('#emailHTML').text('Email Sent!').effect('highlight', 'fast');
-            });
-        }
-
-
 
     //TODO /doing, making a optgroup generator. This way I can cut down on havign to updatee so much across three files -
     //TODO so it should spawn
@@ -105,13 +42,31 @@ $(document).ready(function () {
 
     //probably delete up above later
 
-
-
     //Establishing the datepicker
     $( "#inlinedate" ).datepicker({
         dateFormat: "ymmdd" //Outputs as YYMMDD
     });
-    $('#listSelect').selectmenu({width: 150});
+
+    $('#listSelect')
+        .selectmenu({width: 150})
+        .selectmenu({
+        change: function() {
+            var a = getTemplateStyle();
+            var x = $('#rssPreview');
+            var y = $("#title1label");
+            if (a === 'ALPACDB'){
+                x.show('scale', 'fast');
+            } else {
+                x.hide();
+            }
+            if (a === 'ILNDB') {
+                y.text('Modal Headline:');
+            } else {
+                y.text('Title #1:')
+            }
+        }
+    });
+
 
     //setting up productSelect menu (with overflow because there's lots of products)
     $('#productSelect')
@@ -160,35 +115,83 @@ $(document).ready(function () {
         parserRules:  wysihtml5ParserRules // defined in parser rules set
     });
 
+    $('#getRSSBtn')
+        .button()
+        .click(function(event){
+            getRSS(event);
+        });
+
+    function makeEmailBtn() {
+        $("#emailHTML")
+            .button()
+            .show()
+            .click(function() {
+                sendEmail();
+            })
+    }
+
+    function sendEmail() {
+        var x = $("#resultsTextArea").val();
+        var z = $("#title1KEY").val();
+        var y = S(x).unescapeHTML().s;
+        z = z.toUpperCase();
+        $.ajax({
+            type: "POST",
+            dataType: "text",
+            processData: "false",
+            url: "https://mandrillapp.com/api/1.0/messages/send.json",
+            data: {
+                'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                'message': {
+                    'from_email': 'digitalmedia@wjmassociates.com',
+                    'to': [
+                        {
+                            'email': 'trigger@recipe.ifttt.com',
+                            'name': 'Trigger',
+                            'type': 'to'
+                        }
+                    ],
+                    'autotext': 'true',
+                    'subject': z,
+                    'text': y
+                }
+            }
+        }).done();
+        $.ajax({
+            type: "POST",
+            dataType: "text",
+            url: "https://mandrillapp.com/api/1.0/messages/send.json",
+            data: {
+                'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                'message': {
+                    'from_email': 'digitalmedia@wjmassociates.com',
+                    'to': [
+                        {
+                            'email': 'dford@wjmassociates.com',
+                            'name': 'Davis Ford',
+                            'type': 'to'
+                        }
+                    ],
+                    'autotext': 'true',
+                    'subject': '[SUBMISSION] ' + z,
+                    'text': y
+                }
+            }
+        }).done(function() {
+            $('#emailHTML').text('Email Sent!').effect('highlight', 'fast');
+        });
+    }
 
 
     //*******************************
     // GETTERS AND FUNCTIONS
     //*******************************
-    function ilnLayoutDisplay(value){
-        if(value === false){
-            $("#title1label").text("Title 1: ")
-        } else if(value === true) {
-            $("#title1label").text("Modal Headline: ")
-        }
-    }
 
-
-    //hides RFAR-specific stuff if it's not selected
-    function rfarLayoutDisplay(value){  //value = true OR false
-        if(value === false){
-            $('#productDiv').hide();
-        } else if(value === true) {
-            $('#productDiv').show();
-        }
-
-    }
     //This handles generating the keycode. It simply joins all of the necessary values from an array.
     function makeKeyCode(event) {
         event.preventDefault();
         var keycodeGeneration = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
         //This array stores our Keycode values, to be used shortly.
-        //$("#keycodefield").val(keycodeGeneration.join(""));
         var currKeyCode = keycodeGeneration.join("");
         $("#title1KEY")
             .val(currKeyCode)
@@ -201,18 +204,17 @@ $(document).ready(function () {
         var x = y.join('');
         if (x === "ALPACDB") {
             templateStyle = "ALPACDB";
+            return 'ALPACDB';
         } else if (x === "ILNDB"){
             templateStyle = "ILNDB";
-            //rfarLayoutDisplay(true);
-            //ilnLayoutDisplay(true);
+            return 'ILNDB';
         } else if (x === "RFARDB"){
             templateStyle = "RFARDB";
-            //rfarLayoutDisplay(true);
-            //ilnLayoutDisplay(false);
+            return 'RFARDB';
         } else {
             console.log("getTemplateStyle() - Error: None of above");
         }
-        console.log("getTemplateStyle()"+x);
+        console.log("getTemplateStyle() = " + x);
     }
 
     function spawnILNDB() {
@@ -291,6 +293,7 @@ $(document).ready(function () {
         }
     }
 
+
     function firstStorySetup() {
         $('#story1Form').find('input').each(textFix);
         var subjectLine = $('#subjectInput').val();
@@ -298,9 +301,9 @@ $(document).ready(function () {
         var title1text = $("#title1text-textarea").val();
         var title1URL = $("#title1URL").val();
         var title1IMG = $("#title1IMG").val();
+        var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
         var urlInsert1 = '<a href="' + title1URL + '" target="_blank">';
         var linkedTitle1 = '<h4><a href="' + title1URL + '" target="_blank">' + title1 + '</a></h4>';
-        var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
         var keycodeArray = [];
         keycodeArray[0]= $.trim($("#title1KEY").val());
 
@@ -330,7 +333,7 @@ $(document).ready(function () {
             var utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
             var codedURL = title1URL + utmsource; //appends our URL with a tracking code
             urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
-            imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
+            imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
 
             var productReference;
 
@@ -407,7 +410,11 @@ $(document).ready(function () {
             var utmsource = '?utm_source=' + keycodeArray + '&utm_medium=email&utm_campaign=' + keycodeArray;
             var codedURL = title1URL + utmsource; //appends our URL with a tracking code
             urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
-            imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" style="max-height: 130px; max-width: 130px;" alt="Story Image" height="130" width="130"></a></center>';
+            if (imgHeight.length === 0 && imgWidth.length === 0) {
+                imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
+            } else {
+                imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"></a></center>';
+            }
 
             var productReference;
 
@@ -484,11 +491,24 @@ $(document).ready(function () {
         var urlInsert2 = '<a href="' + title2URL + '" target="_blank">';
         var linkedTitle2 = '<h4><a href="' + title2URL + '" target="_blank">' + title2 + '</a></h4>';
         var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" width="125" height="125" alt="Story Image"></a></center>';
+        var keycodeArray = [];
+        keycodeArray[0]= $.trim($("#title1KEY").val());
 
         if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
-            title2URL += storyz.currentProduct.utm; //appends our URL with a tracking code
-            urlInsert2 = '<a href="' + title2URL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
+            var utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
+            var codedURL = title2URL + utmsource; //appends our URL with a tracking code
+            urlInsert2 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
             imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 130px; max-width: 130px;" width="130" height="130" alt="Story Image"></a></center>';
+        }
+        if (templateStyle === 'ALPACDB'){
+            var utmsource = '?utm_source=' + keycodeArray + '&utm_medium=email&utm_campaign=' + keycodeArray;
+            var codedURL = title2URL + utmsource; //appends our URL with a tracking code
+            urlInsert2 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
+            if (imgHeight.length === 0 && imgWidth.length === 0) {
+                imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" alt="Story Image" height="130" width="130"></a></center>';
+            } else {
+                imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" alt="Story Image" height="' + imgHeight[1] + '" width="' + imgWidth[1] + '"></a></center>';
+            }
         }
 
         //we push this directly to storyz so we can render our second story
@@ -549,23 +569,39 @@ $(document).ready(function () {
         return (S(content).stripTags('html', 'head', 'body').s);
     }
 
+    function getImageSize(e, x) {
+        var img = new Image();
+        img.onload = function() {
 
+            console.log(this.naturalHeight + 'x' + this.naturalWidth);
+            var maxWidth = 130; // Max width for the image
+            var maxHeight = 130;    // Max height for the image
+            var ratio = 0;  // Used for aspect ratio
+            var width = this.naturalWidth;    // Current image width
+            var height = this.naturalHeight;  // Current image height
 
-    $('#getRSSBtn')
-        .button()
-        .click(function(event){
-            getRSS(event);
-        });
+            // Check if the current width is larger than the max
+            if(width > maxWidth && width >= height ){
+                ratio = maxWidth / width;   // get ratio for scaling image
+                console.log('RESIZE ---------W---');
+                console.log("width", maxWidth);
+                console.log("height", height * ratio);  // Scale height based on ratio
+                imgHeight[x] = height * ratio;    // Reset height to match scaled image
+                imgWidth[x] = maxWidth;    // Reset width to match scaled image
+            } else if(height > maxHeight) {
+                ratio = maxHeight / height; // get ratio for scaling image
+                console.log('RESIZE ----------H--');
+                console.log("height", maxHeight);   // Set new height
+                console.log("width", width * ratio);    // Scale width based on ratio
+                imgWidth[x] = width * ratio;    // Reset width to match scaled image
+                imgHeight[x] = maxHeight;    // Reset height to match scaled image
+            }
 
-
-    function RSS_Maker(storyNum, title, link, imgsrc){
-        this.storyNum = storyNum;
-        this.title = title;
-        this.link = link;
-        this.imgsrc = imgsrc;
+        };
+        img.src = e;
     }
-    var setupRSS = [];
-    publicArray = [];
+
+
 
 
     //TODO RSS attempt - in progress
@@ -578,7 +614,6 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
-                        console.log(i);
                         var a = e.title;
                         var b = e.link;
 
@@ -589,53 +624,61 @@ $(document).ready(function () {
                             return $(this).attr('src')
                         }).get();
 
-                        //setupRSS[q] = new RSS_Maker(q, a, b, images[0]);
-                        var x = new RSS_Maker(q, a, b, images[0]);
-                        setupRSS.push(x);
-
-                        var divID = 'rssStory' + setupRSS[i].storyNum;
-                        var btnID = 'rssBtn' + setupRSS[i].storyNum;
-                        console.log(divID + " and btnID" + btnID);
+                        function defaultImageCheck(){ //replaces undefined images with a default
+                            if (images[0] === undefined){
+                                images[0] = 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png';
+                            }
+                        }
+                        defaultImageCheck();
 
                         publicArray[i] = {
+                            storyNum: q,
                             title: a,
                             link: b,
-                            imgsrc: images
+                            imgsrc: images[0]
                         };
-                        console.log('a ' + publicArray[i].title);
-                        console.log('i ' + publicArray[i].imgsrc);
 
-                        if (q < 4) { //don't know how many results I want displayed yet
+                        var divID = 'rssStory' + publicArray[i].storyNum;
+                        var btnID1 = 'rss1Btn' + publicArray[i].storyNum;
+                        var btnID2 = 'rss2Btn' + publicArray[i].storyNum;
+                        var imgID = 'rssImg' + publicArray[i].storyNum;
+
+
+                        if (q < 8) { //displays 8 results
                             $('#rssPreview').append(
-                                '<div class="col-lg-3" id="' + divID + '"><p><img src="' + setupRSS[i].imgsrc + '" width="75" height="75" style="float: left"/>' +
-                                setupRSS[i].title +
-                                '<br /><center><button type="button" value="' + i + '" class="btn btn-primary btn-sm" id="' + btnID + '">Use as Story #1</button>' +
+                                '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-top:15px;" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + publicArray[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
+                                publicArray[i].title +
+                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
                                 '</center></p></div>'
                             );
-
                         }
-
-                        console.log('img ' + setupRSS[i].imgsrc);
                         q++; // increment by one to keep the loop ticking up
                     })
                 }
             }
-        }).done(function() {  //TODO SUCCESS WORK ON LATER
-            function buttonTest(e) {
-                $('#rssBtn'+e).click(function () {
+        }).done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
+            function buttonUpdateField(e) {
+                $('#rss1Btn'+e).click(function () {
                     $('#title1').val(publicArray[e].title);
                     $('#title1URL').val(publicArray[e].link);
                     $('#title1IMG').val(publicArray[e].imgsrc);
+                    getImageSize(publicArray[e].imgsrc, 0);
+                });
+                $('#rss2Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title2').val(publicArray[e].title);
+                        $('#title2URL').val(publicArray[e].link);
+                        $('#title2IMG').val(publicArray[e].imgsrc);
+                        getImageSize(publicArray[e].imgsrc, 1);
+                    } else {
+                        console.log('No second story!');
+                    }
                 })
+
             }
-            for(n=0; n <4; n++){
-                buttonTest(n);
+            for(var n=0; n < 8; n++){
+                buttonUpdateField(n);
             }
-            //$('#rssBtn0').click(function () {
-            //    $('#title1').val(publicArray[0].title);
-            //    $('#title1URL').val(publicArray[0].link);
-            //    $('#title1IMG').val(publicArray[0].imgsrc);
-            //    })
             })
         }
 
@@ -643,26 +686,24 @@ $(document).ready(function () {
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
     //********************************
-	$("#generateHTML").click(function(event){
-        event.preventDefault(); //Stops page from reloading
+    $("#generateHTML").click(function(event) {
+            event.preventDefault(); //Stops page from reloading
             if ($("#title1").val() === "") {
                 alert("Please enter a story");
             } else {
                 makeKeyCode(event);
                 getTemplateStyle(); //Start by finding out which template we're using
                 firstStorySetup();
-
                 if (additionalContentVal === true) {
                     secondStorySetup();
                 }
-
                 getResults();
 
                 $("#resultsContainer1").show("drop"); //Shows the results once everything is ready.
                 $("#resultsContainer2").show("drop"); //Shows the results once everything is ready.
                 $("#emailBtnDiv").show('drop');
+            }
+        }
+    )
 
-
-            }}
-        )
-    });;;
+});
