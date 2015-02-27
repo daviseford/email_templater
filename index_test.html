@@ -148,12 +148,20 @@
         </center>
     </div>
 
-    <!--this is for subject line I guess -->
+    <!--this is for subject line and additional story checkbox -->
     <div class="row">
-        <div class="col-lg-12" id="subjectLine">
+        <div class="col-lg-6" id="subjectLine">
             <div class="form-group">
                 <label for="subjectInput">Subject Line: </label>
-                <input class="form-control" type="text" id="subjectInput" name="subjectInput" placeholder="Title of the email" style="width: 49%;"/>
+                <input class="form-control" type="text" id="subjectInput" name="subjectInput" placeholder="Title of the email" style="width: 100%;"/>
+            </div>
+        </div>
+        <div class="col-lg-6" id="checkBox">
+            <div class="checkbox">
+                <br />
+                <label>
+                <input type="checkbox" id="additionalContentCheckbox" name="additionalContentCheckbox" />Additional Story?
+                </label>
             </div>
         </div>
     </div>
@@ -167,9 +175,9 @@
                     <input class="form-control" type="text" id="title1" name="title1"/>
                 </div>
                 <div class="form-group">
-                    <label for="title1text-textarea">Story #1: </label>
-                    <textarea class="form-control" cols="3" rows="3" id="title1text-textarea" style="width: 100%; height: auto;"></textarea>
-                    <div id="title1text-div" data-placeholder="Enter your text ..."></div>
+                    <label for="title1text-div">Story #1: </label>
+                    <!-- <textarea class="form-control" cols="3" rows="3" id="title1text-textarea" style="width: 100%; height: auto;"></textarea> -->
+                    <div id="title1text-div" style="width: 100%; height: 100%" data-placeholder="Enter your text..." class="form-control"></div>
                     <div id="wysihtml-toolbar1" style="display: none;">
                         <a data-wysihtml5-command="bold">bold</a>
                         <a data-wysihtml5-command="italic">italic</a>
@@ -190,9 +198,6 @@
                 <div class="form-group">
                     <label for="title1IMG">Image URL: </label>
                     <input class="form-control" type="text" id="title1IMG" name="title1IMG" placeholder="Link to the article's IMAGE here. In your browser: Right click -> Copy Image URL."/> <br />
-
-                    <input type="checkbox" id="additionalContentCheckbox" name="additionalContentCheckbox"/>
-                    Additional Story?<br>
             </fieldset>
             </form>
         </div>
@@ -204,9 +209,9 @@
                         <input class="form-control" type="text" id="title2" name="title2"/>
                     </div>
                     <div class="form-group">
-                        <label for="title2text-textarea">Story #2: </label>
-                        <textarea class="form-control" cols="3" rows="3" id="title2text-textarea" style="width: 100%; height: auto"></textarea>
-                        <div id="title2text-div" data-placeholder="Enter your text ..."></div>
+                        <label for="title2text-div">Story #2: </label>
+                       <!-- <textarea class="form-control" cols="3" rows="3" id="title2text-textarea" style="width: 100%; height: auto"></textarea>-->
+                        <div id="title2text-div" style="width: 100%; height: 100%" data-placeholder="Enter your text..." class="form-control"></div>
                         <div id="wysihtml-toolbar2" style="display: none;">
                             <a data-wysihtml5-command="bold">bold</a>
                             <a data-wysihtml5-command="italic">italic</a>

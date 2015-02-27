@@ -48,24 +48,24 @@ $(document).ready(function () {
     });
 
     $('#listSelect')
-        .selectmenu({width: 150})
         .selectmenu({
-        change: function() {
-            var a = getTemplateStyle();
-            var x = $('#rssPreview');
-            var y = $("#title1label");
-            if (a === 'ALPACDB'){
-                x.show('scale', 'fast');
-            } else {
-                x.hide();
+            width: 150,
+            change: function() {
+                var a = getTemplateStyle();
+                var x = $('#rssPreview');
+                var y = $("#title1label");
+                if (a === 'ALPACDB'){
+                    x.show('scale', 'fast');
+                } else {
+                    x.hide();
+                }
+                if (a === 'ILNDB') {
+                    y.text('Modal Headline:');
+                } else {
+                    y.text('Title #1:');
+                }
             }
-            if (a === 'ILNDB') {
-                y.text('Modal Headline:');
-            } else {
-                y.text('Title #1:')
-            }
-        }
-    });
+        });
 
 
     //setting up productSelect menu (with overflow because there's lots of products)
@@ -106,11 +106,15 @@ $(document).ready(function () {
         });
 
     //setting up our story boxes
-    var editor1 = new wysihtml5.Editor("title1text-textarea", { // id of textarea element
+    //var editor1 = new wysihtml5.Editor("title1text-textarea", { // id of textarea element
+    //    toolbar:      "wysihtml-toolbar1", // id of toolbar element
+    //    parserRules:  wysihtml5ParserRules // defined in parser rules set
+    //});
+    var editor1 = new wysihtml5.Editor("title1text-div", { // id of textarea element
         toolbar:      "wysihtml-toolbar1", // id of toolbar element
         parserRules:  wysihtml5ParserRules // defined in parser rules set
     });
-    var editor2 = new wysihtml5.Editor("title2text-textarea", { // id of textarea element
+    var editor2 = new wysihtml5.Editor("title2text-div", { // id of textarea element
         toolbar:      "wysihtml-toolbar2", // id of toolbar element
         parserRules:  wysihtml5ParserRules // defined in parser rules set
     });
@@ -127,7 +131,7 @@ $(document).ready(function () {
             .show()
             .click(function() {
                 sendEmail();
-            })
+            });
     }
 
     function sendEmail() {
@@ -296,9 +300,12 @@ $(document).ready(function () {
 
     function firstStorySetup() {
         $('#story1Form').find('input').each(textFix);
+        var productReference;
+        var utmsource;
+        var codedURL;
         var subjectLine = $('#subjectInput').val();
         var title1 = $("#title1").val();
-        var title1text = $("#title1text-textarea").val();
+        var title1text = $("#title1text-div").html();
         var title1URL = $("#title1URL").val();
         var title1IMG = $("#title1IMG").val();
         var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
@@ -329,13 +336,11 @@ $(document).ready(function () {
             }
         }
 
-        if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
-            var utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
-            var codedURL = title1URL + utmsource; //appends our URL with a tracking code
+        if (getTemplateStyle() === "RFARDB" || getTemplateStyle() === "ILNDB") {
+            utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
+            codedURL = title1URL + utmsource; //appends our URL with a tracking code
             urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
             imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
-
-            var productReference;
 
             productReference = {
                 USR: {
@@ -406,9 +411,9 @@ $(document).ready(function () {
             };
 
         }
-        if (templateStyle === "ALPACDB"){
-            var utmsource = '?utm_source=' + keycodeArray + '&utm_medium=email&utm_campaign=' + keycodeArray;
-            var codedURL = title1URL + utmsource; //appends our URL with a tracking code
+        if (getTemplateStyle() === "ALPACDB"){
+            utmsource = '?utm_source=' + keycodeArray + '&utm_medium=email&utm_campaign=' + keycodeArray;
+            codedURL = title1URL + utmsource; //appends our URL with a tracking code
             urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
             if (imgHeight.length === 0 && imgWidth.length === 0) {
                 imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
@@ -416,15 +421,13 @@ $(document).ready(function () {
                 imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"></a></center>';
             }
 
-            var productReference;
-
             productReference = {
                 PPP: {
                     link: '<a href="http://americanlibertypac.com/2016-presidential-preference-poll-2/' + utmsource + '" target="_blank" alt="Presidential Preference Poll 2016">',
                     shortCode: 'PPP',
                     longCode: 'Presidential Preference Poll 2016'
                 }
-            }
+            };
 
         }
         //This Object/Array is used with JSRender.
@@ -484,10 +487,13 @@ $(document).ready(function () {
 
     function secondStorySetup() {
         $('#story2Form').find('input').each(textFix);
-        var title2 = $.trim($("#title2").val());
-        var title2text = $.trim($("#title2text-textarea").val());
-        var title2URL = $.trim($("#title2URL").val());
-        var title2IMG = $.trim($("#title2IMG").val());
+        var productReference;
+        var utmsource;
+        var codedURL;
+        var title2 = $("#title2").val();
+        var title2text = $("#title2text-div").html();
+        var title2URL = $("#title2URL").val();
+        var title2IMG = $("#title2IMG").val();
         var urlInsert2 = '<a href="' + title2URL + '" target="_blank">';
         var linkedTitle2 = '<h4><a href="' + title2URL + '" target="_blank">' + title2 + '</a></h4>';
         var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" width="125" height="125" alt="Story Image"></a></center>';
@@ -495,14 +501,14 @@ $(document).ready(function () {
         keycodeArray[0]= $.trim($("#title1KEY").val());
 
         if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
-            var utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
-            var codedURL = title2URL + utmsource; //appends our URL with a tracking code
+            utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
+            codedURL = title2URL + utmsource; //appends our URL with a tracking code
             urlInsert2 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
             imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 130px; max-width: 130px;" width="130" height="130" alt="Story Image"></a></center>';
         }
         if (templateStyle === 'ALPACDB'){
-            var utmsource = '?utm_source=' + keycodeArray + '&utm_medium=email&utm_campaign=' + keycodeArray;
-            var codedURL = title2URL + utmsource; //appends our URL with a tracking code
+            utmsource = '?utm_source=' + keycodeArray + '&utm_medium=email&utm_campaign=' + keycodeArray;
+            codedURL = title2URL + utmsource; //appends our URL with a tracking code
             urlInsert2 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
             if (imgHeight.length === 0 && imgWidth.length === 0) {
                 imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" alt="Story Image" height="130" width="130"></a></center>';
@@ -569,11 +575,11 @@ $(document).ready(function () {
         return (S(content).stripTags('html', 'head', 'body').s);
     }
 
-    function getImageSize(e, x) {
+    function getImageSize(e, x) { //e is the image src, x is the storage value in imgWidth/Height
         var img = new Image();
         img.onload = function() {
 
-            console.log(this.naturalHeight + 'x' + this.naturalWidth);
+            console.log('Original Size: ' + this.naturalHeight + 'x' + this.naturalWidth);
             var maxWidth = 130; // Max width for the image
             var maxHeight = 130;    // Max height for the image
             var ratio = 0;  // Used for aspect ratio
@@ -584,15 +590,13 @@ $(document).ready(function () {
             if(width > maxWidth && width >= height ){
                 ratio = maxWidth / width;   // get ratio for scaling image
                 console.log('RESIZE ----WIDTH---');
-                console.log("width", maxWidth);
-                console.log("height", height * ratio);  // Scale height based on ratio
+                console.log('Now: ' + maxWidth + 'x' + (height * ratio));
                 imgHeight[x] = height * ratio;    // Reset height to match scaled image
                 imgWidth[x] = maxWidth;    // Reset width to match scaled image
             } else if(height > maxHeight) {
                 ratio = maxHeight / height; // get ratio for scaling image
                 console.log('RESIZE -----HEIGHT--');
-                console.log("height", maxHeight);   // Set new height
-                console.log("width", width * ratio);    // Scale width based on ratio
+                console.log('Now: ' + maxHeight + 'x' + (width * ratio));   // Set new height
                 imgWidth[x] = width * ratio;    // Reset width to match scaled image
                 imgHeight[x] = maxHeight;    // Reset height to match scaled image
             }
@@ -600,7 +604,6 @@ $(document).ready(function () {
         };
         img.src = e;
     }
-
 
 
 
@@ -614,15 +617,21 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
-                        var a = e.title;
-                        var b = e.link;
+                        var f = e.content;
+
+                        function cleanDescription(desc) {
+                            var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe').s;
+                            console.log(x);
+                            return x;
+                        }
 
                         //this chunk grabs img src values from the RSS feed
                         var content = document.createElement("content");
                         content.innerHTML = e.content;
                         var images = $(content).find('img').map(function () {
-                            return $(this).attr('src')
+                            return $(this).attr('src');
                         }).get();
+
 
                         function defaultImageCheck(){ //replaces undefined images with a default
                             if (images[0] === undefined){
@@ -633,9 +642,10 @@ $(document).ready(function () {
 
                         publicArray[i] = {
                             storyNum: q,
-                            title: a,
-                            link: b,
-                            imgsrc: images[0]
+                            title: e.title,
+                            link: e.link,
+                            imgsrc: images[0],
+                            description: cleanDescription(f)
                         };
 
                         var divID = 'rssStory' + publicArray[i].storyNum;
@@ -653,34 +663,36 @@ $(document).ready(function () {
                             );
                         }
                         q++; // increment by one to keep the loop ticking up
-                    })
+                    });
                 }
             }
         }).done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(publicArray[e].title);
+                    $('#title1text-div').html(publicArray[e].description);
                     $('#title1URL').val(publicArray[e].link);
                     $('#title1IMG').val(publicArray[e].imgsrc);
-                    getImageSize(publicArray[e].imgsrc, 0);
+                    getImageSize(publicArray[e].imgsrc, 0); //0 means first story
                 });
                 $('#rss2Btn'+e).click(function () {
                     if (additionalContentVal === true) {
                         $('#title2').val(publicArray[e].title);
+                        $('#title2text-div').html(publicArray[e].description);
                         $('#title2URL').val(publicArray[e].link);
                         $('#title2IMG').val(publicArray[e].imgsrc);
                         getImageSize(publicArray[e].imgsrc, 1);
                     } else {
                         console.log('No second story!');
                     }
-                })
+                });
 
             }
             for(var n=0; n < 8; n++){
                 buttonUpdateField(n);
             }
-            })
-        }
+        });
+    }
 
 
     //********************************
@@ -704,6 +716,6 @@ $(document).ready(function () {
                 $("#emailBtnDiv").show('drop');
             }
         }
-    )
+    );
 
 });
