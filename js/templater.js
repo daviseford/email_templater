@@ -19,30 +19,7 @@ $(document).ready(function () {
     // BUTTON AND MENU SETUP START
     //*******************************
 
-    //TODO /doing, making a optgroup generator. This way I can cut down on havign to updatee so much across three files -
-    //TODO so it should spawn
-    //<optgroup label="Colloidal Silver Generator Kit">
-    //<option value="CSG1">CSG - Banner 560x56</option>
-    //<option value="CSG2">CSG - Image with copy</option>
-    //</optgroup>
-    //function getRep(x) {
-    //    var keys = [];
-    //    var that = this;
-    //    var optionValueRep = '<option value="' + x.shortCode + '">'+ x.longCode + '</option>';
-    //    var optGroupSpawnRep = '<optgroup label="' + x.longCode + '">';
-    //    var optGroupRep = '</optgroup>';
-    //    console.log("1: " + optionValueRep);
-    //    console.log("2: " + optGroupSpawnRep);
-    //    console.log("3: " + optGroupRep);
-    //    var html = optionValueRep + optGroupSpawnRep + optGroupRep;
-    //    $('#testResults').html(html);
-    //
-    //
-    //}
-
-    //probably delete up above later
-
-    //Establishing the datepicker
+       //Establishing the datepicker
     $( "#inlinedate" ).datepicker({
         dateFormat: "ymmdd" //Outputs as YYMMDD
     });
@@ -346,7 +323,20 @@ $(document).ready(function () {
                 USR: {
                     link: '<a href="http://www.independentlivingnews.com/video/usr-vsl.php' + utmsource + '" target="_blank">',
                     shortCode: 'USR',
-                    longCode: 'Ultimate Self Reliance Manual'
+                    longCode: 'Ultimate Self Reliance Manual',
+                    advertisements: {
+                        0: {
+                            name: 'USR1',
+                            description: "Image with copy"
+                        },
+                        1: {
+                            name: 'USR2',
+                            description: "GIF 468x80"
+                        },
+                        2: {
+                            name: 'USR3',
+                            description: 'Image with copy (2)'
+                        }
                 },
                 GAB: {
                     link: '<a href="http://www.independentlivingnews.com/video/great-american-blackout-ihnp.php' + utmsource + '" target="_blank">',
@@ -371,7 +361,25 @@ $(document).ready(function () {
                 EPACK: {
                     link: '<a href="http://www.independentlivingnews.com/video/epack2-video.php' + utmsource + '" target="_blank">',
                     shortCode: 'EPACK',
-                    longCode: 'Emergency Pack'
+                    longCode: 'Emergency Pack',
+                    advertisements: {
+                        0: {
+                            name: 'EPACK1',
+                            description: "Image with copy"
+                        },
+                        1: {
+                            name: 'EPACK2',
+                            description: "Banner 580x58"
+                        },
+                        2: {
+                            name: 'EPACK3',
+                            description: 'EPACK - Banner 580x58'
+                        },
+                        3: {
+                            name: 'EPACK4',
+                            description: 'EPACK - GIF 580x75'
+                        }
+                    }
                 },
                 STREK: {
                     link: '<a href="http://www.independentlivingnews.com/video/suntrek/' + utmsource + '" target="_blank">',
@@ -381,7 +389,17 @@ $(document).ready(function () {
                 MSR: {
                     link: '<a href="http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html' + utmsource + '" target="_blank">',
                     shortCode: 'MSR',
-                    longCode: 'Medical Self Reliance Mega Manual'
+                    longCode: 'Medical Self Reliance Mega Manual',
+                    advertisements: {
+                        0: {
+                            name: 'MSR1',
+                            description: "GIF 468x60"
+                        },
+                        1: {
+                            name: 'MSR2',
+                            description: "Image with copy"
+                        }
+
                 },
                 FFL: {
                     link: '<a href="http://www.independentlivingnews.com/video/ffl-vsl.php' + utmsource + '" target="_blank">',
@@ -396,7 +414,17 @@ $(document).ready(function () {
                 PW: {
                     link: '<a href="http://www.independentlivingnews.com/video/pw-vsl.php' + utmsource + '" target="_blank">',
                     shortCode: 'PW',
-                    longCode: 'Power Whisperer'
+                    longCode: 'Power Whisperer',
+                    advertisements: {
+                        0: {
+                            name: 'PW1',
+                            description: "Image with copy"
+                        },
+                        1: {
+                            name: 'PW2',
+                            description: "Banner 580x58"
+                        }
+                    }
                 },
                 CAN: {
                     link: '<a href="http://www.survivalproshop.com/survival-essentials/survival-kit-in-a-can.html' + utmsource + '" target="_blank">',
@@ -430,6 +458,91 @@ $(document).ready(function () {
             };
 
         }
+
+
+        //TODO /doing, making a optgroup generator. This way I can cut down on havign to updatee so much across three files -
+        //TODO so it should spawn
+
+        //<label for="productSelect">STEP 4<br />Select a Product</label><br>
+        //<select name="productSelect" id="productSelect">
+        //    <option value="" selected="selected">None</option>
+        //
+        //<optgroup label="Colloidal Silver Generator Kit">
+        //<option value="CSG1">CSG - Banner 560x56</option>
+        //<option value="CSG2">CSG - Image with copy</option>
+        //</optgroup>
+
+        //</select>
+
+
+
+        //PW: {
+        //    link: '<a href="http://www.independentlivingnews.com/video/pw-vsl.php' + utmsource + '" target="_blank">',
+        //        shortCode: 'PW',
+        //        longCode: 'Power Whisperer',
+        //        advertisements: {
+        //        1: {
+        //            name: 'PW1',
+        //                description: "Image with copy"
+        //        },
+        //        2: {
+        //            name: 'PW2',
+        //                description: "Banner 580x58"
+        //        }
+        //    }
+        //},
+
+        function getRep(x) {
+            var setupMenu ='<label for="productSelectTest">STEP 4<br />Select a Product</label><br><select name="productSelectTest" id="productSelectTest"><option value="" selected="selected">None</option>';
+            var endMenu = '</select>';
+            var allAds = {};
+            var allAdsArray = [];
+
+
+
+            function buildSelectMenu(shortName, longName, description) {
+
+            }
+
+                for (var i in x) { //x = productReference, generally
+                    var adLongCode = x[i].longCode;
+                    var adShortCode = x[i].shortCode;
+                    if (x[i].hasOwnProperty('advertisements')) {
+                        var ad = x[i].advertisements;
+                        var z = Object.keys(ad).length;
+                        console.log('Number of Ads = ' + z);
+                        if (z !== 0) {
+                            var optGroupStart = '<optgroup label="' + adLongCode + '">';
+                            var optGroupEnd = '</optgroup>';
+                            var adEntries = [];
+                            var h = 0;
+                            for (h=0; h < z; h++) {
+                                console.log('Ad Name = ' + ad[h].name);
+                                console.log('Ad Desc = ' + ad[h].description);
+                                var adName = ad[h].name;
+                                var adDescription = ad[h].description;
+                                var optionValue = '<option value="' + adName + '">' + adShortCode + ' - ' + adDescription + '</option>';
+                                adEntries.push(optionValue);
+                            }
+                            var shimmyBop = optGroupStart + adEntries + optGroupEnd;
+                            allAdsArray.push(shimmyBop);
+                        }
+                    }
+                }
+
+            $('#adPreview').append(setupMenu+allAdsArray+endMenu);
+            $('#productSelectTest')
+                .selectmenu()
+                .selectmenu('menuWidget')
+                .addClass('overflow');
+
+
+        }
+        getRep(productReference);
+
+
+
+
         //This Object/Array is used with JSRender.
         //The template will iterate over the contained "story" array
         //and spit out as many stories as we have objects in the array.
