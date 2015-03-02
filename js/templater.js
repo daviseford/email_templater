@@ -4,9 +4,9 @@ $(document).ready(function () {
     //*******************************
     // DOCUMENT AND VAR SETUP
     //*******************************
-	$("#resultsContainer1").hide(); //Hiding our results, as we don't need to see them yet!
+    $("#resultsContainer1").hide(); //Hiding our results, as we don't need to see them yet!
     $("#resultsContainer2").hide();
-	$("#story2Div").hide(); //Hiding our second story panel.
+    $("#story2Div").hide(); //Hiding our second story panel.
     $("#emailBtnDiv").hide();
     $("#rssPreview").hide();
     var additionalContentVal = false; //This makes us default to a one-story format.
@@ -14,12 +14,210 @@ $(document).ready(function () {
     imgHeight = [];
     imgWidth = [];
 
+    var adReferenceILN = {
+        USR: {
+            shortCode: 'USR',
+            longCode: 'Ultimate Self Reliance Manual',
+            advertisements: {
+                0: {
+                    name: 'USR1',
+                    description: "Image with copy"
+                },
+                1: {
+                    name: 'USR2',
+                    description: "GIF 468x80"
+                },
+                2: {
+                    name: 'USR3',
+                    description: 'Image with copy (2)'
+                }
+            }
+        },
+        GAB: {
+            shortCode: 'GAB',
+            longCode: 'Great American Blackout',
+            advertisements: {
+                0: {
+                    name: 'GAB1',
+                    description: 'Image with copy'
+                }
+            }
+        },
+        FOOD: {
+            shortCode: 'FOOD',
+            longCode: '30 Day Emergency Food Reserve',
+            advertisements: {
+                0: {
+                    name: 'FOOD1',
+                    description: 'Banner 580x58'
+                },
+                1: {
+                    name: 'FOOD2',
+                    description: 'Banner 580x58'
+                },
+                2: {
+                    name: 'FOOD3',
+                    description: 'Banner 580x58'
+                }
+            }
+        },
+        CSG: {
+            shortCode: 'CSG',
+            longCode: 'Colloidal Silver Generator',
+            advertisements: {
+                0: {
+                    name: 'CSG1',
+                    description: "Banner 580x58"
+                },
+                1: {
+                    name: 'CSG2',
+                    description: "Image with copy"
+                }
+            }
+        },
+        LPL: {
+            shortCode: 'LPL',
+            longCode: 'Low Profile Living Manual',
+            advertisements: {
+                0: {
+                    name: 'LPL1',
+                    description: "Image with copy"
+                },
+                1: {
+                    name: 'LPL2',
+                    description: "Banner 580x58"
+                }
+            }
+        },
+        EPACK: {
+            shortCode: 'EPACK',
+            longCode: 'Emergency Pack',
+            advertisements: {
+                0: {
+                    name: 'EPACK1',
+                    description: "Image with copy"
+                },
+                1: {
+                    name: 'EPACK2',
+                    description: "Banner 580x58"
+                },
+                2: {
+                    name: 'EPACK3',
+                    description: 'EPACK - Banner 580x58'
+                },
+                3: {
+                    name: 'EPACK4',
+                    description: 'EPACK - GIF 580x75'
+                }
+            }
+        },
+        STREK: {
+            shortCode: 'STREK',
+            longCode: 'Sun Trek',
+            advertisements: {
+                0: {
+                    name: 'STREK1',
+                    description: "Image with copy"
+                },
+                1: {
+                    name: 'STREK2',
+                    description: "Banner (Holiday Theme)"
+                }
+            }
+        },
+        MSR: {
+            shortCode: 'MSR',
+            longCode: 'Medical Self Reliance Mega Manual',
+            advertisements: {
+                0: {
+                    name: 'MSR1',
+                    description: "GIF 468x60"
+                },
+                1: {
+                    name: 'MSR2',
+                    description: "Image with copy"
+                }
+            }
+
+        },
+        FFL: {
+            shortCode: 'FFL',
+            longCode: 'Freedom Fortress Library',
+            advertisements: {
+                0: {
+                    name: 'FFL1',
+                    description: "Image with copy"
+                }
+            }
+        },
+        XCOM: {
+            shortCode: 'XCOM',
+            longCode: 'Extreme Weather Combo',
+            advertisements: {
+                0: {
+                    name: 'XCOM1',
+                    description: "Image with copy"
+                },
+                1: {
+                    name: 'XCOM2',
+                    description: "Banner (White + Green)"
+                }
+            }
+        },
+        PW: {
+            shortCode: 'PW',
+            longCode: 'Power Whisperer',
+            advertisements: {
+                0: {
+                    name: 'PW1',
+                    description: "Image with copy"
+                },
+                1: {
+                    name: 'PW2',
+                    description: "Banner 580x58"
+                }
+            }
+        },
+        CAN: {
+            shortCode: 'CAN',
+            longCode: 'Survival Can in a Kit',
+            advertisements: {
+                0: {
+                    name: 'CAN1',
+                    description: 'Image with copy'
+                }
+            }
+        },
+        SUB: {
+            shortCode: 'SUB',
+            longCode: 'Subscription to Independent Living News',
+            advertisements: {
+                0: {
+                    name: 'SUB1',
+                    description: 'Image with copy'
+                }
+            }
+        }
+    };
+    var adReferenceWJMA = {
+        PPP: {
+            shortCode: 'PPP',
+            longCode: 'Presidential Preference Poll 2016',
+            advertisements: {
+                0: {
+                    name: 'PPP1',
+                    description: 'Rand/Romney'
+                }
+            }
+        }
+    };
+
 
     //*******************************
     // BUTTON AND MENU SETUP START
     //*******************************
 
-       //Establishing the datepicker
+    //Establishing the datepicker
     $( "#inlinedate" ).datepicker({
         dateFormat: "ymmdd" //Outputs as YYMMDD
     });
@@ -32,8 +230,10 @@ $(document).ready(function () {
                 var x = $('#rssPreview');
                 var y = $("#title1label");
                 if (a === 'ALPACDB'){
+                    makeProductMenu(adReferenceWJMA); //if our selected menu is ALPAC, get WJMA ads
                     x.show('scale', 'fast');
                 } else {
+                    makeProductMenu(adReferenceILN); //otherwise, get ILN ads - this will change behavior in the future
                     x.hide();
                 }
                 if (a === 'ILNDB') {
@@ -47,7 +247,7 @@ $(document).ready(function () {
 
     //setting up productSelect menu (with overflow because there's lots of products)
     $('#productSelect')
-        .selectmenu()
+        .selectmenu({width:225})
         .selectmenu('menuWidget')
         .addClass('overflow');
 
@@ -184,13 +384,10 @@ $(document).ready(function () {
         var y = [$('#listSelect').val(), $('#tmplSelect').val()];
         var x = y.join('');
         if (x === "ALPACDB") {
-            templateStyle = "ALPACDB";
             return 'ALPACDB';
         } else if (x === "ILNDB"){
-            templateStyle = "ILNDB";
             return 'ILNDB';
         } else if (x === "RFARDB"){
-            templateStyle = "RFARDB";
             return 'RFARDB';
         } else {
             console.log("getTemplateStyle() - Error: None of above");
@@ -258,21 +455,53 @@ $(document).ready(function () {
     //and spawning the correct template
     //will probably be revised in the future, as it's a bit hacky and inelegant
     function getResults() {
-        var y = [$('#listSelect').val(), $('#tmplSelect').val()];
+        var y = [$('#listSelect').val(), $('#tmplSelect').val()]; //will give us a value like ILNDB or ALPACDB
         var x = y.join('');
         if (x === "ILNDB") {
             spawnILNDB();
-            console.log("getResults(): Spawned ILNDB");
         } else if (x === "RFARDB") {
             spawnRFARDB();
-            console.log("getResults(): Spawned RFARDB");
         } else if (x === "ALPACDB") {
             spawnALPACDB();
-            console.log("getResults(): Spawned ALPACDB");
         } else {
             console.log("getResults(): Error: Didn't spawn anything");
         }
     }
+
+    function makeProductMenu(x) {
+        var setupMenu ='<label for="productSelect">STEP 4<br />Select a Product</label><br><select name="productSelect" id="productSelect"><option value="" selected="selected">None</option>';
+        var endMenu = '</select>';
+        var allAdsArray = [];
+
+        for (var i in x) { //x = adReference, generally
+            var adLongCode = x[i].longCode;
+            var adShortCode = x[i].shortCode;
+            if (x[i].hasOwnProperty('advertisements')) {
+                var ad = x[i].advertisements;
+                var z = Object.keys(ad).length; //gets the length of the advertisements object. Lets us know how many ads to expect
+                //console.log('Number of '+adShortCode+' Ads = ' + z);
+                if (z !== 0) {
+                    var optGroupStart = '<optgroup label="' + adLongCode + '">';
+                    var optGroupEnd = '</optgroup>';
+                    var adEntries = [];
+                    var h = 0;
+                    for (h=0; h < z; h++) {
+                        //console.log('Ad = ' + ad[h].name + ' - ' + ad[h].description);
+                        var adName = ad[h].name;
+                        var adDescription = ad[h].description;
+                        var optionValue = '<option value="' + adName + '">' + adShortCode + ' - ' + adDescription + '</option>';
+                        adEntries.push(optionValue);
+                    }
+                    var combineOptions = optGroupStart + adEntries + optGroupEnd;
+                    allAdsArray.push(combineOptions);
+                }
+            }
+        }
+        var productSelect = $('#productSelect');
+        productSelect.html(setupMenu+allAdsArray+endMenu);
+        productSelect.selectmenu('refresh'); //refresh our changes. doesn't work without this.
+    }
+    makeProductMenu(adReferenceILN); //initialize our menu with ILN values, since the menu defaults to RFAR
 
 
     function firstStorySetup() {
@@ -318,25 +547,16 @@ $(document).ready(function () {
             codedURL = title1URL + utmsource; //appends our URL with a tracking code
             urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
             imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
+            if (getTemplateStyle() === 'ILNDB') {
+                imageRetrieve1 = urlInsert1 + '<img align="right" alt="" height="130" src="' + title1IMG + '" style="padding: 6px;" width="130" /></a>';
+                console.log('iamgefix');
+            }
 
             productReference = {
                 USR: {
                     link: '<a href="http://www.independentlivingnews.com/video/usr-vsl.php' + utmsource + '" target="_blank">',
                     shortCode: 'USR',
-                    longCode: 'Ultimate Self Reliance Manual',
-                    advertisements: {
-                        0: {
-                            name: 'USR1',
-                            description: "Image with copy"
-                        },
-                        1: {
-                            name: 'USR2',
-                            description: "GIF 468x80"
-                        },
-                        2: {
-                            name: 'USR3',
-                            description: 'Image with copy (2)'
-                        }
+                    longCode: 'Ultimate Self Reliance Manual'
                 },
                 GAB: {
                     link: '<a href="http://www.independentlivingnews.com/video/great-american-blackout-ihnp.php' + utmsource + '" target="_blank">',
@@ -361,25 +581,7 @@ $(document).ready(function () {
                 EPACK: {
                     link: '<a href="http://www.independentlivingnews.com/video/epack2-video.php' + utmsource + '" target="_blank">',
                     shortCode: 'EPACK',
-                    longCode: 'Emergency Pack',
-                    advertisements: {
-                        0: {
-                            name: 'EPACK1',
-                            description: "Image with copy"
-                        },
-                        1: {
-                            name: 'EPACK2',
-                            description: "Banner 580x58"
-                        },
-                        2: {
-                            name: 'EPACK3',
-                            description: 'EPACK - Banner 580x58'
-                        },
-                        3: {
-                            name: 'EPACK4',
-                            description: 'EPACK - GIF 580x75'
-                        }
-                    }
+                    longCode: 'Emergency Pack'
                 },
                 STREK: {
                     link: '<a href="http://www.independentlivingnews.com/video/suntrek/' + utmsource + '" target="_blank">',
@@ -389,17 +591,7 @@ $(document).ready(function () {
                 MSR: {
                     link: '<a href="http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html' + utmsource + '" target="_blank">',
                     shortCode: 'MSR',
-                    longCode: 'Medical Self Reliance Mega Manual',
-                    advertisements: {
-                        0: {
-                            name: 'MSR1',
-                            description: "GIF 468x60"
-                        },
-                        1: {
-                            name: 'MSR2',
-                            description: "Image with copy"
-                        }
-
+                    longCode: 'Medical Self Reliance Mega Manual'
                 },
                 FFL: {
                     link: '<a href="http://www.independentlivingnews.com/video/ffl-vsl.php' + utmsource + '" target="_blank">',
@@ -414,17 +606,7 @@ $(document).ready(function () {
                 PW: {
                     link: '<a href="http://www.independentlivingnews.com/video/pw-vsl.php' + utmsource + '" target="_blank">',
                     shortCode: 'PW',
-                    longCode: 'Power Whisperer',
-                    advertisements: {
-                        0: {
-                            name: 'PW1',
-                            description: "Image with copy"
-                        },
-                        1: {
-                            name: 'PW2',
-                            description: "Banner 580x58"
-                        }
-                    }
+                    longCode: 'Power Whisperer'
                 },
                 CAN: {
                     link: '<a href="http://www.survivalproshop.com/survival-essentials/survival-kit-in-a-can.html' + utmsource + '" target="_blank">',
@@ -458,89 +640,6 @@ $(document).ready(function () {
             };
 
         }
-
-
-        //TODO /doing, making a optgroup generator. This way I can cut down on havign to updatee so much across three files -
-        //TODO so it should spawn
-
-        //<label for="productSelect">STEP 4<br />Select a Product</label><br>
-        //<select name="productSelect" id="productSelect">
-        //    <option value="" selected="selected">None</option>
-        //
-        //<optgroup label="Colloidal Silver Generator Kit">
-        //<option value="CSG1">CSG - Banner 560x56</option>
-        //<option value="CSG2">CSG - Image with copy</option>
-        //</optgroup>
-
-        //</select>
-
-
-
-        //PW: {
-        //    link: '<a href="http://www.independentlivingnews.com/video/pw-vsl.php' + utmsource + '" target="_blank">',
-        //        shortCode: 'PW',
-        //        longCode: 'Power Whisperer',
-        //        advertisements: {
-        //        1: {
-        //            name: 'PW1',
-        //                description: "Image with copy"
-        //        },
-        //        2: {
-        //            name: 'PW2',
-        //                description: "Banner 580x58"
-        //        }
-        //    }
-        //},
-
-        function getRep(x) {
-            var setupMenu ='<label for="productSelectTest">STEP 4<br />Select a Product</label><br><select name="productSelectTest" id="productSelectTest"><option value="" selected="selected">None</option>';
-            var endMenu = '</select>';
-            var allAds = {};
-            var allAdsArray = [];
-
-
-
-            function buildSelectMenu(shortName, longName, description) {
-
-            }
-
-                for (var i in x) { //x = productReference, generally
-                    var adLongCode = x[i].longCode;
-                    var adShortCode = x[i].shortCode;
-                    if (x[i].hasOwnProperty('advertisements')) {
-                        var ad = x[i].advertisements;
-                        var z = Object.keys(ad).length;
-                        console.log('Number of Ads = ' + z);
-                        if (z !== 0) {
-                            var optGroupStart = '<optgroup label="' + adLongCode + '">';
-                            var optGroupEnd = '</optgroup>';
-                            var adEntries = [];
-                            var h = 0;
-                            for (h=0; h < z; h++) {
-                                console.log('Ad Name = ' + ad[h].name);
-                                console.log('Ad Desc = ' + ad[h].description);
-                                var adName = ad[h].name;
-                                var adDescription = ad[h].description;
-                                var optionValue = '<option value="' + adName + '">' + adShortCode + ' - ' + adDescription + '</option>';
-                                adEntries.push(optionValue);
-                            }
-                            var shimmyBop = optGroupStart + adEntries + optGroupEnd;
-                            allAdsArray.push(shimmyBop);
-                        }
-                    }
-                }
-
-            $('#adPreview').append(setupMenu+allAdsArray+endMenu);
-            $('#productSelectTest')
-                .selectmenu()
-                .selectmenu('menuWidget')
-                .addClass('overflow');
-
-
-        }
-        getRep(productReference);
-
-
 
 
         //This Object/Array is used with JSRender.
@@ -595,7 +694,7 @@ $(document).ready(function () {
             }
         };
         getProduct();
-        console.log(storyz.currentProduct);
+        //console.log(storyz.currentProduct);
     }
 
     function secondStorySetup() {
@@ -609,17 +708,17 @@ $(document).ready(function () {
         var title2IMG = $("#title2IMG").val();
         var urlInsert2 = '<a href="' + title2URL + '" target="_blank">';
         var linkedTitle2 = '<h4><a href="' + title2URL + '" target="_blank">' + title2 + '</a></h4>';
-        var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 125px; max-width: 125px;" width="125" height="125" alt="Story Image"></a></center>';
+        var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '"  width="130" height="130" alt="Story Image"></a></center>';
         var keycodeArray = [];
         keycodeArray[0]= $.trim($("#title1KEY").val());
 
-        if (templateStyle === "RFARDB" || templateStyle === "ILNDB") {
+        if (getTemplateStyle() === "RFARDB" || getTemplateStyle()  === "ILNDB") {
             utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
             codedURL = title2URL + utmsource; //appends our URL with a tracking code
             urlInsert2 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
-            imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" style="max-height: 130px; max-width: 130px;" width="130" height="130" alt="Story Image"></a></center>';
+            imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '"  width="130" height="130" alt="Story Image"></a></center>';
         }
-        if (templateStyle === 'ALPACDB'){
+        if (getTemplateStyle()  === 'ALPACDB'){
             utmsource = '?utm_source=' + keycodeArray + '&utm_medium=email&utm_campaign=' + keycodeArray;
             codedURL = title2URL + utmsource; //appends our URL with a tracking code
             urlInsert2 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
