@@ -195,6 +195,10 @@ $(document).ready(function () {
                 0: {
                     name: 'SUB1',
                     description: 'Image with copy'
+                },
+                1: {
+                    name: 'SUB2',
+                    description: 'Smaller Image with copy'
                 }
             }
         }
@@ -547,10 +551,10 @@ $(document).ready(function () {
             codedURL = title1URL + utmsource; //appends our URL with a tracking code
             urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
             imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
-            //if (getTemplateStyle() === 'ILNDB') { //TODO re-enable when verified working by test
-            //    imageRetrieve1 = urlInsert1 + '<img align="right" alt="" height="130" src="' + title1IMG + '" style="padding: 6px;" width="130" /></a>';
-            //    console.log('iamgefix');
-            //}
+            if (getTemplateStyle() === 'ILNDB') {
+                imageRetrieve1 = urlInsert1 + '<img align="right" alt="" height="130" src="' + title1IMG + '" style="padding: 6px; float:right;" width="130" /></a>';
+                console.log('iamgefix');
+            }
 
             productReference = {
                 USR: {
@@ -669,7 +673,7 @@ $(document).ready(function () {
                     safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
                     prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">Email Preferences</a>',
                     unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">Unsubscribe</a>',
-                    spamLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam" style="color: #2ba6cb;text-decoration: none;">Mark as Spam</a>'
+                    spamLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam">Mark as Spam</a>'
                 }
             },
             ALPACDB: {
@@ -682,7 +686,7 @@ $(document).ready(function () {
             },
             ILNDB: {
                 ilnHeader: '<a href="http://www.independentlivingnews.com' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="117" src="http://www.independentlivingnews.com/email/images/ILN_LB_header.jpg" style="display:block;" width="580" /></a>',
-                modalLink: '<a href="' + codedURL + '" linkname="Modal Headline" target="_blank"><span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#ffffff;">' + title1 + '</span></a>'
+                modalLink: '<a href="' + codedURL + '" linkname="Modal Headline" target="_blank"><span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">' + title1 + '</span></a>'
             },
             currentProduct: {
                 link: '',
