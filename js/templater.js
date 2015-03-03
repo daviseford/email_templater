@@ -286,6 +286,15 @@ $(document).ready(function () {
             }
         });
 
+    $('#title1IMG').change(function() {
+        var x = $('#title1IMG').val();
+        getImageSize(x, 0);
+    });
+    $('#title2IMG').change(function() {
+        var z = $('#title2IMG').val();
+        getImageSize(z, 1);
+    });
+
     //setting up our story boxes
     //var editor1 = new wysihtml5.Editor("title1text-textarea", { // id of textarea element
     //    toolbar:      "wysihtml-toolbar1", // id of toolbar element
@@ -550,10 +559,10 @@ $(document).ready(function () {
             utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
             codedURL = title1URL + utmsource; //appends our URL with a tracking code
             urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
-            imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
+            imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"></a></center>';
+
             if (getTemplateStyle() === 'ILNDB') {
-                imageRetrieve1 = urlInsert1 + '<img align="right" alt="" height="130" src="' + title1IMG + '" style="padding: 6px; float:right;" width="130" /></a>';
-                console.log('iamgefix');
+                imageRetrieve1 = urlInsert1 + '<img align="right" alt="" src="' + title1IMG + '" style="padding: 6px; float:right;" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"/></a>';
             }
 
             productReference = {
@@ -665,7 +674,12 @@ $(document).ready(function () {
                 title: subjectLine,
                 ALPAC: {
                     keycode: keycodeArray,
-                    utmString: utmsource.toString()
+                    utmString: utmsource.toString(),
+                    advertise: '<a href="mailto:info@americanlibertypac.org" target="_top">ADVERTISE</a>',
+                    subscribe: '<a href="http://americanlibertypac.com/join/" target="_blank">SUBSCRIBE</a>',
+                    unsubscribe: '<a href="http://news.extras-americanlibertypac.com/LP/ZHpjXCznPeQ" target="_blank">Unsubscribe</a> (You will be missed!)',
+                    privacy: '<a href="http://conservativeemail.com/privacy-policy.html" target="_blank">View our policy.</a>'
+
                 },
                 ALP: {
                     keycode: keycodeArray,
@@ -703,7 +717,6 @@ $(document).ready(function () {
 
     function secondStorySetup() {
         $('#story2Form').find('input').each(textFix);
-        var productReference;
         var utmsource;
         var codedURL;
         var title2 = $("#title2").val();
@@ -720,7 +733,8 @@ $(document).ready(function () {
             utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
             codedURL = title2URL + utmsource; //appends our URL with a tracking code
             urlInsert2 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
-            imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '"  width="130" height="130" alt="Story Image"></a></center>';
+            imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '" alt="Story Image" height="' + imgHeight[1] + '" width="' + imgWidth[1] + '"></a></center>';
+
         }
         if (getTemplateStyle()  === 'ALPACDB'){
             utmsource = '?utm_source=' + keycodeArray + '&utm_medium=email&utm_campaign=' + keycodeArray;
@@ -822,11 +836,11 @@ $(document).ready(function () {
     }
 
 
-
     //TODO RSS attempt - in progress
     function getRSS(event) {
         event.preventDefault();
         var q = 0;
+        var formatStorage = [];
         $.ajax({
             url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://americanlibertypac.com/feed/'),
             dataType: 'json',
@@ -870,19 +884,31 @@ $(document).ready(function () {
                         var imgID = 'rssImg' + publicArray[i].storyNum;
 
 
+                        //if (q < 8) { //displays 8 results
+                        //    $('#rssPreview').append(
+                        //        '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-top:15px;" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + publicArray[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
+                        //        publicArray[i].title +
+                        //        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                        //        '</center></p></div>'
+                        //    );
+                        //}
+
                         if (q < 8) { //displays 8 results
-                            $('#rssPreview').append(
+                            formatStorage[q] =
                                 '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-top:15px;" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + publicArray[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
                                 publicArray[i].title +
                                 '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
-                                '</center></p></div>'
-                            );
+                                '</center></p></div>';
                         }
+
                         q++; // increment by one to keep the loop ticking up
                     });
                 }
             }
         }).done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
+            //TODO perhaps add the "Generate RSS" button back after generating.
+            var joinRSS = formatStorage.join('');
+            $('#rssPreview').html(joinRSS);
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(publicArray[e].title);
