@@ -547,10 +547,10 @@ $(document).ready(function () {
             codedURL = title1URL + utmsource; //appends our URL with a tracking code
             urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
             imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
-            if (getTemplateStyle() === 'ILNDB') {
-                imageRetrieve1 = urlInsert1 + '<img align="right" alt="" height="130" src="' + title1IMG + '" style="padding: 6px;" width="130" /></a>';
-                console.log('iamgefix');
-            }
+            //if (getTemplateStyle() === 'ILNDB') { //TODO re-enable when verified working by test
+            //    imageRetrieve1 = urlInsert1 + '<img align="right" alt="" height="130" src="' + title1IMG + '" style="padding: 6px;" width="130" /></a>';
+            //    console.log('iamgefix');
+            //}
 
             productReference = {
                 USR: {
