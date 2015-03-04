@@ -3,12 +3,6 @@
 $(document).ready(function () {
 
 
-    var loadSpin = $('#loader');
-
-    $(document).on({
-        ajaxStart: function() { loadSpin.addClass("loadingOn");    },
-        ajaxStop: function() { loadSpin.removeClass("loadingOn"); }
-    });
 
     //*******************************
     // DOCUMENT AND VAR SETUP
@@ -21,8 +15,8 @@ $(document).ready(function () {
     var additionalContentVal = false; //This makes us default to a one-story format.
     imgHeight = [];
     imgWidth = [];
-    var maxWidth = 0;
-    var maxHeight = 0;
+    var maxWidth = 130;
+    var maxHeight = 130;
 
     var adReferenceILN = {
         USR: {
@@ -251,6 +245,8 @@ $(document).ready(function () {
                     makeProductMenu(adReferenceWJMA); //if our selected menu is ALPAC, get WJMA ads
                     x.show('scale', 'fast');
                     z.hide();
+                    maxWidth = 130;
+                    maxHeight = 130;
                 } else {
                     makeProductMenu(adReferenceILN); //otherwise, get ILN ads - this will change behavior in the future
                     z.show('scale', 'fast');
@@ -264,6 +260,10 @@ $(document).ready(function () {
                     maxWidth = 130;
                     maxHeight = 130;
                     y.text('Title #1:');
+                }
+                if (a === 'RFARDB'){
+                    maxWidth = 130;
+                    maxHeight = 130;
                 }
                 if (b !== ''){
                     getImageSize(b, 0, maxWidth, maxHeight);
@@ -314,11 +314,15 @@ $(document).ready(function () {
 
     $('#title1IMG').change(function() {
         var x = $('#title1IMG').val();
-        getImageSize(x, 0, maxWidth, maxHeight);
+        if (x !== '') {
+            getImageSize(x, 0, maxWidth, maxHeight);
+        }
     });
     $('#title2IMG').change(function() {
         var z = $('#title2IMG').val();
-        getImageSize(z, 1, maxWidth, maxHeight);
+        if (z !== '') {
+            getImageSize(z, 1, maxWidth, maxHeight);
+        }
     });
 
     //setting up our story boxes
@@ -722,7 +726,7 @@ $(document).ready(function () {
                 subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">'
             },
             ILNDB: {
-                ilnHeader: '<a href="http://www.independentlivingnews.com' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="117" src="http://www.independentlivingnews.com/email/images/ILN_LB_header.jpg" style="display:block;" width="580" /></a>',
+                ilnHeader: '<a href="http://www.independentlivingnews.com' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="118" src="http://www.independentlivingnews.com/email/images/ILN_LB_header_edited.jpg" style="display:block;" width="580" /></a>',
                 modalLink: '<a href="' + codedURL + '" linkname="Modal Headline" target="_blank"><span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">' + title1 + '</span></a>'
             },
             currentProduct: {
@@ -828,13 +832,13 @@ $(document).ready(function () {
         return (S(content).stripTags('html', 'head', 'body').s);
     }
 
-    function getImageSize(e, x, width, height) { //e is the image src, x is the storage value in imgWidth/Height
+    function getImageSize(src, storage, width, height) { //e is the image src, x is the storage value in imgWidth/Height
         var img = new Image();
         var maxWidth = width; // Max width for the image
         var maxHeight = height;    // Max height for the image
         img.onload = function() {
 
-            console.log('Original Size: ' + this.naturalWidth + 'x' + this.naturalHeight);
+            console.log('Original Size of image ' + (storage + 1) + ': ' + this.naturalWidth + 'x' + this.naturalHeight);
             console.log('maxSizes: ' + maxWidth + 'x' + maxHeight);
             var ratio = 0;  // Used for aspect ratio
             var width = this.naturalWidth;    // Current image width
@@ -845,18 +849,18 @@ $(document).ready(function () {
                 ratio = maxWidth / width;   // get ratio for scaling image
                 console.log('RESIZE ----WIDTH---');
                 console.log('Now: ' + maxWidth + 'x' + (height * ratio));
-                imgHeight[x] = height * ratio;    // Reset height to match scaled image
-                imgWidth[x] = maxWidth;    // Reset width to match scaled image
+                imgHeight[storage] = height * ratio;    // Reset height to match scaled image
+                imgWidth[storage] = maxWidth;    // Reset width to match scaled image
             } else if(height > maxHeight) {
                 ratio = maxHeight / height; // get ratio for scaling image
                 console.log('RESIZE -----HEIGHT--');
                 console.log('Now: ' + maxHeight + 'x' + (width * ratio));   // Set new height
-                imgWidth[x] = width * ratio;    // Reset width to match scaled image
-                imgHeight[x] = maxHeight;    // Reset height to match scaled image
+                imgWidth[storage] = width * ratio;    // Reset width to match scaled image
+                imgHeight[storage] = maxHeight;    // Reset height to match scaled image
             }
 
         };
-        img.src = e;
+        img.src = src;
     }
 
     function getILNAPI(event){
@@ -1051,7 +1055,7 @@ $(document).ready(function () {
                 alert("Please enter a story");
             } else {
                 makeKeyCode(event);
-                getTemplateStyle(); //Start by finding out which template we're using
+                //getTemplateStyle(); //Start by finding out which template we're using
                 firstStorySetup();
                 if (additionalContentVal === true) {
                     secondStorySetup();
