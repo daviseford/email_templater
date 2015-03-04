@@ -34,7 +34,7 @@
             <select name="listSelect" id="listSelect">
                 <option value="RFAR" selected="selected">RFAR</option>
                 <option value="ILN">ILN</option>
-                <!-- <option value="ALPAC">ALPAC</option> -->
+                <option value="ALPAC">ALPAC</option>
             </select>
 
             <br />
@@ -84,6 +84,22 @@
         </center>
     </div>
 
+    <!--this is for RSS preview -->
+    <div class="row" id="rssPreviewILN">
+        <center>
+            <button class="btn btn-primary btn-lg" style="padding: 15px;" id="getILNRSS">Get ILN RSS</button>
+        </center>
+    </div>
+    <div class="row">
+        <div class="loading" id="loader">
+            <center>
+                <p>
+                    <img src="http://daviseford.com/sites/default/files/email_templater/images/ajax-loader3.gif" />
+                </p>
+            </center>
+        </div>
+    </div>
+
     <!--this is for subject line and additional story checkbox -->
     <div class="row">
         <div class="col-lg-6" id="subjectLine">
@@ -95,8 +111,8 @@
         <div class="col-lg-6" id="checkBox">
             <div class="checkbox">
                 <br />
-                <label>
-                    <input type="checkbox" id="additionalContentCheckbox" name="additionalContentCheckbox" />Additional Story?
+                <label class="bg-info">
+                    <input type="checkbox" id="additionalContentCheckbox" name="additionalContentCheckbox" /><strong>Additional Story</strong>
                 </label>
             </div>
         </div>
@@ -236,7 +252,7 @@
 <script src="js/tmpl.loader.js" type="text/javascript"></script>
 <script src="js/wysihtml-toolbar.min.js" type="text/javascript"></script>
 <script src="js/advanced.js" type="text/javascript"></script>
-<script src="js/templater.js" type="text/javascript"></script>
+<script src="js/templater_test.js" type="text/javascript"></script>
 
 <!-- RSS -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>

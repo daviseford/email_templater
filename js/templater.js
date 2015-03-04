@@ -1,6 +1,15 @@
 // JavaScript Document
 
 $(document).ready(function () {
+
+
+    var loadSpin = $('#loader');
+
+    $(document).on({
+        ajaxStart: function() { loadSpin.addClass("loadingOn");    },
+        ajaxStop: function() { loadSpin.removeClass("loadingOn"); }
+    });
+
     //*******************************
     // DOCUMENT AND VAR SETUP
     //*******************************
@@ -10,9 +19,10 @@ $(document).ready(function () {
     $("#emailBtnDiv").hide();
     $("#rssPreview").hide();
     var additionalContentVal = false; //This makes us default to a one-story format.
-    publicArray = [];
     imgHeight = [];
     imgWidth = [];
+    var maxWidth = 0;
+    var maxHeight = 0;
 
     var adReferenceILN = {
         USR: {
@@ -231,19 +241,35 @@ $(document).ready(function () {
             width: 150,
             change: function() {
                 var a = getTemplateStyle();
+                var b = $('#title1IMG').val();
+                var c = $('#title2IMG').val();
                 var x = $('#rssPreview');
+                var z = $('#rssPreviewILN');
                 var y = $("#title1label");
+
                 if (a === 'ALPACDB'){
                     makeProductMenu(adReferenceWJMA); //if our selected menu is ALPAC, get WJMA ads
                     x.show('scale', 'fast');
+                    z.hide();
                 } else {
                     makeProductMenu(adReferenceILN); //otherwise, get ILN ads - this will change behavior in the future
+                    z.show('scale', 'fast');
                     x.hide();
                 }
                 if (a === 'ILNDB') {
+                    maxWidth = 200;
+                    maxHeight = 200;
                     y.text('Modal Headline:');
                 } else {
+                    maxWidth = 130;
+                    maxHeight = 130;
                     y.text('Title #1:');
+                }
+                if (b !== ''){
+                    getImageSize(b, 0, maxWidth, maxHeight);
+                }
+                if (c !== ''){
+                    getImageSize(c, 1, maxWidth, maxHeight);
                 }
             }
         });
@@ -288,18 +314,14 @@ $(document).ready(function () {
 
     $('#title1IMG').change(function() {
         var x = $('#title1IMG').val();
-        getImageSize(x, 0);
+        getImageSize(x, 0, maxWidth, maxHeight);
     });
     $('#title2IMG').change(function() {
         var z = $('#title2IMG').val();
-        getImageSize(z, 1);
+        getImageSize(z, 1, maxWidth, maxHeight);
     });
 
     //setting up our story boxes
-    //var editor1 = new wysihtml5.Editor("title1text-textarea", { // id of textarea element
-    //    toolbar:      "wysihtml-toolbar1", // id of toolbar element
-    //    parserRules:  wysihtml5ParserRules // defined in parser rules set
-    //});
     var editor1 = new wysihtml5.Editor("title1text-div", { // id of textarea element
         toolbar:      "wysihtml-toolbar1", // id of toolbar element
         parserRules:  wysihtml5ParserRules // defined in parser rules set
@@ -314,6 +336,7 @@ $(document).ready(function () {
         .click(function(event){
             getRSS(event);
         });
+
 
     function makeEmailBtn() {
         $("#emailHTML")
@@ -805,13 +828,14 @@ $(document).ready(function () {
         return (S(content).stripTags('html', 'head', 'body').s);
     }
 
-    function getImageSize(e, x) { //e is the image src, x is the storage value in imgWidth/Height
+    function getImageSize(e, x, width, height) { //e is the image src, x is the storage value in imgWidth/Height
         var img = new Image();
+        var maxWidth = width; // Max width for the image
+        var maxHeight = height;    // Max height for the image
         img.onload = function() {
 
-            console.log('Original Size: ' + this.naturalHeight + 'x' + this.naturalWidth);
-            var maxWidth = 130; // Max width for the image
-            var maxHeight = 130;    // Max height for the image
+            console.log('Original Size: ' + this.naturalWidth + 'x' + this.naturalHeight);
+            console.log('maxSizes: ' + maxWidth + 'x' + maxHeight);
             var ratio = 0;  // Used for aspect ratio
             var width = this.naturalWidth;    // Current image width
             var height = this.naturalHeight;  // Current image height
@@ -835,12 +859,93 @@ $(document).ready(function () {
         img.src = e;
     }
 
+    function getILNAPI(event){
+        event.preventDefault();
+        var resultsHolder = [];
+        var formatStorage = [];
+        $.ajax({
+            url:"https://www.kimonolabs.com/api/5pbx5hy0?apikey=t6jhRsPktqd4z4ZU72c3JRv97ji2EiPP",
+            crossDomain: true,
+            dataType: "jsonp",
+            success: function (response) {
+                console.log(response);
+                var original = response;
+                var numStories = original.count;
+                var results = original.results.health;
 
-    //TODO RSS attempt - in progress
+                function removeNewLine(title){
+                    //This javascript replaces all 3 types of line breaks with a space
+                    //credit: http://www.textfixer.com/tutorials/javascript-line-breaks.php
+                    return (title.replace(/(\r\n|\n|\r)/gm," "));
+                }
+
+                for (var i=0; i < numStories; i++){
+                    resultsHolder[i] = {
+                        storyNum: i,
+                        title: removeNewLine(results[i].title),
+                        link: results[i].link
+                    };
+                }
+
+                for (var q = 0; q < 8; q++) { //displays 8 results
+                    var btnID1 = 'rss1Btn' + resultsHolder[q].storyNum;
+                    var btnID2 = 'rss2Btn' + resultsHolder[q].storyNum;
+                    formatStorage[q] =
+                        '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-top:15px;"><p style="font-size: 10px; text-align: center;">' +
+                        resultsHolder[q].title +
+                        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                        '</center></p></div>';
+                }
+
+            },
+            error: function (xhr, status) {
+                console.log('ERROR Retrieving ILN API');
+            }
+        }).done(function() {
+            console.log(resultsHolder[0]);
+            //TODO perhaps add the "Generate RSS" button back after generating.
+            var joinRSS = formatStorage.join('');
+            $('#rssPreviewILN').html(joinRSS);
+            function buttonUpdateField(e) {
+                $('#rss1Btn'+e).click(function () {
+                    $('#title1').val(resultsHolder[e].title);
+                    $('#title1text-div').html(resultsHolder[e].description);
+                    $('#title1URL').val(resultsHolder[e].link);
+                    $('#title1IMG').val(resultsHolder[e].imgsrc);
+                    //getImageSize(resultsHolder[e].imgsrc, 0); //0 means first story
+                });
+                $('#rss2Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title2').val(resultsHolder[e].title);
+                        $('#title2text-div').html(resultsHolder[e].description);
+                        $('#title2URL').val(resultsHolder[e].link);
+                        $('#title2IMG').val(resultsHolder[e].imgsrc);
+                        //getImageSize(resultsHolder[e].imgsrc, 1);
+                    } else {
+                        console.log('No second story!');
+                    }
+                });
+
+            }
+            for(var n=0; n < 8; n++){
+                buttonUpdateField(n);
+            }
+        });
+    }
+
+    $('#getILNRSS')
+        .button()
+        .click(function(event){
+            $('#getILNRSS').text('Getting RSS').effect('highlight');
+            getILNAPI(event);
+        });
+
+
     function getRSS(event) {
         event.preventDefault();
         var q = 0;
         var formatStorage = [];
+        var rssObject = [];
         $.ajax({
             url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://americanlibertypac.com/feed/'),
             dataType: 'json',
@@ -870,7 +975,7 @@ $(document).ready(function () {
                         }
                         defaultImageCheck();
 
-                        publicArray[i] = {
+                        rssObject[i] = {
                             storyNum: q,
                             title: e.title,
                             link: e.link,
@@ -878,16 +983,16 @@ $(document).ready(function () {
                             description: cleanDescription(f)
                         };
 
-                        var divID = 'rssStory' + publicArray[i].storyNum;
-                        var btnID1 = 'rss1Btn' + publicArray[i].storyNum;
-                        var btnID2 = 'rss2Btn' + publicArray[i].storyNum;
-                        var imgID = 'rssImg' + publicArray[i].storyNum;
+                        var divID = 'rssStory' + rssObject[i].storyNum;
+                        var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
+                        var btnID2 = 'rss2Btn' + rssObject[i].storyNum;
+                        var imgID = 'rssImg' + rssObject[i].storyNum;
 
 
                         //if (q < 8) { //displays 8 results
                         //    $('#rssPreview').append(
-                        //        '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-top:15px;" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + publicArray[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
-                        //        publicArray[i].title +
+                        //        '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-top:15px;" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
+                        //        rssObject[i].title +
                         //        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
                         //        '</center></p></div>'
                         //    );
@@ -895,8 +1000,8 @@ $(document).ready(function () {
 
                         if (q < 8) { //displays 8 results
                             formatStorage[q] =
-                                '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-top:15px;" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + publicArray[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
-                                publicArray[i].title +
+                                '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-top:15px;" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
+                                rssObject[i].title +
                                 '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
                                 '</center></p></div>';
                         }
@@ -911,19 +1016,19 @@ $(document).ready(function () {
             $('#rssPreview').html(joinRSS);
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
-                    $('#title1').val(publicArray[e].title);
-                    $('#title1text-div').html(publicArray[e].description);
-                    $('#title1URL').val(publicArray[e].link);
-                    $('#title1IMG').val(publicArray[e].imgsrc);
-                    getImageSize(publicArray[e].imgsrc, 0); //0 means first story
+                    $('#title1').val(rssObject[e].title);
+                    $('#title1text-div').html(rssObject[e].description);
+                    $('#title1URL').val(rssObject[e].link);
+                    $('#title1IMG').val(rssObject[e].imgsrc);
+                    getImageSize(rssObject[e].imgsrc, 0, maxWidth, maxHeight); //0 means first story, 130x130 image size
                 });
                 $('#rss2Btn'+e).click(function () {
                     if (additionalContentVal === true) {
-                        $('#title2').val(publicArray[e].title);
-                        $('#title2text-div').html(publicArray[e].description);
-                        $('#title2URL').val(publicArray[e].link);
-                        $('#title2IMG').val(publicArray[e].imgsrc);
-                        getImageSize(publicArray[e].imgsrc, 1);
+                        $('#title2').val(rssObject[e].title);
+                        $('#title2text-div').html(rssObject[e].description);
+                        $('#title2URL').val(rssObject[e].link);
+                        $('#title2IMG').val(rssObject[e].imgsrc);
+                        getImageSize(rssObject[e].imgsrc, 1, maxWidth, maxHeight);
                     } else {
                         console.log('No second story!');
                     }

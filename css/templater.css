@@ -5,3 +5,16 @@
     height: 400px;
     width: 325px;
 }
+
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   speak for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.loading {
+    display: none;
+}
+
+.loadingOn {
+    display: block;
+}
