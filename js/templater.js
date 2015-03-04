@@ -2,7 +2,12 @@
 
 $(document).ready(function () {
 
+    var loadSpin = $('#loader');
 
+    $(document).on({
+        ajaxStart: function() { loadSpin.addClass("loadingOn");    },
+        ajaxStop: function() { loadSpin.removeClass("loadingOn"); }
+    });
 
     //*******************************
     // DOCUMENT AND VAR SETUP
@@ -343,11 +348,15 @@ $(document).ready(function () {
 
 
     function makeEmailBtn() {
+        var i = 0; //I added this counter to stop the multiple submission bug.
         $("#emailHTML")
             .button()
             .show()
             .click(function() {
-                sendEmail();
+                if (i === 0) {
+                    sendEmail();
+                }
+                i++;
             });
     }
 
@@ -416,23 +425,14 @@ $(document).ready(function () {
         var currKeyCode = keycodeGeneration.join("");
         $("#title1KEY")
             .val(currKeyCode)
-            .effect('highlight', 'slow'); //Sets up our product link in the "#inputForm"
+            .effect('highlight', 'slow');
     }
 
     //checks our template style for us, useful when doing keycodes
     function getTemplateStyle(){
         var y = [$('#listSelect').val(), $('#tmplSelect').val()];
         var x = y.join('');
-        if (x === "ALPACDB") {
-            return 'ALPACDB';
-        } else if (x === "ILNDB"){
-            return 'ILNDB';
-        } else if (x === "RFARDB"){
-            return 'RFARDB';
-        } else {
-            console.log("getTemplateStyle() - Error: None of above");
-        }
-        console.log("getTemplateStyle() = " + x);
+        return x;
     }
 
     function spawnILNDB() {
@@ -872,7 +872,6 @@ $(document).ready(function () {
             crossDomain: true,
             dataType: "jsonp",
             success: function (response) {
-                console.log(response);
                 var original = response;
                 var numStories = original.count;
                 var results = original.results.health;
@@ -906,24 +905,22 @@ $(document).ready(function () {
                 console.log('ERROR Retrieving ILN API');
             }
         }).done(function() {
-            console.log(resultsHolder[0]);
-            //TODO perhaps add the "Generate RSS" button back after generating.
             var joinRSS = formatStorage.join('');
             $('#rssPreviewILN').html(joinRSS);
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(resultsHolder[e].title);
-                    $('#title1text-div').html(resultsHolder[e].description);
+                    //$('#title1text-div').html(resultsHolder[e].description);
                     $('#title1URL').val(resultsHolder[e].link);
-                    $('#title1IMG').val(resultsHolder[e].imgsrc);
+                    //$('#title1IMG').val(resultsHolder[e].imgsrc);
                     //getImageSize(resultsHolder[e].imgsrc, 0); //0 means first story
                 });
                 $('#rss2Btn'+e).click(function () {
                     if (additionalContentVal === true) {
                         $('#title2').val(resultsHolder[e].title);
-                        $('#title2text-div').html(resultsHolder[e].description);
+                        //$('#title2text-div').html(resultsHolder[e].description);
                         $('#title2URL').val(resultsHolder[e].link);
-                        $('#title2IMG').val(resultsHolder[e].imgsrc);
+                        //$('#title2IMG').val(resultsHolder[e].imgsrc);
                         //getImageSize(resultsHolder[e].imgsrc, 1);
                     } else {
                         console.log('No second story!');
@@ -942,6 +939,7 @@ $(document).ready(function () {
         .click(function(event){
             $('#getILNRSS').text('Getting RSS').effect('highlight');
             getILNAPI(event);
+
         });
 
 
@@ -960,7 +958,6 @@ $(document).ready(function () {
 
                         function cleanDescription(desc) {
                             var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe').s;
-                            console.log(x);
                             return x;
                         }
 
@@ -993,18 +990,9 @@ $(document).ready(function () {
                         var imgID = 'rssImg' + rssObject[i].storyNum;
 
 
-                        //if (q < 8) { //displays 8 results
-                        //    $('#rssPreview').append(
-                        //        '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-top:15px;" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
-                        //        rssObject[i].title +
-                        //        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
-                        //        '</center></p></div>'
-                        //    );
-                        //}
-
                         if (q < 8) { //displays 8 results
                             formatStorage[q] =
-                                '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-top:15px;" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
+                                '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
                                 rssObject[i].title +
                                 '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
                                 '</center></p></div>';

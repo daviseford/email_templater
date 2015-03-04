@@ -18,3 +18,12 @@
 .loadingOn {
     display: block;
 }
+
+.rssHolder {
+    border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border: 1px solid #000000;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
