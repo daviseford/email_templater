@@ -369,7 +369,7 @@ $(document).ready(function () {
 
     function sendEmail() {
         var x = $("#resultsTextArea").val();
-        var z = $("#title1KEY").val();
+        var z = $("#keycodeInput").val();
         var y = S(x).unescapeHTML().s;
         z = z.toUpperCase();
         $.ajax({
@@ -430,7 +430,7 @@ $(document).ready(function () {
         var keycodeGeneration = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
         //This array stores our Keycode values, to be used shortly.
         var currKeyCode = keycodeGeneration.join("");
-        $("#title1KEY")
+        $("#keycodeInput")
             .val(currKeyCode)
             .effect('highlight', 'slow');
     }
@@ -593,7 +593,7 @@ $(document).ready(function () {
         var urlInsert1 = '<a href="' + title1URL + '" target="_blank">';
         var linkedTitle1 = '<h4><a href="' + title1URL + '" target="_blank">' + title1 + '</a></h4>';
         var keycodeArray = [];
-        keycodeArray[0]= $.trim($("#title1KEY").val());
+        keycodeArray[0]= $.trim($("#keycodeInput").val());
 
         function getProduct() {
             var b;
@@ -789,7 +789,7 @@ $(document).ready(function () {
         var linkedTitle2 = '<h4><a href="' + title2URL + '" target="_blank">' + title2 + '</a></h4>';
         var imageRetrieve2 = '<center>' + urlInsert2 + '<img src="' + title2IMG + '"  width="130" height="130" alt="Story Image"></a></center>';
         var keycodeArray = [];
-        keycodeArray[0]= $.trim($("#title1KEY").val());
+        keycodeArray[0]= $.trim($("#keycodeInput").val());
 
         if (getTemplateStyle() === "RFARDB" || getTemplateStyle()  === "ILNDB") {
             utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
