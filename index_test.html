@@ -35,6 +35,7 @@
                 <option value="RFAR" selected="selected">RFAR</option>
                 <option value="ILN">ILN</option>
                 <option value="ALPAC">ALPAC</option>
+               <option value="LL">LearnLiberty</option>
             </select>
 
             <br />
@@ -57,49 +58,47 @@
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" id="keycodeDiv">
 
 
-                <label for="title1KEY">Keycode</label>
-                <input class="form-control" type="text" id="title1KEY" name="title1KEY" placeholder="Leave this field blank if you want it generated."/>
-                <br />
-                <br />
-                <br />
+            <label for="title1KEY">Keycode</label>
+            <input class="form-control" type="text" id="title1KEY" name="title1KEY" placeholder="Leave this field blank if you want it generated."/>
+            <br />
+            <br />
+            <br />
 
-                <center>
-                    <button class="btn btn-primary btn-lg" id="generateKeyCodeBtn">Generate Keycode</button>
-                    <br />
-                    <br />
-                    <p>Note: you don't <i>need</i> to hit this, but you should do it to double check your keycode before hitting 'Generate HTML'</p>
-                </center>
+            <center>
+                <button class="btn btn-primary btn-lg" id="generateKeyCodeBtn">Generate Keycode</button>
+                <br />
+                <br />
+                <span class="loading" id="loader">
+                    <img src="http://daviseford.com/sites/default/files/email_templater/images/ajax-loader3.gif" alt="Fetching"/>
+                </span>
+            </center>
         </div>
     </div>
 
-    <!-- TODO Add some sort of thumbnail preview -->
-
+    <!-- TODO Add some sort of thumbnail preview
     <div class="row" id="adPreview">
-    </div>
+    </div> -->
 
-    <!--this is for RSS preview -->
+    <!--this is for RSS ALPAC preview -->
     <div class="row" id="rssPreview">
         <center>
-            <button class="btn btn-primary btn-lg" style="padding: 15px;" id="getRSSBtn">Get RSS (for ALPAC)</button>
+            <button class="btn btn-primary btn-lg" style="padding: 15px;" id="getRSSBtn">Get ALPAC RSS</button>
         </center>
     </div>
 
-    <!--this is for RSS preview -->
+    <!--this is for RSS ILN preview -->
     <div class="row" id="rssPreviewILN">
         <center>
             <button class="btn btn-primary btn-lg" style="padding: 15px;" id="getILNRSS">Get ILN RSS</button>
         </center>
     </div>
-    <div class="row">
-    <div class="loading" id="loader">
+
+    <!--this is for LL ILN preview -->
+    <div class="row" id="rssPreviewLL">
         <center>
-        <p>
-            <img src="http://daviseford.com/sites/default/files/email_templater/images/ajax-loader3.gif" /><br />
-            Loading
-        </p>
+            <button class="btn btn-primary btn-lg" style="padding: 15px;" id="getLLRSS">Get LL RSS</button>
         </center>
     </div>
-</div>
 
     <!--this is for subject line and additional story checkbox -->
     <div class="row">
@@ -113,7 +112,7 @@
             <div class="checkbox">
                 <br />
                 <label class="bg-info">
-                <input type="checkbox" id="additionalContentCheckbox" name="additionalContentCheckbox" /><strong>Additional Story</strong>
+                    <input type="checkbox" id="additionalContentCheckbox" name="additionalContentCheckbox" /><strong>Additional Story</strong>
                 </label>
             </div>
         </div>
@@ -122,36 +121,36 @@
     <div class="row" id="choiceRow">
         <div class="col-lg-12" id="story1Div">
             <form id="story1Form" action="#">
-            <fieldset>
-                <div class="form-group" id="labelTest">
-                    <label id="title1label" for="title1">Title #1: </label>
-                    <input class="form-control" type="text" id="title1" name="title1"/>
-                </div>
-                <div class="form-group">
-                    <label for="title1text-div">Story #1: </label>
-                    <!-- <textarea class="form-control" cols="3" rows="3" id="title1text-textarea" style="width: 100%; height: auto;"></textarea> -->
-                    <div id="title1text-div" style="width: 100%; height: 100%" data-placeholder="Enter your text..." class="form-control"></div>
-                    <div id="wysihtml-toolbar1" style="display: none;">
-                        <a data-wysihtml5-command="bold">bold</a>
-                        <a data-wysihtml5-command="italic">italic</a>
-                        <a data-wysihtml5-command="createLink">insert link</a>
-                        <div data-wysihtml5-dialog="createLink" style="display: none;">
-                            <label>
-                                Link:
-                                <input data-wysihtml5-dialog-field="href" value="http://" class="text">
-                            </label>
-                            <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+                <fieldset>
+                    <div class="form-group" id="labelTest">
+                        <label id="title1label" for="title1">Title #1: </label>
+                        <input class="form-control" type="text" id="title1" name="title1"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="title1text-div">Story #1: </label>
+                        <!-- <textarea class="form-control" cols="3" rows="3" id="title1text-textarea" style="width: 100%; height: auto;"></textarea> -->
+                        <div id="title1text-div" style="width: 100%; height: 100%" data-placeholder="Enter your text..." class="form-control"></div>
+                        <div id="wysihtml-toolbar1" style="display: none;">
+                            <a data-wysihtml5-command="bold">bold</a>
+                            <a data-wysihtml5-command="italic">italic</a>
+                            <a data-wysihtml5-command="createLink">insert link</a>
+                            <div data-wysihtml5-dialog="createLink" style="display: none;">
+                                <label>
+                                    Link:
+                                    <input data-wysihtml5-dialog-field="href" value="http://" class="text">
+                                </label>
+                                <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="title1URL">Story URL: </label>
-                    <input class="form-control" type="text" id="title1URL" name="title1URL" placeholder="Put the link to the ARTICLE here."/>
-                </div>
-                <div class="form-group">
-                    <label for="title1IMG">Image URL: </label>
-                    <input class="form-control" type="text" id="title1IMG" name="title1IMG" placeholder="Link to the article's IMAGE here. In your browser: Right click -> Copy Image URL."/> <br />
-            </fieldset>
+                    <div class="form-group">
+                        <label for="title1URL">Story URL: </label>
+                        <input class="form-control" type="text" id="title1URL" name="title1URL" placeholder="Put the link to the ARTICLE here."/>
+                    </div>
+                    <div class="form-group">
+                        <label for="title1IMG">Image URL: </label>
+                        <input class="form-control" type="text" id="title1IMG" name="title1IMG" placeholder="Link to the article's IMAGE here. In your browser: Right click -> Copy Image URL."/> <br />
+                </fieldset>
             </form>
         </div>
         <div class="col-lg-6 col-md-6" id="story2Div">
@@ -163,7 +162,7 @@
                     </div>
                     <div class="form-group">
                         <label for="title2text-div">Story #2: </label>
-                       <!-- <textarea class="form-control" cols="3" rows="3" id="title2text-textarea" style="width: 100%; height: auto"></textarea>-->
+                        <!-- <textarea class="form-control" cols="3" rows="3" id="title2text-textarea" style="width: 100%; height: auto"></textarea>-->
                         <div id="title2text-div" style="width: 100%; height: 100%" data-placeholder="Enter your text..." class="form-control"></div>
                         <div id="wysihtml-toolbar2" style="display: none;">
                             <a data-wysihtml5-command="bold">bold</a>
@@ -191,32 +190,32 @@
         </div>
     </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <p style="text-align:center">
-            <button type="button" class="btn btn-primary btn-lg" id="generateHTML">Generate HTML</button>
-        </p>
-    </div>
-</div>
-<div class="container-fluid" id="resultsContainer1">
-    <div class="row">
-        <div class="col-lg-12" id="resultsDiv">
-        </div>
-    </div>
-</div>
-<div class="container" id="resultsContainer2">
     <div class="row">
         <div class="col-lg-12">
-            <center>
-                <br />
-                <p class="alert-info">Copy and paste the code below into SmartFocus.</p>
-            <textarea id="resultsTextArea" rows="10" class="form-control" cols="10"></textarea>
-            <!-- TODO add a "Copy to Clipboard" function, I'll need to use Flash -->
-            <!--http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript-->
-            </center>
+            <p style="text-align:center">
+                <button type="button" class="btn btn-primary btn-lg" id="generateHTML">Generate HTML</button>
+            </p>
         </div>
     </div>
-</div>
+    <div class="container-fluid" id="resultsContainer1">
+        <div class="row">
+            <div class="col-lg-12" id="resultsDiv">
+            </div>
+        </div>
+    </div>
+    <div class="container" id="resultsContainer2">
+        <div class="row">
+            <div class="col-lg-12">
+                <center>
+                    <br />
+                    <p class="alert-info">Copy and paste the code below into SmartFocus.</p>
+                    <textarea id="resultsTextArea" rows="10" class="form-control" cols="10"></textarea>
+                    <!-- TODO add a "Copy to Clipboard" function, I'll need to use Flash -->
+                    <!--http://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript-->
+                </center>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-12" id="emailBtnDiv">
@@ -231,7 +230,7 @@
         <div class="col-lg-12">
             <center><p>Developed by Davis Ford 2015</p></center>
         </div>
-</div>
+    </div>
 
 
 </body>

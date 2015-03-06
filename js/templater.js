@@ -3,7 +3,6 @@
 $(document).ready(function () {
 
     var loadSpin = $('#loader');
-
     $(document).on({
         ajaxStart: function() { loadSpin.addClass("loadingOn");    },
         ajaxStop: function() { loadSpin.removeClass("loadingOn"); }
@@ -17,6 +16,7 @@ $(document).ready(function () {
     $("#story2Div").hide(); //Hiding our second story panel.
     $("#emailBtnDiv").hide();
     $("#rssPreview").hide();
+    $("#rssPreviewLL").hide();
     var additionalContentVal = false; //This makes us default to a one-story format.
     imgHeight = [];
     imgWidth = [];
@@ -244,31 +244,38 @@ $(document).ready(function () {
                 var c = $('#title2IMG').val();
                 var x = $('#rssPreview');
                 var z = $('#rssPreviewILN');
+                var w = $('#rssPreviewLL');
                 var y = $("#title1label");
 
                 if (a === 'ALPACDB'){
                     makeProductMenu(adReferenceWJMA); //if our selected menu is ALPAC, get WJMA ads
                     x.show('scale', 'fast');
-                    z.hide();
                     maxWidth = 130;
                     maxHeight = 130;
                 } else {
-                    makeProductMenu(adReferenceILN); //otherwise, get ILN ads - this will change behavior in the future
-                    z.show('scale', 'fast');
                     x.hide();
                 }
                 if (a === 'ILNDB') {
+                    makeProductMenu(adReferenceILN);
                     maxWidth = 200;
                     maxHeight = 200;
                     y.text('Modal Headline:');
+                    z.show('scale', 'fast');
                 } else {
-                    maxWidth = 130;
-                    maxHeight = 130;
                     y.text('Title #1:');
+                    z.hide();
                 }
                 if (a === 'RFARDB'){
+                    makeProductMenu(adReferenceILN);
                     maxWidth = 130;
                     maxHeight = 130;
+                    z.show('scale', 'fast');
+                }
+                if (a === 'LLDB') {
+                    makeProductMenu('');
+                    w.show('scale', 'fast');
+                } else {
+                    w.hide();
                 }
                 if (b !== ''){
                     getImageSize(b, 0, maxWidth, maxHeight);
@@ -288,7 +295,7 @@ $(document).ready(function () {
 
 
     $('#generateKeyCodeBtn')
-        .button({icons: { primary: "ui-icon-gear"}})
+        .button()
         .click(function(event){
             makeKeyCode(event);
         });
@@ -474,7 +481,8 @@ $(document).ready(function () {
 
     function spawnALPACDB() {
         function getALPACDB() {
-            return $.get("http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm", function (value) {
+            var name = alpac_db_Tmpl;
+            return $.get("http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm", function (value, name) {
                 alpac_db_Tmpl = $.templates(value);
             });
         }
@@ -491,6 +499,27 @@ $(document).ready(function () {
             });
     }
 
+    function spawnLLDB() {
+        function getLLDB() {
+            return $.get("http://daviseford.com/sites/default/files/email_templater/txt/ll_db_Tmpl.htm", function (value) {
+                ll_db_Tmpl = $.templates(value);
+            });
+        }
+
+        $.when(
+            getLLDB()
+        ).then(function () {
+                var html = ll_db_Tmpl.render(storyz);
+                $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+                $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
+                makeEmailBtn(); //take this out if it gets abused
+            }).fail(function () {
+                console.log("spawnLLDB(): Something went wrong!");
+            });
+    }
+
+
+
     //getResults() is responsible for reading the template selection box
     //and spawning the correct template
     //will probably be revised in the future, as it's a bit hacky and inelegant
@@ -503,6 +532,8 @@ $(document).ready(function () {
             spawnRFARDB();
         } else if (x === "ALPACDB") {
             spawnALPACDB();
+        } else if (x === "LLDB") {
+            spawnLLDB();
         } else {
             console.log("getResults(): Error: Didn't spawn anything");
         }
@@ -512,34 +543,38 @@ $(document).ready(function () {
         var setupMenu ='<label for="productSelect">STEP 4<br />Select a Product</label><br><select name="productSelect" id="productSelect"><option value="" selected="selected">None</option>';
         var endMenu = '</select>';
         var allAdsArray = [];
-
-        for (var i in x) { //x = adReference, generally
-            var adLongCode = x[i].longCode;
-            var adShortCode = x[i].shortCode;
-            if (x[i].hasOwnProperty('advertisements')) {
-                var ad = x[i].advertisements;
-                var z = Object.keys(ad).length; //gets the length of the advertisements object. Lets us know how many ads to expect
-                //console.log('Number of '+adShortCode+' Ads = ' + z);
-                if (z !== 0) {
-                    var optGroupStart = '<optgroup label="' + adLongCode + '">';
-                    var optGroupEnd = '</optgroup>';
-                    var adEntries = [];
-                    var h = 0;
-                    for (h=0; h < z; h++) {
-                        //console.log('Ad = ' + ad[h].name + ' - ' + ad[h].description);
-                        var adName = ad[h].name;
-                        var adDescription = ad[h].description;
-                        var optionValue = '<option value="' + adName + '">' + adShortCode + ' - ' + adDescription + '</option>';
-                        adEntries.push(optionValue);
+        var productSelect = $('#productSelect');
+        if (x === '' || x === undefined) {
+            productSelect.html(setupMenu+endMenu); //just spawns a blank list. could rework
+            productSelect.selectmenu('refresh'); //refresh our changes. doesn't work without this.
+        } else {
+            for (var i in x) { //x = adReference, generally
+                var adLongCode = x[i].longCode;
+                var adShortCode = x[i].shortCode;
+                if (x[i].hasOwnProperty('advertisements')) {
+                    var ad = x[i].advertisements;
+                    var z = Object.keys(ad).length; //gets the length of the advertisements object. Lets us know how many ads to expect
+                    //console.log('Number of '+adShortCode+' Ads = ' + z);
+                    if (z !== 0) {
+                        var optGroupStart = '<optgroup label="' + adLongCode + '">';
+                        var optGroupEnd = '</optgroup>';
+                        var adEntries = [];
+                        var h = 0;
+                        for (h = 0; h < z; h++) {
+                            //console.log('Ad = ' + ad[h].name + ' - ' + ad[h].description);
+                            var adName = ad[h].name;
+                            var adDescription = ad[h].description;
+                            var optionValue = '<option value="' + adName + '">' + adShortCode + ' - ' + adDescription + '</option>';
+                            adEntries.push(optionValue);
+                        }
+                        var combineOptions = optGroupStart + adEntries + optGroupEnd;
+                        allAdsArray.push(combineOptions);
                     }
-                    var combineOptions = optGroupStart + adEntries + optGroupEnd;
-                    allAdsArray.push(combineOptions);
                 }
             }
+            productSelect.html(setupMenu + allAdsArray + endMenu);
+            productSelect.selectmenu('refresh'); //refresh our changes. doesn't work without this.
         }
-        var productSelect = $('#productSelect');
-        productSelect.html(setupMenu+allAdsArray+endMenu);
-        productSelect.selectmenu('refresh'); //refresh our changes. doesn't work without this.
     }
     makeProductMenu(adReferenceILN); //initialize our menu with ILN values, since the menu defaults to RFAR
 
@@ -701,7 +736,7 @@ $(document).ready(function () {
                 title: subjectLine,
                 ALPAC: {
                     keycode: keycodeArray,
-                    utmString: utmsource.toString(),
+                    utmString: utmsource,
                     advertise: '<a href="mailto:info@americanlibertypac.org" target="_top">ADVERTISE</a>',
                     subscribe: '<a href="http://americanlibertypac.com/join/" target="_blank">SUBSCRIBE</a>',
                     unsubscribe: '<a href="http://news.extras-americanlibertypac.com/LP/ZHpjXCznPeQ" target="_blank">Unsubscribe</a> (You will be missed!)',
@@ -710,7 +745,7 @@ $(document).ready(function () {
                 },
                 ALP: {
                     keycode: keycodeArray,
-                    utmString: utmsource.toString(),
+                    utmString: utmsource,
                     safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
                     prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">Email Preferences</a>',
                     unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">Unsubscribe</a>',
@@ -1032,6 +1067,134 @@ $(document).ready(function () {
             }
         });
     }
+
+    $('#getLLRSS')
+        .button()
+        .click(function(event){
+            $('#getLLRSS').text('Getting RSS').effect('highlight');
+            getLearnLibertyRSS(event);
+        });
+
+    function getLearnLibertyRSS(event) {
+        event.preventDefault();
+        var q = 0;
+        var formatStorage = [];
+        var rssObject = [];
+        $.ajax({
+            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://opportunities.theihs.org/rss.xml?&t[]=200&w=100'),
+            dataType: 'json',
+            success: function (data) {
+                if (data.responseData.feed && data.responseData.feed.entries) {
+                    $.each(data.responseData.feed.entries, function (i, e) {
+                        var f = e.content;
+
+                        rssObject[i] = {
+                            storyNum: q,
+                            title: e.title,
+                            link: e.link,
+                            description: e.content
+                        };
+
+                        var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
+                        var btnID2 = 'rss2Btn' + rssObject[i].storyNum;
+
+                        if (q < 8) { //stores HTML formatted values for later use
+                            formatStorage[q] =
+                                '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;">' + rssObject[i].title +
+                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                                '</center></p></div>';
+                        }
+
+                        q++; // increment by one to keep the loop ticking up
+                    });
+                }
+            }
+        }).done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
+            var joinRSS = formatStorage.join('');
+            $('#rssPreviewLL').html(joinRSS);
+            function buttonUpdateField(e) {
+                $('#rss1Btn'+e).click(function () {
+                    $('#title1').val(rssObject[e].title);
+                    $('#title1text-div').html(rssObject[e].description);
+                    $('#title1URL').val(rssObject[e].link);
+                });
+                $('#rss2Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title2').val(rssObject[e].title);
+                        $('#title2text-div').html(rssObject[e].description);
+                        $('#title2URL').val(rssObject[e].link);
+                    } else {
+                        console.log('No second story!');
+                    }
+                });
+
+            }
+            for(var n=0; n < 8; n++){
+                buttonUpdateField(n);
+            }
+        });
+    }
+
+    function getILNRSS(event) {
+        event.preventDefault();
+        var q = 0;
+        var formatStorage = [];
+        var rssObject = [];
+        $.ajax({
+            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://www.independentlivingnews.com/rss/'),
+            dataType: 'json',
+            success: function (data) {
+                if (data.responseData.feed && data.responseData.feed.entries) {
+                    $.each(data.responseData.feed.entries, function (i, e) {
+                        var f = e.content;
+
+                        rssObject[i] = {
+                            storyNum: q,
+                            title: e.title,
+                            link: e.link,
+                            description: e.content
+                        };
+
+                        var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
+                        var btnID2 = 'rss2Btn' + rssObject[i].storyNum;
+
+                        if (q < 8) { //stores HTML formatted values for later use
+                            formatStorage[q] =
+                                '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;">' + rssObject[i].title +
+                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                                '</center></p></div>';
+                        }
+
+                        q++; // increment by one to keep the loop ticking up
+                    });
+                }
+            }
+        }).done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
+            var joinRSS = formatStorage.join('');
+            $('#rssPreviewILN').html(joinRSS);
+            function buttonUpdateField(e) {
+                $('#rss1Btn'+e).click(function () {
+                    $('#title1').val(rssObject[e].title);
+                    $('#title1text-div').html(rssObject[e].description);
+                    $('#title1URL').val(rssObject[e].link);
+                });
+                $('#rss2Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title2').val(rssObject[e].title);
+                        $('#title2text-div').html(rssObject[e].description);
+                        $('#title2URL').val(rssObject[e].link);
+                    } else {
+                        console.log('No second story!');
+                    }
+                });
+
+            }
+            for(var n=0; n < 8; n++){
+                buttonUpdateField(n);
+            }
+        });
+    }
+    //getILNRSS(event);
 
 
     //********************************
