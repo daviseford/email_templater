@@ -225,8 +225,14 @@ $(document).ready(function () {
             }
         }
     };
-
-    var templateContainer = {   //templateContainer will eventually be the one stop shop for all constant variables
+    var templateContainer;
+    function makeKeyCodeTest() {
+        var x =[];
+        x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
+        x = x.join('');
+        return x;
+    }
+    templateContainer = {   //templateContainer will eventually be the one stop shop for all constant variables
         ALPAC: {                //we start with the client name
             config: {
                 //keycode: keycodeArray,
@@ -245,7 +251,9 @@ $(document).ready(function () {
                 longCode: 'American Liberty PAC Daily Bulletin',
                 imgMaxWidth: 130,
                 imgMaxHeight: 130,
-                productMenu: adReferenceWJMA //may change in the future, this stores the ads
+                productMenu: adReferenceWJMA, //may change in the future, this stores the ads
+                utmStyle: '?utm_source=' + makeKeyCodeTest() + '&utm_medium=email&utm_campaign=' + makeKeyCodeTest()
+
             },
             MR: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_mr_Tmpl.htm',
@@ -253,7 +261,8 @@ $(document).ready(function () {
                 longCode: 'American Liberty PAC Must Read',
                 imgMaxWidth: '',
                 imgMaxHeight: '',
-                productMenu: adReferenceWJMA
+                productMenu: adReferenceWJMA,
+                utmStyle: '?utm_source=' + makeKeyCodeTest() + '&utm_medium=email&utm_campaign=' + makeKeyCodeTest()
             }
         },
         ILN: {
@@ -268,7 +277,8 @@ $(document).ready(function () {
                 longCode: 'Independent Living News Daily Bulletin',
                 imgMaxWidth: '175',
                 imgMaxHeight: '175',
-                productMenu: adReferenceILN
+                productMenu: adReferenceILN,
+                utmStyle: '?utm_source=' + makeKeyCodeTest() + '&keycode=' + makeKeyCodeTest() + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]'
                 //imgStyle: <img align="right" alt="" src="' + title1IMG + '" style="padding: 6px; float:right;" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"/></a>';
             }
         },
@@ -280,7 +290,8 @@ $(document).ready(function () {
                 longCode: 'Ready For Anything Report',
                 imgMaxWidth: '130',
                 imgMaxHeight: '130',
-                productMenu: adReferenceILN
+                productMenu: adReferenceILN,
+                utmStyle: '?utm_source=' + makeKeyCodeTest() + '&keycode=' + makeKeyCodeTest() + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]'
                 //imgStyle: '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"></a></center>'
             }
         },
@@ -292,18 +303,23 @@ $(document).ready(function () {
                 longCode: 'Learn Liberty Daily Bulletin',
                 imgMaxWidth: '',
                 imgMaxHeight: '',
-                productMenu: ''
+                productMenu: '',
+                utmStyle: ''
             }
         },
         currentProduct: {
             link: '',
+            tmplNum: '',
             shortCode: '',
             longCode: '',
             keyCode: '',
-            utm: '',
+            utmStyle: '',
+            hrefTag: 'a href="' + this.link + this.utmStyle + '" target="_blank">',
             enabled: false
         },
         commonVars: {
+
+            //currKeyCode: this.keycodeGeneration.join("")
             //$('#story1Form').find('input').each(textFix);
             //subjectLine: $('#subjectInput').val(),
             //keycodeGeneration: [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()],  //This array stores our Keycode values, to be used shortly.
@@ -327,6 +343,37 @@ $(document).ready(function () {
             //    linkedTitle1: '<a href="' + this.title2URL + '" target="_blank">' + title2 + '</a>'
             },
         helpers: {
+            keycodeGeneration: function () {
+                var x =[];
+                x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
+                x = x.join('');
+                return x;
+            },
+            updateProductCode: function (adReference) { //perhaps pass in adReference?
+                var b;
+                var adRef = adReference;
+                b = $('#productSelect').val(); //example value: XCOM1
+                if (b !== '' && b !== null) {
+                    var c = S(b).right(1).toInt(); //gives us our ad template number (1)
+                    var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
+                    var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
+                    var f = adRef[e].link;
+                    var g = adRef[e].shortCode; //This is the same as writing productReference.XCOM.longCode
+                    var h = adRef[e].longCode;
+                    var j = adRef[e].utmStyle;
+
+                    templateContainer.currentProduct = {
+                        link: f,
+                        tmplNum: c,
+                        shortCode: g,
+                        longCode: h,
+                        keyCode: templateContainer.helpers.keycodeGeneration(),
+                        utmStyle: j,
+                        hrefTag: 'a href="' + this.link + this.utmStyle + '" target="_blank">',
+                        enabled: true
+                    };
+                }
+            }
         },
         story1: {
             adjustedHeight: 'placeholder',
@@ -337,8 +384,18 @@ $(document).ready(function () {
             title1IMG: $("#title1IMG").val(),
             urlInsert1: '<a href="' + this.title1URL + '" target="_blank">',
             linkedImage: this.urlInsert1 + '<img src="' + this.title1IMG + '" alt="Story Image" height="' + this.adjustedHeight + '" width="' + this.adjustedWidth +'"></a>',
+        },
+        story2: {
+            adjustedHeight: 'placeholder',
+            adjustedWidth: 'placeholder',
+            title2: $("#title2").val(),
+            title2text: $("#title2text-div").html(),
+            title2URL: $("#title2URL").val(),
+            title2IMG: $("#title2IMG").val(),
+            urlInsert2: '<a href="' + this.title2URL + '" target="_blank">',
+            linkedImage: this.urlInsert2 + '<img src="' + this.title2IMG + '" alt="Story Image" height="' + this.adjustedHeight + '" width="' + this.adjustedWidth + '"></a>'
         }
-        };
+    };
 
 
     //checks our template style for us, useful when doing keycodes
@@ -362,8 +419,9 @@ $(document).ready(function () {
             if (currentTemplateSettings.hasOwnProperty(keys)) {
                 console.log('keys = ' + keys);
                 templateConfigSettings.push(keys);
-                templateContainer.currentProduct[keys[0]] = keys[1];
+                templateContainer.currentProduct[keys] = keys.valueOf();
                 console.log('templateContainer.currentProduct = ' + templateContainer.currentProduct);
+                console.log('templateContainer.currentProduct[keys] = ' + templateContainer.currentProduct[keys]);
 
             }
         }
@@ -377,24 +435,10 @@ $(document).ready(function () {
 
         console.log('currentTemplateSettings' + currentTemplateSettings);
         console.log('templateContainer.story1' + templateContainer.story1);
+        console.log('templateContainer.helpers.keycodeGeneration() = ' + templateContainer.helpers.keycodeGeneration());
     }
     testNewSetupFirst(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
 
-    function storyHelpers(story1){ //pass in per-story config. is this necessary?
-        var storyOne = story1;
-        storyOne.adjustedHeight = 'bullshit value'; //TODO remove placeholders
-        storyOne.adjustedWidth = 'bullshit value'; //TODO remove placeholders
-        function getTitle(storyNum) {
-            return $("#title" + storyNum).val();
-        }
-        storyOne.title1text = $("#title1text-div").html();
-        storyOne.title1URL = $("#title1URL").val();
-        storyOne.title1IMG = $("#title1IMG").val();
-        storyOne.linkedImage =  this.urlInsert1 + '<img src="' + this.title1IMG + '" alt="Story Image" height="' + this.adjustedHeight + '" width="' + this.adjustedWidth +'"></a>';
-        storyOne.urlInsert1 = '<a href="' + this.title1URL + '" target="_blank">';
-        storyOne.linkedTitle1 = '<a href="' + this.title1URL + '" target="_blank">' + this.title1 + '</a>';
-
-    }
 
     //function firstStorySetup() {
     //    $('#story1Form').find('input').each(textFix);
