@@ -328,7 +328,7 @@ $(document).ready(function () {
             },
         helpers: {
         },
-        currentTest: {
+        story1: {
             adjustedHeight: 'placeholder',
             adjustedWidth: 'placeholder',
             title: $("#title1").val(),
@@ -340,16 +340,6 @@ $(document).ready(function () {
         }
         };
 
-    function updateCurrentSettings(currentTemplateSettings) {
-        var h = [];
-        for (var keys in currentTemplateSettings) {
-            h.push(currentTemplateSettings[keys]);
-        }
-        var b = templateContainer.currentTest;
-        b.push[h];
-    }
-
-
 
     //checks our template style for us, useful when doing keycodes
     function testGetTemplateStyle(){
@@ -359,25 +349,22 @@ $(document).ready(function () {
     }
     function testNewSetupFirst(templateContainer){ //pass in our references
         var commonVars = templateContainer.commonVars;
-        var x = testGetTemplateStyle(); //returns two values in an array, first value is the list, second is the remplare, e.g "RFAR"/"DB"
+        var x = testGetTemplateStyle(); //returns two values in an array, first value is the list, second is the templare, e.g "RFAR"/"DB"
         var list = x[0];
         var tmpl = x[1];
         var templateConfigSettings = [];
         var currentTemplateSettings = templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
-        //var currentTemplate = {
-        //    tmplLink: currentTemplateSettings['tmplLink'], //'http://daviseford.com/sites/default/files/email_templater/txt/ll_db_Tmpl.htm'
-        //    shortCode: currentTemplateSettings['shortCode'], //'LLDB'
-        //    longCode: currentTemplateSettings['longCode'],  //'Learn Liberty Daily Bulletin',
-        //    imgMaxWidth: currentTemplateSettings['imgMaxWidth'],
-        //    imgMaxHeight: currentTemplateSettings['imgMaxHeight'], //typically 130
-        //    productMenu: currentTemplateSettings['productMenu'] //eg adReferenceWJMA
-        //};
+
         console.log('list = ' + list);
         console.log('template = ' + tmpl);
 
-        for (var keys in currentTemplateSettings) { //getting ALL of the current settings
+        for (var keys in currentTemplateSettings) { //getting ALL of the current settings from our currentTemplate and putting them into an array
             if (currentTemplateSettings.hasOwnProperty(keys)) {
+                console.log('keys = ' + keys);
                 templateConfigSettings.push(keys);
+                templateContainer.currentProduct[keys[0]] = keys[1];
+                console.log('templateContainer.currentProduct = ' + templateContainer.currentProduct);
+
             }
         }
         console.log('templateConfigSettings = ' + templateConfigSettings);
@@ -388,9 +375,8 @@ $(document).ready(function () {
             console.log('No template');
         }
 
-        updateCurrentSettings(currentTemplateSettings);
-        console.log(currentTemplateSettings);
-        console.log(templateContainer.currentTest);
+        console.log('currentTemplateSettings' + currentTemplateSettings);
+        console.log('templateContainer.story1' + templateContainer.story1);
     }
     testNewSetupFirst(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
 
