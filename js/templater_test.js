@@ -233,7 +233,7 @@ $(document).ready(function () {
                 //keycodeAssemblyStyle: tbd,
                 //utmStyle: tbd,
             },
-            smartFocus: {       //we use the smartfocus section for constant values like unsubscribe links, privacy pollicies, etc.
+            smartFocus: {       //we use the smartfocus section for constant values like unsubscribe links, privacy policies, etc.
                 advertise: '<a href="mailto:info@americanlibertypac.org" target="_top">ADVERTISE</a>',
                 subscribe: '<a href="http://americanlibertypac.com/join/" target="_blank">SUBSCRIBE</a>',
                 unsubscribe: '<a href="http://news.extras-americanlibertypac.com/LP/ZHpjXCznPeQ" target="_blank">Unsubscribe</a> (You will be missed!)',
@@ -325,8 +325,31 @@ $(document).ready(function () {
             //    //linkedImage: this.urlInsert2 + '<img src="' + this.title2IMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>',
             //    urlInsert1: '<a href="' + this.title2URL + '" target="_blank">',
             //    linkedTitle1: '<a href="' + this.title2URL + '" target="_blank">' + title2 + '</a>'
-            }
+            },
+        helpers: {
+        },
+        currentTest: {
+            adjustedHeight: 'placeholder',
+            adjustedWidth: 'placeholder',
+            title: $("#title1").val(),
+            title1text: $("#title1text-div").html(),
+            title1URL: $("#title1URL").val(),
+            title1IMG: $("#title1IMG").val(),
+            urlInsert1: '<a href="' + this.title1URL + '" target="_blank">',
+            linkedImage: this.urlInsert1 + '<img src="' + this.title1IMG + '" alt="Story Image" height="' + this.adjustedHeight + '" width="' + this.adjustedWidth +'"></a>',
+        }
         };
+
+    function updateCurrentSettings(currentTemplateSettings) {
+        var h = [];
+        for (var keys in currentTemplateSettings) {
+            h.push(currentTemplateSettings[keys]);
+        }
+        var b = templateContainer.currentTest;
+        b.push[h];
+    }
+
+
 
     //checks our template style for us, useful when doing keycodes
     function testGetTemplateStyle(){
@@ -339,31 +362,255 @@ $(document).ready(function () {
         var x = testGetTemplateStyle(); //returns two values in an array, first value is the list, second is the remplare, e.g "RFAR"/"DB"
         var list = x[0];
         var tmpl = x[1];
+        var templateConfigSettings = [];
         var currentTemplateSettings = templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
-        var currentTemplate = {
-            tmplLink: currentTemplateSettings['tmplLink'], //'http://daviseford.com/sites/default/files/email_templater/txt/ll_db_Tmpl.htm'
-            shortCode: currentTemplateSettings['shortCode'], //'LLDB'
-            longCode: currentTemplateSettings['longCode'],  //'Learn Liberty Daily Bulletin',
-            imgMaxWidth: currentTemplateSettings['imgMaxWidth'],
-            imgMaxHeight: currentTemplateSettings['imgMaxHeight'], //typically 130
-            productMenu: currentTemplateSettings['productMenu'] //eg adReferenceWJMA
-        };
+        //var currentTemplate = {
+        //    tmplLink: currentTemplateSettings['tmplLink'], //'http://daviseford.com/sites/default/files/email_templater/txt/ll_db_Tmpl.htm'
+        //    shortCode: currentTemplateSettings['shortCode'], //'LLDB'
+        //    longCode: currentTemplateSettings['longCode'],  //'Learn Liberty Daily Bulletin',
+        //    imgMaxWidth: currentTemplateSettings['imgMaxWidth'],
+        //    imgMaxHeight: currentTemplateSettings['imgMaxHeight'], //typically 130
+        //    productMenu: currentTemplateSettings['productMenu'] //eg adReferenceWJMA
+        //};
         console.log('list = ' + list);
         console.log('template = ' + tmpl);
+
+        for (var keys in currentTemplateSettings) { //getting ALL of the current settings
+            if (currentTemplateSettings.hasOwnProperty(keys)) {
+                templateConfigSettings.push(keys);
+            }
+        }
+        console.log('templateConfigSettings = ' + templateConfigSettings);
 
         if (currentTemplateSettings.hasOwnProperty('tmplLink')) {
             console.log(currentTemplateSettings['tmplLink']);
         } else {
             console.log('No template');
         }
-        console.log(currentTemplate);
 
-        console.log('This should be a correct listing of the short Code: ' + currentTemplate['shortCode']);
-
-    //TODO fix all this . it relates to templateContainer and replacing firstStorySetup. going to dinner
+        updateCurrentSettings(currentTemplateSettings);
+        console.log(currentTemplateSettings);
+        console.log(templateContainer.currentTest);
     }
-    testNewSetupFirst(templateContainer);
+    testNewSetupFirst(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
 
+    function storyHelpers(story1){ //pass in per-story config. is this necessary?
+        var storyOne = story1;
+        storyOne.adjustedHeight = 'bullshit value'; //TODO remove placeholders
+        storyOne.adjustedWidth = 'bullshit value'; //TODO remove placeholders
+        function getTitle(storyNum) {
+            return $("#title" + storyNum).val();
+        }
+        storyOne.title1text = $("#title1text-div").html();
+        storyOne.title1URL = $("#title1URL").val();
+        storyOne.title1IMG = $("#title1IMG").val();
+        storyOne.linkedImage =  this.urlInsert1 + '<img src="' + this.title1IMG + '" alt="Story Image" height="' + this.adjustedHeight + '" width="' + this.adjustedWidth +'"></a>';
+        storyOne.urlInsert1 = '<a href="' + this.title1URL + '" target="_blank">';
+        storyOne.linkedTitle1 = '<a href="' + this.title1URL + '" target="_blank">' + this.title1 + '</a>';
+
+    }
+
+    //function firstStorySetup() {
+    //    $('#story1Form').find('input').each(textFix);
+    //    var productReference;
+    //    var utmsource;
+    //    var codedURL;
+    //    var subjectLine = $('#subjectInput').val();
+    //    var title1 = $("#title1").val();
+    //    var title1text = $("#title1text-div").html();
+    //    var title1URL = $("#title1URL").val();
+    //    var title1IMG = $("#title1IMG").val();
+    //    var imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
+    //    var urlInsert1 = '<a href="' + title1URL + '" target="_blank">';
+    //    var linkedTitle1 = '<h4><a href="' + title1URL + '" target="_blank">' + title1 + '</a></h4>';
+    //    var keycodeArray = [];
+    //    keycodeArray[0]= $.trim($("#keycodeInput").val());
+    //
+    //    function getProduct() { //perhaps pass in adReference?
+    //        var b;
+    //        b = $('#productSelect').val();
+    //        if (b !== '' && b !== null) {
+    //            var c = S(b).right(1).toInt(); //gives us our ad template number
+    //            var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
+    //            var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
+    //            var f = productReference[e].link;
+    //            var g = productReference[e].shortCode; //This is the same as writing productReference.XCOM.longCode
+    //            var h = productReference[e].longCode;
+    //            storyz.currentProduct = {
+    //                link: f,
+    //                shortCode: g,
+    //                longCode: h,
+    //                tmplNum: c,
+    //                keyCode: keycodeArray,
+    //                utm: utmsource.toString(),
+    //                enabled: true
+    //            };
+    //        }
+    //    }
+    //
+    //    if (getTemplateStyle() === "RFARDB" || getTemplateStyle() === "ILNDB") {
+    //        utmsource = '?utm_source=' + keycodeArray + '&keycode=' + keycodeArray + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
+    //        codedURL = title1URL + utmsource; //appends our URL with a tracking code
+    //        urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
+    //        imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"></a></center>';
+    //
+    //        if (getTemplateStyle() === 'ILNDB') {
+    //            imageRetrieve1 = urlInsert1 + '<img align="right" alt="" src="' + title1IMG + '" style="padding: 6px; float:right;" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"/></a>';
+    //        }
+    //
+    //        productReference = {
+    //            USR: {
+    //                link: '<a href="http://www.independentlivingnews.com/video/usr-vsl.php' + utmsource + '" target="_blank">',
+    //                shortCode: 'USR',
+    //                longCode: 'Ultimate Self Reliance Manual'
+    //            },
+    //            GAB: {
+    //                link: '<a href="http://www.independentlivingnews.com/video/great-american-blackout-ihnp.php' + utmsource + '" target="_blank">',
+    //                shortCode: 'GAB',
+    //                longCode: 'Great American Blackout'
+    //            },
+    //            FOOD: {
+    //                link: '<a href="http://www.independentlivingnews.com/video/comfort-food-reserve.php' + utmsource + '" target="_blank">',
+    //                shortCode: 'FOOD',
+    //                longCode: 'Comfort Food Reserve'
+    //            },
+    //            CSG: {
+    //                link: '<a href="https://www.independentlivingnews.com/video/csg-video.php' + utmsource + '" target="_blank">',
+    //                shortCode: 'CSG',
+    //                longCode: 'Colloidal Silver Generator'
+    //            },
+    //            LPL: {
+    //                link: '<a href="http://www.independentlivingnews.com/video/lpl-video.php' + utmsource + '" target="_blank">',
+    //                shortCode: 'LPL',
+    //                longCode: 'Low Profile Living Manual'
+    //            },
+    //            EPACK: {
+    //                link: '<a href="http://www.independentlivingnews.com/video/epack2-video.php' + utmsource + '" target="_blank">',
+    //                shortCode: 'EPACK',
+    //                longCode: 'Emergency Pack'
+    //            },
+    //            STREK: {
+    //                link: '<a href="http://www.independentlivingnews.com/video/suntrek/' + utmsource + '" target="_blank">',
+    //                shortCode: 'STREK',
+    //                longCode: 'Sun Trek'
+    //            },
+    //            MSR: {
+    //                link: '<a href="http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html' + utmsource + '" target="_blank">',
+    //                shortCode: 'MSR',
+    //                longCode: 'Medical Self Reliance Mega Manual'
+    //            },
+    //            FFL: {
+    //                link: '<a href="http://www.independentlivingnews.com/video/ffl-vsl.php' + utmsource + '" target="_blank">',
+    //                shortCode: 'FFL',
+    //                longCode: 'Freedom Fortress Library'
+    //            },
+    //            XCOM: {
+    //                link: '<a href="http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html' + utmsource + '" target="_blank">',
+    //                shortCode: 'XCOM',
+    //                longCode: 'Extreme Weather Combo'
+    //            },
+    //            PW: {
+    //                link: '<a href="http://www.independentlivingnews.com/video/pw-vsl.php' + utmsource + '" target="_blank">',
+    //                shortCode: 'PW',
+    //                longCode: 'Power Whisperer'
+    //            },
+    //            CAN: {
+    //                link: '<a href="http://www.survivalproshop.com/survival-essentials/survival-kit-in-a-can.html' + utmsource + '" target="_blank">',
+    //                shortCode: 'CAN',
+    //                longCode: 'Survival Can in a Kit'
+    //            },
+    //            SUB: {
+    //                link: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">',
+    //                shortCode: 'SUB',
+    //                longCode: 'Subscription to Independent Living News'
+    //            }
+    //        };
+    //
+    //    }
+    //    if (getTemplateStyle() === "ALPACDB" || getTemplateStyle() === "ALPACMR"){
+    //        utmsource = '?utm_source=' + keycodeArray + '&utm_medium=email&utm_campaign=' + keycodeArray;
+    //        codedURL = title1URL + utmsource; //appends our URL with a tracking code
+    //        urlInsert1 = '<a href="' + codedURL + '" target="_blank">'; //updates urlInsert with the new utm-appended keycode
+    //        if (imgHeight.length === 0 && imgWidth.length === 0) {
+    //            imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="130" width="130"></a></center>';
+    //        } else {
+    //            imageRetrieve1 = '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"></a></center>';
+    //        }
+    //
+    //        productReference = {
+    //            PPP: {
+    //                link: '<a href="http://americanlibertypac.com/2016-presidential-preference-poll-2/' + utmsource + '" target="_blank" alt="Presidential Preference Poll 2016">',
+    //                shortCode: 'PPP',
+    //                longCode: 'Presidential Preference Poll 2016'
+    //            }
+    //        };
+    //
+    //    }
+    //
+    //
+    //    //This Object/Array is used with JSRender.
+    //    //The template will iterate over the contained "story" array
+    //    //and spit out as many stories as we have objects in the array.
+    //    storyz = {
+    //        story: [
+    //            {
+    //                title: title1,
+    //                text: title1text,
+    //                url: title1URL,
+    //                imageURL: title1IMG,
+    //                urlInsert: urlInsert1,
+    //                linkedTitle: linkedTitle1,
+    //                insertImage: imageRetrieve1
+    //            }
+    //        ],
+    //        smartFocus: {
+    //            title: subjectLine,
+    //            ALPAC: {
+    //                keycode: keycodeArray,
+    //                utmString: utmsource,
+    //                advertise: '<a href="mailto:info@americanlibertypac.org" target="_top">ADVERTISE</a>',
+    //                subscribe: '<a href="http://americanlibertypac.com/join/" target="_blank">SUBSCRIBE</a>',
+    //                unsubscribe: '<a href="http://news.extras-americanlibertypac.com/LP/ZHpjXCznPeQ" target="_blank">Unsubscribe</a> (You will be missed!)',
+    //                privacy: '<a href="http://conservativeemail.com/privacy-policy.html" target="_blank">View our policy.</a>'
+    //
+    //            },
+    //            ALP: {
+    //                keycode: keycodeArray,
+    //                utmString: utmsource,
+    //                safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmsource + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
+    //                prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-P" linkname="Email Preferences">Email Preferences</a>',
+    //                unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycodeArray + '-U" linkname="Bottom Unsubscribe">Unsubscribe</a>',
+    //                spamLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam">Mark as Spam</a>'
+    //            }
+    //        },
+    //        ALPACDB: {
+    //            homepage: '<a href="http://www.americanlibertypac.com' + utmsource + '" target="new">Visit ALPAC</a>',
+    //            alpacHeader: '<a href="http://www.americanlibertypac.com' + utmsource + '" target="new"><img src="http://p5tre.emv3.com/IL/0/0/1/1101054001/1686937737.gif" alt="American Liberty PAC" width="580" height="108" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block;" align="left" />'
+    //        },
+    //        ALPACMR: {
+    //            viewBrowser: '',
+    //            modalLink: '<a href="' + codedURL + '" linkname="Modal Headline" target="_blank"><p style="color: #a1a1a1;font-family: Arial;font-size: 14px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">' + title1 + '</p></a>'
+    //        },
+    //        RFARDB: {
+    //            rfarHeader: '<a href="http://www.independentlivingnews.com/preppers' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="118" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="580" /></a>',
+    //            subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmsource + '" target="_blank">'
+    //        },
+    //        ILNDB: {
+    //            ilnHeader: '<a href="http://www.independentlivingnews.com' + utmsource + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="118" src="http://www.independentlivingnews.com/email/images/ILN_LB_header_edited.jpg" style="display:block;" width="580" /></a>',
+    //            modalLink: '<a href="' + codedURL + '" linkname="Modal Headline" target="_blank"><span style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#000000;">' + title1 + '</span></a>'
+    //        },
+    //        currentProduct: {
+    //            link: '',
+    //            shortCode: '',
+    //            longCode: '',
+    //            keyCode: '',
+    //            utm: '',
+    //            enabled: false
+    //        }
+    //    };
+    //    getProduct();
+    //    //console.log(storyz.currentProduct);
+    //}
 
     //*******************************
     // BUTTON AND MENU SETUP START
