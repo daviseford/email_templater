@@ -232,7 +232,14 @@ $(document).ready(function () {
         x = x.join('');
         return x;
     }
-    templateContainer = {   //templateContainer will eventually be the one stop shop for all constant variables
+    templateContainer = {
+        keycode: makeKeyCodeTest(),//templateContainer will eventually be the one stop shop for all constant variables
+        generateKeycode: function () {
+            var x =[];
+            x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
+            x = x.join('');
+            return x;
+        },
         ALPAC: {                //we start with the client name
             config: {
                 //keycode: keycodeArray,
@@ -252,7 +259,7 @@ $(document).ready(function () {
                 imgMaxWidth: 130,
                 imgMaxHeight: 130,
                 productMenu: adReferenceWJMA, //may change in the future, this stores the ads
-                utmStyle: '?utm_source=' + makeKeyCodeTest() + '&utm_medium=email&utm_campaign=' + makeKeyCodeTest()
+                utmStyle: '?utm_source=' + this.generateKeycode + '&utm_medium=email&utm_campaign=' + this.generateKeycode
 
             },
             MR: {
@@ -262,7 +269,7 @@ $(document).ready(function () {
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: adReferenceWJMA,
-                utmStyle: '?utm_source=' + makeKeyCodeTest() + '&utm_medium=email&utm_campaign=' + makeKeyCodeTest()
+                utmStyle: '?utm_source=' + this.generateKeycode + '&utm_medium=email&utm_campaign=' + this.generateKeycode
             }
         },
         ILN: {
@@ -312,9 +319,7 @@ $(document).ready(function () {
             tmplNum: '',
             shortCode: '',
             longCode: '',
-            keyCode: '',
-            utmStyle: '',
-            hrefTag: 'a href="' + this.link + this.utmStyle + '" target="_blank">',
+            advertisements: false,
             enabled: false
         },
         commonVars: {
@@ -349,7 +354,7 @@ $(document).ready(function () {
                 x = x.join('');
                 return x;
             },
-            updateProductCode: function (adReference) { //perhaps pass in adReference?
+            findCurrentAdReference: function (adReference) { //returns the correct ad. for example, adReferenceILN.XCOM.
                 var b;
                 var adRef = adReference;
                 b = $('#productSelect').val(); //example value: XCOM1
@@ -360,16 +365,14 @@ $(document).ready(function () {
                     var f = adRef[e].link;
                     var g = adRef[e].shortCode; //This is the same as writing productReference.XCOM.longCode
                     var h = adRef[e].longCode;
-                    var j = adRef[e].utmStyle;
+                    var j = adRef[e].advertisements;
 
                     templateContainer.currentProduct = {
                         link: f,
                         tmplNum: c,
                         shortCode: g,
                         longCode: h,
-                        keyCode: templateContainer.helpers.keycodeGeneration(),
-                        utmStyle: j,
-                        hrefTag: 'a href="' + this.link + this.utmStyle + '" target="_blank">',
+                        advertisements: j,
                         enabled: true
                     };
                 }
@@ -405,7 +408,6 @@ $(document).ready(function () {
         return y; //return RFARDB
     }
     function testNewSetupFirst(templateContainer){ //pass in our references
-        var commonVars = templateContainer.commonVars;
         var x = testGetTemplateStyle(); //returns two values in an array, first value is the list, second is the templare, e.g "RFAR"/"DB"
         var list = x[0];
         var tmpl = x[1];
@@ -433,8 +435,11 @@ $(document).ready(function () {
             console.log('No template');
         }
 
-        console.log('currentTemplateSettings' + currentTemplateSettings);
+        templateContainer.helpers.findCurrentAdReference(adReferenceILN);
+        console.log('link = ' + templateContainer.currentProduct.link);
+        console.log('currentTemplateSettings - utmStyle' + currentTemplateSettings.utmStyle);
         console.log('templateContainer.story1' + templateContainer.story1);
+        console.log('templateContainer.currentProduct.hrefTag' + templateContainer.currentProduct.hrefTag);
         console.log('templateContainer.helpers.keycodeGeneration() = ' + templateContainer.helpers.keycodeGeneration());
     }
     testNewSetupFirst(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
