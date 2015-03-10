@@ -43,7 +43,7 @@
             <label for="tmplSelect">STEP 3<br />Select an Email</label><br>
             <select name="tmplSelect" id="tmplSelect">
                 <option value="DB" selected="selected">Daily Bulletin</option>
-                <!-- <option value="MR">Must Read</option> -->
+                <option value="MR">Must Read</option>
             </select>
 
             <br />
@@ -58,14 +58,15 @@
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" id="keycodeDiv">
 
 
-            <label for="title1KEY">Keycode</label>
-            <input class="form-control" type="text" id="title1KEY" name="title1KEY" placeholder="Leave this field blank if you want it generated."/>
+            <label for="keycodeInput">Keycode</label>
+            <input class="form-control" type="text" id="keycodeInput" name="title1KEY" placeholder="Leave this field blank if you want it generated."/>
             <br />
             <br />
             <br />
 
             <center>
-                <button class="btn btn-primary btn-lg" id="generateKeyCodeBtn">Generate Keycode</button>
+                <!-- <button class="btn btn-primary btn-lg" id="generateKeyCodeBtn">Generate Keycode</button>
+                 <button class="btn btn-primary btn-lg" id="runTest">Run Test</button> -->
                 <br />
                 <br />
                 <span class="loading" id="loader">
@@ -252,7 +253,7 @@
 <script src="js/tmpl.loader.js" type="text/javascript"></script>
 <script src="js/wysihtml-toolbar.min.js" type="text/javascript"></script>
 <script src="js/advanced.js" type="text/javascript"></script>
-<script src="js/templater.js" type="text/javascript"></script>
+<script src="js/templater_test.js" type="text/javascript"></script>
 
 <!-- RSS -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>

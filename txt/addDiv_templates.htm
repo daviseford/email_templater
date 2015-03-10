@@ -1,4 +1,5 @@
 <!-- template RFARDB -->
+
 <table class="row" style="border-spacing: 0;border-collapse: collapse;padding: 0px;vertical-align: top;text-align: left;width: 100%;position: relative;">
     <tr style="padding: 0;vertical-align: top;text-align: left; border-top: 1px solid #CCC; border-bottom:1px solid #CCC;">
         <td class="wrapper" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;border-collapse: collapse !important;">
@@ -10,10 +11,9 @@
                         <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
                             {{:urlInsert}}<span style="font-size: 18px; font-weight: bold; padding-top:10px;">{{:title}}</span></a>
                         </p>
-                        <p style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><p style="color: #000000; font-family: Verdana; font-size: 16px; mso-line-height-rule: exactly; line-height: 1.14em; font-weight: normal; font-style: normal; text-transform: none; margin-top: 0.5em; margin-left: 0px; margin-right: 0; margin-bottom: 0.5em; padding: 0;">
+                        <p style="color: #000000; font-family: Verdana; font-size: 16px; mso-line-height-rule: exactly; line-height: 1.14em; font-weight: normal; font-style: normal; text-transform: none; margin-top: 0.5em; margin-left: 0px; margin-right: 0; margin-bottom: 0.5em; padding: 0;">
                             {{:text}}
                         </p>
-                        <p></p>
                         <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
                             {{:urlInsert}}
                             <img alt="Read more on ILN" height="31" src="http://p9tre.emv3.com/IL/7/6/1/1101062761/92328665.png" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: auto;max-width: 100%;float: left;clear: both;display: block;" width="120"></a>
@@ -52,7 +52,7 @@
 
                       <table class="twelve columns" style="border-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: left; width: 580px; margin: 0 auto; padding: 0;"><tr style="vertical-align: top; text-align: left; padding: 0;" align="left"><td class="text-pad" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: left; color: #222222; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: normal; line-height: 19px; font-size: 16px; margin: 0; padding: 0px 10px 10px;" align="left" valign="top">
                       <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 16px;">
-                      		{{:insertImage}}
+                      		{{:insertImageAlignedRight}}
                           Dear Independent Thinker,
                           <br />
                           <br />
@@ -242,10 +242,9 @@
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
             <tr>
                 <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-                    <p style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">
-                        <b>MUST READ</b>{{:text}}
-                        {{:urlInsert}}
-                            <span style="background-color: transparent;color: #0000FF;font-family: Verdana;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;">
+                    <p style="color: #000000; font-family: Verdana; font-size: 16px; mso-line-height-rule: exactly; line-height: 1.14em; font-weight: normal; font-style: normal; text-transform: none; margin-top: 0.5em; margin-left: 0px; margin-right: 0; margin-bottom: 0.5em; padding: 0;">
+                        <b>MUST READ</b> <span style="color: #999999;font-family: Verdana, Geneva, sans-serif;font-size: 12px;	font-style: normal;	font-variant: small-caps; text-transform: capitalize;">- {{:title}}</span> {{:text}}
+                        {{:urlInsert}} <span style="background-color: transparent;color: #0000FF;font-family: Verdana;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;">
                                 Click here for more.
                             </span>
                         </a>
