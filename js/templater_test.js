@@ -331,7 +331,7 @@ $(document).ready(function () {
                 x = x.join('');
                 return x;
             },
-            findCurrentAdReference: function (adReference, utmStyle) { //returns the correct ad. for example, adReferenceILN.XCOM.
+            updateCurrentProduct: function (adReference, utmStyle) { //returns the correct ad. for example, adReferenceILN.XCOM.
                 var b;
                 var adRef = adReference;
                 var utm = utmStyle;
@@ -501,7 +501,7 @@ $(document).ready(function () {
 
         enableSmartFocusVars(); //sets up common links (unsubscribes, etc)
 
-        templateContainer.helpers.findCurrentAdReference(currentTemplateSettings['productMenu'], currentTemplateSettings.utmStyle()); //finds out what productMenu (adReference object) we're using
+        templateContainer.helpers.updateCurrentProduct(currentTemplateSettings['productMenu'], currentTemplateSettings.utmStyle()); //finds out what productMenu (adReference object) we're using
         //pass the current product menu and current UTM style (keycodes are already pre-filled)
 
 

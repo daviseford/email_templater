@@ -13,8 +13,9 @@ $(document).ready(function () {
     $("#resultsContainer2").hide();
     $("#story2Div").hide(); //Hiding our second story panel.
     $("#emailBtnDiv").hide();
-    $("#rssPreview").hide();
-    $("#rssPreviewLL").hide();
+    $("#getRSSBtn").hide();
+    $("#getLLRSS").hide();
+
     var additionalContentVal = false; //This makes us default to a one-story format.
     var templateContainer;
     imgHeight = []; //global image container
@@ -357,7 +358,7 @@ $(document).ready(function () {
                 x = x.join('');
                 return x;
             },
-            findCurrentAdReference: function (adReference, utmStyle) { //returns the correct ad. for example, adReferenceILN.XCOM.
+            updateCurrentProduct: function (adReference, utmStyle) { //returns the correct ad. for example, adReferenceILN.XCOM.
                 var b;
                 var adRef = adReference;
                 var utm = utmStyle;
@@ -398,7 +399,7 @@ $(document).ready(function () {
     //checks our template style for us, useful when doing keycodes
     function getTemplateStyle(){
         var y = [$('#listSelect').val(), $('#tmplSelect').val()]; //RFAR,DB
-        var x = y.join('');
+        var x = y.join(''); //can't return x the way I have it constructed
         return y; //return RFAR,DB
     }
 
@@ -527,7 +528,7 @@ $(document).ready(function () {
 
         enableSmartFocusVars(); //sets up common links (unsubscribes, etc)
 
-        templateContainer.helpers.findCurrentAdReference(currentTemplateSettings['productMenu'], currentTemplateSettings.utmStyle());
+        templateContainer.helpers.updateCurrentProduct(currentTemplateSettings['productMenu'], currentTemplateSettings.utmStyle());
         //finds out what productMenu (adReference object) we're using
         //pass the current product menu and current UTM style (keycodes are already pre-filled)
 
@@ -549,41 +550,74 @@ $(document).ready(function () {
         dateFormat: "ymmdd" //Outputs as YYMMDD
     });
 
+
+    function updateAdReferenceMenu() {
+        var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
+        var list = x[0];
+        var tmpl = x[1];
+        var currentTemplateSettings = templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
+        makeProductMenu(currentTemplateSettings.productMenu);
+    }
+
+    function setupRSSBtn() {
+        var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
+        var a = x.join('');
+        var list = x[0]; //list, e.g. RFAR
+
+        if (list === 'ALPAC'){
+            getRSS(event);
+        } else if (list === 'ILN' || list === 'RFAR') {
+            getILNAPI(event);
+        } else if (list === 'LL') {
+            getLearnLibertyRSS(event);
+        }
+    }
+    //$('#getRSSBtn')
+    //    .button()
+    //    .click(function(event){
+    //        getRSS(event);
+    //    });
+    //
+    $('#getRSSNewButton')
+        .button()
+        .click(function(event) {
+            event.preventDefault();
+            setupRSSBtn();
+        });
     $('#listSelect')
         .selectmenu({
             width: 150,
             change: function() {
                 var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
                 var a = x.join('');
-                var rssALPACPreview = $('#rssPreview');
-                var rssILNPreview = $('#rssPreviewILN');
-                var rssLLPreview = $('#rssPreviewLL');
+
+                updateAdReferenceMenu(); //added to cut down on makeProductMenu references
+
+                var rssPreviewGeneral = $('#rssPreviewGeneral');
+                var alpacRSSbtn = $('#getRSSBtn');
+                var ilnRSSbtn = $('#getILNRSS');
+                var learnLibertyRSSbtn = $('#getLLRSS');
+
                 var title1Label = $("#title1label");
 
-                if (a === 'ALPACDB' || a === 'ALPACMR'){
-                    makeProductMenu(adReferenceWJMA); //if our selected menu is ALPAC, get WJMA ads
-                    rssALPACPreview.show('scale', 'fast');
+                //if (a === 'ALPACDB' || a === 'ALPACMR'){
+                //    alpacRSSbtn.show('scale', 'fast');
+                //} else {
+                //    alpacRSSbtn.hide();
+                //}
+
+                if (a === 'ILNDB') {
+                    //ilnRSSbtn.show('scale', 'fast');
+                    title1Label.text('Modal Headline:');
                 } else {
-                    rssALPACPreview.hide();
+                    title1Label.text('Title #1:');
                 }
 
-                if (a === 'ILNDB' || a === 'RFARDB') {
-                    makeProductMenu(adReferenceILN);
-                    rssILNPreview.show('scale', 'fast');
-                    if (a === 'ILNDB') {
-                        title1Label.text('Modal Headline:');
-                    } else {
-                        title1Label.text('Title #1:');
-                    }
-                } else {
-                    rssILNPreview.hide();
-                }
-                if (a === 'LLDB') {
-                    makeProductMenu('');
-                    rssLLPreview.show('scale', 'fast');
-                } else {
-                    rssLLPreview.hide();
-                }
+                //if (a === 'LLDB') {
+                //    learnLibertyRSSbtn.show('scale', 'fast');
+                //} else {
+                //    learnLibertyRSSbtn.hide();
+                //}
             }
         });
 
@@ -884,7 +918,7 @@ $(document).ready(function () {
             }
         }).done(function() {
             var joinRSS = formatStorage.join('');
-            $('#rssPreviewILN').html(joinRSS);
+            $('#rssPreviewGeneral').html(joinRSS);
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(resultsHolder[e].title);
@@ -983,7 +1017,7 @@ $(document).ready(function () {
         }).done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
             //TODO perhaps add the "Generate RSS" button back after generating.
             var joinRSS = formatStorage.join('');
-            $('#rssPreview').html(joinRSS);
+            $('#rssPreviewGeneral').html(joinRSS);
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(rssObject[e].title);
@@ -1054,7 +1088,7 @@ $(document).ready(function () {
             }
         }).done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
             var joinRSS = formatStorage.join('');
-            $('#rssPreviewLL').html(joinRSS);
+            $('#rssPreviewGeneral').html(joinRSS);
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(rssObject[e].title);
@@ -1095,7 +1129,7 @@ $(document).ready(function () {
                 setTimeout(function(){
                     makeKeyCodeTest();
                     compileEmail(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
-                }, 400);
+                }, 300);
             }
         }
     );
