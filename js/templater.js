@@ -259,8 +259,16 @@ $(document).ready(function () {
         var x =[];
         x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
         x = x.join('');
-        $("#keycodeInput").val(x);
         return x;
+    }
+
+    function updateKeyCodeField() {
+        var x =[];
+        x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
+        x = x.join('');
+        $("#keycodeInput")
+            .val(x)
+            .effect('highlight', 'slow');
     }
 
     templateContainer = {
@@ -1079,7 +1087,7 @@ $(document).ready(function () {
         .button()
         .click(function(event) {
             event.preventDefault(); //Stops page from reloading
-            makeKeyCodeTest();
+            updateKeyCodeField();
             if ($("#title1").val() === "") {
                 alert("Please enter a story");
             } else {
