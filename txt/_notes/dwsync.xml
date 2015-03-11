@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="ad_templates.htm" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130704871347652618" remote="130704871180000000" Dst="2" />
-<file name="addDiv_templates.htm" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130704674265064632" remote="130704674080000000" Dst="2" />
-<file name="rfar_db_Tmpl.htm" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130699709656760906" remote="130699709560000000" Dst="1" />
+<file name="ad_templates.htm" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130705600466890105" remote="130705600280000000" Dst="2" />
+<file name="addDiv_templates.htm" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130705604641398873" remote="130705604470000000" Dst="2" />
+<file name="rfar_db_Tmpl.htm" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130705685931270379" remote="130705685770000000" Dst="2" />
 <file name="inliner_styles.html" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130688471024223307" remote="130688470980000000" Dst="1" />
 <file name="not inlined.txt" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130691929859566440" remote="130692700900000000" Dst="1" />
-<file name="iln_db_Tmpl.htm" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130699657390110260" remote="130699657290000000" Dst="1" />
-<file name="alpac_db_Tmpl.htm" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130692891562325246" remote="130692891580000000" Dst="1" />
+<file name="iln_db_Tmpl.htm" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130705686053955833" remote="130705685860000000" Dst="2" />
+<file name="alpac_db_Tmpl.htm" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130705685849635420" remote="130705685660000000" Dst="2" />
+<file name="alpac_mr_Tmpl.htm" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130705685168408203" remote="130705685000000000" Dst="2" />
 </dwsync>
