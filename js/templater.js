@@ -282,6 +282,10 @@ $(document).ready(function () {
                 imgMaxWidth: 130,
                 imgMaxHeight: 130,
                 productMenu: adReferenceWJMA, //may change in the future, this stores the ads
+                rssFeed: 'http://americanlibertypac.com/feed/',
+                feedStyle: function() {
+                    getRSSWithImage(event, this.rssFeed);
+                },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
                     var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
@@ -296,6 +300,10 @@ $(document).ready(function () {
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: adReferenceWJMA,
+                rssFeed: 'http://americanlibertypac.com/feed/',
+                feedStyle: function() {
+                    getRSSWithImage(event, this.rssFeed);
+                },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
                     var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
@@ -311,6 +319,10 @@ $(document).ready(function () {
                 imgMaxWidth: '175',
                 imgMaxHeight: '175',
                 productMenu: adReferenceILN,
+                rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
+                feedStyle: function() {
+                    getILNAPI(event);
+                },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
                     var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
@@ -327,6 +339,10 @@ $(document).ready(function () {
                 imgMaxWidth: '130',
                 imgMaxHeight: '130',
                 productMenu: adReferenceILN,
+                rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
+                feedStyle: function() {
+                    getILNAPI(event);
+                },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
                     var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
@@ -343,6 +359,10 @@ $(document).ready(function () {
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: '',
+                rssFeed: 'http://opportunities.theihs.org/rss.xml?&t[]=200&w=100',
+                feedStyle: function() {
+                    getRSSWithoutImage(event, this.rssFeed);
+                },
                 utmStyle: function() {
                     //var x = makeKeyCodeTest();
                     //console.log('rfardb utm x = ' + x);
@@ -352,12 +372,6 @@ $(document).ready(function () {
             }
         },
         helpers: {
-            keycodeGeneration: function () {
-                var x =[];
-                x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
-                x = x.join('');
-                return x;
-            },
             updateCurrentProduct: function (adReference, utmStyle) { //returns the correct ad. for example, adReferenceILN.XCOM.
                 var b;
                 var adRef = adReference;
@@ -438,10 +452,7 @@ $(document).ready(function () {
     function imageDelay() {
         $('#story1Form').find('input').each(textFix);
         $('#story2Form').find('input').each(textFix);
-        var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
-        var list = x[0];
-        var tmpl = x[1];
-        var currentTemplateSettings = templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
+        var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
 
         var genericW = 130;
         var genericH = 130;
@@ -461,57 +472,58 @@ $(document).ready(function () {
         }
     }
     function updateStory1(currentTemplateSettings){
-        console.log('imgheight x imgwidth = ' + imgHeight[0] + 'x' + imgWidth[0]);
         var currentTemplateSettings = currentTemplateSettings;
         var utm = currentTemplateSettings.utmStyle();
         var adjustedHeight = imgHeight[0];
         var adjustedWidth = imgWidth[0];
-        var title1 = $('#title1').val();
-        var title1text = $("#title1text-div").html();
-        var title1URL = $("#title1URL").val();
-        var title1IMG = $("#title1IMG").val();
-        var urlInsert1 = '<a href="' + title1URL + utm + '" target="_blank">';
-        var linkedImage = urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
-        var imageAlignedRight = urlInsert1 + '<img align="right" alt="" src="' + title1IMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
-
+        var title = $('#title1').val();
+        var titletext = $("#title1text-div").html();
+        var titleURL = $("#title1URL").val();
+        var titleIMG = $("#title1IMG").val();
+        var urlInsert = '<a href="' + titleURL + utm + '" target="_blank">';
+        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
+        var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
+        var trackedURL = titleURL + utm;
 
         templateContainer.story1 = {
             adjustedHeight: adjustedHeight,
             adjustedWidth: adjustedWidth,
-            title: title1,
-            text: title1text,
-            url: title1URL,
-            imageURL: title1IMG,
-            urlInsert: urlInsert1,
+            title: title,
+            text: titletext,
+            url: titleURL,
+            imageURL: titleIMG,
+            urlInsert: urlInsert,
             insertImage: linkedImage,
             insertImageAlignedRight: imageAlignedRight,
-            utm: utm
+            utm: utm,
+            trackedURL: trackedURL
         };
     }
 
     function updateStory2(currentTemplateSettings){
-        console.log('imgheight x imgwidth = ' + imgHeight[1] + 'x' + imgWidth[1]);
         var currentTemplateSettings = currentTemplateSettings;
         var utm = currentTemplateSettings.utmStyle();
         var adjustedHeight = imgHeight[1];
         var adjustedWidth = imgWidth[1];
-        var title2 = $('#title2').val();
-        var title2text = $("#title2text-div").html();
-        var title2URL = $("#title2URL").val();
-        var title2IMG = $("#title2IMG").val();
-        var urlInsert2 = '<a href="' + title2URL + utm + '" target="_blank">';
-        var linkedImage = urlInsert2 + '<img src="' + title2IMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
+        var title = $('#title2').val();
+        var titletext = $("#title2text-div").html();
+        var titleURL = $("#title2URL").val();
+        var titleIMG = $("#title2IMG").val();
+        var urlInsert = '<a href="' + titleURL + utm + '" target="_blank">';
+        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
+        var trackedURL = titleURL + utm;
 
         templateContainer.story2 = {
             adjustedHeight: adjustedHeight,
             adjustedWidth: adjustedWidth,
-            title: title2,
-            text: title2text,
-            url: title2URL,
-            imageURL: title2IMG,
-            urlInsert: urlInsert2,
+            title: title,
+            text: titletext,
+            url: titleURL,
+            imageURL: titleIMG,
+            urlInsert: urlInsert,
             insertImage: linkedImage,
-            utm: utm
+            utm: utm,
+            trackedURL: trackedURL
         };
     }
 
@@ -538,6 +550,8 @@ $(document).ready(function () {
             $("#resultsContainer1").show("drop"); //Shows the results once everything is ready.
             $("#resultsContainer2").show("drop"); //Shows the results once everything is ready.
             $("#emailBtnDiv").show('drop');
+        } else {
+            alert('You have chosen an invalid email');
         }
     }
 
@@ -552,32 +566,21 @@ $(document).ready(function () {
 
 
     function updateAdReferenceMenu() {
+        var x = getCurrentTemplateSettings();
+        makeProductMenu(x.productMenu);
+    }
+    function getCurrentTemplateSettings(){
         var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
-        var list = x[0];
+        var list = x[0]; //list, e.g. RFAR
         var tmpl = x[1];
-        var currentTemplateSettings = templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
-        makeProductMenu(currentTemplateSettings.productMenu);
+        return templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
     }
 
     function setupRSSBtn() {
-        var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
-        var a = x.join('');
-        var list = x[0]; //list, e.g. RFAR
-
-        if (list === 'ALPAC'){
-            getRSS(event);
-        } else if (list === 'ILN' || list === 'RFAR') {
-            getILNAPI(event);
-        } else if (list === 'LL') {
-            getLearnLibertyRSS(event);
-        }
+        var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
+        currentTemplateSettings.feedStyle();
     }
-    //$('#getRSSBtn')
-    //    .button()
-    //    .click(function(event){
-    //        getRSS(event);
-    //    });
-    //
+
     $('#getRSSNewButton')
         .button()
         .click(function(event) {
@@ -594,30 +597,13 @@ $(document).ready(function () {
                 updateAdReferenceMenu(); //added to cut down on makeProductMenu references
 
                 var rssPreviewGeneral = $('#rssPreviewGeneral');
-                var alpacRSSbtn = $('#getRSSBtn');
-                var ilnRSSbtn = $('#getILNRSS');
-                var learnLibertyRSSbtn = $('#getLLRSS');
-
                 var title1Label = $("#title1label");
 
-                //if (a === 'ALPACDB' || a === 'ALPACMR'){
-                //    alpacRSSbtn.show('scale', 'fast');
-                //} else {
-                //    alpacRSSbtn.hide();
-                //}
-
                 if (a === 'ILNDB') {
-                    //ilnRSSbtn.show('scale', 'fast');
                     title1Label.text('Modal Headline:');
                 } else {
                     title1Label.text('Title #1:');
                 }
-
-                //if (a === 'LLDB') {
-                //    learnLibertyRSSbtn.show('scale', 'fast');
-                //} else {
-                //    learnLibertyRSSbtn.hide();
-                //}
             }
         });
 
@@ -661,12 +647,6 @@ $(document).ready(function () {
         toolbar:      "wysihtml-toolbar2", // id of toolbar element
         parserRules:  wysihtml5ParserRules // defined in parser rules set
     });
-
-    $('#getRSSBtn')
-        .button()
-        .click(function(event){
-            getRSS(event);
-        });
 
 
     function makeEmailBtn() {
@@ -906,10 +886,10 @@ $(document).ready(function () {
                     var btnID1 = 'rss1Btn' + resultsHolder[q].storyNum;
                     var btnID2 = 'rss2Btn' + resultsHolder[q].storyNum;
                     formatStorage[q] =
-                        '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" style="padding-top:15px;"><p style="font-size: 10px; text-align: center;">' +
+                        '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;">' +
                         resultsHolder[q].title +
-                        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
-                        '</center></p></div>';
+                        '</p><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                        '</center></div>';
                 }
 
             },
@@ -946,22 +926,15 @@ $(document).ready(function () {
         });
     }
 
-    $('#getILNRSS')
-        .button()
-        .click(function(event){
-            $('#getILNRSS').text('Getting RSS').effect('highlight');
-            getILNAPI(event);
-
-        });
 
 
-    function getRSS(event) {
+    function getRSSWithImage(event, feed) {
         event.preventDefault();
         var q = 0;
         var formatStorage = [];
         var rssObject = [];
         $.ajax({
-            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://americanlibertypac.com/feed/'),
+            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
             dataType: 'json',
             success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
@@ -969,7 +942,7 @@ $(document).ready(function () {
                         var f = e.content;
 
                         function cleanDescription(desc) {
-                            var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe').s;
+                            var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption').s;
                             return x;
                         }
 
@@ -1045,20 +1018,13 @@ $(document).ready(function () {
         });
     }
 
-    $('#getLLRSS')
-        .button()
-        .click(function(event){
-            $('#getLLRSS').text('Getting RSS').effect('highlight');
-            getLearnLibertyRSS(event);
-        });
-
-    function getLearnLibertyRSS(event) {
+    function getRSSWithoutImage(event, feed) {
         event.preventDefault();
         var q = 0;
         var formatStorage = [];
         var rssObject = [];
         $.ajax({
-            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://opportunities.theihs.org/rss.xml?&t[]=200&w=100'),
+            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
             dataType: 'json',
             success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
@@ -1111,6 +1077,7 @@ $(document).ready(function () {
             }
         });
     }
+
 
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS

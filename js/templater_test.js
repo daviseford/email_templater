@@ -1,27 +1,25 @@
 // JavaScript Document
-
 $(document).ready(function () {
-
-    var loadSpin = $('#loader');
+    //*******************************
+    // DOCUMENT AND VAR SETUP
+    //*******************************
+    var loadSpin = $('#loader'); //sets up our loading gif
     $(document).on({
         ajaxStart: function() { loadSpin.addClass("loadingOn");    },
         ajaxStop: function() { loadSpin.removeClass("loadingOn"); }
     });
 
-    //*******************************
-    // DOCUMENT AND VAR SETUP
-    //*******************************
     $("#resultsContainer1").hide(); //Hiding our results, as we don't need to see them yet!
     $("#resultsContainer2").hide();
     $("#story2Div").hide(); //Hiding our second story panel.
     $("#emailBtnDiv").hide();
-    $("#rssPreview").hide();
-    $("#rssPreviewLL").hide();
+    $("#getRSSBtn").hide();
+    $("#getLLRSS").hide();
+
     var additionalContentVal = false; //This makes us default to a one-story format.
-    imgHeight = [];
+    var templateContainer;
+    imgHeight = []; //global image container
     imgWidth = [];
-    var maxWidth = 130;
-    var maxHeight = 130;
 
     var adReferenceILN = {
         USR: {
@@ -234,17 +232,46 @@ $(document).ready(function () {
                 0: {
                     name: 'PPP1',
                     description: 'Rand/Romney'
+                },
+                1: {
+                    name: 'PPP2',
+                    description: 'Bush/Walker'
                 }
             }
+        },
+        HILL: {
+            link: 'https://secure.yourpatriot.com/ou/alpac/1826/donate.aspx',
+            shortCode: 'HILL',
+            longCode: 'Not Ready For Hillary Bumper Sticker',
+            advertisements: {
+                0: {
+                    name: 'HILL1',
+                    description: 'Not Ready For Hillary Sticker (350x137)'
+                },
+                1: {
+                    name: 'HILL2',
+                    description: 'Not Ready For Hillary Sticker (500x196)'
+                }
+            }
+
         }
     };
-    var templateContainer;
     function makeKeyCodeTest() {
         var x =[];
         x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
         x = x.join('');
         return x;
     }
+
+    function updateKeyCodeField() {
+        var x =[];
+        x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
+        x = x.join('');
+        $("#keycodeInput")
+            .val(x)
+            .effect('highlight', 'slow');
+    }
+
     templateContainer = {
         keycode: makeKeyCodeTest(),//templateContainer will eventually be the one stop shop for all constant variables
         ALPAC: {                //we start with the client name
@@ -255,6 +282,10 @@ $(document).ready(function () {
                 imgMaxWidth: 130,
                 imgMaxHeight: 130,
                 productMenu: adReferenceWJMA, //may change in the future, this stores the ads
+                rssFeed: 'http://americanlibertypac.com/feed/',
+                feedStyle: function() {
+                    getRSSWithImage(event, this.rssFeed);
+                },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
                     var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
@@ -269,6 +300,10 @@ $(document).ready(function () {
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: adReferenceWJMA,
+                rssFeed: 'http://americanlibertypac.com/feed/',
+                feedStyle: function() {
+                    getRSSWithImage(event, this.rssFeed);
+                },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
                     var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
@@ -284,6 +319,10 @@ $(document).ready(function () {
                 imgMaxWidth: '175',
                 imgMaxHeight: '175',
                 productMenu: adReferenceILN,
+                rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
+                feedStyle: function() {
+                    getILNAPI(event);
+                },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
                     var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
@@ -300,6 +339,10 @@ $(document).ready(function () {
                 imgMaxWidth: '130',
                 imgMaxHeight: '130',
                 productMenu: adReferenceILN,
+                rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
+                feedStyle: function() {
+                    getILNAPI(event);
+                },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
                     var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
@@ -316,6 +359,10 @@ $(document).ready(function () {
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: '',
+                rssFeed: 'http://opportunities.theihs.org/rss.xml?&t[]=200&w=100',
+                feedStyle: function() {
+                    getRSSWithoutImage(event, this.rssFeed);
+                },
                 utmStyle: function() {
                     //var x = makeKeyCodeTest();
                     //console.log('rfardb utm x = ' + x);
@@ -325,12 +372,6 @@ $(document).ready(function () {
             }
         },
         helpers: {
-            keycodeGeneration: function () {
-                var x =[];
-                x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
-                x = x.join('');
-                return x;
-            },
             updateCurrentProduct: function (adReference, utmStyle) { //returns the correct ad. for example, adReferenceILN.XCOM.
                 var b;
                 var adRef = adReference;
@@ -370,10 +411,10 @@ $(document).ready(function () {
 
 
     //checks our template style for us, useful when doing keycodes
-    function testGetTemplateStyle(){
+    function getTemplateStyle(){
         var y = [$('#listSelect').val(), $('#tmplSelect').val()]; //RFAR,DB
-        var x = y.join('');
-        return y; //return RFARDB
+        var x = y.join(''); //can't return x the way I have it constructed
+        return y; //return RFAR,DB
     }
 
     function enableSmartFocusVars() {
@@ -405,16 +446,13 @@ $(document).ready(function () {
                 subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmILN + '" target="_blank">',
                 ilnHeader: '<a href="http://www.independentlivingnews.com' + utmILN + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="118" src="http://www.independentlivingnews.com/email/images/ILN_LB_header_edited.jpg" style="display:block;" width="580" /></a>'
             }
-        }
+        };
     }
 
     function imageDelay() {
         $('#story1Form').find('input').each(textFix);
         $('#story2Form').find('input').each(textFix);
-        var x = testGetTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
-        var list = x[0];
-        var tmpl = x[1];
-        var currentTemplateSettings = templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
+        var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
 
         var genericW = 130;
         var genericH = 130;
@@ -434,62 +472,63 @@ $(document).ready(function () {
         }
     }
     function updateStory1(currentTemplateSettings){
-        console.log('imgheight x imgwidth = ' + imgHeight[0] + 'x' + imgWidth[0]);
         var currentTemplateSettings = currentTemplateSettings;
         var utm = currentTemplateSettings.utmStyle();
         var adjustedHeight = imgHeight[0];
         var adjustedWidth = imgWidth[0];
-        var title1 = $('#title1').val();
-        var title1text = $("#title1text-div").html();
-        var title1URL = $("#title1URL").val();
-        var title1IMG = $("#title1IMG").val();
-        var urlInsert1 = '<a href="' + title1URL + utm + '" target="_blank">';
-        var linkedImage = urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
-        var imageAlignedRight = urlInsert1 + '<img align="right" alt="" src="' + title1IMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
-
+        var title = $('#title1').val();
+        var titletext = $("#title1text-div").html();
+        var titleURL = $("#title1URL").val();
+        var titleIMG = $("#title1IMG").val();
+        var urlInsert = '<a href="' + titleURL + utm + '" target="_blank">';
+        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
+        var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
+        var trackedURL = titleURL + utm;
 
         templateContainer.story1 = {
             adjustedHeight: adjustedHeight,
             adjustedWidth: adjustedWidth,
-            title: title1,
-            text: title1text,
-            url: title1URL,
-            imageURL: title1IMG,
-            urlInsert: urlInsert1,
+            title: title,
+            text: titletext,
+            url: titleURL,
+            imageURL: titleIMG,
+            urlInsert: urlInsert,
             insertImage: linkedImage,
             insertImageAlignedRight: imageAlignedRight,
-            utm: utm
-        }
+            utm: utm,
+            trackedURL: trackedURL
+        };
     }
 
     function updateStory2(currentTemplateSettings){
-        console.log('imgheight x imgwidth = ' + imgHeight[1] + 'x' + imgWidth[1]);
         var currentTemplateSettings = currentTemplateSettings;
         var utm = currentTemplateSettings.utmStyle();
         var adjustedHeight = imgHeight[1];
         var adjustedWidth = imgWidth[1];
-        var title2 = $('#title2').val();
-        var title2text = $("#title2text-div").html();
-        var title2URL = $("#title2URL").val();
-        var title2IMG = $("#title2IMG").val();
-        var urlInsert2 = '<a href="' + title2URL + utm + '" target="_blank">';
-        var linkedImage = urlInsert2 + '<img src="' + title2IMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
+        var title = $('#title2').val();
+        var titletext = $("#title2text-div").html();
+        var titleURL = $("#title2URL").val();
+        var titleIMG = $("#title2IMG").val();
+        var urlInsert = '<a href="' + titleURL + utm + '" target="_blank">';
+        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
+        var trackedURL = titleURL + utm;
 
         templateContainer.story2 = {
             adjustedHeight: adjustedHeight,
             adjustedWidth: adjustedWidth,
-            title: title2,
-            text: title2text,
-            url: title2URL,
-            imageURL: title2IMG,
-            urlInsert: urlInsert2,
+            title: title,
+            text: titletext,
+            url: titleURL,
+            imageURL: titleIMG,
+            urlInsert: urlInsert,
             insertImage: linkedImage,
-            utm: utm
-        }
+            utm: utm,
+            trackedURL: trackedURL
+        };
     }
 
-    function testNewSetupFirst(templateContainer){ //pass in our references
-        var x = testGetTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
+    function compileEmail(templateContainer){ //pass in our references
+        var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
         var list = x[0];
         var tmpl = x[1];
         var currentTemplateSettings = templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
@@ -501,7 +540,8 @@ $(document).ready(function () {
 
         enableSmartFocusVars(); //sets up common links (unsubscribes, etc)
 
-        templateContainer.helpers.updateCurrentProduct(currentTemplateSettings['productMenu'], currentTemplateSettings.utmStyle()); //finds out what productMenu (adReference object) we're using
+        templateContainer.helpers.updateCurrentProduct(currentTemplateSettings['productMenu'], currentTemplateSettings.utmStyle());
+        //finds out what productMenu (adReference object) we're using
         //pass the current product menu and current UTM style (keycodes are already pre-filled)
 
 
@@ -510,6 +550,8 @@ $(document).ready(function () {
             $("#resultsContainer1").show("drop"); //Shows the results once everything is ready.
             $("#resultsContainer2").show("drop"); //Shows the results once everything is ready.
             $("#emailBtnDiv").show('drop');
+        } else {
+            alert('You have chosen an invalid email');
         }
     }
 
@@ -522,47 +564,46 @@ $(document).ready(function () {
         dateFormat: "ymmdd" //Outputs as YYMMDD
     });
 
+
+    function updateAdReferenceMenu() {
+        var x = getCurrentTemplateSettings();
+        makeProductMenu(x.productMenu);
+    }
+    function getCurrentTemplateSettings(){
+        var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
+        var list = x[0]; //list, e.g. RFAR
+        var tmpl = x[1];
+        return templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
+    }
+
+    function setupRSSBtn() {
+        var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
+       currentTemplateSettings.feedStyle();
+    }
+
+    $('#getRSSNewButton')
+        .button()
+        .click(function(event) {
+            event.preventDefault();
+            setupRSSBtn();
+        });
     $('#listSelect')
         .selectmenu({
             width: 150,
             change: function() {
-                var a = getTemplateStyle();
-                var b = $('#title1IMG').val();
-                var c = $('#title2IMG').val();
-                var x = $('#rssPreview');
-                var z = $('#rssPreviewILN');
-                var w = $('#rssPreviewLL');
-                var y = $("#title1label");
+                var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
+                var a = x.join('');
 
-                if (a === 'ALPACDB' || a === 'ALPACMR'){
-                    makeProductMenu(adReferenceWJMA); //if our selected menu is ALPAC, get WJMA ads
-                    x.show('scale', 'fast');
+                updateAdReferenceMenu(); //added to cut down on makeProductMenu references
+
+                var rssPreviewGeneral = $('#rssPreviewGeneral');
+                var title1Label = $("#title1label");
+
+                if (a === 'ILNDB') {
+                    title1Label.text('Modal Headline:');
                 } else {
-                    x.hide();
+                    title1Label.text('Title #1:');
                 }
-                if (a === 'ILNDB' || a === 'RFARDB') {
-                    makeProductMenu(adReferenceILN);
-                    z.show('scale', 'fast');
-                    if (a === 'RFARDB') {
-                    } else {
-                        y.text('Modal Headline:');
-                    }
-                } else {
-                    y.text('Title #1:');
-                    z.hide();
-                }
-                if (a === 'LLDB') {
-                    makeProductMenu('');
-                    w.show('scale', 'fast');
-                } else {
-                    w.hide();
-                }
-                //if (b !== ''){
-                //    getImageSize(b, 0, maxWidth, maxHeight);
-                //}
-                //if (c !== ''){
-                //    getImageSize(c, 1, maxWidth, maxHeight);
-                //}
             }
         });
 
@@ -572,13 +613,6 @@ $(document).ready(function () {
         .selectmenu({width:225})
         .selectmenu('menuWidget')
         .addClass('overflow');
-
-
-    $('#generateKeyCodeBtn')
-        .button()
-        .click(function(event){
-            makeKeyCode(event);
-        });
 
     //If this is checked, adds the second story box
     $('#additionalContentCheckbox').click(function(){
@@ -604,19 +638,6 @@ $(document).ready(function () {
             }
         });
 
-    //$('#title1IMG').change(function() {
-    //    var x = $('#title1IMG').val();
-    //    if (x !== '') {
-    //        getImageSize(x, 0, maxWidth, maxHeight);
-    //    }
-    //});
-    //$('#title2IMG').change(function() {
-    //    var z = $('#title2IMG').val();
-    //    if (z !== '') {
-    //        getImageSize(z, 1, maxWidth, maxHeight);
-    //    }
-    //});
-
     //setting up our story boxes
     var editor1 = new wysihtml5.Editor("title1text-div", { // id of textarea element
         toolbar:      "wysihtml-toolbar1", // id of toolbar element
@@ -626,12 +647,6 @@ $(document).ready(function () {
         toolbar:      "wysihtml-toolbar2", // id of toolbar element
         parserRules:  wysihtml5ParserRules // defined in parser rules set
     });
-
-    $('#getRSSBtn')
-        .button()
-        .click(function(event){
-            getRSS(event);
-        });
 
 
     function makeEmailBtn() {
@@ -704,23 +719,6 @@ $(document).ready(function () {
     // GETTERS AND FUNCTIONS
     //*******************************
 
-    //This handles generating the keycode. It simply joins all of the necessary values from an array.
-    function makeKeyCode(event) {
-        event.preventDefault();
-        var keycodeGeneration = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
-        //This array stores our Keycode values, to be used shortly.
-        var currKeyCode = keycodeGeneration.join("");
-        $("#keycodeInput")
-            .val(currKeyCode)
-            .effect('highlight', 'slow');
-    }
-
-    //checks our template style for us, useful when doing keycodes
-    function getTemplateStyle(){
-        var y = [$('#listSelect').val(), $('#tmplSelect').val()]; //RFAR,DB
-        var x = y.join('');
-        return x; //return RFARDB
-    }
     function spawnTemplate(tmplLink) { //could probably replace this with the new loader https://github.com/stevenmhunt/tmpl.loader
         var templateLink = tmplLink;
         var templateLoader;
@@ -741,22 +739,6 @@ $(document).ready(function () {
             });
     }
 
-
-
-
-    //getResults() is responsible for reading the template selection box
-    //and spawning the correct template
-    function getResults() {
-        var y = [$('#listSelect').val(), $('#tmplSelect').val()]; //will give us a value like ILN,DB or ALPAC,DB
-        var listVal = y[0]; //e.g. RFAR
-        var tmplVal = y[1]; //e.g. DB
-        var a = templateContainer[listVal]; //eg templateContainer.RFAR
-        var b = a[tmplVal]; //e.g. templateContainer.RFAR.DB
-        var c = b['tmplLink'];
-        var d = b['shortCode'];
-        console.log('c : ' + c);
-        spawnTemplate(c); //Sends link to spawnTemplate()
-    }
 
     function makeProductMenu(x) {
         var setupMenu ='<label for="productSelect">STEP 4<br />Select a Product</label><br><select name="productSelect" id="productSelect"><option value="" selected="selected">None</option>';
@@ -904,10 +886,10 @@ $(document).ready(function () {
                     var btnID1 = 'rss1Btn' + resultsHolder[q].storyNum;
                     var btnID2 = 'rss2Btn' + resultsHolder[q].storyNum;
                     formatStorage[q] =
-                        '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" style="padding-top:15px;"><p style="font-size: 10px; text-align: center;">' +
+                        '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;">' +
                         resultsHolder[q].title +
-                        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
-                        '</center></p></div>';
+                        '</p><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                        '</center></div>';
                 }
 
             },
@@ -916,7 +898,7 @@ $(document).ready(function () {
             }
         }).done(function() {
             var joinRSS = formatStorage.join('');
-            $('#rssPreviewILN').html(joinRSS);
+            $('#rssPreviewGeneral').html(joinRSS);
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(resultsHolder[e].title);
@@ -944,22 +926,15 @@ $(document).ready(function () {
         });
     }
 
-    $('#getILNRSS')
-        .button()
-        .click(function(event){
-            $('#getILNRSS').text('Getting RSS').effect('highlight');
-            getILNAPI(event);
-
-        });
 
 
-    function getRSS(event) {
+    function getRSSWithImage(event, feed) {
         event.preventDefault();
         var q = 0;
         var formatStorage = [];
         var rssObject = [];
         $.ajax({
-            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://americanlibertypac.com/feed/'),
+            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
             dataType: 'json',
             success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
@@ -967,7 +942,7 @@ $(document).ready(function () {
                         var f = e.content;
 
                         function cleanDescription(desc) {
-                            var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe').s;
+                            var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption').s;
                             return x;
                         }
 
@@ -1015,7 +990,7 @@ $(document).ready(function () {
         }).done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
             //TODO perhaps add the "Generate RSS" button back after generating.
             var joinRSS = formatStorage.join('');
-            $('#rssPreview').html(joinRSS);
+            $('#rssPreviewGeneral').html(joinRSS);
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(rssObject[e].title);
@@ -1043,20 +1018,13 @@ $(document).ready(function () {
         });
     }
 
-    $('#getLLRSS')
-        .button()
-        .click(function(event){
-            $('#getLLRSS').text('Getting RSS').effect('highlight');
-            getLearnLibertyRSS(event);
-        });
-
-    function getLearnLibertyRSS(event) {
+    function getRSSWithoutImage(event, feed) {
         event.preventDefault();
         var q = 0;
         var formatStorage = [];
         var rssObject = [];
         $.ajax({
-            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent('http://opportunities.theihs.org/rss.xml?&t[]=200&w=100'),
+            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
             dataType: 'json',
             success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
@@ -1086,7 +1054,7 @@ $(document).ready(function () {
             }
         }).done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
             var joinRSS = formatStorage.join('');
-            $('#rssPreviewLL').html(joinRSS);
+            $('#rssPreviewGeneral').html(joinRSS);
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(rssObject[e].title);
@@ -1110,55 +1078,27 @@ $(document).ready(function () {
         });
     }
 
+
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
     //********************************
 
-    //$('#runTest')
-    //    .button()
-    //    .click(function(event) {
-    //        event.preventDefault();
-    //        imageDelay();
-    //        setTimeout(function(){
-    //            makeKeyCodeTest();
-    //            testNewSetupFirst(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
-    //        }, 400);
-    //    });
 
     $("#generateHTML")
         .button()
         .click(function(event) {
             event.preventDefault(); //Stops page from reloading
+            updateKeyCodeField();
             if ($("#title1").val() === "") {
                 alert("Please enter a story");
             } else {
                 imageDelay();
                 setTimeout(function(){
                     makeKeyCodeTest();
-                    testNewSetupFirst(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
-                }, 400);
+                    compileEmail(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
+                }, 300);
             }
         }
     );
-
-    //$("#generateHTML").click(function(event) {
-    //        event.preventDefault(); //Stops page from reloading
-    //        if ($("#title1").val() === "") {
-    //            alert("Please enter a story");
-    //        } else {
-    //            makeKeyCode(event);
-    //            //getTemplateStyle(); //Start by finding out which template we're using
-    //            firstStorySetup();
-    //            if (additionalContentVal === true) {
-    //                secondStorySetup();
-    //            }
-    //            getResults();
-    //
-    //            $("#resultsContainer1").show("drop"); //Shows the results once everything is ready.
-    //            $("#resultsContainer2").show("drop"); //Shows the results once everything is ready.
-    //            $("#emailBtnDiv").show('drop');
-    //        }
-    //    }
-    //);
 
 });
