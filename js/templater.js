@@ -254,8 +254,20 @@ $(document).ready(function () {
                 }
             }
 
+        },
+        JGM: {
+            link: 'https://minutemanproject.com/donate-2/',
+            shortCode: 'JGM',
+            longCode: 'Secure The Border Bumper Sticker',
+            advertisements: {
+                0: {
+                    name: 'JGM1',
+                    description: 'Secure The Border Bumper Sticker'
+                }
+            }
         }
     };
+
     function makeKeyCodeTest() {
         var x =[];
         x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
@@ -303,6 +315,42 @@ $(document).ready(function () {
                 rssFeed: 'http://americanlibertypac.com/feed/',
                 feedStyle: function() {
                     getRSSWithImage(event, this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            }
+        },
+        JGM: {
+            MR: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_mr_Tmpl.htm',
+                shortCode: 'JGMMR',
+                longCode: 'Minuteman Project Must Read',
+                imgMaxWidth: '',
+                imgMaxHeight: '',
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://minutemanproject.com/feed/',
+                feedStyle: function () {
+                    getRSSWithoutImage(event, this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            },
+            DB: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_db_Tmpl.htm',
+                shortCode: 'JGMDB',
+                longCode: 'Minuteman Project Daily Bulletin',
+                imgMaxWidth: '',
+                imgMaxHeight: '',
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://minutemanproject.com/feed/',
+                feedStyle: function () {
+                    getRSSWithoutImage(event, this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -596,7 +644,7 @@ $(document).ready(function () {
 
                 updateAdReferenceMenu(); //added to cut down on makeProductMenu references
 
-                var rssPreviewGeneral = $('#rssPreviewGeneral');
+                //var rssPreviewGeneral = $('#rssPreviewGeneral');
                 var title1Label = $("#title1label");
 
                 if (a === 'ILNDB') {
