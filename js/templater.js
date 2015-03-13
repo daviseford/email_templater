@@ -295,6 +295,7 @@ $(document).ready(function () {
                 imgMaxHeight: 130,
                 productMenu: adReferenceWJMA, //may change in the future, this stores the ads
                 rssFeed: 'http://americanlibertypac.com/feed/',
+                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(event, this.rssFeed);
                 },
@@ -313,6 +314,7 @@ $(document).ready(function () {
                 imgMaxHeight: '',
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://americanlibertypac.com/feed/',
+                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(event, this.rssFeed);
                 },
@@ -332,6 +334,7 @@ $(document).ready(function () {
                 imgMaxHeight: '',
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://minutemanproject.com/feed/',
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
                     getRSSWithoutImage(event, this.rssFeed);
                 },
@@ -349,6 +352,7 @@ $(document).ready(function () {
                 imgMaxHeight: '',
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://minutemanproject.com/feed/',
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
                     getRSSWithoutImage(event, this.rssFeed);
                 },
@@ -368,6 +372,7 @@ $(document).ready(function () {
                 imgMaxHeight: '175',
                 productMenu: adReferenceILN,
                 rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/iln_75x75.png',
                 feedStyle: function() {
                     getILNAPI(event);
                 },
@@ -388,6 +393,7 @@ $(document).ready(function () {
                 imgMaxHeight: '130',
                 productMenu: adReferenceILN,
                 rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/iln_75x75.png',
                 feedStyle: function() {
                     getILNAPI(event);
                 },
@@ -408,6 +414,7 @@ $(document).ready(function () {
                 imgMaxHeight: '',
                 productMenu: '',
                 rssFeed: 'http://opportunities.theihs.org/rss.xml?&t[]=200&w=100',
+                defaultLogo: '',
                 feedStyle: function() {
                     getRSSWithoutImage(event, this.rssFeed);
                 },
@@ -915,6 +922,7 @@ $(document).ready(function () {
                 var original = response;
                 var numStories = original.count;
                 var results = original.results.health;
+                var x = getCurrentTemplateSettings();
 
                 function removeNewLine(title){
                     //This javascript replaces all 3 types of line breaks with a space
@@ -926,7 +934,8 @@ $(document).ready(function () {
                     resultsHolder[i] = {
                         storyNum: i,
                         title: removeNewLine(results[i].title),
-                        link: results[i].link
+                        link: results[i].link,
+                        imgsrc: x.defaultLogo
                     };
                 }
 
@@ -934,10 +943,10 @@ $(document).ready(function () {
                     var btnID1 = 'rss1Btn' + resultsHolder[q].storyNum;
                     var btnID2 = 'rss2Btn' + resultsHolder[q].storyNum;
                     formatStorage[q] =
-                        '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;">' +
+                        '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;"><img src="' + resultsHolder[q].imgsrc + '" width="75" height="75" style="float: left"/>' +
                         resultsHolder[q].title +
-                        '</p><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
-                        '</center></div>';
+                        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                        '</center></p></div>';
                 }
 
             },
@@ -950,18 +959,12 @@ $(document).ready(function () {
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(resultsHolder[e].title);
-                    //$('#title1text-div').html(resultsHolder[e].description);
                     $('#title1URL').val(resultsHolder[e].link);
-                    //$('#title1IMG').val(resultsHolder[e].imgsrc);
-                    //getImageSize(resultsHolder[e].imgsrc, 0); //0 means first story
                 });
                 $('#rss2Btn'+e).click(function () {
                     if (additionalContentVal === true) {
                         $('#title2').val(resultsHolder[e].title);
-                        //$('#title2text-div').html(resultsHolder[e].description);
                         $('#title2URL').val(resultsHolder[e].link);
-                        //$('#title2IMG').val(resultsHolder[e].imgsrc);
-                        //getImageSize(resultsHolder[e].imgsrc, 1);
                     } else {
                         console.log('No second story!');
                     }
@@ -1004,7 +1007,8 @@ $(document).ready(function () {
 
                         function defaultImageCheck(){ //replaces undefined images with a default
                             if (images[0] === undefined){
-                                images[0] = 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png';
+                                var x = getCurrentTemplateSettings();
+                                images[0] = x.defaultLogo;
                             }
                         }
                         defaultImageCheck();
@@ -1077,21 +1081,25 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
+                        var x = getCurrentTemplateSettings();
+
                         var f = e.content;
 
                         rssObject[i] = {
                             storyNum: q,
                             title: e.title,
                             link: e.link,
-                            description: e.content
+                            description: e.content,
+                            imgsrc: x.defaultLogo
                         };
 
                         var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
                         var btnID2 = 'rss2Btn' + rssObject[i].storyNum;
 
-                        if (q < 8) { //stores HTML formatted values for later use
+                        if (q < 9) { //stores HTML formatted values for later use
                             formatStorage[q] =
-                                '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;">' + rssObject[i].title +
+                                '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" style="float: left"/>' +
+                                rssObject[i].title +
                                 '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
                                 '</center></p></div>';
                         }
@@ -1120,7 +1128,7 @@ $(document).ready(function () {
                 });
 
             }
-            for(var n=0; n < 8; n++){
+            for(var n=0; n < 9; n++){
                 buttonUpdateField(n);
             }
         });
