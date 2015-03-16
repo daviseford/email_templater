@@ -327,11 +327,11 @@ $(document).ready(function () {
             }
         },
         JGM: {
-            MR: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_mr_Tmpl.htm',
-                emailCode: 'MR',
-                shortCode: 'JGMMR',
-                longCode: 'Must Read',
+            DB: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_db_Tmpl.htm',
+                emailCode: 'DB',
+                shortCode: 'JGMDB',
+                longCode: 'Daily Bulletin',
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: adReferenceWJMA,
@@ -346,11 +346,11 @@ $(document).ready(function () {
                     return y;
                 }
             },
-            DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_db_Tmpl.htm',
-                emailCode: 'DB',
-                shortCode: 'JGMDB',
-                longCode: 'Daily Bulletin',
+            MR: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_mr_Tmpl.htm',
+                emailCode: 'MR',
+                shortCode: 'JGMMR',
+                longCode: 'Must Read',
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: adReferenceWJMA,
@@ -385,7 +385,6 @@ $(document).ready(function () {
                     var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
                     return y;
                 }
-                //imgStyle: <img align="right" alt="" src="' + title1IMG + '" style="padding: 6px; float:right;" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"/></a>';
             }
         },
         RFAR: {
@@ -407,7 +406,6 @@ $(document).ready(function () {
                     var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
                     return y;
                 }
-                //imgStyle: '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"></a></center>'
             }
         },
         LL: {
@@ -425,9 +423,7 @@ $(document).ready(function () {
                     getRSSWithoutImage(event, this.rssFeed);
                 },
                 utmStyle: function() {
-                    //var x = makeKeyCodeTest();
-                    //console.log('rfardb utm x = ' + x);
-                    //var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
+                    //return blank. if we add a utm style, this is where it will go
                     return '';
                 }
             }
