@@ -11,10 +11,9 @@ $(document).ready(function () {
 
     $("#resultsContainer1").hide(); //Hiding our results, as we don't need to see them yet!
     $("#resultsContainer2").hide();
-    $("#story2Div").hide(); //Hiding our second story panel.
     $("#emailBtnDiv").hide();
-    $("#getRSSBtn").hide();
-    $("#getLLRSS").hide();
+    $('#choiceRow2').hide();
+
 
     var additionalContentVal = false; //This makes us default to a one-story format.
     var templateContainer;
@@ -254,8 +253,20 @@ $(document).ready(function () {
                 }
             }
 
+        },
+        JGM: {
+            link: 'https://minutemanproject.com/donate-2/',
+            shortCode: 'JGM',
+            longCode: 'Secure The Border Bumper Sticker',
+            advertisements: {
+                0: {
+                    name: 'JGM1',
+                    description: 'Secure The Border Bumper Sticker'
+                }
+            }
         }
     };
+
     function makeKeyCodeTest() {
         var x =[];
         x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
@@ -277,12 +288,14 @@ $(document).ready(function () {
         ALPAC: {                //we start with the client name
             DB: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm',
+                emailCode: 'DB',
                 shortCode: 'ALPACDB',
-                longCode: 'American Liberty PAC Daily Bulletin',
+                longCode: 'Daily Bulletin',
                 imgMaxWidth: 130,
                 imgMaxHeight: 130,
                 productMenu: adReferenceWJMA, //may change in the future, this stores the ads
                 rssFeed: 'http://americanlibertypac.com/feed/',
+                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(event, this.rssFeed);
                 },
@@ -295,14 +308,56 @@ $(document).ready(function () {
             },
             MR: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_mr_Tmpl.htm',
+                emailCode: 'MR',
                 shortCode: 'ALPACMR',
-                longCode: 'American Liberty PAC Must Read',
+                longCode: 'Must Read',
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://americanlibertypac.com/feed/',
+                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(event, this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            }
+        },
+        JGM: {
+            MR: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_mr_Tmpl.htm',
+                emailCode: 'MR',
+                shortCode: 'JGMMR',
+                longCode: 'Must Read',
+                imgMaxWidth: '',
+                imgMaxHeight: '',
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://minutemanproject.com/feed/',
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
+                feedStyle: function () {
+                    getRSSWithoutImage(event, this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            },
+            DB: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_db_Tmpl.htm',
+                emailCode: 'DB',
+                shortCode: 'JGMDB',
+                longCode: 'Daily Bulletin',
+                imgMaxWidth: '',
+                imgMaxHeight: '',
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://minutemanproject.com/feed/',
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
+                feedStyle: function () {
+                    getRSSWithoutImage(event, this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -314,12 +369,14 @@ $(document).ready(function () {
         ILN: {
             DB: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/iln_db_Tmpl.htm',
+                emailCode: 'DB',
                 shortCode: 'ILNDB',
-                longCode: 'Independent Living News Daily Bulletin',
+                longCode: 'Daily Bulletin',
                 imgMaxWidth: '175',
                 imgMaxHeight: '175',
                 productMenu: adReferenceILN,
                 rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/iln_75x75.png',
                 feedStyle: function() {
                     getILNAPI(event);
                 },
@@ -334,12 +391,14 @@ $(document).ready(function () {
         RFAR: {
             DB: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/rfar_db_Tmpl.htm',
+                emailCode: 'DB',
                 shortCode: 'RFARDB',
-                longCode: 'Ready For Anything Report',
+                longCode: 'Daily Bulletin',
                 imgMaxWidth: '130',
                 imgMaxHeight: '130',
                 productMenu: adReferenceILN,
                 rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/iln_75x75.png',
                 feedStyle: function() {
                     getILNAPI(event);
                 },
@@ -354,12 +413,14 @@ $(document).ready(function () {
         LL: {
             DB: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/ll_db_Tmpl.htm',
+                emailCode: 'DB',
                 shortCode: 'LLDB',
-                longCode: 'Learn Liberty Daily Bulletin',
+                longCode: 'Daily Bulletin',
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: '',
                 rssFeed: 'http://opportunities.theihs.org/rss.xml?&t[]=200&w=100',
+                defaultLogo: '',
                 feedStyle: function() {
                     getRSSWithoutImage(event, this.rssFeed);
                 },
@@ -452,6 +513,8 @@ $(document).ready(function () {
     function imageDelay() {
         $('#story1Form').find('input').each(textFix);
         $('#story2Form').find('input').each(textFix);
+        $('#story3Form').find('input').each(textFix);
+        $('#story4Form').find('input').each(textFix);
         var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
 
         var genericW = 130;
@@ -459,6 +522,8 @@ $(document).ready(function () {
 
         var title1IMG = $("#title1IMG").val();
         var title2IMG = $("#title2IMG").val();
+        var title3IMG = $("#title3IMG").val();
+        var title4IMG = $("#title4IMG").val();
 
         var maxW = currentTemplateSettings.imgMaxWidth;
         var maxH = currentTemplateSettings.imgMaxHeight;
@@ -466,65 +531,14 @@ $(document).ready(function () {
         if (maxH === '' || maxH === undefined || maxH === 0) {
             getImageSize(title1IMG, 0, genericW, genericH);
             getImageSize(title2IMG, 1, genericW, genericH); //if we don't have an image size set, use generic
+            getImageSize(title3IMG, 2, genericW, genericH);
+            getImageSize(title3IMG, 3, genericW, genericH);
         } else {
             getImageSize(title1IMG, 0, maxW, maxH); //otherwise use the currentTemplate's setting
             getImageSize(title2IMG, 1, maxW, maxH);
+            getImageSize(title3IMG, 2, maxW, maxH);
+            getImageSize(title4IMG, 4, maxW, maxH);
         }
-    }
-    function updateStory1(currentTemplateSettings){
-        var currentTemplateSettings = currentTemplateSettings;
-        var utm = currentTemplateSettings.utmStyle();
-        var adjustedHeight = imgHeight[0];
-        var adjustedWidth = imgWidth[0];
-        var title = $('#title1').val();
-        var titletext = $("#title1text-div").html();
-        var titleURL = $("#title1URL").val();
-        var titleIMG = $("#title1IMG").val();
-        var urlInsert = '<a href="' + titleURL + utm + '" target="_blank">';
-        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
-        var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
-        var trackedURL = titleURL + utm;
-
-        templateContainer.story1 = {
-            adjustedHeight: adjustedHeight,
-            adjustedWidth: adjustedWidth,
-            title: title,
-            text: titletext,
-            url: titleURL,
-            imageURL: titleIMG,
-            urlInsert: urlInsert,
-            insertImage: linkedImage,
-            insertImageAlignedRight: imageAlignedRight,
-            utm: utm,
-            trackedURL: trackedURL
-        };
-    }
-
-    function updateStory2(currentTemplateSettings){
-        var currentTemplateSettings = currentTemplateSettings;
-        var utm = currentTemplateSettings.utmStyle();
-        var adjustedHeight = imgHeight[1];
-        var adjustedWidth = imgWidth[1];
-        var title = $('#title2').val();
-        var titletext = $("#title2text-div").html();
-        var titleURL = $("#title2URL").val();
-        var titleIMG = $("#title2IMG").val();
-        var urlInsert = '<a href="' + titleURL + utm + '" target="_blank">';
-        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
-        var trackedURL = titleURL + utm;
-
-        templateContainer.story2 = {
-            adjustedHeight: adjustedHeight,
-            adjustedWidth: adjustedWidth,
-            title: title,
-            text: titletext,
-            url: titleURL,
-            imageURL: titleIMG,
-            urlInsert: urlInsert,
-            insertImage: linkedImage,
-            utm: utm,
-            trackedURL: trackedURL
-        };
     }
 
     function compileEmail(templateContainer){ //pass in our references
@@ -533,14 +547,17 @@ $(document).ready(function () {
         var tmpl = x[1];
         var currentTemplateSettings = templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
 
-        updateStory1(currentTemplateSettings);
+        getStoryValues(1);
+        getStoryValues(2);
         if (additionalContentVal === true) {
-            updateStory2(currentTemplateSettings);
+            getStoryValues(3);
+            getStoryValues(4);
         }
+
 
         enableSmartFocusVars(); //sets up common links (unsubscribes, etc)
 
-        templateContainer.helpers.updateCurrentProduct(currentTemplateSettings['productMenu'], currentTemplateSettings.utmStyle());
+        templateContainer.helpers.updateCurrentProduct(currentTemplateSettings.productMenu, currentTemplateSettings.utmStyle());
         //finds out what productMenu (adReference object) we're using
         //pass the current product menu and current UTM style (keycodes are already pre-filled)
 
@@ -550,8 +567,6 @@ $(document).ready(function () {
             $("#resultsContainer1").show("drop"); //Shows the results once everything is ready.
             $("#resultsContainer2").show("drop"); //Shows the results once everything is ready.
             $("#emailBtnDiv").show('drop');
-        } else {
-            alert('You have chosen an invalid email');
         }
     }
 
@@ -578,7 +593,7 @@ $(document).ready(function () {
 
     function setupRSSBtn() {
         var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
-       currentTemplateSettings.feedStyle();
+        currentTemplateSettings.feedStyle();
     }
 
     $('#getRSSNewButton')
@@ -594,9 +609,9 @@ $(document).ready(function () {
                 var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
                 var a = x.join('');
 
+                updateTemplateMenu(); //update valid email styles. e.g. DB, MR. call this first to avoid conflict with updateAdReferenceMenu()
                 updateAdReferenceMenu(); //added to cut down on makeProductMenu references
 
-                var rssPreviewGeneral = $('#rssPreviewGeneral');
                 var title1Label = $("#title1label");
 
                 if (a === 'ILNDB') {
@@ -614,22 +629,6 @@ $(document).ready(function () {
         .selectmenu('menuWidget')
         .addClass('overflow');
 
-    //If this is checked, adds the second story box
-    $('#additionalContentCheckbox').click(function(){
-        if (this.checked) {
-            additionalContentVal = true;
-            console.log("Additional Content: "+additionalContentVal);
-            $("#story1Div").removeClass("col-lg-12 col-md-12").addClass("col-lg-6 col-md-6");
-            $("#story2Div").show( "fade" );
-        } else {
-            additionalContentVal = false;
-            console.log("Additional Content: "+additionalContentVal);
-            $("#story2Div").hide( "fade", function() {
-                $("#story1Div").removeClass("col-lg-6 col-md-6").addClass("col-lg-12 col-md-12");
-            });
-        }
-    });
-
     $('#tmplSelect')
         .selectmenu({width: 225})
         .selectmenu({
@@ -638,27 +637,12 @@ $(document).ready(function () {
             }
         });
 
-    //setting up our story boxes
-    var editor1 = new wysihtml5.Editor("title1text-div", { // id of textarea element
-        toolbar:      "wysihtml-toolbar1", // id of toolbar element
-        parserRules:  wysihtml5ParserRules // defined in parser rules set
-    });
-    var editor2 = new wysihtml5.Editor("title2text-div", { // id of textarea element
-        toolbar:      "wysihtml-toolbar2", // id of toolbar element
-        parserRules:  wysihtml5ParserRules // defined in parser rules set
-    });
-
-
     function makeEmailBtn() {
-        var i = 0; //I added this counter to stop the multiple submission bug.
         $("#emailHTML")
             .button()
             .show()
             .click(function() {
-                if (i === 0) {
                     sendEmail();
-                }
-                i++;
             });
     }
 
@@ -719,7 +703,7 @@ $(document).ready(function () {
     // GETTERS AND FUNCTIONS
     //*******************************
 
-    function spawnTemplate(tmplLink) { //could probably replace this with the new loader https://github.com/stevenmhunt/tmpl.loader
+    function spawnTemplate(tmplLink) {
         var templateLink = tmplLink;
         var templateLoader;
         function getTemplate(src) {
@@ -778,6 +762,27 @@ $(document).ready(function () {
         }
     }
     makeProductMenu(adReferenceILN); //initialize our menu with ILN values, since the menu defaults to RFAR
+
+    function updateTemplateMenu() {
+        var list = $('#listSelect').val();
+        var thisList = templateContainer[list];
+        var setupMenu ='<label for="tmplSelect">STEP 3<br />Select an Email</label><br><select name="tmplSelect" id="tmplSelect">';
+        var endMenu = '</select>';
+        var arrayThing = [];
+        var tmplSelect = $('#tmplSelect');
+        for (var i in thisList) {
+            if (thisList[i].hasOwnProperty('emailCode')) {
+                var emailCode = thisList[i]['emailCode'];
+                var longCode = thisList[i]['longCode'];
+                var addOption = '<option value="' + emailCode + '">' + longCode + '</option>';
+                arrayThing.push(addOption);
+            }
+        }
+        tmplSelect.html(setupMenu + arrayThing + endMenu);
+        tmplSelect.selectmenu('refresh'); //refresh our changes. doesn't work without this.
+    }
+
+    updateTemplateMenu(); //initialize our menu with ILN values, since the menu defaults to RFAR
 
     //**********************
     //BEGIN TEXT HANDLING  *
@@ -867,6 +872,7 @@ $(document).ready(function () {
                 var original = response;
                 var numStories = original.count;
                 var results = original.results.health;
+                var x = getCurrentTemplateSettings();
 
                 function removeNewLine(title){
                     //This javascript replaces all 3 types of line breaks with a space
@@ -878,18 +884,21 @@ $(document).ready(function () {
                     resultsHolder[i] = {
                         storyNum: i,
                         title: removeNewLine(results[i].title),
-                        link: results[i].link
+                        link: results[i].link,
+                        imgsrc: x.defaultLogo
                     };
                 }
 
                 for (var q = 0; q < 9; q++) { //displays 9 results
                     var btnID1 = 'rss1Btn' + resultsHolder[q].storyNum;
                     var btnID2 = 'rss2Btn' + resultsHolder[q].storyNum;
+                    var btnID3 = 'rss3Btn' + resultsHolder[q].storyNum;
+                    var btnID4 = 'rss4Btn' + resultsHolder[q].storyNum;
                     formatStorage[q] =
-                        '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;">' +
+                        '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;"><img src="' + resultsHolder[q].imgsrc + '" width="75" height="75" style="float: left"/>' +
                         resultsHolder[q].title +
-                        '</p><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
-                        '</center></div>';
+                        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">Story #3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">Story #4</button>' +
+                        '</center></p></div>';
                 }
 
             },
@@ -902,20 +911,26 @@ $(document).ready(function () {
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(resultsHolder[e].title);
-                    //$('#title1text-div').html(resultsHolder[e].description);
                     $('#title1URL').val(resultsHolder[e].link);
-                    //$('#title1IMG').val(resultsHolder[e].imgsrc);
-                    //getImageSize(resultsHolder[e].imgsrc, 0); //0 means first story
                 });
                 $('#rss2Btn'+e).click(function () {
+                    $('#title2').val(resultsHolder[e].title);
+                    $('#title2URL').val(resultsHolder[e].link);
+                });
+                $('#rss3Btn'+e).click(function () {
                     if (additionalContentVal === true) {
-                        $('#title2').val(resultsHolder[e].title);
-                        //$('#title2text-div').html(resultsHolder[e].description);
-                        $('#title2URL').val(resultsHolder[e].link);
-                        //$('#title2IMG').val(resultsHolder[e].imgsrc);
-                        //getImageSize(resultsHolder[e].imgsrc, 1);
+                        $('#title3').val(resultsHolder[e].title);
+                        $('#title3URL').val(resultsHolder[e].link);
                     } else {
-                        console.log('No second story!');
+                        alert('Additional Content Not Enabled!');
+                    }
+                });
+                $('#rss4Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title4').val(resultsHolder[e].title);
+                        $('#title4URL').val(resultsHolder[e].link);
+                    } else {
+                        alert('Additional Content Not Enabled!');
                     }
                 });
 
@@ -942,7 +957,7 @@ $(document).ready(function () {
                         var f = e.content;
 
                         function cleanDescription(desc) {
-                            var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption').s;
+                            var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font').s;
                             return x;
                         }
 
@@ -956,7 +971,8 @@ $(document).ready(function () {
 
                         function defaultImageCheck(){ //replaces undefined images with a default
                             if (images[0] === undefined){
-                                images[0] = 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png';
+                                var x = getCurrentTemplateSettings();
+                                images[0] = x.defaultLogo;
                             }
                         }
                         defaultImageCheck();
@@ -969,9 +985,12 @@ $(document).ready(function () {
                             description: cleanDescription(f)
                         };
 
-                        var divID = 'rssStory' + rssObject[i].storyNum;
                         var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
                         var btnID2 = 'rss2Btn' + rssObject[i].storyNum;
+                        var btnID3 = 'rss3Btn' + rssObject[i].storyNum;
+                        var btnID4 = 'rss4Btn' + rssObject[i].storyNum;
+
+                        var divID = 'rssStory' + rssObject[i].storyNum;
                         var imgID = 'rssImg' + rssObject[i].storyNum;
 
 
@@ -979,7 +998,7 @@ $(document).ready(function () {
                             formatStorage[q] =
                                 '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
                                 rssObject[i].title +
-                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">Story #3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">Story #4</button>' +
                                 '</center></p></div>';
                         }
 
@@ -1000,16 +1019,33 @@ $(document).ready(function () {
                     //getImageSize(rssObject[e].imgsrc, 0, maxWidth, maxHeight); //0 means first story, 130x130 image size
                 });
                 $('#rss2Btn'+e).click(function () {
-                    if (additionalContentVal === true) {
                         $('#title2').val(rssObject[e].title);
                         $('#title2text-div').html(rssObject[e].description);
                         $('#title2URL').val(rssObject[e].link);
                         $('#title2IMG').val(rssObject[e].imgsrc);
                         //getImageSize(rssObject[e].imgsrc, 1, maxWidth, maxHeight);
+                    });
+                $('#rss3Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title3').val(rssObject[e].title);
+                        $('#title3text-div').html(rssObject[e].description);
+                        $('#title3URL').val(rssObject[e].link);
+                        $('#title3IMG').val(rssObject[e].imgsrc);
                     } else {
-                        console.log('No second story!');
+                        alert('Additional Content Not Enabled!');
                     }
                 });
+                $('#rss4Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title4').val(rssObject[e].title);
+                        $('#title4text-div').html(rssObject[e].description);
+                        $('#title4URL').val(rssObject[e].link);
+                        $('#title4IMG').val(rssObject[e].imgsrc);
+                    } else {
+                        alert('Additional Content Not Enabled!');
+                    }
+                });
+
 
             }
             for(var n=0; n < 9; n++){
@@ -1029,22 +1065,28 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
+                        var x = getCurrentTemplateSettings();
+
                         var f = e.content;
 
                         rssObject[i] = {
                             storyNum: q,
                             title: e.title,
                             link: e.link,
-                            description: e.content
+                            description: e.content,
+                            imgsrc: x.defaultLogo
                         };
 
                         var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
                         var btnID2 = 'rss2Btn' + rssObject[i].storyNum;
+                        var btnID3 = 'rss3Btn' + rssObject[i].storyNum;
+                        var btnID4 = 'rss4Btn' + rssObject[i].storyNum;
 
-                        if (q < 8) { //stores HTML formatted values for later use
+                        if (q < 9) { //stores HTML formatted values for later use
                             formatStorage[q] =
-                                '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;">' + rssObject[i].title +
-                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                                '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" style="float: left"/>' +
+                                rssObject[i].title +
+                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">Story #3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">Story #4</button>' +
                                 '</center></p></div>';
                         }
 
@@ -1062,28 +1104,204 @@ $(document).ready(function () {
                     $('#title1URL').val(rssObject[e].link);
                 });
                 $('#rss2Btn'+e).click(function () {
-                    if (additionalContentVal === true) {
                         $('#title2').val(rssObject[e].title);
                         $('#title2text-div').html(rssObject[e].description);
                         $('#title2URL').val(rssObject[e].link);
+                });
+                $('#rss3Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title3').val(rssObject[e].title);
+                        $('#title3text-div').html(rssObject[e].description);
+                        $('#title3URL').val(rssObject[e].link);
                     } else {
-                        console.log('No second story!');
+                        alert('Additional Content Not Enabled!');
+                    }
+                });
+                $('#rss4Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title4').val(rssObject[e].title);
+                        $('#title4text-div').html(rssObject[e].description);
+                        $('#title4URL').val(rssObject[e].link);
+                    } else {
+                        alert('Additional Content Not Enabled!');
                     }
                 });
 
             }
-            for(var n=0; n < 8; n++){
+            for(var n=0; n < 9; n++){
                 buttonUpdateField(n);
             }
         });
+    }
+
+    function additionalContentBuilder(firstStoryNumber, secondStoryNumber, location) {
+        var choiceRowNumber = 0;
+        var storyNumber1 = firstStoryNumber;
+        var storyNumber2 = secondStoryNumber;
+        var builderStorage = [];
+        var a = '<div class="row" id="choiceRow' + choiceRowNumber + '">';
+        var b = '<div class="col-lg-6 col-md-6" id="story'+storyNumber1+'Div">';
+        var c = '<form id="story'+storyNumber1+'Form" action="#"><fieldset><div class="form-group">';
+        var d = '<label id="title'+storyNumber1+'label" for="title'+storyNumber1+'">Title #'+storyNumber1+': </label>';
+        var e = '<input class="form-control" type="text" id="title'+storyNumber1+'" name="title'+storyNumber1+'"/></div>';
+        var f = '<div class="form-group"><label for="title'+storyNumber1+'text-div">Story #'+storyNumber1+': </label><div id="title'+storyNumber1+'text-div" style="width: 100%; height: 100%" data-placeholder="Enter your text..." class="form-control"></div>';
+        var g = '<div id="wysihtml-toolbar'+storyNumber1+'" style="display: none;"><a data-wysihtml5-command="bold">bold </a><a data-wysihtml5-command="italic">italic </a><a data-wysihtml5-command="createLink">insert link </a><div data-wysihtml5-dialog="createLink" style="display: none;">';
+        var h = '<label>Link:<input data-wysihtml5-dialog-field="href" value="http://" class="text"></label><a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a></div></div></div>';
+        var i = '<div class="form-group"><label for="title'+storyNumber1+'URL">Story URL: </label><input class="form-control" type="text" id="title'+storyNumber1+'URL" name="title'+storyNumber1+'URL" placeholder="Put the link to the ARTICLE here."/>';
+        var j = '</div><div class="form-group"><label for="title'+storyNumber1+'IMG">Image URL: </label><input class="form-control" type="text" id="title'+storyNumber1+'IMG" name="title'+storyNumber1+'IMG" placeholder=""/> <br />';
+        var k = '</fieldset></form></div>';
+        var l = '<div class="col-lg-6 col-md-6" id="story'+storyNumber2+'Div"><form id="story'+storyNumber2+'Form" action="#"><fieldset><div class="form-group"><label for="title'+storyNumber2+'">Title #'+storyNumber2+': </label>';
+        var m = '<input class="form-control" type="text" id="title'+storyNumber2+'" name="title'+storyNumber2+'"/></div><div class="form-group"><label for="title'+storyNumber2+'text-div">Story #'+storyNumber2+': </label><div id="title'+storyNumber2+'text-div" style="width: 100%; height: 100%" data-placeholder="Enter your text..." class="form-control"></div>';
+        var n = '<div id="wysihtml-toolbar'+storyNumber2+'" style="display: none;"><a data-wysihtml5-command="bold">bold </a><a data-wysihtml5-command="italic">italic </a><a data-wysihtml5-command="createLink">insert link </a><div data-wysihtml5-dialog="createLink" style="display: none;">';
+        var o = '<label>Link:<input data-wysihtml5-dialog-field="href" value="http://" class="text"></label><a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a></div></div></div>';
+        var p =  '<div class="form-group"><label for="title'+storyNumber2+'URL">Story URL: </label> <input class="form-control" type="text" id="title'+storyNumber2+'URL" name="title'+storyNumber2+'URL" placeholder="Link to the ARTICLE here."/></div>';
+        var q = '<div class="form-group"><label for="title'+storyNumber2+'IMG">Image URL: </label><input class="form-control" type="text" id="title'+storyNumber2+'IMG" name="title'+storyNumber2+'IMG" placeholder=""/> </div></fieldset></form></div></div>';
+        builderStorage.push(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q);
+        var xx = builderStorage.join('');
+        var x;
+        location.html(xx);
+
+
+        switch (firstStoryNumber) {
+            case 0:
+                break;
+            case 1:
+                x = new wysihtml5.Editor("title1text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar1", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 2:
+                x = new wysihtml5.Editor("title2text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar2", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 3:
+                x = new wysihtml5.Editor("title3text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar3", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 4:
+                x = new wysihtml5.Editor("title4text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar4", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 5:
+                x = new wysihtml5.Editor("title5text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar5", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 6:
+                x = new wysihtml5.Editor("title6text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar6", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            default:
+                break;
+        }
+        switch (secondStoryNumber) {
+            case 0:
+                break;
+            case 1:
+                x = new wysihtml5.Editor("title1text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar1", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 2:
+                x = new wysihtml5.Editor("title2text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar2", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 3:
+                x = new wysihtml5.Editor("title3text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar3", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 4:
+                x = new wysihtml5.Editor("title4text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar4", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 5:
+                x = new wysihtml5.Editor("title5text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar5", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 6:
+                x = new wysihtml5.Editor("title6text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar6", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            default:
+                break;
+        }
+    }
+    additionalContentBuilder(1,2, $('#choiceRow')); //builds our initial story section
+
+    //If this is checked, adds the second story box
+    $('#additionalContentCheckbox').click(function(){
+        if (this.checked) {
+            var i = $('#choiceRow2');
+            additionalContentVal = true;
+            console.log("Additional Content: "+additionalContentVal);
+            additionalContentBuilder(3,4, i);
+            i.show();
+        } else {
+            additionalContentVal = false;
+            console.log("Additional Content: "+additionalContentVal);
+            $('#choiceRow2').hide();
+        }
+    });
+
+    function getStoryValues (storyNumber){
+        var storyNum = storyNumber;
+        var storageNum = (storyNum - 1);
+        var currentTemplateSettings = getCurrentTemplateSettings();
+        var utm = currentTemplateSettings.utmStyle();
+        var adjustedHeight = imgHeight[storageNum];
+        var adjustedWidth = imgWidth[storageNum];
+        var title = $('#title'+storyNum).val();
+        var titletext = $("#title"+storyNum+"text-div").html();
+        var titleURL = $("#title"+storyNum+"URL").val();
+        var titleIMG = $("#title"+storyNum+"IMG").val();
+        var urlInsert = '<a href="' + titleURL + utm + '" target="_blank">';
+        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
+        var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
+        var trackedURL = titleURL + utm;
+        var storyName = 'story'+storyNum;
+
+
+        templateContainer[storyName] = {
+            adjustedHeight: adjustedHeight,
+            adjustedWidth: adjustedWidth,
+            title: title,
+            text: titletext,
+            url: titleURL,
+            imageURL: titleIMG,
+            urlInsert: urlInsert,
+            insertImage: linkedImage,
+            insertImageAlignedRight: imageAlignedRight,
+            utm: utm,
+            trackedURL: trackedURL
+        };
+
     }
 
 
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
     //********************************
-
-
     $("#generateHTML")
         .button()
         .click(function(event) {
