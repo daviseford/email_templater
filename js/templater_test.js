@@ -274,7 +274,7 @@ $(document).ready(function () {
         return x;
     }
 
-    function updateKeyCodeField() {
+    function updateKeyCodeField() { //this used to be bundled in with the rest of the email generation. Now it's a standalone function, you can call it anytime.
         var x =[];
         x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
         x = x.join('');
@@ -291,8 +291,8 @@ $(document).ready(function () {
                 emailCode: 'DB',
                 shortCode: 'ALPACDB',
                 longCode: 'Daily Bulletin',
-                imgMaxWidth: 130,
-                imgMaxHeight: 130,
+                imgMaxWidth: 160,
+                imgMaxHeight: 160,
                 productMenu: adReferenceWJMA, //may change in the future, this stores the ads
                 rssFeed: 'http://americanlibertypac.com/feed/',
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
@@ -332,13 +332,13 @@ $(document).ready(function () {
                 emailCode: 'DB',
                 shortCode: 'JGMDB',
                 longCode: 'Daily Bulletin',
-                imgMaxWidth: '',
-                imgMaxHeight: '',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://minutemanproject.com/feed/',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
-                    getRSSWithoutImage(event, this.rssFeed);
+                    getRSSWithImage(event, this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -351,13 +351,13 @@ $(document).ready(function () {
                 emailCode: 'MR',
                 shortCode: 'JGMMR',
                 longCode: 'Must Read',
-                imgMaxWidth: '',
-                imgMaxHeight: '',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://minutemanproject.com/feed/',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
-                    getRSSWithoutImage(event, this.rssFeed);
+                    getRSSWithImage(event, this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -434,12 +434,12 @@ $(document).ready(function () {
                 var adRef = adReference;
                 var utm = utmStyle;
                 b = $('#productSelect').val(); //example value: XCOM1
-                if (b !== '' && b !== null) {
+                if (b !== '' && b !== null) { //if there is a product selected, update currentProduct
                     var c = S(b).right(1).toInt(); //gives us our ad template number (1)
                     var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
                     var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
                     var f = adRef[e].link;
-                    var g = adRef[e].shortCode; //This is the same as writing productReference.XCOM.longCode
+                    var g = adRef[e].shortCode; //This is the same as writing adReference.XCOM.longCode
                     var h = adRef[e].longCode;
                     var i = '<a href="'+ f + utm +'" target="_blank">';
 
@@ -452,13 +452,13 @@ $(document).ready(function () {
                         enabled: true
                     };
                 } else {
-                    templateContainer.currentProduct = {
+                    templateContainer.currentProduct = { //otherwise, update it to be blank
                         link: '',
                         trackedLink: '',
                         tmplNum: '',
                         shortCode: '',
                         longCode: '',
-                        enabled: false
+                        enabled: false //this tells jsrender not to render the ad section. important!
                     };
                     console.log('No Product selected!');
                 }
@@ -531,9 +531,9 @@ $(document).ready(function () {
             getImageSize(title3IMG, 3, genericW, genericH);
         } else {
             getImageSize(title1IMG, 0, maxW, maxH); //otherwise use the currentTemplate's setting
-            getImageSize(title2IMG, 1, maxW, maxH);
+            getImageSize(title2IMG, 1, maxW, maxH); //image url, storage value, width, height
             getImageSize(title3IMG, 2, maxW, maxH);
-            getImageSize(title4IMG, 4, maxW, maxH);
+            getImageSize(title4IMG, 3, maxW, maxH);
         }
     }
 
@@ -610,7 +610,7 @@ $(document).ready(function () {
 
                 var title1Label = $("#title1label");
 
-                if (a === 'ILNDB') {
+                if (a === 'ILNDB' || 'JGMMR') {
                     title1Label.text('Modal Headline:');
                 } else {
                     title1Label.text('Title #1:');
@@ -767,7 +767,7 @@ $(document).ready(function () {
         var arrayThing = [];
         var tmplSelect = $('#tmplSelect');
         for (var i in thisList) {
-            if (thisList[i].hasOwnProperty('emailCode')) {
+            if (thisList[i].hasOwnProperty('tmplLink')) {
                 var emailCode = thisList[i]['emailCode'];
                 var longCode = thisList[i]['longCode'];
                 var addOption = '<option value="' + emailCode + '">' + longCode + '</option>';
@@ -777,8 +777,7 @@ $(document).ready(function () {
         tmplSelect.html(setupMenu + arrayThing + endMenu);
         tmplSelect.selectmenu('refresh'); //refresh our changes. doesn't work without this.
     }
-
-    updateTemplateMenu(); //initialize our menu with ILN values, since the menu defaults to RFAR
+    updateTemplateMenu(); //initialize our menu
 
     //**********************
     //BEGIN TEXT HANDLING  *
@@ -826,13 +825,16 @@ $(document).ready(function () {
     }
 
     function getImageSize(src, storage, width, height) { //e is the image src, x is the storage value in imgWidth/Height
+        if (src === undefined){  //if we send an invalid (empty) image source, just return. This helps prevent fetching invalid objects
+            return;
+        }
         var img = new Image();
         var maxWidth = width; // Max width for the image
         var maxHeight = height;    // Max height for the image
 
         img.onload = function () {
-            console.log('maxSize: ' + maxWidth + 'x' + maxHeight);
-            console.log('Original Size of image ' + (storage + 1) + ': ' + img.naturalWidth + 'x' + img.naturalHeight);
+            //console.log('maxSize: ' + maxWidth + 'x' + maxHeight);
+            //console.log('Original Size of image ' + (storage + 1) + ': ' + img.naturalWidth + 'x' + img.naturalHeight);
             var ratio = 0;  // Used for aspect ratio
             var width = this.naturalWidth;    // Current image width
             var height = this.naturalHeight;  // Current image height
@@ -840,14 +842,14 @@ $(document).ready(function () {
             // Check if the current width is larger than the max
             if (width > maxWidth && width >= height) {
                 ratio = maxWidth / width;   // get ratio for scaling image
-                console.log('RESIZE ----WIDTH---');
-                console.log('Now: ' + maxWidth + 'x' + Math.floor(height * ratio));
+                //console.log('RESIZE ----WIDTH---');
+                //console.log('Now: ' + maxWidth + 'x' + Math.floor(height * ratio));
                 imgHeight[storage] = Math.floor(height * ratio);    // Reset height to match scaled image
                 imgWidth[storage] = maxWidth;    // Reset width to match scaled image
             } else if (height > maxHeight) {
                 ratio = maxHeight / height; // get ratio for scaling image
-                console.log('RESIZE -----HEIGHT--');
-                console.log('Now: ' + Math.floor(width * ratio) + 'x' + maxHeight);   // Set new height
+                //console.log('RESIZE -----HEIGHT--');
+                //console.log('Now: ' + Math.floor(width * ratio) + 'x' + maxHeight);   // Set new height
                 imgWidth[storage] = Math.floor(width * ratio);    // Reset width to match scaled image
                 imgHeight[storage] = maxHeight;    // Reset height to match scaled image
             }
@@ -944,6 +946,7 @@ $(document).ready(function () {
         var q = 0;
         var formatStorage = [];
         var rssObject = [];
+        //console.log('withImage activated');
         $.ajax({
             url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
             dataType: 'json',
@@ -951,6 +954,7 @@ $(document).ready(function () {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
                         var f = e.content;
+                        //console.log('content = ' +f);
 
                         function cleanDescription(desc) {
                             var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font').s;
@@ -969,6 +973,7 @@ $(document).ready(function () {
                             if (images[0] === undefined){
                                 var x = getCurrentTemplateSettings();
                                 images[0] = x.defaultLogo;
+                                console.log('withImage activated undefined');
                             }
                         }
                         defaultImageCheck();
@@ -1272,6 +1277,12 @@ $(document).ready(function () {
         var titleURL = $("#title"+storyNum+"URL").val();
         var titleIMG = $("#title"+storyNum+"IMG").val();
         var urlInsert = '<a href="' + titleURL + utm + '" target="_blank">';
+
+        if (adjustedHeight === undefined || adjustedWidth === undefined || adjustedHeight === ''){ //last ditch effort incase loading images goes wrong
+            adjustedHeight = 130;
+            adjustedWidth = 130;
+        }
+
         var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
         var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
         var trackedURL = titleURL + utm;
@@ -1310,7 +1321,7 @@ $(document).ready(function () {
                 setTimeout(function(){
                     makeKeyCodeTest();
                     compileEmail(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
-                }, 300);
+                }, 500);
             }
         }
     );
