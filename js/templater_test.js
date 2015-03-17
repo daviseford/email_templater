@@ -986,7 +986,7 @@ $(document).ready(function () {
         var q = 0;
         var formatStorage = [];
         var rssObject = [];
-        console.log('withImage activated');
+        //console.log('withImage activated');
         $.ajax({
             url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
             dataType: 'json',
@@ -994,7 +994,7 @@ $(document).ready(function () {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
                         var f = e.content;
-                        console.log('content = ' +f);
+                        //console.log('content = ' +f);
 
                         function cleanDescription(desc) {
                             var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font').s;
@@ -1035,7 +1035,7 @@ $(document).ready(function () {
                         var imgID = 'rssImg' + rssObject[i].storyNum;
 
 
-                        if (q < 9) { //displays 8 results
+                        if (q < 9) { //displays 9 results
                             formatStorage[q] =
                                 '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
                                 rssObject[i].title +
