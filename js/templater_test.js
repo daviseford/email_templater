@@ -267,6 +267,8 @@ $(document).ready(function () {
         }
     };
 
+
+
     function makeKeyCodeTest() {
         var x =[];
         x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
@@ -298,6 +300,7 @@ $(document).ready(function () {
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(event, this.rssFeed);
+
                 },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
@@ -739,6 +742,17 @@ $(document).ready(function () {
     // GETTERS AND FUNCTIONS
     //*******************************
 
+    function equalHeight(group) { //credit: http://www.cssnewbie.com/example/equal-heights/
+        var tallest = 0;
+        group.each(function() {
+            var thisHeight = $(this).height();
+            if(thisHeight > tallest) {
+                tallest = thisHeight;
+            }
+        });
+        group.height(tallest);
+    }
+
     function spawnTemplate(tmplLink) {
         var templateLink = tmplLink;
         var templateLoader;
@@ -935,7 +949,7 @@ $(document).ready(function () {
                     formatStorage[q] =
                         '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;"><img src="' + resultsHolder[q].imgsrc + '" width="75" height="75" style="float: left"/>' +
                         resultsHolder[q].title +
-                        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">Story #3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">Story #4</button>' +
+                        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
                         '</center></p></div>';
                 }
 
@@ -977,6 +991,7 @@ $(document).ready(function () {
                 buttonUpdateField(n);
             }
         });
+        equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
     }
 
 
@@ -1039,7 +1054,7 @@ $(document).ready(function () {
                             formatStorage[q] =
                                 '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
                                 rssObject[i].title +
-                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">Story #3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">Story #4</button>' +
+                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
                                 '</center></p></div>';
                         }
 
@@ -1091,8 +1106,8 @@ $(document).ready(function () {
                 buttonUpdateField(n);
             }
         });
+        equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
     }
-
     function getRSSWithoutImage(event, feed) {
         event.preventDefault();
         var q = 0;
@@ -1125,7 +1140,7 @@ $(document).ready(function () {
                             formatStorage[q] =
                                 '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" style="float: left"/>' +
                                 rssObject[i].title +
-                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">Story #3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">Story #4</button>' +
+                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
                                 '</center></p></div>';
                         }
 
@@ -1171,6 +1186,7 @@ $(document).ready(function () {
                 buttonUpdateField(n);
             }
         });
+        equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
     }
 
     function additionalContentBuilder(firstStoryNumber, secondStoryNumber, location) { //location is where the generated form will spawn

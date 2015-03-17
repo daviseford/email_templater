@@ -11,10 +11,9 @@ $(document).ready(function () {
 
     $("#resultsContainer1").hide(); //Hiding our results, as we don't need to see them yet!
     $("#resultsContainer2").hide();
-    $("#story2Div").hide(); //Hiding our second story panel.
     $("#emailBtnDiv").hide();
-    $("#getRSSBtn").hide();
-    $("#getLLRSS").hide();
+    $('#choiceRow2').hide();
+
 
     var additionalContentVal = false; //This makes us default to a one-story format.
     var templateContainer;
@@ -268,6 +267,8 @@ $(document).ready(function () {
         }
     };
 
+
+
     function makeKeyCodeTest() {
         var x =[];
         x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
@@ -275,7 +276,7 @@ $(document).ready(function () {
         return x;
     }
 
-    function updateKeyCodeField() {
+    function updateKeyCodeField() { //this used to be bundled in with the rest of the email generation. Now it's a standalone function, you can call it anytime.
         var x =[];
         x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
         x = x.join('');
@@ -289,15 +290,17 @@ $(document).ready(function () {
         ALPAC: {                //we start with the client name
             DB: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm',
+                emailCode: 'DB',
                 shortCode: 'ALPACDB',
-                longCode: 'American Liberty PAC Daily Bulletin',
-                imgMaxWidth: 130,
-                imgMaxHeight: 130,
+                longCode: 'Daily Bulletin',
+                imgMaxWidth: 160,
+                imgMaxHeight: 160,
                 productMenu: adReferenceWJMA, //may change in the future, this stores the ads
                 rssFeed: 'http://americanlibertypac.com/feed/',
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(event, this.rssFeed);
+
                 },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
@@ -308,8 +311,9 @@ $(document).ready(function () {
             },
             MR: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_mr_Tmpl.htm',
+                emailCode: 'MR',
                 shortCode: 'ALPACMR',
-                longCode: 'American Liberty PAC Must Read',
+                longCode: 'Must Read',
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: adReferenceWJMA,
@@ -326,17 +330,18 @@ $(document).ready(function () {
             }
         },
         JGM: {
-            MR: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_mr_Tmpl.htm',
-                shortCode: 'JGMMR',
-                longCode: 'Minuteman Project Must Read',
-                imgMaxWidth: '',
-                imgMaxHeight: '',
+            DB: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_db_Tmpl.htm',
+                emailCode: 'DB',
+                shortCode: 'JGMDB',
+                longCode: 'Daily Bulletin',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://minutemanproject.com/feed/',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
-                    getRSSWithoutImage(event, this.rssFeed);
+                    getRSSWithImage(event, this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -344,17 +349,58 @@ $(document).ready(function () {
                     return y;
                 }
             },
-            DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_db_Tmpl.htm',
-                shortCode: 'JGMDB',
-                longCode: 'Minuteman Project Daily Bulletin',
-                imgMaxWidth: '',
-                imgMaxHeight: '',
+            MR: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_mr_Tmpl.htm',
+                emailCode: 'MR',
+                shortCode: 'JGMMR',
+                longCode: 'Must Read',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://minutemanproject.com/feed/',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
-                    getRSSWithoutImage(event, this.rssFeed);
+                    getRSSWithImage(event, this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            }
+        },
+        SAA: {
+            DB: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_db_Tmpl.htm',
+                emailCode: 'DB',
+                shortCode: 'SAADB',
+                longCode: 'Daily Bulletin',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://senioramericansassociation.com/feed/',
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
+                feedStyle: function () {
+                    getRSSWithImage(event, this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            },
+            MR: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_mr_Tmpl.htm',
+                emailCode: 'MR',
+                shortCode: 'SAAMR',
+                longCode: 'Must Read',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://senioramericansassociation.com/feed/',
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
+                feedStyle: function () {
+                    getRSSWithImage(event, this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -366,8 +412,9 @@ $(document).ready(function () {
         ILN: {
             DB: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/iln_db_Tmpl.htm',
+                emailCode: 'DB',
                 shortCode: 'ILNDB',
-                longCode: 'Independent Living News Daily Bulletin',
+                longCode: 'Daily Bulletin',
                 imgMaxWidth: '175',
                 imgMaxHeight: '175',
                 productMenu: adReferenceILN,
@@ -381,14 +428,14 @@ $(document).ready(function () {
                     var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
                     return y;
                 }
-                //imgStyle: <img align="right" alt="" src="' + title1IMG + '" style="padding: 6px; float:right;" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"/></a>';
             }
         },
         RFAR: {
             DB: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/rfar_db_Tmpl.htm',
+                emailCode: 'DB',
                 shortCode: 'RFARDB',
-                longCode: 'Ready For Anything Report',
+                longCode: 'Daily Bulletin',
                 imgMaxWidth: '130',
                 imgMaxHeight: '130',
                 productMenu: adReferenceILN,
@@ -402,14 +449,14 @@ $(document).ready(function () {
                     var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
                     return y;
                 }
-                //imgStyle: '<center>' + urlInsert1 + '<img src="' + title1IMG + '" alt="Story Image" height="' + imgHeight[0] + '" width="' + imgWidth[0] + '"></a></center>'
             }
         },
         LL: {
             DB: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/ll_db_Tmpl.htm',
+                emailCode: 'DB',
                 shortCode: 'LLDB',
-                longCode: 'Learn Liberty Daily Bulletin',
+                longCode: 'Daily Bulletin',
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: '',
@@ -419,9 +466,7 @@ $(document).ready(function () {
                     getRSSWithoutImage(event, this.rssFeed);
                 },
                 utmStyle: function() {
-                    //var x = makeKeyCodeTest();
-                    //console.log('rfardb utm x = ' + x);
-                    //var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
+                    //return blank. if we add a utm style, this is where it will go
                     return '';
                 }
             }
@@ -432,12 +477,12 @@ $(document).ready(function () {
                 var adRef = adReference;
                 var utm = utmStyle;
                 b = $('#productSelect').val(); //example value: XCOM1
-                if (b !== '' && b !== null) {
+                if (b !== '' && b !== null) { //if there is a product selected, update currentProduct
                     var c = S(b).right(1).toInt(); //gives us our ad template number (1)
                     var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
                     var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
                     var f = adRef[e].link;
-                    var g = adRef[e].shortCode; //This is the same as writing productReference.XCOM.longCode
+                    var g = adRef[e].shortCode; //This is the same as writing adReference.XCOM.longCode
                     var h = adRef[e].longCode;
                     var i = '<a href="'+ f + utm +'" target="_blank">';
 
@@ -450,13 +495,13 @@ $(document).ready(function () {
                         enabled: true
                     };
                 } else {
-                    templateContainer.currentProduct = {
+                    templateContainer.currentProduct = { //otherwise, update it to be blank
                         link: '',
                         trackedLink: '',
                         tmplNum: '',
                         shortCode: '',
                         longCode: '',
-                        enabled: false
+                        enabled: false //this tells jsrender not to render the ad section. important!
                     };
                     console.log('No Product selected!');
                 }
@@ -507,6 +552,8 @@ $(document).ready(function () {
     function imageDelay() {
         $('#story1Form').find('input').each(textFix);
         $('#story2Form').find('input').each(textFix);
+        $('#story3Form').find('input').each(textFix);
+        $('#story4Form').find('input').each(textFix);
         var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
 
         var genericW = 130;
@@ -514,6 +561,8 @@ $(document).ready(function () {
 
         var title1IMG = $("#title1IMG").val();
         var title2IMG = $("#title2IMG").val();
+        var title3IMG = $("#title3IMG").val();
+        var title4IMG = $("#title4IMG").val();
 
         var maxW = currentTemplateSettings.imgMaxWidth;
         var maxH = currentTemplateSettings.imgMaxHeight;
@@ -521,65 +570,14 @@ $(document).ready(function () {
         if (maxH === '' || maxH === undefined || maxH === 0) {
             getImageSize(title1IMG, 0, genericW, genericH);
             getImageSize(title2IMG, 1, genericW, genericH); //if we don't have an image size set, use generic
+            getImageSize(title3IMG, 2, genericW, genericH);
+            getImageSize(title3IMG, 3, genericW, genericH);
         } else {
             getImageSize(title1IMG, 0, maxW, maxH); //otherwise use the currentTemplate's setting
-            getImageSize(title2IMG, 1, maxW, maxH);
+            getImageSize(title2IMG, 1, maxW, maxH); //image url, storage value, width, height
+            getImageSize(title3IMG, 2, maxW, maxH);
+            getImageSize(title4IMG, 3, maxW, maxH);
         }
-    }
-    function updateStory1(currentTemplateSettings){
-        var currentTemplateSettings = currentTemplateSettings;
-        var utm = currentTemplateSettings.utmStyle();
-        var adjustedHeight = imgHeight[0];
-        var adjustedWidth = imgWidth[0];
-        var title = $('#title1').val();
-        var titletext = $("#title1text-div").html();
-        var titleURL = $("#title1URL").val();
-        var titleIMG = $("#title1IMG").val();
-        var urlInsert = '<a href="' + titleURL + utm + '" target="_blank">';
-        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
-        var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
-        var trackedURL = titleURL + utm;
-
-        templateContainer.story1 = {
-            adjustedHeight: adjustedHeight,
-            adjustedWidth: adjustedWidth,
-            title: title,
-            text: titletext,
-            url: titleURL,
-            imageURL: titleIMG,
-            urlInsert: urlInsert,
-            insertImage: linkedImage,
-            insertImageAlignedRight: imageAlignedRight,
-            utm: utm,
-            trackedURL: trackedURL
-        };
-    }
-
-    function updateStory2(currentTemplateSettings){
-        var currentTemplateSettings = currentTemplateSettings;
-        var utm = currentTemplateSettings.utmStyle();
-        var adjustedHeight = imgHeight[1];
-        var adjustedWidth = imgWidth[1];
-        var title = $('#title2').val();
-        var titletext = $("#title2text-div").html();
-        var titleURL = $("#title2URL").val();
-        var titleIMG = $("#title2IMG").val();
-        var urlInsert = '<a href="' + titleURL + utm + '" target="_blank">';
-        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
-        var trackedURL = titleURL + utm;
-
-        templateContainer.story2 = {
-            adjustedHeight: adjustedHeight,
-            adjustedWidth: adjustedWidth,
-            title: title,
-            text: titletext,
-            url: titleURL,
-            imageURL: titleIMG,
-            urlInsert: urlInsert,
-            insertImage: linkedImage,
-            utm: utm,
-            trackedURL: trackedURL
-        };
     }
 
     function compileEmail(templateContainer){ //pass in our references
@@ -588,14 +586,17 @@ $(document).ready(function () {
         var tmpl = x[1];
         var currentTemplateSettings = templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
 
-        updateStory1(currentTemplateSettings);
+        getStoryValues(1);
+        getStoryValues(2);
         if (additionalContentVal === true) {
-            updateStory2(currentTemplateSettings);
+            getStoryValues(3);
+            getStoryValues(4);
         }
+
 
         enableSmartFocusVars(); //sets up common links (unsubscribes, etc)
 
-        templateContainer.helpers.updateCurrentProduct(currentTemplateSettings['productMenu'], currentTemplateSettings.utmStyle());
+        templateContainer.helpers.updateCurrentProduct(currentTemplateSettings.productMenu, currentTemplateSettings.utmStyle());
         //finds out what productMenu (adReference object) we're using
         //pass the current product menu and current UTM style (keycodes are already pre-filled)
 
@@ -605,8 +606,6 @@ $(document).ready(function () {
             $("#resultsContainer1").show("drop"); //Shows the results once everything is ready.
             $("#resultsContainer2").show("drop"); //Shows the results once everything is ready.
             $("#emailBtnDiv").show('drop');
-        } else {
-            alert('You have chosen an invalid email');
         }
     }
 
@@ -649,12 +648,12 @@ $(document).ready(function () {
                 var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
                 var a = x.join('');
 
+                updateTemplateMenu(); //update valid email styles. e.g. DB, MR. call this first to avoid conflict with updateAdReferenceMenu()
                 updateAdReferenceMenu(); //added to cut down on makeProductMenu references
 
-                //var rssPreviewGeneral = $('#rssPreviewGeneral');
                 var title1Label = $("#title1label");
 
-                if (a === 'ILNDB') {
+                if (a === 'ILNDB' || 'JGMMR') {
                     title1Label.text('Modal Headline:');
                 } else {
                     title1Label.text('Title #1:');
@@ -669,22 +668,6 @@ $(document).ready(function () {
         .selectmenu('menuWidget')
         .addClass('overflow');
 
-    //If this is checked, adds the second story box
-    $('#additionalContentCheckbox').click(function(){
-        if (this.checked) {
-            additionalContentVal = true;
-            console.log("Additional Content: "+additionalContentVal);
-            $("#story1Div").removeClass("col-lg-12 col-md-12").addClass("col-lg-6 col-md-6");
-            $("#story2Div").show( "fade" );
-        } else {
-            additionalContentVal = false;
-            console.log("Additional Content: "+additionalContentVal);
-            $("#story2Div").hide( "fade", function() {
-                $("#story1Div").removeClass("col-lg-6 col-md-6").addClass("col-lg-12 col-md-12");
-            });
-        }
-    });
-
     $('#tmplSelect')
         .selectmenu({width: 225})
         .selectmenu({
@@ -693,27 +676,12 @@ $(document).ready(function () {
             }
         });
 
-    //setting up our story boxes
-    var editor1 = new wysihtml5.Editor("title1text-div", { // id of textarea element
-        toolbar:      "wysihtml-toolbar1", // id of toolbar element
-        parserRules:  wysihtml5ParserRules // defined in parser rules set
-    });
-    var editor2 = new wysihtml5.Editor("title2text-div", { // id of textarea element
-        toolbar:      "wysihtml-toolbar2", // id of toolbar element
-        parserRules:  wysihtml5ParserRules // defined in parser rules set
-    });
-
-
     function makeEmailBtn() {
-        var i = 0; //I added this counter to stop the multiple submission bug.
         $("#emailHTML")
             .button()
             .show()
             .click(function() {
-                if (i === 0) {
-                    sendEmail();
-                }
-                i++;
+                sendEmail();
             });
     }
 
@@ -774,7 +742,18 @@ $(document).ready(function () {
     // GETTERS AND FUNCTIONS
     //*******************************
 
-    function spawnTemplate(tmplLink) { //could probably replace this with the new loader https://github.com/stevenmhunt/tmpl.loader
+    function equalHeight(group) { //credit: http://www.cssnewbie.com/example/equal-heights/
+        var tallest = 0;
+        group.each(function() {
+            var thisHeight = $(this).height();
+            if(thisHeight > tallest) {
+                tallest = thisHeight;
+            }
+        });
+        group.height(tallest);
+    }
+
+    function spawnTemplate(tmplLink) {
         var templateLink = tmplLink;
         var templateLoader;
         function getTemplate(src) {
@@ -834,6 +813,26 @@ $(document).ready(function () {
     }
     makeProductMenu(adReferenceILN); //initialize our menu with ILN values, since the menu defaults to RFAR
 
+    function updateTemplateMenu() {
+        var list = $('#listSelect').val();
+        var thisList = templateContainer[list];
+        var setupMenu ='<label for="tmplSelect">STEP 3<br />Select an Email</label><br><select name="tmplSelect" id="tmplSelect">';
+        var endMenu = '</select>';
+        var arrayThing = [];
+        var tmplSelect = $('#tmplSelect');
+        for (var i in thisList) {
+            if (thisList[i].hasOwnProperty('tmplLink')) {
+                var emailCode = thisList[i]['emailCode'];
+                var longCode = thisList[i]['longCode'];
+                var addOption = '<option value="' + emailCode + '">' + longCode + '</option>';
+                arrayThing.push(addOption);
+            }
+        }
+        tmplSelect.html(setupMenu + arrayThing + endMenu);
+        tmplSelect.selectmenu('refresh'); //refresh our changes. doesn't work without this.
+    }
+    updateTemplateMenu(); //initialize our menu
+
     //**********************
     //BEGIN TEXT HANDLING  *
     //**********************
@@ -880,13 +879,16 @@ $(document).ready(function () {
     }
 
     function getImageSize(src, storage, width, height) { //e is the image src, x is the storage value in imgWidth/Height
+        if (src === undefined){  //if we send an invalid (empty) image source, just return. This helps prevent fetching invalid objects
+            return;
+        }
         var img = new Image();
         var maxWidth = width; // Max width for the image
         var maxHeight = height;    // Max height for the image
 
         img.onload = function () {
-            console.log('maxSize: ' + maxWidth + 'x' + maxHeight);
-            console.log('Original Size of image ' + (storage + 1) + ': ' + img.naturalWidth + 'x' + img.naturalHeight);
+            //console.log('maxSize: ' + maxWidth + 'x' + maxHeight);
+            //console.log('Original Size of image ' + (storage + 1) + ': ' + img.naturalWidth + 'x' + img.naturalHeight);
             var ratio = 0;  // Used for aspect ratio
             var width = this.naturalWidth;    // Current image width
             var height = this.naturalHeight;  // Current image height
@@ -894,14 +896,14 @@ $(document).ready(function () {
             // Check if the current width is larger than the max
             if (width > maxWidth && width >= height) {
                 ratio = maxWidth / width;   // get ratio for scaling image
-                console.log('RESIZE ----WIDTH---');
-                console.log('Now: ' + maxWidth + 'x' + Math.floor(height * ratio));
+                //console.log('RESIZE ----WIDTH---');
+                //console.log('Now: ' + maxWidth + 'x' + Math.floor(height * ratio));
                 imgHeight[storage] = Math.floor(height * ratio);    // Reset height to match scaled image
                 imgWidth[storage] = maxWidth;    // Reset width to match scaled image
             } else if (height > maxHeight) {
                 ratio = maxHeight / height; // get ratio for scaling image
-                console.log('RESIZE -----HEIGHT--');
-                console.log('Now: ' + Math.floor(width * ratio) + 'x' + maxHeight);   // Set new height
+                //console.log('RESIZE -----HEIGHT--');
+                //console.log('Now: ' + Math.floor(width * ratio) + 'x' + maxHeight);   // Set new height
                 imgWidth[storage] = Math.floor(width * ratio);    // Reset width to match scaled image
                 imgHeight[storage] = maxHeight;    // Reset height to match scaled image
             }
@@ -942,10 +944,12 @@ $(document).ready(function () {
                 for (var q = 0; q < 9; q++) { //displays 9 results
                     var btnID1 = 'rss1Btn' + resultsHolder[q].storyNum;
                     var btnID2 = 'rss2Btn' + resultsHolder[q].storyNum;
+                    var btnID3 = 'rss3Btn' + resultsHolder[q].storyNum;
+                    var btnID4 = 'rss4Btn' + resultsHolder[q].storyNum;
                     formatStorage[q] =
                         '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;"><img src="' + resultsHolder[q].imgsrc + '" width="75" height="75" style="float: left"/>' +
                         resultsHolder[q].title +
-                        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
                         '</center></p></div>';
                 }
 
@@ -962,11 +966,23 @@ $(document).ready(function () {
                     $('#title1URL').val(resultsHolder[e].link);
                 });
                 $('#rss2Btn'+e).click(function () {
+                    $('#title2').val(resultsHolder[e].title);
+                    $('#title2URL').val(resultsHolder[e].link);
+                });
+                $('#rss3Btn'+e).click(function () {
                     if (additionalContentVal === true) {
-                        $('#title2').val(resultsHolder[e].title);
-                        $('#title2URL').val(resultsHolder[e].link);
+                        $('#title3').val(resultsHolder[e].title);
+                        $('#title3URL').val(resultsHolder[e].link);
                     } else {
-                        console.log('No second story!');
+                        alert('Additional Content Not Enabled!');
+                    }
+                });
+                $('#rss4Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title4').val(resultsHolder[e].title);
+                        $('#title4URL').val(resultsHolder[e].link);
+                    } else {
+                        alert('Additional Content Not Enabled!');
                     }
                 });
 
@@ -975,6 +991,7 @@ $(document).ready(function () {
                 buttonUpdateField(n);
             }
         });
+        equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
     }
 
 
@@ -984,6 +1001,7 @@ $(document).ready(function () {
         var q = 0;
         var formatStorage = [];
         var rssObject = [];
+        //console.log('withImage activated');
         $.ajax({
             url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
             dataType: 'json',
@@ -991,9 +1009,10 @@ $(document).ready(function () {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
                         var f = e.content;
+                        //console.log('content = ' +f);
 
                         function cleanDescription(desc) {
-                            var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption').s;
+                            var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font').s;
                             return x;
                         }
 
@@ -1009,6 +1028,7 @@ $(document).ready(function () {
                             if (images[0] === undefined){
                                 var x = getCurrentTemplateSettings();
                                 images[0] = x.defaultLogo;
+                                console.log('No image found in getRSSWithImage(), using defaultLogo');
                             }
                         }
                         defaultImageCheck();
@@ -1021,17 +1041,20 @@ $(document).ready(function () {
                             description: cleanDescription(f)
                         };
 
-                        var divID = 'rssStory' + rssObject[i].storyNum;
                         var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
                         var btnID2 = 'rss2Btn' + rssObject[i].storyNum;
+                        var btnID3 = 'rss3Btn' + rssObject[i].storyNum;
+                        var btnID4 = 'rss4Btn' + rssObject[i].storyNum;
+
+                        var divID = 'rssStory' + rssObject[i].storyNum;
                         var imgID = 'rssImg' + rssObject[i].storyNum;
 
 
-                        if (q < 9) { //displays 8 results
+                        if (q < 9) { //displays 9 results
                             formatStorage[q] =
                                 '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
                                 rssObject[i].title +
-                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
                                 '</center></p></div>';
                         }
 
@@ -1049,27 +1072,42 @@ $(document).ready(function () {
                     $('#title1text-div').html(rssObject[e].description);
                     $('#title1URL').val(rssObject[e].link);
                     $('#title1IMG').val(rssObject[e].imgsrc);
-                    //getImageSize(rssObject[e].imgsrc, 0, maxWidth, maxHeight); //0 means first story, 130x130 image size
                 });
                 $('#rss2Btn'+e).click(function () {
+                    $('#title2').val(rssObject[e].title);
+                    $('#title2text-div').html(rssObject[e].description);
+                    $('#title2URL').val(rssObject[e].link);
+                    $('#title2IMG').val(rssObject[e].imgsrc);
+                });
+                $('#rss3Btn'+e).click(function () {
                     if (additionalContentVal === true) {
-                        $('#title2').val(rssObject[e].title);
-                        $('#title2text-div').html(rssObject[e].description);
-                        $('#title2URL').val(rssObject[e].link);
-                        $('#title2IMG').val(rssObject[e].imgsrc);
-                        //getImageSize(rssObject[e].imgsrc, 1, maxWidth, maxHeight);
+                        $('#title3').val(rssObject[e].title);
+                        $('#title3text-div').html(rssObject[e].description);
+                        $('#title3URL').val(rssObject[e].link);
+                        $('#title3IMG').val(rssObject[e].imgsrc);
                     } else {
-                        console.log('No second story!');
+                        alert('Additional Content Not Enabled!');
                     }
                 });
+                $('#rss4Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title4').val(rssObject[e].title);
+                        $('#title4text-div').html(rssObject[e].description);
+                        $('#title4URL').val(rssObject[e].link);
+                        $('#title4IMG').val(rssObject[e].imgsrc);
+                    } else {
+                        alert('Additional Content Not Enabled!');
+                    }
+                });
+
 
             }
             for(var n=0; n < 9; n++){
                 buttonUpdateField(n);
             }
         });
+        equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
     }
-
     function getRSSWithoutImage(event, feed) {
         event.preventDefault();
         var q = 0;
@@ -1095,12 +1133,14 @@ $(document).ready(function () {
 
                         var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
                         var btnID2 = 'rss2Btn' + rssObject[i].storyNum;
+                        var btnID3 = 'rss3Btn' + rssObject[i].storyNum;
+                        var btnID4 = 'rss4Btn' + rssObject[i].storyNum;
 
                         if (q < 9) { //stores HTML formatted values for later use
                             formatStorage[q] =
                                 '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" style="float: left"/>' +
                                 rssObject[i].title +
-                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">Story #1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">Story #2</button>' +
+                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
                                 '</center></p></div>';
                         }
 
@@ -1118,12 +1158,26 @@ $(document).ready(function () {
                     $('#title1URL').val(rssObject[e].link);
                 });
                 $('#rss2Btn'+e).click(function () {
+                    $('#title2').val(rssObject[e].title);
+                    $('#title2text-div').html(rssObject[e].description);
+                    $('#title2URL').val(rssObject[e].link);
+                });
+                $('#rss3Btn'+e).click(function () {
                     if (additionalContentVal === true) {
-                        $('#title2').val(rssObject[e].title);
-                        $('#title2text-div').html(rssObject[e].description);
-                        $('#title2URL').val(rssObject[e].link);
+                        $('#title3').val(rssObject[e].title);
+                        $('#title3text-div').html(rssObject[e].description);
+                        $('#title3URL').val(rssObject[e].link);
                     } else {
-                        console.log('No second story!');
+                        alert('Additional Content Not Enabled!');
+                    }
+                });
+                $('#rss4Btn'+e).click(function () {
+                    if (additionalContentVal === true) {
+                        $('#title4').val(rssObject[e].title);
+                        $('#title4text-div').html(rssObject[e].description);
+                        $('#title4URL').val(rssObject[e].link);
+                    } else {
+                        alert('Additional Content Not Enabled!');
                     }
                 });
 
@@ -1132,14 +1186,183 @@ $(document).ready(function () {
                 buttonUpdateField(n);
             }
         });
+        equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
+    }
+
+    function additionalContentBuilder(firstStoryNumber, secondStoryNumber, location) { //location is where the generated form will spawn
+        var choiceRowNumber = 0;
+        var storyNumber1 = firstStoryNumber;
+        var storyNumber2 = secondStoryNumber;
+        var builderStorage = [];
+        var a = '<div class="row" id="choiceRow' + choiceRowNumber + '">';
+        var b = '<div class="col-lg-6 col-md-6" id="story'+storyNumber1+'Div">';
+        var c = '<form id="story'+storyNumber1+'Form" action="#"><fieldset><div class="form-group">';
+        var d = '<label id="title'+storyNumber1+'label" for="title'+storyNumber1+'">Title #'+storyNumber1+': </label>';
+        var e = '<input class="form-control" type="text" id="title'+storyNumber1+'" name="title'+storyNumber1+'"/></div>';
+        var f = '<div class="form-group"><label for="title'+storyNumber1+'text-div">Story #'+storyNumber1+': </label><div id="title'+storyNumber1+'text-div" style="width: 100%; height: 100%" data-placeholder="" class="form-control"></div>';
+        var g = '<div id="wysihtml-toolbar'+storyNumber1+'" style="display: none;"><a data-wysihtml5-command="bold">bold </a><a data-wysihtml5-command="italic">italic </a><a data-wysihtml5-command="createLink">insert link </a><div data-wysihtml5-dialog="createLink" style="display: none;">';
+        var h = '<label>Link:<input data-wysihtml5-dialog-field="href" value="http://" class="text"></label><a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a></div></div></div>';
+        var i = '<div class="form-group"><label for="title'+storyNumber1+'URL">Story URL: </label><input class="form-control" type="text" id="title'+storyNumber1+'URL" name="title'+storyNumber1+'URL" placeholder="Put the link to the ARTICLE here."/>';
+        var j = '</div><div class="form-group"><label for="title'+storyNumber1+'IMG">Image URL: </label><input class="form-control" type="text" id="title'+storyNumber1+'IMG" name="title'+storyNumber1+'IMG" placeholder=""/> <br />';
+        var k = '</fieldset></form></div>';
+        var l = '<div class="col-lg-6 col-md-6" id="story'+storyNumber2+'Div"><form id="story'+storyNumber2+'Form" action="#"><fieldset><div class="form-group"><label for="title'+storyNumber2+'">Title #'+storyNumber2+': </label>';
+        var m = '<input class="form-control" type="text" id="title'+storyNumber2+'" name="title'+storyNumber2+'"/></div><div class="form-group"><label for="title'+storyNumber2+'text-div">Story #'+storyNumber2+': </label><div id="title'+storyNumber2+'text-div" style="width: 100%; height: 100%" data-placeholder="" class="form-control"></div>';
+        var n = '<div id="wysihtml-toolbar'+storyNumber2+'" style="display: none;"><a data-wysihtml5-command="bold">bold </a><a data-wysihtml5-command="italic">italic </a><a data-wysihtml5-command="createLink">insert link </a><div data-wysihtml5-dialog="createLink" style="display: none;">';
+        var o = '<label>Link:<input data-wysihtml5-dialog-field="href" value="http://" class="text"></label><a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a></div></div></div>';
+        var p =  '<div class="form-group"><label for="title'+storyNumber2+'URL">Story URL: </label> <input class="form-control" type="text" id="title'+storyNumber2+'URL" name="title'+storyNumber2+'URL" placeholder="Link to the ARTICLE here."/></div>';
+        var q = '<div class="form-group"><label for="title'+storyNumber2+'IMG">Image URL: </label><input class="form-control" type="text" id="title'+storyNumber2+'IMG" name="title'+storyNumber2+'IMG" placeholder=""/> </div></fieldset></form></div></div>';
+        builderStorage.push(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q);
+        var xx = builderStorage.join('');
+        var x;
+        location.html(xx);
+
+
+        switch (firstStoryNumber) {
+            case 0:
+                break;
+            case 1:
+                x = new wysihtml5.Editor("title1text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar1", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 2:
+                x = new wysihtml5.Editor("title2text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar2", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 3:
+                x = new wysihtml5.Editor("title3text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar3", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 4:
+                x = new wysihtml5.Editor("title4text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar4", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 5:
+                x = new wysihtml5.Editor("title5text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar5", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 6:
+                x = new wysihtml5.Editor("title6text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar6", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            default:
+                break;
+        }
+        switch (secondStoryNumber) {
+            case 0:
+                break;
+            case 1:
+                x = new wysihtml5.Editor("title1text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar1", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 2:
+                x = new wysihtml5.Editor("title2text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar2", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 3:
+                x = new wysihtml5.Editor("title3text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar3", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 4:
+                x = new wysihtml5.Editor("title4text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar4", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 5:
+                x = new wysihtml5.Editor("title5text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar5", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            case 6:
+                x = new wysihtml5.Editor("title6text-div", { // id of textarea element
+                    toolbar:      "wysihtml-toolbar6", // id of toolbar element
+                    parserRules:  wysihtml5ParserRules // defined in parser rules set
+                });
+                break;
+            default:
+                break;
+        }
+    }
+    additionalContentBuilder(1,2, $('#choiceRow')); //builds our initial story section
+
+    //If this is checked, adds the second story box
+    $('#additionalContentCheckbox').click(function(){
+        if (this.checked) {
+            var i = $('#choiceRow2');
+            additionalContentVal = true;
+            console.log("Additional Content: "+additionalContentVal);
+            additionalContentBuilder(3,4, i);
+            i.show();
+        } else {
+            additionalContentVal = false;
+            console.log("Additional Content: "+additionalContentVal);
+            $('#choiceRow2').hide();
+        }
+    });
+
+    function getStoryValues (storyNumber){
+        var storyNum = storyNumber;
+        var storageNum = (storyNum - 1);
+        var currentTemplateSettings = getCurrentTemplateSettings();
+        var utm = currentTemplateSettings.utmStyle();
+        var adjustedHeight = imgHeight[storageNum];
+        var adjustedWidth = imgWidth[storageNum];
+        var title = $('#title'+storyNum).val();
+        var titletext = $("#title"+storyNum+"text-div").html();
+        var titleURL = $("#title"+storyNum+"URL").val();
+        var titleIMG = $("#title"+storyNum+"IMG").val();
+        var urlInsert = '<a href="' + titleURL + utm + '" target="_blank">';
+
+        if (adjustedHeight === undefined || adjustedWidth === undefined || adjustedHeight === ''){ //last ditch effort incase loading images goes wrong
+            adjustedHeight = 130;
+            adjustedWidth = 130;
+        }
+
+        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
+        var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
+        var trackedURL = titleURL + utm;
+        var storyName = 'story'+storyNum;
+
+
+        templateContainer[storyName] = {
+            adjustedHeight: adjustedHeight,
+            adjustedWidth: adjustedWidth,
+            title: title,
+            text: titletext,
+            url: titleURL,
+            imageURL: titleIMG,
+            urlInsert: urlInsert,
+            insertImage: linkedImage,
+            insertImageAlignedRight: imageAlignedRight,
+            utm: utm,
+            trackedURL: trackedURL
+        };
+
     }
 
 
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
     //********************************
-
-
     $("#generateHTML")
         .button()
         .click(function(event) {
@@ -1152,7 +1375,7 @@ $(document).ready(function () {
                 setTimeout(function(){
                     makeKeyCodeTest();
                     compileEmail(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
-                }, 300);
+                }, 500);
             }
         }
     );
