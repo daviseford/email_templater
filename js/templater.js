@@ -293,8 +293,8 @@ $(document).ready(function () {
                 emailCode: 'DB',
                 shortCode: 'ALPACDB',
                 longCode: 'Daily Bulletin',
-                imgMaxWidth: 160,
-                imgMaxHeight: 160,
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
                 productMenu: adReferenceWJMA, //may change in the future, this stores the ads
                 rssFeed: 'http://americanlibertypac.com/feed/',
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
@@ -314,8 +314,8 @@ $(document).ready(function () {
                 emailCode: 'MR',
                 shortCode: 'ALPACMR',
                 longCode: 'Must Read',
-                imgMaxWidth: '',
-                imgMaxHeight: '',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://americanlibertypac.com/feed/',
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
@@ -653,7 +653,7 @@ $(document).ready(function () {
 
                 var title1Label = $("#title1label");
 
-                if (a === 'ILNDB' || 'JGMMR') {
+                if (a === 'ILNDB' || a === 'JGMMR' || a === 'ALPACMR') {
                     title1Label.text('Modal Headline:');
                 } else {
                     title1Label.text('Title #1:');
