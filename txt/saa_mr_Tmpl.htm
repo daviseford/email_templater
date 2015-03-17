@@ -112,7 +112,9 @@ table.sf-reco img {
               <tr>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 50%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
                     <tr>
-                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><p style="color: #a1a1a1;font-family: Arial;font-size: 12px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">The latest from the Senior Americans Association</p></td>
+                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                      {{:story1.urlInsert}}
+                      <p style="color: #a1a1a1;font-family: Arial;font-size: 12px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">{{:story1.title}}</p></a></td>
                     </tr>
                   </table></td>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 50%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
@@ -132,51 +134,50 @@ table.sf-reco img {
                   </table></td>
               </tr>
             </table>
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
-              <tr>
-                <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-                    <tr>
-                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><p style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">Below is today's edition of the SAA Daily Bulletin</p></td>
-                    </tr>
-                  </table></td>
-              </tr>
-            </table>
-            {{for story1 tmpl="addDiv_templates_SAADB" /}}
-            {{for story2 tmpl="addDiv_templates_SAADB" /}}
+            {{for story1 tmpl="addDiv_templates_SAAMR" /}}
             
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
               <tr>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: auto;">
                     <tr>
-                      <td align="center" class="sf-img sf-td" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 2px;text-align: center;">
-                      <center>
-                      <a target="_blank" href="https://www.facebook.com/SeniorAmericans"> <img src="http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/1194929515.jpg" alt="" class="no-scale" width="412" height="122" align="center" style="display: block; width: 412px; max-width: 412px; height: 122px; border: 0px solid #ffffff; border-radius: 0px;" /></a>
-                      </center></td>
+                      {{if currentProduct.enabled}}
+            
+            {{if currentProduct.shortCode === 'PPP'}}
+            {{if currentProduct.tmplNum === 1 tmpl="ad_templates_PPP1" /}}
+            {{if currentProduct.tmplNum === 2 tmpl="ad_templates_PPP2" /}}
+            {{if currentProduct.tmplNum === 3 tmpl="ad_templates_PPP3" /}}
+            {{if currentProduct.tmplNum === 4 tmpl="ad_templates_PPP4" /}}
+            {{if currentProduct.tmplNum === 5 tmpl="ad_templates_PPP5" /}}
+            {{/if}}
+            
+            {{if currentProduct.shortCode === 'HILL'}}
+            {{if currentProduct.tmplNum === 1 tmpl="ad_templates_HILL1" /}}
+            {{if currentProduct.tmplNum === 2 tmpl="ad_templates_HILL2" /}}
+            {{if currentProduct.tmplNum === 3 tmpl="ad_templates_HILL3" /}}
+            {{if currentProduct.tmplNum === 4 tmpl="ad_templates_HILL4" /}}
+            {{if currentProduct.tmplNum === 5 tmpl="ad_templates_HILL5" /}}
+            {{/if}}
+            
+            {{if currentProduct.shortCode === 'JGM'}}
+            {{if currentProduct.tmplNum === 1 tmpl="ad_templates_JGM1" /}}
+            {{if currentProduct.tmplNum === 2 tmpl="ad_templates_JGM2" /}}
+            {{if currentProduct.tmplNum === 3 tmpl="ad_templates_JGM3" /}}
+            {{if currentProduct.tmplNum === 4 tmpl="ad_templates_JGM4" /}}
+            {{if currentProduct.tmplNum === 5 tmpl="ad_templates_JGM5" /}}
+            {{/if}}
+            
+            {{/if}}
                     </tr>
                   </table></td>
               </tr>
             </table>
             
-            {{for story3 tmpl="addDiv_templates_SAADB" /}}
-            {{for story4 tmpl="addDiv_templates_SAADB" /}}
-            
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
               <tr>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
                     <tr>
-                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><font color="#0000ff"><b><u><a target="_blank" style="background-color: transparent;color: #0000FF;font-family: Verdana;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;" href="http://senioramericansassociation.com/savings-center/">On a budget? We can help</a></u></b></font>
-                        <p style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;"><span style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;">The SAA Seniors Savings Cente</span><span style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;">r has all the coupons you need for the stuff you use every day! And the coupons are matched up to the stores you shop at! What are you waiting for? Get couponing now! </span><a href="http://senioramericansassociation.com/savings-center/" style="background-color: transparent;color: #0000FF;font-family: Verdana;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;line-height: 1.14em;" target="_blank">﻿﻿Click here for savings.﻿﻿</a><br />
-                          </p></td>
-                    </tr>
-                  </table></td>
-              </tr>
-            </table>
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
-              <tr>
-                <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
-                    <tr>
-                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><p style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">Yours truly,</p>
-                        <p style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">Gil Davis</p>
+                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><p style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">Sincerely,</p>
+                        <p style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: bold;font-style: italic;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">Gil Davis</p>
                         <p style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">Founding President</p></td>
                     </tr>
                   </table></td>

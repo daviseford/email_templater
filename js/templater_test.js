@@ -366,6 +366,46 @@ $(document).ready(function () {
                 }
             }
         },
+        SAA: {
+            DB: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_db_Tmpl.htm',
+                emailCode: 'DB',
+                shortCode: 'SAADB',
+                longCode: 'Daily Bulletin',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://senioramericansassociation.com/feed/',
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
+                feedStyle: function () {
+                    getRSSWithImage(event, this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            },
+            MR: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_mr_Tmpl.htm',
+                emailCode: 'MR',
+                shortCode: 'SAAMR',
+                longCode: 'Must Read',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://senioramericansassociation.com/feed/',
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
+                feedStyle: function () {
+                    getRSSWithImage(event, this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            }
+        },
         ILN: {
             DB: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/iln_db_Tmpl.htm',
@@ -946,7 +986,7 @@ $(document).ready(function () {
         var q = 0;
         var formatStorage = [];
         var rssObject = [];
-        //console.log('withImage activated');
+        console.log('withImage activated');
         $.ajax({
             url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
             dataType: 'json',
@@ -954,7 +994,7 @@ $(document).ready(function () {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
                         var f = e.content;
-                        //console.log('content = ' +f);
+                        console.log('content = ' +f);
 
                         function cleanDescription(desc) {
                             var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font').s;
@@ -973,7 +1013,7 @@ $(document).ready(function () {
                             if (images[0] === undefined){
                                 var x = getCurrentTemplateSettings();
                                 images[0] = x.defaultLogo;
-                                console.log('withImage activated undefined');
+                                console.log('No image found in getRSSWithImage(), using defaultLogo');
                             }
                         }
                         defaultImageCheck();
@@ -1017,14 +1057,12 @@ $(document).ready(function () {
                     $('#title1text-div').html(rssObject[e].description);
                     $('#title1URL').val(rssObject[e].link);
                     $('#title1IMG').val(rssObject[e].imgsrc);
-                    //getImageSize(rssObject[e].imgsrc, 0, maxWidth, maxHeight); //0 means first story, 130x130 image size
                 });
                 $('#rss2Btn'+e).click(function () {
                         $('#title2').val(rssObject[e].title);
                         $('#title2text-div').html(rssObject[e].description);
                         $('#title2URL').val(rssObject[e].link);
                         $('#title2IMG').val(rssObject[e].imgsrc);
-                        //getImageSize(rssObject[e].imgsrc, 1, maxWidth, maxHeight);
                     });
                 $('#rss3Btn'+e).click(function () {
                     if (additionalContentVal === true) {
@@ -1135,7 +1173,7 @@ $(document).ready(function () {
         });
     }
 
-    function additionalContentBuilder(firstStoryNumber, secondStoryNumber, location) {
+    function additionalContentBuilder(firstStoryNumber, secondStoryNumber, location) { //location is where the generated form will spawn
         var choiceRowNumber = 0;
         var storyNumber1 = firstStoryNumber;
         var storyNumber2 = secondStoryNumber;
@@ -1145,14 +1183,14 @@ $(document).ready(function () {
         var c = '<form id="story'+storyNumber1+'Form" action="#"><fieldset><div class="form-group">';
         var d = '<label id="title'+storyNumber1+'label" for="title'+storyNumber1+'">Title #'+storyNumber1+': </label>';
         var e = '<input class="form-control" type="text" id="title'+storyNumber1+'" name="title'+storyNumber1+'"/></div>';
-        var f = '<div class="form-group"><label for="title'+storyNumber1+'text-div">Story #'+storyNumber1+': </label><div id="title'+storyNumber1+'text-div" style="width: 100%; height: 100%" data-placeholder="Enter your text..." class="form-control"></div>';
+        var f = '<div class="form-group"><label for="title'+storyNumber1+'text-div">Story #'+storyNumber1+': </label><div id="title'+storyNumber1+'text-div" style="width: 100%; height: 100%" data-placeholder="" class="form-control"></div>';
         var g = '<div id="wysihtml-toolbar'+storyNumber1+'" style="display: none;"><a data-wysihtml5-command="bold">bold </a><a data-wysihtml5-command="italic">italic </a><a data-wysihtml5-command="createLink">insert link </a><div data-wysihtml5-dialog="createLink" style="display: none;">';
         var h = '<label>Link:<input data-wysihtml5-dialog-field="href" value="http://" class="text"></label><a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a></div></div></div>';
         var i = '<div class="form-group"><label for="title'+storyNumber1+'URL">Story URL: </label><input class="form-control" type="text" id="title'+storyNumber1+'URL" name="title'+storyNumber1+'URL" placeholder="Put the link to the ARTICLE here."/>';
         var j = '</div><div class="form-group"><label for="title'+storyNumber1+'IMG">Image URL: </label><input class="form-control" type="text" id="title'+storyNumber1+'IMG" name="title'+storyNumber1+'IMG" placeholder=""/> <br />';
         var k = '</fieldset></form></div>';
         var l = '<div class="col-lg-6 col-md-6" id="story'+storyNumber2+'Div"><form id="story'+storyNumber2+'Form" action="#"><fieldset><div class="form-group"><label for="title'+storyNumber2+'">Title #'+storyNumber2+': </label>';
-        var m = '<input class="form-control" type="text" id="title'+storyNumber2+'" name="title'+storyNumber2+'"/></div><div class="form-group"><label for="title'+storyNumber2+'text-div">Story #'+storyNumber2+': </label><div id="title'+storyNumber2+'text-div" style="width: 100%; height: 100%" data-placeholder="Enter your text..." class="form-control"></div>';
+        var m = '<input class="form-control" type="text" id="title'+storyNumber2+'" name="title'+storyNumber2+'"/></div><div class="form-group"><label for="title'+storyNumber2+'text-div">Story #'+storyNumber2+': </label><div id="title'+storyNumber2+'text-div" style="width: 100%; height: 100%" data-placeholder="" class="form-control"></div>';
         var n = '<div id="wysihtml-toolbar'+storyNumber2+'" style="display: none;"><a data-wysihtml5-command="bold">bold </a><a data-wysihtml5-command="italic">italic </a><a data-wysihtml5-command="createLink">insert link </a><div data-wysihtml5-dialog="createLink" style="display: none;">';
         var o = '<label>Link:<input data-wysihtml5-dialog-field="href" value="http://" class="text"></label><a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a></div></div></div>';
         var p =  '<div class="form-group"><label for="title'+storyNumber2+'URL">Story URL: </label> <input class="form-control" type="text" id="title'+storyNumber2+'URL" name="title'+storyNumber2+'URL" placeholder="Link to the ARTICLE here."/></div>';
