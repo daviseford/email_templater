@@ -148,10 +148,9 @@ table.sf-reco img {
               <tr>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: auto;">
                     <tr>
-                      <td align="center" class="sf-img sf-td" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 2px;text-align: center;">
-                      <center>
-                      <a target="_blank" href="https://www.facebook.com/SeniorAmericans"> <img src="http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/1194929515.jpg" alt="" class="no-scale" width="412" height="122" align="center" style="display: block; width: 412px; max-width: 412px; height: 122px; border: 0px solid #ffffff; border-radius: 0px;" /></a>
-                      </center></td>
+                        {{if currentProduct.enabled}}
+                        {{include tmpl=currentProduct.template /}}
+                        {{/if}}
                     </tr>
                   </table></td>
               </tr>

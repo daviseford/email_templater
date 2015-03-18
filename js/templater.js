@@ -241,27 +241,92 @@ $(document).ready(function () {
         HILL: {
             link: 'https://secure.yourpatriot.com/ou/alpac/1826/donate.aspx',
             shortCode: 'HILL',
-            longCode: 'Not Ready For Hillary Bumper Sticker',
+            longCode: 'Not Ready For Hillary',
             advertisements: {
                 0: {
                     name: 'HILL1',
-                    description: 'Not Ready For Hillary Sticker (350x137)'
+                    description: 'Bumper Sticker (350x137)'
                 },
                 1: {
                     name: 'HILL2',
-                    description: 'Not Ready For Hillary Sticker (500x196)'
+                    description: 'Bumper Sticker (500x196)'
+                },
+                2: {
+                    name: 'HILL3',
+                    description: 'Grey Square Ad'
+                },
+                3: {
+                    name: 'HILL4',
+                    description: 'Black Square Ad'
                 }
             }
 
         },
+        STICKER: {
+            link: 'https://secure.yourpatriot.com/ou/alpac/1761/donate.aspx',
+            shortCode: 'STICKER',
+            longCode: 'ALPAC Bumper Stickers',
+            advertisements: {
+                0: {
+                    name: 'STICKER1',
+                    description: 'Freedom Sticker'
+                },
+                1: {
+                    name: 'STICKER2',
+                    description: 'Fire the Liars Sticker'
+                },
+                2: {
+                    name: 'STICKER3',
+                    description: 'Rand 2016 Sticker'
+                },
+                3: {
+                    name: 'STICKER4',
+                    description: 'Rand 2016 Bumper Sticker'
+                }
+            }
+        },
         JGM: {
             link: 'https://minutemanproject.com/donate-2/',
             shortCode: 'JGM',
-            longCode: 'Secure The Border Bumper Sticker',
+            longCode: 'Secure The Border Sticker',
             advertisements: {
                 0: {
                     name: 'JGM1',
-                    description: 'Secure The Border Bumper Sticker'
+                    description: 'Secure The Border Sticker'
+                }
+            }
+        },
+        RAND: {
+            link: 'https://presidentrand.com',
+            shortCode: 'RAND',
+            longCode: 'Draft Rand Paul',
+            advertisements: {
+                0: {
+                    name: 'RAND1',
+                    description: 'Reboot America',
+                    link: 'http://americanlibertypac.com/draft-rand-paul-for-president/'
+                },
+                1: {
+                    name: 'RAND2',
+                    description: 'Grassroots For Rand',
+                    link: 'http://americanlibertypac.com/draft-rand-paul-for-president/'
+                }
+            }
+        },
+        SAA: {
+            link: 'http://senioramericansassociation.com/', //default link to all sub-ads
+            shortCode: 'SAA',
+            longCode: 'Senior Americans Association',
+            advertisements: {
+                0: {
+                    name: 'SAA1',
+                    description: 'Facebook',
+                    link: 'https://www.facebook.com/SeniorAmericans' //this link overrides the default set above
+                },
+                1: {
+                    name: 'SAA2',
+                    description: 'Older Americans Act',
+                    link: 'http://senioramericansassociation.com/3004-2/' //this link overrides the default set above
                 }
             }
         }
@@ -477,25 +542,40 @@ $(document).ready(function () {
                 var adRef = adReference;
                 var utm = utmStyle;
                 b = $('#productSelect').val(); //example value: XCOM1
+                var templateName = 'ad_templates_'+b;
                 if (b !== '' && b !== null) { //if there is a product selected, update currentProduct
-                    var c = S(b).right(1).toInt(); //gives us our ad template number (1)
+                    var templateNumber = S(b).right(1).toInt(); //gives us our ad template number (1)
+                    var adNum = (templateNumber - 1);
                     var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
                     var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
-                    var f = adRef[e].link;
-                    var g = adRef[e].shortCode; //This is the same as writing adReference.XCOM.longCode
-                    var h = adRef[e].longCode;
-                    var i = '<a href="'+ f + utm +'" target="_blank">';
+                    var templateShortCode = adRef[e].shortCode; //This is the same as writing adReference.XCOM.longCode
+                    var templateLongCode = adRef[e].longCode;
+                    var templateLink;
+                    var currentAd = adRef[e].advertisements[adNum];
+
+                    //check if we've got a special link setting
+                    if (currentAd.hasOwnProperty('link')) {
+                        if (currentAd.link !== undefined || currentAd.link !== '') {
+                            console.log('currentAd.link = '+ currentAd.link);
+                            templateLink = currentAd.link;
+                        }
+                    } else { //if there's no link set, fall back to the 'category' link, which is set by default
+                        templateLink = adRef[e].link;
+                    }
+                    var templateTrackedLink = '<a href="'+ templateLink + utm +'" target="_blank">';
 
                     templateContainer.currentProduct = {
-                        link: f,
-                        trackedLink: i,
-                        tmplNum: c,
-                        shortCode: g,
-                        longCode: h,
+                        template: templateName,
+                        link: templateLink,
+                        trackedLink: templateTrackedLink,
+                        tmplNum: templateNumber,
+                        shortCode: templateShortCode,
+                        longCode: templateLongCode,
                         enabled: true
                     };
                 } else {
                     templateContainer.currentProduct = { //otherwise, update it to be blank
+                        template: '',
                         link: '',
                         trackedLink: '',
                         tmplNum: '',

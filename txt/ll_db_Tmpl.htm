@@ -104,6 +104,11 @@
                                                     <br />
                                                     {{for story1 tmpl="addDiv_templates_LLDB" /}}
                                                     {{for story2 tmpl="addDiv_templates_LLDB" /}}
+
+                                                    {{if currentProduct.enabled}}
+                                                    {{include tmpl=currentProduct.template /}}
+                                                    {{/if}}
+
                                                     {{for story3 tmpl="addDiv_templates_LLDB" /}}
                                                     {{for story4 tmpl="addDiv_templates_LLDB" /}}
                                                     <br />
