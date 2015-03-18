@@ -361,7 +361,7 @@ $(document).ready(function () {
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA, //may change in the future, this stores the ads
-                rssFeed: 'http://americanlibertypac.com/feed/',
+                rssFeed: 'http://americanlibertypac.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(event, this.rssFeed);
@@ -382,7 +382,7 @@ $(document).ready(function () {
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://americanlibertypac.com/feed/',
+                rssFeed: 'http://americanlibertypac.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(event, this.rssFeed);
@@ -403,7 +403,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://minutemanproject.com/feed/',
+                rssFeed: 'http://minutemanproject.com/feed/' + '?nocache=' + ((new Date).getTime()), //added nocache to deal with old RSS entries
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
                     getRSSWithImage(event, this.rssFeed);
@@ -422,7 +422,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://minutemanproject.com/feed/',
+                rssFeed: 'http://minutemanproject.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
                     getRSSWithImage(event, this.rssFeed);
@@ -443,7 +443,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://senioramericansassociation.com/feed/',
+                rssFeed: 'http://senioramericansassociation.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
                 feedStyle: function () {
                     getRSSWithImage(event, this.rssFeed);
@@ -462,7 +462,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://senioramericansassociation.com/feed/',
+                rssFeed: 'http://senioramericansassociation.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
                 feedStyle: function () {
                     getRSSWithImage(event, this.rssFeed);
