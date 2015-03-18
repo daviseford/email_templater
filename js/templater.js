@@ -223,6 +223,23 @@ $(document).ready(function () {
         }
     };
     var adReferenceWJMA = {
+        ALPAC: {
+            link: 'http://americanlibertypac.com',
+            shortCode: 'ALPAC',
+            longCode: 'General ALPAC Ads',
+            advertisements: {
+                0: {
+                    name: 'ALPAC1',
+                    description: 'Twitter Banner',
+                    link: 'https://twitter.com/uslibertypac'
+                },
+                1: {
+                    name: 'ALPAC2',
+                    description: 'Facebook Banner',
+                    link: 'https://www.facebook.com/AmericanLibertyPAC'
+                }
+            }
+        },
         PPP: {
             link: 'http://americanlibertypac.com/2016-presidential-preference-poll-2/',
             shortCode: 'PPP',
@@ -288,11 +305,21 @@ $(document).ready(function () {
         JGM: {
             link: 'https://minutemanproject.com/donate-2/',
             shortCode: 'JGM',
-            longCode: 'Secure The Border Sticker',
+            longCode: 'JGM General Ads',
             advertisements: {
                 0: {
                     name: 'JGM1',
                     description: 'Secure The Border Sticker'
+                },
+                1: {
+                    name: 'JGM2',
+                    description: 'Twitter Banner',
+                    link: 'http://twitter.com/jgmmp'
+                },
+                2: {
+                    name: 'JGM3',
+                    description: 'Facebook Banner',
+                    link: 'https://www.facebook.com/MinutemanProjectNews'
                 }
             }
         },
@@ -327,6 +354,11 @@ $(document).ready(function () {
                     name: 'SAA2',
                     description: 'Older Americans Act',
                     link: 'http://senioramericansassociation.com/3004-2/' //this link overrides the default set above
+                },
+                2: {
+                    name: 'SAA3',
+                    description: 'Inline Coupon Ad',
+                    link: 'http://senioramericansassociation.com/savings-center/'
                 }
             }
         }
@@ -562,12 +594,14 @@ $(document).ready(function () {
                     } else { //if there's no link set, fall back to the 'category' link, which is set by default
                         templateLink = adRef[e].link;
                     }
-                    var templateTrackedLink = '<a href="'+ templateLink + utm +'" target="_blank">';
+                    var templateTrackedURL = templateLink + utm;
+                    var templateTrackedLink = '<a href="'+ templateTrackedURL +'" target="_blank">';
 
                     templateContainer.currentProduct = {
                         template: templateName,
                         link: templateLink,
                         trackedLink: templateTrackedLink,
+                        trackedURL: templateTrackedURL, //trackedURL is the raw URL + utm, whereas trackedLink is formatted with href
                         tmplNum: templateNumber,
                         shortCode: templateShortCode,
                         longCode: templateLongCode,
@@ -578,6 +612,7 @@ $(document).ready(function () {
                         template: '',
                         link: '',
                         trackedLink: '',
+                        trackedURL: '',
                         tmplNum: '',
                         shortCode: '',
                         longCode: '',
@@ -625,6 +660,9 @@ $(document).ready(function () {
                 rfarHeader: '<a href="http://www.independentlivingnews.com/preppers' + utmILN + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="118" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="580" /></a>',
                 subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmILN + '" target="_blank">',
                 ilnHeader: '<a href="http://www.independentlivingnews.com' + utmILN + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="118" src="http://www.independentlivingnews.com/email/images/ILN_LB_header_edited.jpg" style="display:block;" width="580" /></a>'
+            },
+            SAA: {
+                keycode: keycode
             }
         };
     }
@@ -1417,7 +1455,7 @@ $(document).ready(function () {
             adjustedWidth = 130;
         }
 
-        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
+        var linkedImage = urlInsert + '<img align="middle" src="' + titleIMG + '" alt="" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
         var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
         var trackedURL = titleURL + utm;
         var storyName = 'story'+storyNum;
