@@ -1121,7 +1121,7 @@ $(document).ready(function () {
         var rssObject = [];
         //console.log('withImage activated');
         $.ajax({
-            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&storyNumber=' + encodeURIComponent(feed),
+            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
             dataType: 'json',
             success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
@@ -1135,11 +1135,47 @@ $(document).ready(function () {
                         }
 
                         //this chunk grabs img src values from the RSS feed
+                        //var content = document.createElement("content");
+                        //content.innerHTML = e.content;
+                        //var images = $(content).find('img').map(function () {
+                        //    return $(this).attr('src');
+                        //}).get(); //TODO backup
+
+
+                        //this chunk grabs img src values from the RSS feed
                         var content = document.createElement("content");
                         content.innerHTML = e.content;
                         var images = $(content).find('img').map(function () {
-                            return $(this).attr('src');
+                            var i = [];
+                            i.push($(this).attr('src'), $(this).attr('width'), $(this).attr('height'));
+                            return i;
                         }).get();
+
+                        //console.log('imgSrc = ' + images[0]);
+                        //console.log('imgW = ' + images[1]);
+                        //console.log('imgH = ' + images[2]);
+                        //TODO I've disabled this functionality for a few reasons
+                        //1.) Breaks the div container that it spawns in. TODO Maybe look into Flexbox for making these containers?
+                        //function getImageSize(currentWidth, currentHeight) {
+                        //    var maxWidth = 75; // Max width for the image
+                        //    var maxHeight = 75;    // Max height for the image
+                        //    var correctedSizes = []; //holding container for image sizes
+                        //    var ratio = 0;  // Used for aspect ratio
+                        //    var width = currentWidth;    // Current image width
+                        //    var height = currentHeight;  // Current image height
+                        //
+                        //    // Check if the current width is larger than the max
+                        //    if (width > maxWidth && width >= height) {
+                        //        ratio = maxWidth / width;   // get ratio for scaling image
+                        //        images[1] = maxWidth;    // Reset width to match scaled image
+                        //        images[2] = Math.floor(height * ratio);    // Reset height to match scaled image
+                        //    } else if (height > maxHeight) {
+                        //        ratio = maxHeight / height; // get ratio for scaling image
+                        //        images[1] = Math.floor(width * ratio);    // Reset width to match scaled image
+                        //        images[2] = maxHeight;    // Reset height to match scaled image
+                        //    }
+                        //}
+                        //getImageSize(images[1], images[2]);
 
 
                         function defaultImageCheck(){ //replaces undefined images with a default
@@ -1156,6 +1192,8 @@ $(document).ready(function () {
                             title: e.title,
                             link: e.link,
                             imgsrc: images[0],
+                            thumbW: images[1],
+                            thumbH: images[2],
                             description: cleanDescription(f)
                         };
 
@@ -1167,18 +1205,13 @@ $(document).ready(function () {
                         var divID = 'rssStory' + rssObject[i].storyNum;
                         var imgID = 'rssImg' + rssObject[i].storyNum;
 
-                        //if (storyNumber < 9) { //displays 9 results
-                        //    formatStorage[storyNumber] =
-                        //        '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
-                        //        rssObject[i].title +
-                        //        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
-                        //        '</center></p></div>';
-                        //}
                         if (storyNumber < 9) { //displays 9 results
                             var storage = [];
                             var a = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '">';
                             var b = '<p style="font-size: 10px; text-align: center;">';
-                            var c = '<img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>';
+                            //var c = '<img src="' + rssObject[i].imgsrc + '" width="' + rssObject[i].thumbW + '" height="' + rssObject[i].thumbH + '" id="' + imgID + '" align="left" style=""/>';
+                            //disabled above, as it was causing all sorts of resizing issues
+                            var c = '<img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" align="left" class="img-circle" style=""/>';
                             var d = rssObject[i].title;
                             var eecenter = '<br /><center>';
                             var btn1 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button>';
