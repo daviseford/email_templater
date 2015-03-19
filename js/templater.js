@@ -320,6 +320,11 @@ $(document).ready(function () {
                     name: 'JGM3',
                     description: 'Facebook Banner',
                     link: 'https://www.facebook.com/MinutemanProjectNews'
+                },
+                3: {
+                    name: 'JGM4',
+                    description: 'Inline - Revoke Executive Action',
+                    link: 'http://minutemanproject.rallycongress.com/17465/citizens-demand-to-congress-to-revoke-obamas-executive-action/'
                 }
             }
         },
@@ -385,19 +390,18 @@ $(document).ready(function () {
     templateContainer = {
         keycode: makeKeyCodeTest(),//templateContainer will eventually be the one stop shop for all constant variables
         ALPAC: {                //we start with the client name
-            DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm',
+            DB: {               //type of template (usually DB or MR)
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm', //location of template file
                 emailCode: 'DB',
                 shortCode: 'ALPACDB',
                 longCode: 'Daily Bulletin',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
-                productMenu: adReferenceWJMA, //may change in the future, this stores the ads
-                rssFeed: 'http://americanlibertypac.com/feed/' + '?nocache=' + ((new Date).getTime()),
+                productMenu: adReferenceWJMA, //this stores the ads
+                rssFeed: 'http://americanlibertypac.com/feed/' + '?nocache=' + ((new Date).getTime()),  //Nocache is important!
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(event, this.rssFeed);
-
                 },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
@@ -420,6 +424,27 @@ $(document).ready(function () {
                     getRSSWithImage(event, this.rssFeed);
                 },
                 utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            }
+        },
+        CRN: {
+            DB: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/crn_db_Tmpl.htm',
+                emailCode: 'DB',
+                shortCode: 'CRNDB',
+                longCode: 'Daily Bulletin',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://conservativerepublicannews.com/feed/' + '?nocache=' + ((new Date).getTime()),
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/crn_75x75.png',
+                feedStyle: function() {
+                    getRSSWithImage(event, this.rssFeed);
+                },
+                utmStyle: function() {
                     var x = makeKeyCodeTest();
                     var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
                     return y;
@@ -748,7 +773,7 @@ $(document).ready(function () {
         return templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
     }
 
-    function setupRSSBtn() {
+    function setupRSSBtn() { //calling feedStyle runs the proper RSS fetcher (e.g. getRSSWithImage())
         var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
         currentTemplateSettings.feedStyle();
     }
