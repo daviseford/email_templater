@@ -388,6 +388,7 @@ $(document).ready(function () {
     }
 
     templateContainer = {
+        storyTrack: [false, false, false, false], //initialize with all stories turned off.
         keycode: makeKeyCodeTest(),//templateContainer will eventually be the one stop shop for all constant variables
         ALPAC: {                //we start with the client name
             DB: {               //type of template (usually DB or MR)
@@ -1543,7 +1544,6 @@ $(document).ready(function () {
             utm: utm,
             trackedURL: trackedURL
         };
-
     }
 
 
