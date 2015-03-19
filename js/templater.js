@@ -1116,12 +1116,12 @@ $(document).ready(function () {
 
     function getRSSWithImage(event, feed) {
         event.preventDefault();
-        var q = 0;
+        var storyNumber = 0;
         var formatStorage = [];
         var rssObject = [];
         //console.log('withImage activated');
         $.ajax({
-            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
+            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&storyNumber=' + encodeURIComponent(feed),
             dataType: 'json',
             success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
@@ -1152,7 +1152,7 @@ $(document).ready(function () {
                         defaultImageCheck();
 
                         rssObject[i] = {
-                            storyNum: q,
+                            storyNum: storyNumber,
                             title: e.title,
                             link: e.link,
                             imgsrc: images[0],
@@ -1167,16 +1167,29 @@ $(document).ready(function () {
                         var divID = 'rssStory' + rssObject[i].storyNum;
                         var imgID = 'rssImg' + rssObject[i].storyNum;
 
-
-                        if (q < 9) { //displays 9 results
-                            formatStorage[q] =
-                                '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
-                                rssObject[i].title +
-                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
-                                '</center></p></div>';
+                        //if (storyNumber < 9) { //displays 9 results
+                        //    formatStorage[storyNumber] =
+                        //        '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
+                        //        rssObject[i].title +
+                        //        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
+                        //        '</center></p></div>';
+                        //}
+                        if (storyNumber < 9) { //displays 9 results
+                            var storage = [];
+                            var a = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '">';
+                            var b = '<p style="font-size: 10px; text-align: center;">';
+                            var c = '<img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>';
+                            var d = rssObject[i].title;
+                            var eecenter = '<br /><center>';
+                            var btn1 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button>';
+                            var btn2 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button>';
+                            var btn3 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button>';
+                            var btn4 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>';
+                            var fend = '</center></p></div>';
+                            storage.push(a,b,c,d,eecenter,btn1,btn2,btn3,btn4,fend);
+                            formatStorage[storyNumber] = storage.join('');
                         }
-
-                        q++; // increment by one to keep the loop ticking up
+                        storyNumber++; // increment by one to keep the loop ticking up
                     });
                 }
             }
@@ -1238,7 +1251,6 @@ $(document).ready(function () {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
                         var x = getCurrentTemplateSettings();
-
                         var f = e.content;
 
                         rssObject[i] = {
@@ -1261,7 +1273,6 @@ $(document).ready(function () {
                                 '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
                                 '</center></p></div>';
                         }
-
                         q++; // increment by one to keep the loop ticking up
                     });
                 }
