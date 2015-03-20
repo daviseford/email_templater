@@ -1533,6 +1533,20 @@ $(document).ready(function () {
         var trackedURL = titleURL + utm;
         var storyName = 'story'+storyNum;
 
+        var twitterTitle = S(title).escapeHTML();
+        twitterTitle = S(twitterTitle).stripPunctuation();
+        twitterTitle = S(twitterTitle).replaceAll(' ', '%20');
+        var twitter = '<a href="http://twitter.com/share?text='+twitterTitle+'&url='+titleURL+'">';
+        //http://www.facebook.com/sharer.php?u=http://americanlibertypac.com/draft-rand-paul-petition/
+        var facebook = '<a href="http://www.facebook.com/sharer.php?u='+titleURL+'">';
+        //picture
+        //The URL of a picture attached to this post.
+        //https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.2
+        // The picture must be at least 200px by 200px.
+        // See our documentation on sharing best practices for more information on sizes.
+        console.log('twitter = ' + twitter);
+        console.log('facebook = ' + facebook);
+
 
         templateContainer[storyName] = {
             adjustedHeight: adjustedHeight,
@@ -1545,7 +1559,11 @@ $(document).ready(function () {
             insertImage: linkedImage,
             insertImageAlignedRight: imageAlignedRight,
             utm: utm,
-            trackedURL: trackedURL
+            trackedURL: trackedURL,
+            social: {
+                twitter: twitter,
+                facebook: facebook
+            }
         };
     }
 
