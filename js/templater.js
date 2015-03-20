@@ -1528,7 +1528,7 @@ $(document).ready(function () {
             adjustedWidth = 130;
         }
 
-        var linkedImage = urlInsert + '<img align="middle" src="' + titleIMG + '" alt="" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
+        var linkedImage = urlInsert + '<img class="no-scale" align="middle" src="' + titleIMG + '" alt="" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
         var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
         var trackedURL = titleURL + utm;
         var storyName = 'story'+storyNum;
