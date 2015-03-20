@@ -1212,6 +1212,9 @@ $(document).ready(function () {
                             }
                         }
                         defaultImageCheck();
+                        //var twitterText = S(e.title).escapeHTML();
+                        //var twitterLink = e.link;
+                        //var twitterShare = 'http://twitter.com/share?text=' + twitterText + '&url=' + twitterLink;
 
                         rssObject[i] = {
                             storyNum: storyNumber,
