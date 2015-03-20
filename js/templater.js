@@ -1544,8 +1544,8 @@ $(document).ready(function () {
         //https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.2
         // The picture must be at least 200px by 200px.
         // See our documentation on sharing best practices for more information on sizes.
-        console.log('twitter = ' + twitter);
-        console.log('facebook = ' + facebook);
+        //console.log('twitter = ' + twitter);
+        //console.log('facebook = ' + facebook);
 
 
         templateContainer[storyName] = {
