@@ -402,7 +402,7 @@ $(document).ready(function () {
                 rssFeed: 'http://americanlibertypac.com/feed/' + '?nocache=' + ((new Date).getTime()),  //Nocache is important!
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
@@ -422,7 +422,7 @@ $(document).ready(function () {
                 rssFeed: 'http://americanlibertypac.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -443,7 +443,7 @@ $(document).ready(function () {
                 rssFeed: 'http://conservativerepublicannews.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/crn_75x75.png',
                 feedStyle: function() {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
@@ -464,7 +464,7 @@ $(document).ready(function () {
                 rssFeed: 'http://minutemanproject.com/feed/' + '?nocache=' + ((new Date).getTime()), //added nocache to deal with old RSS entries
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -483,7 +483,7 @@ $(document).ready(function () {
                 rssFeed: 'http://minutemanproject.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -504,7 +504,7 @@ $(document).ready(function () {
                 rssFeed: 'http://senioramericansassociation.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
                 feedStyle: function () {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -523,7 +523,7 @@ $(document).ready(function () {
                 rssFeed: 'http://senioramericansassociation.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
                 feedStyle: function () {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -544,7 +544,7 @@ $(document).ready(function () {
                 rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/iln_75x75.png',
                 feedStyle: function() {
-                    getILNAPI(event);
+                    getILNAPI();
                 },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
@@ -565,7 +565,7 @@ $(document).ready(function () {
                 rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/iln_75x75.png',
                 feedStyle: function() {
-                    getILNAPI(event);
+                    getILNAPI();
                 },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
@@ -586,7 +586,7 @@ $(document).ready(function () {
                 rssFeed: 'http://opportunities.theihs.org/rss.xml?&t[]=200&w=100',
                 defaultLogo: '',
                 feedStyle: function() {
-                    getRSSWithoutImage(event, this.rssFeed);
+                    getRSSWithoutImage(this.rssFeed);
                 },
                 utmStyle: function() {
                     //return blank. if we add a utm style, this is where it will go
@@ -1056,8 +1056,8 @@ $(document).ready(function () {
     }
 
 
-    function getILNAPI(event){
-        event.preventDefault();
+    function getILNAPI(){
+        //event.preventDefault();
         var resultsHolder = [];
         var formatStorage = [];
         $.ajax({
@@ -1140,12 +1140,11 @@ $(document).ready(function () {
 
 
 
-    function getRSSWithImage(event, feed) {
-        event.preventDefault();
+    function getRSSWithImage(feed) {
+        //event.preventDefault();
         var storyNumber = 0;
         var formatStorage = [];
         var rssObject = [];
-        //console.log('withImage activated');
         $.ajax({
             url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
             dataType: 'json',
