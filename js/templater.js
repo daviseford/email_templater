@@ -1141,7 +1141,6 @@ $(document).ready(function () {
 
 
     function getRSSWithImage(feed) {
-        //event.preventDefault();
         var storyNumber = 0;
         var formatStorage = [];
         var rssObject = [];
@@ -1211,9 +1210,6 @@ $(document).ready(function () {
                             }
                         }
                         defaultImageCheck();
-                        //var twitterText = S(e.title).escapeHTML();
-                        //var twitterLink = e.link;
-                        //var twitterShare = 'http://twitter.com/share?text=' + twitterText + '&url=' + twitterLink;
 
                         rssObject[i] = {
                             storyNum: storyNumber,
@@ -1300,8 +1296,7 @@ $(document).ready(function () {
         });
         equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
     }
-    function getRSSWithoutImage(event, feed) {
-        event.preventDefault();
+    function getRSSWithoutImage(feed) {
         var q = 0;
         var formatStorage = [];
         var rssObject = [];
