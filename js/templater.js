@@ -237,6 +237,11 @@ $(document).ready(function () {
                     name: 'ALPAC2',
                     description: 'Facebook Banner',
                     link: 'https://www.facebook.com/AmericanLibertyPAC'
+                },
+                2: {
+                    name: 'ALPAC3',
+                    description: 'Pinterest Banner',
+                    link: 'https://www.pinterest.com/amlibpac/'
                 }
             }
         },
@@ -247,11 +252,23 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'PPP1',
-                    description: 'Rand/Romney'
+                    description: 'Rand Paul | Mitt Romney'
                 },
                 1: {
                     name: 'PPP2',
-                    description: 'Bush/Walker'
+                    description: 'Jeb Bush | Scott Walker'
+                },
+                2: {
+                    name: 'PPP3',
+                    description: 'Mike Lee | Rand Paul'
+                },
+                3: {
+                    name: 'PPP4',
+                    description: 'Scott Walker | Ben Carson'
+                },
+                4: {
+                    name: 'PPP5',
+                    description: 'Rand Paul | Ted Cruz'
                 }
             }
         },
@@ -299,6 +316,10 @@ $(document).ready(function () {
                 3: {
                     name: 'STICKER4',
                     description: 'Rand 2016 Bumper Sticker'
+                },
+                4: {
+                    name: 'STICKER5',
+                    description: 'Reboot America Draft Rand Paul'
                 }
             }
         },
@@ -1578,7 +1599,26 @@ $(document).ready(function () {
                     makeKeyCodeTest();
                     compileEmail(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
                 }, 500);
+                var client = new ZeroClipboard($("#copy-button"));
+                client.on( "ready", function( readyEvent ) {
+                    // alert( "ZeroClipboard SWF is ready!" );
+                    client.on( "aftercopy", function( event ) {
+                        // `this` === `client`
+                        // `event.target` === the element that was clicked
+                        event.target.style.display = "none";
+                        //alert("Copied text to clipboard: " + event.data["text/plain"] );
+                        swal({
+                            title: "Copied!",
+                            text: "Ctrl + V wildly!",
+                            type: "success",
+                            allowOutsideClick: "true",
+                            timer: "1500",
+                            confirmButtonText: "Copy that!"
+                        });
+                    } );
+                } );
             }
+
         }
     );
 
