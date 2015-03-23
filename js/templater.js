@@ -1571,7 +1571,7 @@ $(document).ready(function () {
             event.preventDefault(); //Stops page from reloading
             updateKeyCodeField();
             if ($("#title1").val() === "") {
-                alert("Please enter a story");
+                swal("Slow down!", "Please enter a story first!", "error");
             } else {
                 imageDelay();
                 setTimeout(function(){
