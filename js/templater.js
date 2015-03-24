@@ -1583,6 +1583,7 @@ $(document).ready(function () {
     }
 
     //the counter script is located.. well, you can figure it out
+    //credit: http://www.phpjunkyard.com/php-text-hit-counter.php
     function usageCounter() {
         $.get( "http://daviseford.com/sites/all/uploads/counter/counter.php?page=templaterCounter", function( data ) {
             var counterDiv = $('#counterDiv');
@@ -1590,7 +1591,7 @@ $(document).ready(function () {
             var a = (Math.floor(dataNum * 19))/60;
             var estimateTimeSaved = Math.floor(a);
             var insertText = '<center><p class="bg-info">This application has been used <strong>' + data + '</strong> times.<br/>Time saved (approx): <strong>' + estimateTimeSaved + '</strong> hours</p></center>';
-            counterDiv.append(insertText);
+            counterDiv.html(insertText);
         });
     }
     function makeCopyButton(){
