@@ -1581,7 +1581,7 @@ $(document).ready(function () {
             }
         };
     }
-    
+
     //the counter script is located.. well, you can figure it out
     function usageCounter() {
         $.get( "http://daviseford.com/sites/all/uploads/counter/counter.php?page=templaterCounter", function( data ) {
