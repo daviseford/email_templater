@@ -1638,5 +1638,4 @@ $(document).ready(function () {
 
         }
     );
-
 });
