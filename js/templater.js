@@ -1581,6 +1581,38 @@ $(document).ready(function () {
             }
         };
     }
+    
+    //the counter script is located.. well, you can figure it out
+    function usageCounter() {
+        $.get( "http://daviseford.com/sites/all/uploads/counter/counter.php?page=templaterCounter", function( data ) {
+            var counterDiv = $('#counterDiv');
+            var dataNum = parseInt(data);
+            var a = (Math.floor(dataNum * 19))/60;
+            var estimateTimeSaved = Math.floor(a);
+            var insertText = '<center><p class="bg-info">This application has been used <strong>' + data + '</strong> times.<br/>Time saved (approx): <strong>' + estimateTimeSaved + '</strong> hours</p></center>';
+            counterDiv.append(insertText);
+        });
+    }
+    function makeCopyButton(){
+        var client = new ZeroClipboard($("#copy-button"));
+        client.on( "ready", function( readyEvent ) {
+            // alert( "ZeroClipboard SWF is ready!" );
+            client.on( "aftercopy", function( event ) {
+                // `this` === `client`
+                // `event.target` === the element that was clicked
+                //event.target.style.display = "none";
+                //alert("Copied text to clipboard: " + event.data["text/plain"] );
+                swal({
+                    title: "Copied!",
+                    text: "Ctrl + V wildly!",
+                    type: "success",
+                    allowOutsideClick: "true",
+                    timer: "1500",
+                    confirmButtonText: "Copy that!"
+                });
+            } );
+        } );
+    }
 
 
     //********************************
@@ -1598,25 +1630,9 @@ $(document).ready(function () {
                 setTimeout(function(){
                     makeKeyCodeTest();
                     compileEmail(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
+                    makeCopyButton();
+                    usageCounter();
                 }, 500);
-                var client = new ZeroClipboard($("#copy-button"));
-                client.on( "ready", function( readyEvent ) {
-                    // alert( "ZeroClipboard SWF is ready!" );
-                    client.on( "aftercopy", function( event ) {
-                        // `this` === `client`
-                        // `event.target` === the element that was clicked
-                        event.target.style.display = "none";
-                        //alert("Copied text to clipboard: " + event.data["text/plain"] );
-                        swal({
-                            title: "Copied!",
-                            text: "Ctrl + V wildly!",
-                            type: "success",
-                            allowOutsideClick: "true",
-                            timer: "1500",
-                            confirmButtonText: "Copy that!"
-                        });
-                    } );
-                } );
             }
 
         }
