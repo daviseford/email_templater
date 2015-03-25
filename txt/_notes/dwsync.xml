@@ -19,4 +19,5 @@
 <file name="saa_db_Tmpl.htm" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130713484929592489" remote="130713487230000000" Dst="2" />
 <file name="saa_mr_Tmpl.htm" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130713485678595330" remote="130713487230000000" Dst="2" />
 <file name="crn_db_Tmpl.htm" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130713486998720836" remote="130713487230000000" Dst="2" />
+<file name="rfar_db_Tmpl.htm" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130717628087296624" remote="130717628140000000" Dst="2" />
 </dwsync>

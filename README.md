@@ -12,4 +12,8 @@ Highly customizable utm-campaign tracking
 Automatic date-based keycode generation  
 Custom advertisement insertion  
 Fully responsive emails  
-Styles and link tracking are inlined - no need to ever touch HTML!
+Styles and link tracking are inlined - no need to ever touch HTML!  
+
+# Known Issues:
+1.) In SmartFocus, you may see {cke_protected} or {C} appear at the top of your email.   
+Switch to source and remove the following two blocks of text: <!-- SUBJECT LINE: --> and <!-- KEYCODE: -->  
