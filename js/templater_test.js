@@ -223,6 +223,70 @@ $(document).ready(function () {
         }
     };
     var adReferenceWJMA = {
+        ALPAC: {
+            link: 'http://americanlibertypac.com',
+            shortCode: 'ALPAC',
+            longCode: 'General ALPAC Ads',
+            advertisements: {
+                0: {
+                    name: 'ALPAC1',
+                    description: 'Twitter Banner',
+                    link: 'https://twitter.com/uslibertypac'
+                },
+                1: {
+                    name: 'ALPAC2',
+                    description: 'Facebook Banner',
+                    link: 'https://www.facebook.com/AmericanLibertyPAC'
+                },
+                2: {
+                    name: 'ALPAC3',
+                    description: 'Pinterest Banner',
+                    link: 'https://www.pinterest.com/amlibpac/'
+                }
+            }
+        },
+        CRNPOLL: {
+            link: 'http://conservativerepublicannews.com',
+            shortCode: 'CRNPOLL',
+            longCode: 'CRN Polls',
+            advertisements: {
+                0: {
+                    name: 'CRNPOLL1',
+                    description: 'Is it time to go after ISIS?',
+                    link: 'http://conservativerepublicannews.com/poll-is-it-time-to-go-after-isis/'
+                },
+                1: {
+                    name: 'CRNPOLL2',
+                    description: 'Do you trust the Mainstream Media?',
+                    link: 'http://conservativerepublicannews.com/poll-do-you-trust-the-media/'
+                },
+                2: {
+                    name: 'CRNPOLL3',
+                    description: 'Obama Impeachment',
+                    link: 'http://conservativerepublicannews.com/poll-impeach-obama/'
+                },
+                3: {
+                    name: 'CRNPOLL4',
+                    description: 'Do You Trust The IRS?',
+                    link: 'http://conservativerepublicannews.com/poll-do-you-trust-the-irs/'
+                },
+                4: {
+                    name: 'CRNPOLL5',
+                    description: 'Do You Think Social Security Is Running Out?',
+                    link: 'http://conservativerepublicannews.com/poll-do-you-think-social-security-is-running-out/'
+                },
+                5: {
+                    name: 'CRNPOLL6',
+                    description: 'Should Kids Be Vaccinated?',
+                    link: 'http://conservativerepublicannews.com/poll-should-kids-be-vaccinated/'
+                },
+                6: {
+                    name: 'CRNPOLL7',
+                    description: 'Will Obama Declare Martial Law?',
+                    link: 'http://conservativerepublicannews.com/poll-obama-martial-law/'
+                }
+            }
+        },
         PPP: {
             link: 'http://americanlibertypac.com/2016-presidential-preference-poll-2/',
             shortCode: 'PPP',
@@ -230,38 +294,139 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'PPP1',
-                    description: 'Rand/Romney'
+                    description: 'Rand Paul | Mitt Romney'
                 },
                 1: {
                     name: 'PPP2',
-                    description: 'Bush/Walker'
+                    description: 'Jeb Bush | Scott Walker'
+                },
+                2: {
+                    name: 'PPP3',
+                    description: 'Mike Lee | Rand Paul'
+                },
+                3: {
+                    name: 'PPP4',
+                    description: 'Scott Walker | Ben Carson'
+                },
+                4: {
+                    name: 'PPP5',
+                    description: 'Rand Paul | Ted Cruz'
                 }
             }
         },
         HILL: {
             link: 'https://secure.yourpatriot.com/ou/alpac/1826/donate.aspx',
             shortCode: 'HILL',
-            longCode: 'Not Ready For Hillary Bumper Sticker',
+            longCode: 'Not Ready For Hillary',
             advertisements: {
                 0: {
                     name: 'HILL1',
-                    description: 'Not Ready For Hillary Sticker (350x137)'
+                    description: 'Bumper Sticker (350x137)'
                 },
                 1: {
                     name: 'HILL2',
-                    description: 'Not Ready For Hillary Sticker (500x196)'
+                    description: 'Bumper Sticker (500x196)'
+                },
+                2: {
+                    name: 'HILL3',
+                    description: 'Grey Square Ad'
+                },
+                3: {
+                    name: 'HILL4',
+                    description: 'Black Square Ad'
                 }
             }
 
         },
+        STICKER: {
+            link: 'https://secure.yourpatriot.com/ou/alpac/1761/donate.aspx',
+            shortCode: 'STICKER',
+            longCode: 'ALPAC Bumper Stickers',
+            advertisements: {
+                0: {
+                    name: 'STICKER1',
+                    description: 'Freedom Sticker'
+                },
+                1: {
+                    name: 'STICKER2',
+                    description: 'Fire the Liars Sticker'
+                },
+                2: {
+                    name: 'STICKER3',
+                    description: 'Rand 2016 Sticker'
+                },
+                3: {
+                    name: 'STICKER4',
+                    description: 'Rand 2016 Bumper Sticker'
+                },
+                4: {
+                    name: 'STICKER5',
+                    description: 'Reboot America Draft Rand Paul'
+                }
+            }
+        },
         JGM: {
             link: 'https://minutemanproject.com/donate-2/',
             shortCode: 'JGM',
-            longCode: 'Secure The Border Bumper Sticker',
+            longCode: 'JGM General Ads',
             advertisements: {
                 0: {
                     name: 'JGM1',
-                    description: 'Secure The Border Bumper Sticker'
+                    description: 'Secure The Border Sticker'
+                },
+                1: {
+                    name: 'JGM2',
+                    description: 'Twitter Banner',
+                    link: 'http://twitter.com/jgmmp'
+                },
+                2: {
+                    name: 'JGM3',
+                    description: 'Facebook Banner',
+                    link: 'https://www.facebook.com/MinutemanProjectNews'
+                },
+                3: {
+                    name: 'JGM4',
+                    description: 'Inline - Revoke Executive Action',
+                    link: 'http://minutemanproject.rallycongress.com/17465/citizens-demand-to-congress-to-revoke-obamas-executive-action/'
+                }
+            }
+        },
+        RAND: {
+            link: 'https://presidentrand.com',
+            shortCode: 'RAND',
+            longCode: 'Draft Rand Paul',
+            advertisements: {
+                0: {
+                    name: 'RAND1',
+                    description: 'Reboot America',
+                    link: 'http://americanlibertypac.com/draft-rand-paul-for-president/'
+                },
+                1: {
+                    name: 'RAND2',
+                    description: 'Grassroots For Rand',
+                    link: 'http://americanlibertypac.com/draft-rand-paul-for-president/'
+                }
+            }
+        },
+        SAA: {
+            link: 'http://senioramericansassociation.com/', //default link to all sub-ads
+            shortCode: 'SAA',
+            longCode: 'Senior Americans Association',
+            advertisements: {
+                0: {
+                    name: 'SAA1',
+                    description: 'Facebook',
+                    link: 'https://www.facebook.com/SeniorAmericans' //this link overrides the default set above
+                },
+                1: {
+                    name: 'SAA2',
+                    description: 'Older Americans Act',
+                    link: 'http://senioramericansassociation.com/3004-2/' //this link overrides the default set above
+                },
+                2: {
+                    name: 'SAA3',
+                    description: 'Inline Coupon Ad',
+                    link: 'http://senioramericansassociation.com/savings-center/'
                 }
             }
         }
@@ -286,21 +451,21 @@ $(document).ready(function () {
     }
 
     templateContainer = {
+        storyTrack: [false, false, false, false], //initialize with all stories turned off.
         keycode: makeKeyCodeTest(),//templateContainer will eventually be the one stop shop for all constant variables
         ALPAC: {                //we start with the client name
-            DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm',
+            DB: {               //type of template (usually DB or MR)
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm', //location of template file
                 emailCode: 'DB',
                 shortCode: 'ALPACDB',
                 longCode: 'Daily Bulletin',
-                imgMaxWidth: 160,
-                imgMaxHeight: 160,
-                productMenu: adReferenceWJMA, //may change in the future, this stores the ads
-                rssFeed: 'http://americanlibertypac.com/feed/',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA, //this stores the ads
+                rssFeed: 'http://americanlibertypac.com/feed/' + '?nocache=' + ((new Date).getTime()),  //Nocache is important!
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
-                    getRSSWithImage(event, this.rssFeed);
-
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
@@ -314,15 +479,55 @@ $(document).ready(function () {
                 emailCode: 'MR',
                 shortCode: 'ALPACMR',
                 longCode: 'Must Read',
-                imgMaxWidth: '',
-                imgMaxHeight: '',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://americanlibertypac.com/feed/',
+                rssFeed: 'http://americanlibertypac.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            },
+            XL: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_xl_Tmpl.htm',
+                emailCode: 'XL',
+                shortCode: 'ALPACXL',
+                longCode: 'XL Edition',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://americanlibertypac.com/feed/' + '?nocache=' + ((new Date).getTime()),
+                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            }
+        },
+        CRN: {
+            DB: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/crn_db_Tmpl.htm',
+                emailCode: 'DB',
+                shortCode: 'CRNDB',
+                longCode: 'Daily Bulletin',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://conservativerepublicannews.com/feed/' + '?nocache=' + ((new Date).getTime()),
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/crn_75x75.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function() {
                     var x = makeKeyCodeTest();
                     var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
                     return y;
@@ -338,10 +543,10 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://minutemanproject.com/feed/',
+                rssFeed: 'http://minutemanproject.com/feed/' + '?nocache=' + ((new Date).getTime()), //added nocache to deal with old RSS entries
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -357,10 +562,10 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://minutemanproject.com/feed/',
+                rssFeed: 'http://minutemanproject.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -378,10 +583,10 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://senioramericansassociation.com/feed/',
+                rssFeed: 'http://senioramericansassociation.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
                 feedStyle: function () {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -397,10 +602,10 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://senioramericansassociation.com/feed/',
+                rssFeed: 'http://senioramericansassociation.com/feed/' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
                 feedStyle: function () {
-                    getRSSWithImage(event, this.rssFeed);
+                    getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
                     var x = makeKeyCodeTest();
@@ -421,7 +626,7 @@ $(document).ready(function () {
                 rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/iln_75x75.png',
                 feedStyle: function() {
-                    getILNAPI(event);
+                    getILNAPI();
                 },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
@@ -442,7 +647,7 @@ $(document).ready(function () {
                 rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/iln_75x75.png',
                 feedStyle: function() {
-                    getILNAPI(event);
+                    getILNAPI();
                 },
                 utmStyle: function() {
                     var x = makeKeyCodeTest();
@@ -463,7 +668,7 @@ $(document).ready(function () {
                 rssFeed: 'http://opportunities.theihs.org/rss.xml?&t[]=200&w=100',
                 defaultLogo: '',
                 feedStyle: function() {
-                    getRSSWithoutImage(event, this.rssFeed);
+                    getRSSWithoutImage(this.rssFeed);
                 },
                 utmStyle: function() {
                     //return blank. if we add a utm style, this is where it will go
@@ -477,27 +682,45 @@ $(document).ready(function () {
                 var adRef = adReference;
                 var utm = utmStyle;
                 b = $('#productSelect').val(); //example value: XCOM1
+                var templateName = 'ad_templates_'+b;
                 if (b !== '' && b !== null) { //if there is a product selected, update currentProduct
-                    var c = S(b).right(1).toInt(); //gives us our ad template number (1)
+                    var templateNumber = S(b).right(1).toInt(); //gives us our ad template number (1)
+                    var adNum = (templateNumber - 1);
                     var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
                     var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
-                    var f = adRef[e].link;
-                    var g = adRef[e].shortCode; //This is the same as writing adReference.XCOM.longCode
-                    var h = adRef[e].longCode;
-                    var i = '<a href="'+ f + utm +'" target="_blank">';
+                    var templateShortCode = adRef[e].shortCode; //This is the same as writing adReference.XCOM.longCode
+                    var templateLongCode = adRef[e].longCode;
+                    var templateLink;
+                    var currentAd = adRef[e].advertisements[adNum];
+
+                    //check if we've got a special link setting
+                    if (currentAd.hasOwnProperty('link')) {
+                        if (currentAd.link !== undefined || currentAd.link !== '') {
+                            console.log('currentAd.link = '+ currentAd.link);
+                            templateLink = currentAd.link;
+                        }
+                    } else { //if there's no link set, fall back to the 'category' link, which is set by default
+                        templateLink = adRef[e].link;
+                    }
+                    var templateTrackedURL = templateLink + utm;
+                    var templateTrackedLink = '<a href="'+ templateTrackedURL +'" target="_blank">';
 
                     templateContainer.currentProduct = {
-                        link: f,
-                        trackedLink: i,
-                        tmplNum: c,
-                        shortCode: g,
-                        longCode: h,
+                        template: templateName,
+                        link: templateLink,
+                        trackedLink: templateTrackedLink,
+                        trackedURL: templateTrackedURL, //trackedURL is the raw URL + utm, whereas trackedLink is formatted with href
+                        tmplNum: templateNumber,
+                        shortCode: templateShortCode,
+                        longCode: templateLongCode,
                         enabled: true
                     };
                 } else {
                     templateContainer.currentProduct = { //otherwise, update it to be blank
+                        template: '',
                         link: '',
                         trackedLink: '',
+                        trackedURL: '',
                         tmplNum: '',
                         shortCode: '',
                         longCode: '',
@@ -545,6 +768,9 @@ $(document).ready(function () {
                 rfarHeader: '<a href="http://www.independentlivingnews.com/preppers' + utmILN + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="118" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="580" /></a>',
                 subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmILN + '" target="_blank">',
                 ilnHeader: '<a href="http://www.independentlivingnews.com' + utmILN + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="118" src="http://www.independentlivingnews.com/email/images/ILN_LB_header_edited.jpg" style="display:block;" width="580" /></a>'
+            },
+            SAA: {
+                keycode: keycode
             }
         };
     }
@@ -630,7 +856,7 @@ $(document).ready(function () {
         return templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
     }
 
-    function setupRSSBtn() {
+    function setupRSSBtn() { //calling feedStyle runs the proper RSS fetcher (e.g. getRSSWithImage())
         var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
         currentTemplateSettings.feedStyle();
     }
@@ -653,7 +879,7 @@ $(document).ready(function () {
 
                 var title1Label = $("#title1label");
 
-                if (a === 'ILNDB' || 'JGMMR') {
+                if (a === 'ILNDB' || a === 'JGMMR' || a === 'ALPACMR') {
                     title1Label.text('Modal Headline:');
                 } else {
                     title1Label.text('Title #1:');
@@ -681,7 +907,7 @@ $(document).ready(function () {
             .button()
             .show()
             .click(function() {
-                    sendEmail();
+                sendEmail();
             });
     }
 
@@ -770,6 +996,26 @@ $(document).ready(function () {
                 makeEmailBtn(); //take this out if it gets abused
             }).fail(function () {
                 console.log("spawnTemplate(" + tmplLink + "): Something went wrong!");
+            });
+    }
+
+    function testSpawnTemplate() {
+        var templateLink = 'http://daviseford.com/sites/default/files/email_templater/txt/ad_preview.htm';
+        var templateLoader;
+        function getTemplate(src) {
+            return $.get(src, function (value) {
+                templateLoader  = $.templates(value);
+            });
+        }
+        $.when(
+            getTemplate(templateLink)
+        ).then(function () {
+                var html = templateLoader.render(templateContainer);
+                //$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+                $("#testingDiv1").html(sanitizeRender(html)); //Renders the HTML version of the email
+                makeEmailBtn(); //take this out if it gets abused
+            }).fail(function () {
+                console.log("testspawnTemplate(" + tmplLink + "): Something went wrong!");
             });
     }
 
@@ -912,8 +1158,8 @@ $(document).ready(function () {
     }
 
 
-    function getILNAPI(event){
-        event.preventDefault();
+    function getILNAPI(){
+        //event.preventDefault();
         var resultsHolder = [];
         var formatStorage = [];
         $.ajax({
@@ -996,12 +1242,10 @@ $(document).ready(function () {
 
 
 
-    function getRSSWithImage(event, feed) {
-        event.preventDefault();
-        var q = 0;
+    function getRSSWithImage(feed) {
+        var storyNumber = 0;
         var formatStorage = [];
         var rssObject = [];
-        //console.log('withImage activated');
         $.ajax({
             url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
             dataType: 'json',
@@ -1017,11 +1261,47 @@ $(document).ready(function () {
                         }
 
                         //this chunk grabs img src values from the RSS feed
+                        //var content = document.createElement("content");
+                        //content.innerHTML = e.content;
+                        //var images = $(content).find('img').map(function () {
+                        //    return $(this).attr('src');
+                        //}).get(); //TODO backup
+
+
+                        //this chunk grabs img src values from the RSS feed
                         var content = document.createElement("content");
                         content.innerHTML = e.content;
                         var images = $(content).find('img').map(function () {
-                            return $(this).attr('src');
+                            var i = [];
+                            i.push($(this).attr('src'), $(this).attr('width'), $(this).attr('height'));
+                            return i;
                         }).get();
+
+                        //console.log('imgSrc = ' + images[0]);
+                        //console.log('imgW = ' + images[1]);
+                        //console.log('imgH = ' + images[2]);
+                        //TODO I've disabled this functionality for a few reasons
+                        //1.) Breaks the div container that it spawns in. TODO Maybe look into Flexbox for making these containers?
+                        //function getImageSize(currentWidth, currentHeight) {
+                        //    var maxWidth = 75; // Max width for the image
+                        //    var maxHeight = 75;    // Max height for the image
+                        //    var correctedSizes = []; //holding container for image sizes
+                        //    var ratio = 0;  // Used for aspect ratio
+                        //    var width = currentWidth;    // Current image width
+                        //    var height = currentHeight;  // Current image height
+                        //
+                        //    // Check if the current width is larger than the max
+                        //    if (width > maxWidth && width >= height) {
+                        //        ratio = maxWidth / width;   // get ratio for scaling image
+                        //        images[1] = maxWidth;    // Reset width to match scaled image
+                        //        images[2] = Math.floor(height * ratio);    // Reset height to match scaled image
+                        //    } else if (height > maxHeight) {
+                        //        ratio = maxHeight / height; // get ratio for scaling image
+                        //        images[1] = Math.floor(width * ratio);    // Reset width to match scaled image
+                        //        images[2] = maxHeight;    // Reset height to match scaled image
+                        //    }
+                        //}
+                        //getImageSize(images[1], images[2]);
 
 
                         function defaultImageCheck(){ //replaces undefined images with a default
@@ -1034,10 +1314,12 @@ $(document).ready(function () {
                         defaultImageCheck();
 
                         rssObject[i] = {
-                            storyNum: q,
+                            storyNum: storyNumber,
                             title: e.title,
                             link: e.link,
                             imgsrc: images[0],
+                            thumbW: images[1],
+                            thumbH: images[2],
                             description: cleanDescription(f)
                         };
 
@@ -1049,16 +1331,24 @@ $(document).ready(function () {
                         var divID = 'rssStory' + rssObject[i].storyNum;
                         var imgID = 'rssImg' + rssObject[i].storyNum;
 
-
-                        if (q < 9) { //displays 9 results
-                            formatStorage[q] =
-                                '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '"><p style="font-size: 10px; text-align: center;"><img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" style="float: left"/>' +
-                                rssObject[i].title +
-                                '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
-                                '</center></p></div>';
+                        if (storyNumber < 9) { //displays 9 results
+                            var storage = [];
+                            var a = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '">';
+                            var b = '<p style="font-size: 10px; text-align: center;">';
+                            //var c = '<img src="' + rssObject[i].imgsrc + '" width="' + rssObject[i].thumbW + '" height="' + rssObject[i].thumbH + '" id="' + imgID + '" align="left" style=""/>';
+                            //disabled above, as it was causing all sorts of resizing issues
+                            var c = '<img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" align="left" class="img-circle" style=""/>';
+                            var d = rssObject[i].title;
+                            var eecenter = '<br /><center>';
+                            var btn1 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button>';
+                            var btn2 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button>';
+                            var btn3 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button>';
+                            var btn4 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>';
+                            var fend = '</center></p></div>';
+                            storage.push(a,b,c,d,eecenter,btn1,btn2,btn3,btn4,fend);
+                            formatStorage[storyNumber] = storage.join('');
                         }
-
-                        q++; // increment by one to keep the loop ticking up
+                        storyNumber++; // increment by one to keep the loop ticking up
                     });
                 }
             }
@@ -1074,11 +1364,11 @@ $(document).ready(function () {
                     $('#title1IMG').val(rssObject[e].imgsrc);
                 });
                 $('#rss2Btn'+e).click(function () {
-                        $('#title2').val(rssObject[e].title);
-                        $('#title2text-div').html(rssObject[e].description);
-                        $('#title2URL').val(rssObject[e].link);
-                        $('#title2IMG').val(rssObject[e].imgsrc);
-                    });
+                    $('#title2').val(rssObject[e].title);
+                    $('#title2text-div').html(rssObject[e].description);
+                    $('#title2URL').val(rssObject[e].link);
+                    $('#title2IMG').val(rssObject[e].imgsrc);
+                });
                 $('#rss3Btn'+e).click(function () {
                     if (additionalContentVal === true) {
                         $('#title3').val(rssObject[e].title);
@@ -1108,8 +1398,7 @@ $(document).ready(function () {
         });
         equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
     }
-    function getRSSWithoutImage(event, feed) {
-        event.preventDefault();
+    function getRSSWithoutImage(feed) {
         var q = 0;
         var formatStorage = [];
         var rssObject = [];
@@ -1120,7 +1409,6 @@ $(document).ready(function () {
                 if (data.responseData.feed && data.responseData.feed.entries) {
                     $.each(data.responseData.feed.entries, function (i, e) {
                         var x = getCurrentTemplateSettings();
-
                         var f = e.content;
 
                         rssObject[i] = {
@@ -1143,7 +1431,6 @@ $(document).ready(function () {
                                 '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
                                 '</center></p></div>';
                         }
-
                         q++; // increment by one to keep the loop ticking up
                     });
                 }
@@ -1158,9 +1445,9 @@ $(document).ready(function () {
                     $('#title1URL').val(rssObject[e].link);
                 });
                 $('#rss2Btn'+e).click(function () {
-                        $('#title2').val(rssObject[e].title);
-                        $('#title2text-div').html(rssObject[e].description);
-                        $('#title2URL').val(rssObject[e].link);
+                    $('#title2').val(rssObject[e].title);
+                    $('#title2text-div').html(rssObject[e].description);
+                    $('#title2URL').val(rssObject[e].link);
                 });
                 $('#rss3Btn'+e).click(function () {
                     if (additionalContentVal === true) {
@@ -1200,16 +1487,16 @@ $(document).ready(function () {
         var d = '<label id="title'+storyNumber1+'label" for="title'+storyNumber1+'">Title #'+storyNumber1+': </label>';
         var e = '<input class="form-control" type="text" id="title'+storyNumber1+'" name="title'+storyNumber1+'"/></div>';
         var f = '<div class="form-group"><label for="title'+storyNumber1+'text-div">Story #'+storyNumber1+': </label><div id="title'+storyNumber1+'text-div" style="width: 100%; height: 100%" data-placeholder="" class="form-control"></div>';
-        var g = '<div id="wysihtml-toolbar'+storyNumber1+'" style="display: none;"><a data-wysihtml5-command="bold">bold </a><a data-wysihtml5-command="italic">italic </a><a data-wysihtml5-command="createLink">insert link </a><div data-wysihtml5-dialog="createLink" style="display: none;">';
+        var g = '<div id="wysihtml-toolbar'+storyNumber1+'" style="display: none;"><a data-wysihtml5-command="bold"><strong>bold </strong></a><a data-wysihtml5-command="italic"><em>italic </em></a><a data-wysihtml5-command="createLink">insert link </a><div data-wysihtml5-dialog="createLink" style="display: none;">';
         var h = '<label>Link:<input data-wysihtml5-dialog-field="href" value="http://" class="text"></label><a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a></div></div></div>';
-        var i = '<div class="form-group"><label for="title'+storyNumber1+'URL">Story URL: </label><input class="form-control" type="text" id="title'+storyNumber1+'URL" name="title'+storyNumber1+'URL" placeholder="Put the link to the ARTICLE here."/>';
+        var i = '<div class="form-group"><label for="title'+storyNumber1+'URL">Story URL: </label><input class="form-control" type="text" id="title'+storyNumber1+'URL" name="title'+storyNumber1+'URL" placeholder="Put the link to the article here."/>';
         var j = '</div><div class="form-group"><label for="title'+storyNumber1+'IMG">Image URL: </label><input class="form-control" type="text" id="title'+storyNumber1+'IMG" name="title'+storyNumber1+'IMG" placeholder=""/> <br />';
         var k = '</fieldset></form></div>';
         var l = '<div class="col-lg-6 col-md-6" id="story'+storyNumber2+'Div"><form id="story'+storyNumber2+'Form" action="#"><fieldset><div class="form-group"><label for="title'+storyNumber2+'">Title #'+storyNumber2+': </label>';
         var m = '<input class="form-control" type="text" id="title'+storyNumber2+'" name="title'+storyNumber2+'"/></div><div class="form-group"><label for="title'+storyNumber2+'text-div">Story #'+storyNumber2+': </label><div id="title'+storyNumber2+'text-div" style="width: 100%; height: 100%" data-placeholder="" class="form-control"></div>';
-        var n = '<div id="wysihtml-toolbar'+storyNumber2+'" style="display: none;"><a data-wysihtml5-command="bold">bold </a><a data-wysihtml5-command="italic">italic </a><a data-wysihtml5-command="createLink">insert link </a><div data-wysihtml5-dialog="createLink" style="display: none;">';
+        var n = '<div id="wysihtml-toolbar'+storyNumber2+'" style="display: none;"><a data-wysihtml5-command="bold"><strong>bold </strong></a><a data-wysihtml5-command="italic"><em>italic </em></a><a data-wysihtml5-command="createLink">insert link </a><div data-wysihtml5-dialog="createLink" style="display: none;">';
         var o = '<label>Link:<input data-wysihtml5-dialog-field="href" value="http://" class="text"></label><a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a></div></div></div>';
-        var p =  '<div class="form-group"><label for="title'+storyNumber2+'URL">Story URL: </label> <input class="form-control" type="text" id="title'+storyNumber2+'URL" name="title'+storyNumber2+'URL" placeholder="Link to the ARTICLE here."/></div>';
+        var p =  '<div class="form-group"><label for="title'+storyNumber2+'URL">Story URL: </label> <input class="form-control" type="text" id="title'+storyNumber2+'URL" name="title'+storyNumber2+'URL" placeholder="Link to the article here."/></div>';
         var q = '<div class="form-group"><label for="title'+storyNumber2+'IMG">Image URL: </label><input class="form-control" type="text" id="title'+storyNumber2+'IMG" name="title'+storyNumber2+'IMG" placeholder=""/> </div></fieldset></form></div></div>';
         builderStorage.push(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q);
         var xx = builderStorage.join('');
@@ -1337,10 +1624,24 @@ $(document).ready(function () {
             adjustedWidth = 130;
         }
 
-        var linkedImage = urlInsert + '<img src="' + titleIMG + '" alt="Story Image" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
+        var linkedImage = urlInsert + '<img class="no-scale" align="middle" src="' + titleIMG + '" alt="" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
         var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
         var trackedURL = titleURL + utm;
         var storyName = 'story'+storyNum;
+
+        var twitterTitle = S(title).escapeHTML();
+        twitterTitle = S(twitterTitle).stripPunctuation();
+        twitterTitle = S(twitterTitle).replaceAll(' ', '%20');
+        var twitter = '<a href="http://twitter.com/share?text='+twitterTitle+'&url='+titleURL+'">';
+        //http://www.facebook.com/sharer.php?u=http://americanlibertypac.com/draft-rand-paul-petition/
+        var facebook = '<a href="http://www.facebook.com/sharer.php?u='+titleURL+'">';
+        //picture
+        //The URL of a picture attached to this post.
+        //https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.2
+        // The picture must be at least 200px by 200px.
+        // See our documentation on sharing best practices for more information on sizes.
+        //console.log('twitter = ' + twitter);
+        //console.log('facebook = ' + facebook);
 
 
         templateContainer[storyName] = {
@@ -1354,9 +1655,45 @@ $(document).ready(function () {
             insertImage: linkedImage,
             insertImageAlignedRight: imageAlignedRight,
             utm: utm,
-            trackedURL: trackedURL
+            trackedURL: trackedURL,
+            social: {
+                twitter: twitter,
+                facebook: facebook
+            }
         };
+    }
 
+    //the counter script is located.. well, you can figure it out
+    //credit: http://www.phpjunkyard.com/php-text-hit-counter.php
+    function usageCounter() {
+        $.get( "http://daviseford.com/sites/all/uploads/counter/counter.php?page=templaterCounter", function( data ) {
+            var counterDiv = $('#counterDiv');
+            var dataNum = parseInt(data);
+            var a = (Math.floor(dataNum * 19))/60;
+            var estimateTimeSaved = Math.floor(a);
+            var insertText = '<center><p class="bg-info">This application has been used <strong>' + data + '</strong> times.<br/>Time saved (approx): <strong>' + estimateTimeSaved + '</strong> hours</p></center>';
+            counterDiv.html(insertText);
+        });
+    }
+    function makeCopyButton(){
+        var client = new ZeroClipboard($("#copy-button"));
+        client.on( "ready", function( readyEvent ) {
+            // alert( "ZeroClipboard SWF is ready!" );
+            client.on( "aftercopy", function( event ) {
+                // `this` === `client`
+                // `event.target` === the element that was clicked
+                //event.target.style.display = "none";
+                //alert("Copied text to clipboard: " + event.data["text/plain"] );
+                swal({
+                    title: "Copied!",
+                    text: "Ctrl + V wildly!",
+                    type: "success",
+                    allowOutsideClick: "true",
+                    timer: "1500",
+                    confirmButtonText: "Copy that!"
+                });
+            } );
+        } );
     }
 
 
@@ -1369,15 +1706,17 @@ $(document).ready(function () {
             event.preventDefault(); //Stops page from reloading
             updateKeyCodeField();
             if ($("#title1").val() === "") {
-                alert("Please enter a story");
+                swal("Slow down!", "Please enter a story first!", "error");
             } else {
                 imageDelay();
                 setTimeout(function(){
                     makeKeyCodeTest();
                     compileEmail(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
+                    makeCopyButton();
+                    usageCounter();
                 }, 500);
             }
+
         }
     );
-
 });

@@ -245,6 +245,48 @@ $(document).ready(function () {
                 }
             }
         },
+        CRNPOLL: {
+            link: 'http://conservativerepublicannews.com',
+            shortCode: 'CRNPOLL',
+            longCode: 'CRN Polls',
+            advertisements: {
+                0: {
+                    name: 'CRNPOLL1',
+                    description: 'Is it time to go after ISIS?',
+                    link: 'http://conservativerepublicannews.com/poll-is-it-time-to-go-after-isis/'
+                },
+                1: {
+                    name: 'CRNPOLL2',
+                    description: 'Do you trust the Mainstream Media?',
+                    link: 'http://conservativerepublicannews.com/poll-do-you-trust-the-media/'
+                },
+                2: {
+                    name: 'CRNPOLL3',
+                    description: 'Obama Impeachment',
+                    link: 'http://conservativerepublicannews.com/poll-impeach-obama/'
+                },
+                3: {
+                    name: 'CRNPOLL4',
+                    description: 'Do You Trust The IRS?',
+                    link: 'http://conservativerepublicannews.com/poll-do-you-trust-the-irs/'
+                },
+                4: {
+                    name: 'CRNPOLL5',
+                    description: 'Do You Think Social Security Is Running Out?',
+                    link: 'http://conservativerepublicannews.com/poll-do-you-think-social-security-is-running-out/'
+                },
+                5: {
+                    name: 'CRNPOLL6',
+                    description: 'Should Kids Be Vaccinated?',
+                    link: 'http://conservativerepublicannews.com/poll-should-kids-be-vaccinated/'
+                },
+                6: {
+                    name: 'CRNPOLL7',
+                    description: 'Will Obama Declare Martial Law?',
+                    link: 'http://conservativerepublicannews.com/poll-obama-martial-law/'
+                }
+            }
+        },
         PPP: {
             link: 'http://americanlibertypac.com/2016-presidential-preference-poll-2/',
             shortCode: 'PPP',
