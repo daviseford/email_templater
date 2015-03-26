@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="misc.xml" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130682239126276960" remote="130682253170000000" Dst="1" />
-<file name="misc.xml" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130682239126276960" remote="130707360720000000" Dst="2" />
+<file name="misc.xml" server="104.130.219.15//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130682239126276960" remote="130682253170000000" />
+<file name="misc.xml" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130682239126276960" remote="130707360720000000" />
+<file name=".name" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130681764651231113" remote="130718650090000000" />
+<file name="deployment.xml" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130681765521720903" remote="130718650090000000" />
+<file name="email_templater.iml" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130705079625730796" remote="130718650100000000" />
+<file name="encodings.xml" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130681764651651137" remote="130718650100000000" />
+<file name="jsLibraryMappings.xml" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130705082208878544" remote="130718650100000000" />
+<file name="modules.xml" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130681764651781145" remote="130718650100000000" />
+<file name="vcs.xml" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130681764651691140" remote="130718650100000000" />
+<file name="watcherTasks.xml" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130705082487244465" remote="130718650100000000" />
+<file name="workspace.xml" server="162.209.3.237//var/www/vhosts/daviseford.com/sites/default/files/email_templater/" local="130718647444520419" remote="130718650110000000" />
 </dwsync>

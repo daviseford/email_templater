@@ -910,6 +910,75 @@ $(document).ready(function () {
                 sendEmail();
             });
     }
+    //TODO start over on this, garbage.
+    function testAdPreview() {
+        var b;
+        var x = getCurrentTemplateSettings();
+        var utm = x.utmStyle();
+        var adRef = x.productMenu;
+        b = $('#productSelect').val(); //example value: XCOM1
+        var templateName = 'ad_templates_'+b;
+        if (b !== '' && b !== null) { //if there is a product selected, update currentProduct
+            var templateNumber = S(b).right(1).toInt(); //gives us our ad template number (1)
+            var adNum = (templateNumber - 1);
+            console.log('adNum = ' + adNum);
+            var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
+            var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
+            console.log('e = ' + e);
+            var templateShortCode = adRef[e].shortCode; //This is the same as writing adReference.XCOM.longCode
+            var templateLongCode = adRef[e].longCode;
+            console.log('adRef[e].longCode  = ' + adRef[e].longCode);
+            var currentAd = adRef[e].advertisements[adNum];
+            console.log('currentAd.desc = ' + currentAd.description);
+
+            templateContainer.currentProduct = {
+                template: templateName,
+                link: '',
+                trackedLink: '<a href="" target="_blank">',
+                trackedURL: '', //trackedURL is the raw URL + utm, whereas trackedLink is formatted with href
+                tmplNum: templateNumber,
+                shortCode: templateShortCode,
+                longCode: templateLongCode,
+                enabled: true
+            };
+        } else {
+            templateContainer.currentProduct = {
+                enabled: false
+            };
+            console.log('No Product selected!');
+            }
+        }
+
+    $('#getAdPreview')
+        .button()
+        .click(function(){
+            testAdPreview();
+            testSpawnTemplate();
+            console.log('u know what it is = ' + templateContainer.currentProduct.template)
+        });
+
+    //TODO this is supposed to build an ad template within index_html (you'll find it)
+    //TODO you're just going to iterate over ad_preview as normal
+    //TODO figure out/remember the call to get the correct preview. Or amybe this is already set. did I try this?
+    function testSpawnTemplate() {
+        var templateLink = 'http://daviseford.com/sites/default/files/email_templater/txt/ad_preview.htm';
+        var templateLoader;
+        function getTemplate(src) {
+            return $.get(src, function (value) {
+                templateLoader  = $.templates(value);
+            });
+        }
+        $.when(
+            getTemplate(templateLink)
+        ).then(function () {
+                var html = templateLoader.render(templateContainer);
+                //$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
+                $("#testingDiv1").html(sanitizeRender(html)); //Renders the HTML version of the email
+                makeEmailBtn(); //take this out if it gets abused
+            }).fail(function () {
+                console.log("testspawnTemplate(" + tmplLink + "): Something went wrong!");
+            });
+    }
 
     function sendEmail() {
         var x = $("#resultsTextArea").val();
@@ -998,30 +1067,6 @@ $(document).ready(function () {
                 console.log("spawnTemplate(" + tmplLink + "): Something went wrong!");
             });
     }
-
-    //TODO this is supposed to build an ad template within index_html (you'll find it)
-    //TODO you're just going to iterate over ad_preview as normal
-    //TODO figure out/remember the call to get the correct preview. Or amybe this is already set. did I try this?
-    function testSpawnTemplate() {
-        var templateLink = 'http://daviseford.com/sites/default/files/email_templater/txt/ad_preview.htm';
-        var templateLoader;
-        function getTemplate(src) {
-            return $.get(src, function (value) {
-                templateLoader  = $.templates(value);
-            });
-        }
-        $.when(
-            getTemplate(templateLink)
-        ).then(function () {
-                var html = templateLoader.render(templateContainer);
-                //$("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
-                $("#testingDiv1").html(sanitizeRender(html)); //Renders the HTML version of the email
-                makeEmailBtn(); //take this out if it gets abused
-            }).fail(function () {
-                console.log("testspawnTemplate(" + tmplLink + "): Something went wrong!");
-            });
-    }
-
 
     function makeProductMenu(x) {
         var setupMenu ='<label for="productSelect">STEP 4<br />Select a Product</label><br><select name="productSelect" id="productSelect"><option value="" selected="selected">None</option>';
