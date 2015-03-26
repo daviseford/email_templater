@@ -999,6 +999,9 @@ $(document).ready(function () {
             });
     }
 
+    //TODO this is supposed to build an ad template within index_html (you'll find it)
+    //TODO you're just going to iterate over ad_preview as normal
+    //TODO figure out/remember the call to get the correct preview. Or amybe this is already set. did I try this?
     function testSpawnTemplate() {
         var templateLink = 'http://daviseford.com/sites/default/files/email_templater/txt/ad_preview.htm';
         var templateLoader;
