@@ -287,6 +287,21 @@ $(document).ready(function () {
                 }
             }
         },
+        PREZ: {
+            link: 'http://americanlibertypac.com/madness-round-2/',
+            shortCode: 'PREZ',
+            longCode: 'Presidential Madness 2015',
+            advertisements: {
+                0: {
+                    name: 'PREZ1',
+                    description: 'Banner (Blue Text)'
+                },
+                1: {
+                    name: 'PREZ2',
+                    description: 'Banner (Red Text)'
+                }
+            }
+        },
         PPP: {
             link: 'http://americanlibertypac.com/2016-presidential-preference-poll-2/',
             shortCode: 'PPP',
@@ -1200,7 +1215,14 @@ $(document).ready(function () {
                         $('#title3').val(resultsHolder[e].title);
                         $('#title3URL').val(resultsHolder[e].link);
                     } else {
-                        alert('Additional Content Not Enabled!');
+                        swal({
+                            title: "Whoa There!",
+                            text: "Additional Content Hasn't Been Enabled",
+                            type: "error",
+                            allowOutsideClick: "true",
+                            timer: "1500",
+                            confirmButtonText: "Gotcha"
+                        });
                     }
                 });
                 $('#rss4Btn'+e).click(function () {
@@ -1208,7 +1230,14 @@ $(document).ready(function () {
                         $('#title4').val(resultsHolder[e].title);
                         $('#title4URL').val(resultsHolder[e].link);
                     } else {
-                        alert('Additional Content Not Enabled!');
+                        swal({
+                            title: "Whoa There!",
+                            text: "Additional Content Hasn't Been Enabled",
+                            type: "error",
+                            allowOutsideClick: "true",
+                            timer: "1500",
+                            confirmButtonText: "Gotcha"
+                        });
                     }
                 });
 
@@ -1245,7 +1274,7 @@ $(document).ready(function () {
                         //content.innerHTML = e.content;
                         //var images = $(content).find('img').map(function () {
                         //    return $(this).attr('src');
-                        //}).get(); //TODO backup
+                        //}).get(); // backup of how this used to work
 
 
                         //this chunk grabs img src values from the RSS feed
@@ -1260,8 +1289,8 @@ $(document).ready(function () {
                         //console.log('imgSrc = ' + images[0]);
                         //console.log('imgW = ' + images[1]);
                         //console.log('imgH = ' + images[2]);
-                        //TODO I've disabled this functionality for a few reasons
-                        //1.) Breaks the div container that it spawns in. TODO Maybe look into Flexbox for making these containers?
+                        //I've disabled this functionality for a few reasons
+                        //1.) Breaks the div container that it spawns in. Maybe look into Flexbox for making these containers?
                         //function getImageSize(currentWidth, currentHeight) {
                         //    var maxWidth = 75; // Max width for the image
                         //    var maxHeight = 75;    // Max height for the image
@@ -1333,7 +1362,6 @@ $(document).ready(function () {
                 }
             }
         }).done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
-            //TODO perhaps add the "Generate RSS" button back after generating.
             var joinRSS = formatStorage.join('');
             $('#rssPreviewGeneral').html(joinRSS);
             function buttonUpdateField(e) {
@@ -1356,7 +1384,14 @@ $(document).ready(function () {
                         $('#title3URL').val(rssObject[e].link);
                         $('#title3IMG').val(rssObject[e].imgsrc);
                     } else {
-                        alert('Additional Content Not Enabled!');
+                        swal({
+                            title: "Whoa There!",
+                            text: "Additional Content Hasn't Been Enabled",
+                            type: "error",
+                            allowOutsideClick: "true",
+                            timer: "1500",
+                            confirmButtonText: "Gotcha"
+                        });
                     }
                 });
                 $('#rss4Btn'+e).click(function () {
@@ -1366,7 +1401,14 @@ $(document).ready(function () {
                         $('#title4URL').val(rssObject[e].link);
                         $('#title4IMG').val(rssObject[e].imgsrc);
                     } else {
-                        alert('Additional Content Not Enabled!');
+                        swal({
+                            title: "Whoa There!",
+                            text: "Additional Content Hasn't Been Enabled",
+                            type: "error",
+                            allowOutsideClick: "true",
+                            timer: "1500",
+                            confirmButtonText: "Gotcha"
+                        });
                     }
                 });
 
@@ -1435,7 +1477,14 @@ $(document).ready(function () {
                         $('#title3text-div').html(rssObject[e].description);
                         $('#title3URL').val(rssObject[e].link);
                     } else {
-                        alert('Additional Content Not Enabled!');
+                        swal({
+                            title: "Whoa There!",
+                            text: "Additional Content Hasn't Been Enabled",
+                            type: "error",
+                            allowOutsideClick: "true",
+                            timer: "1500",
+                            confirmButtonText: "Gotcha"
+                        });
                     }
                 });
                 $('#rss4Btn'+e).click(function () {
@@ -1444,7 +1493,14 @@ $(document).ready(function () {
                         $('#title4text-div').html(rssObject[e].description);
                         $('#title4URL').val(rssObject[e].link);
                     } else {
-                        alert('Additional Content Not Enabled!');
+                        swal({
+                            title: "Whoa There!",
+                            text: "Additional Content Hasn't Been Enabled",
+                            type: "error",
+                            allowOutsideClick: "true",
+                            timer: "1500",
+                            confirmButtonText: "Gotcha"
+                        });
                     }
                 });
 
