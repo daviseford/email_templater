@@ -949,11 +949,25 @@ $(document).ready(function () {
             }
         }
 
+    //resizeAdPreview is an attempt to resize ad images served on the fly for ad preview.
+    //Since some of the banner ads are 580px wide, it's too big for a quick preview
+    //So we're going to resize (hopefully) any images in the container, after it's been spawned
+    function resizeAdPreview () {
+        var adImg = $('#testingDiv1').find('img');
+        console.log('resizeAdPreview.adimg = ' + adImg);
+        adImg.attr({
+            width: '75',
+            height: '75'
+        });
+    }
+
+
     $('#getAdPreview')
         .button()
         .click(function(){
             testAdPreview();
             testSpawnTemplate();
+            resizeAdPreview();
             console.log('u know what it is = ' + templateContainer.currentProduct.template)
         });
 
