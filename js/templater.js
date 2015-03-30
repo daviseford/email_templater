@@ -466,7 +466,7 @@ $(document).ready(function () {
     }
 
     templateContainer = {
-        storyTrack: [false, false, false, false], //initialize with all stories turned off.
+        //storyTrack: [false, false, false, false], //initialize with all stories turned off.
         keycode: makeKeyCodeTest(),//templateContainer will eventually be the one stop shop for all constant variables
         ALPAC: {                //we start with the client name
             DB: {               //type of template (usually DB or MR)
@@ -508,11 +508,30 @@ $(document).ready(function () {
                     return y;
                 }
             },
+            WIR: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_wir_Tmpl.htm',
+                emailCode: 'WIR',
+                shortCode: 'ALPACWIR',
+                longCode: 'Week In Review',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://americanlibertypac.com/feed/' + '?nocache=' + ((new Date).getTime()),
+                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            },
             XL: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_xl_Tmpl.htm',
                 emailCode: 'XL',
                 shortCode: 'ALPACXL',
-                longCode: 'XL Edition',
+                longCode: 'XL Edition (Buggy)',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
