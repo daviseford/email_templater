@@ -558,7 +558,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://minutemanproject.com/feed/' + '?nocache=' + ((new Date).getTime()), //added nocache to deal with old RSS entries
+                rssFeed: 'http://minutemanproject.com/feed/',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
@@ -577,7 +577,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://minutemanproject.com/feed/' + '?nocache=' + ((new Date).getTime()),
+                rssFeed: 'http://minutemanproject.com/feed/',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
