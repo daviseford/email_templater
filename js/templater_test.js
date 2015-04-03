@@ -1044,6 +1044,14 @@ $(document).ready(function () {
         }).done(function() {
             $('#emailHTML').text('Email Sent!').effect('highlight', 'fast');
         });
+        $.ajax
+        ({
+            type: "POST",
+            url: "http://daviseford.com/sites/all/uploads/counter/download.php",
+            dataType: 'text',
+            data: y,
+            cache: false
+        });
     }
 
 
