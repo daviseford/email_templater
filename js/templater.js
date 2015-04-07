@@ -478,6 +478,7 @@ $(document).ready(function () {
         $("#keycodeInput")
             .val(x)
             .effect('highlight', 'slow');
+        $('#keycodeHiddenForm').val(x); //this updates the hidden form in resultsContainer2. Our PHP script uses this value to name the downloaded .html file.
     }
 
     templateContainer = {
@@ -955,10 +956,16 @@ $(document).ready(function () {
         $("#emailHTML")
             .button()
             .show()
-            .click(function() {
+            .mouseup(function() {
                 sendEmail();
             });
     }
+
+    $('#downloadHTMLBtn')
+        .button()
+        .click(function(){
+            $('#downloadForm').submit();
+        });
 
     function sendEmail() {
         var x = $("#resultsTextArea").val();
@@ -1741,8 +1748,9 @@ $(document).ready(function () {
             var dataNum = parseInt(data);
             var a = (Math.floor(dataNum * 19))/60;
             var estimateTimeSaved = Math.floor(a);
-            var insertText = '<center><p class="bg-info">This application has been used <strong>' + data + '</strong> times.<br/>Time saved (approx): <strong>' + estimateTimeSaved + '</strong> hours</p></center>';
-            counterDiv.html(insertText);
+            var insertText2 = '<ul class="list-group"><li class="list-group-item"><span class="badge">'+data+'</span>Times Used: </li><li class="list-group-item"><span class="badge">'+estimateTimeSaved+'</span>Hours Saved: </li></ul>';
+            var insertText = '<center><p class="bg-info">This application has been used <strong>' + data + '</strong> times.<br/>Time saved: <strong>' + estimateTimeSaved + '</strong> hours</p></center>';
+            counterDiv.html(insertText2);
         });
     }
     function makeCopyButton(){

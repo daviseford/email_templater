@@ -448,6 +448,7 @@ $(document).ready(function () {
         $("#keycodeInput")
             .val(x)
             .effect('highlight', 'slow');
+        $('#keycodeBottomForm').val(x);
     }
 
     templateContainer = {
@@ -961,6 +962,12 @@ $(document).ready(function () {
         });
     }
 
+    $('#downloadTest')
+        .button()
+        .click(function(){
+            $('#downloadForm').submit();
+        });
+
 
     $('#getAdPreview')
         .button()
@@ -999,6 +1006,7 @@ $(document).ready(function () {
         var z = $("#keycodeInput").val();
         var y = S(x).unescapeHTML().s;
         z = z.toUpperCase();
+        var jsonStuff = y.
         $.ajax({
             type: "POST",
             dataType: "text",

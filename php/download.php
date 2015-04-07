@@ -1,6 +1,8 @@
 <?php
-$filename = 'download.html';
-$content = $_POST["data"];
+$content = $_POST["resultsTextArea"];
+$keycode = $_POST["keycodeHiddenForm"];
+
+$filename = $keycode . ".html";
 
 header("Cache-Control: public");
 header("Content-Description: File Transfer");

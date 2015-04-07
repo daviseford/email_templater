@@ -59,7 +59,7 @@
             <label for="keycodeInput" class="hidden-xs">Keycode</label>
             <input class="form-control hidden-xs" type="text" id="keycodeInput" name="title1KEY" placeholder="This field will be automatically generated."/>
             <br />
-            <br />
+            <br />            
             <br />
 
             <center>
@@ -132,12 +132,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <center>
-                    <br />
-                    <p class="alert-info">Use the button below to copy and paste the code below into SmartFocus.</p>
-                    <button class="btn btn-info btn-lg" id="copy-button" data-clipboard-target="resultsTextArea" title="Click to copy email HTML.">Copy to Clipboard</button>
+                    <br />                    
                     <br />
                     <br />
-                    <textarea id="resultsTextArea" rows="10" class="form-control" cols="10"></textarea>
+                    <form action="php/download.php" method="post" id="downloadForm">
+                    <textarea id="resultsTextArea" rows="10" class="form-control" cols="10" name="tofile" value="12345"></textarea>
+                    <input type="hidden" name="keycodeBottomForm" id="keycodeBottomForm" />
+                    </form>
                 </center>
             </div>
         </div>
@@ -147,7 +148,25 @@
         <div class="col-lg-12" id="emailBtnDiv">
             <center>
                 <br />
-                <p><button class="btn btn-primary btn-lg" id="emailHTML">Submit Email</button></p>
+                <p>
+                
+                <button class="btn btn-default btn-md" id="copy-button" data-clipboard-target="resultsTextArea" title="Click to copy email HTML.">
+                <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+                Copy to Clipboard</button>
+                
+                <button type="button" class="btn btn-default btn-md" id="downloadTest">
+  <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+  Download
+</button>
+                
+                <button class="btn btn-default btn-md" id="emailHTML">
+                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                Send to Dropbox</button>
+                
+                
+                
+                
+                </p>
                 <p>This button will upload this email to Dropbox, and send Davis a copy.
                     <br />Please don't abuse it</p>
             </center>
