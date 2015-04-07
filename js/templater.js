@@ -1743,7 +1743,7 @@ $(document).ready(function () {
     //the counter script is located.. well, you can figure it out
     //credit: http://www.phpjunkyard.com/php-text-hit-counter.php
     function usageCounter() {
-        $.get( "http://daviseford.com/sites/all/uploads/counter/counter.php?page=templaterCounter", function( data ) {
+        $.get( "http://daviseford.com/sites/default/files/email_templater/php/counter.php?page=templaterCounter", function( data ) {
             var counterDiv = $('#counterDiv');
             var dataNum = parseInt(data);
             var a = (Math.floor(dataNum * 19))/60;
