@@ -1,4 +1,6 @@
 // JavaScript Document
+//TODO change background of RSS. Maybe masonry?
+
 $(document).ready(function () {
     //*******************************
     // DOCUMENT AND VAR SETUP
@@ -1252,34 +1254,14 @@ $(document).ready(function () {
                     $('#title2URL').val(resultsHolder[e].link);
                 });
                 $('#rss3Btn'+e).click(function () {
-                    if (additionalContentVal === true) {
-                        $('#title3').val(resultsHolder[e].title);
-                        $('#title3URL').val(resultsHolder[e].link);
-                    } else {
-                        swal({
-                            title: "Whoa There!",
-                            text: "Additional Content Hasn't Been Enabled",
-                            type: "error",
-                            allowOutsideClick: "true",
-                            timer: "1500",
-                            confirmButtonText: "Gotcha"
-                        });
-                    }
+                    enableAdditionalContent();
+                    $('#title3').val(resultsHolder[e].title);
+                    $('#title3URL').val(resultsHolder[e].link);
                 });
                 $('#rss4Btn'+e).click(function () {
-                    if (additionalContentVal === true) {
-                        $('#title4').val(resultsHolder[e].title);
-                        $('#title4URL').val(resultsHolder[e].link);
-                    } else {
-                        swal({
-                            title: "Whoa There!",
-                            text: "Additional Content Hasn't Been Enabled",
-                            type: "error",
-                            allowOutsideClick: "true",
-                            timer: "1500",
-                            confirmButtonText: "Gotcha"
-                        });
-                    }
+                    enableAdditionalContent();
+                    $('#title4').val(resultsHolder[e].title);
+                    $('#title4URL').val(resultsHolder[e].link);
                 });
 
             }
@@ -1419,38 +1401,16 @@ $(document).ready(function () {
                     $('#title2IMG').val(rssObject[e].imgsrc);
                 });
                 $('#rss3Btn'+e).click(function () {
-                    if (additionalContentVal === true) {
-                        $('#title3').val(rssObject[e].title);
-                        $('#title3text-div').html(rssObject[e].description);
-                        $('#title3URL').val(rssObject[e].link);
-                        $('#title3IMG').val(rssObject[e].imgsrc);
-                    } else {
-                        swal({
-                            title: "Whoa There!",
-                            text: "Additional Content Hasn't Been Enabled",
-                            type: "error",
-                            allowOutsideClick: "true",
-                            timer: "1500",
-                            confirmButtonText: "Gotcha"
-                        });
-                    }
+                    enableAdditionalContent();
+                    $('#title3').val(rssObject[e].title);
+                    $('#title3text-div').html(rssObject[e].description);
+                    $('#title3URL').val(rssObject[e].link);
                 });
                 $('#rss4Btn'+e).click(function () {
-                    if (additionalContentVal === true) {
-                        $('#title4').val(rssObject[e].title);
-                        $('#title4text-div').html(rssObject[e].description);
-                        $('#title4URL').val(rssObject[e].link);
-                        $('#title4IMG').val(rssObject[e].imgsrc);
-                    } else {
-                        swal({
-                            title: "Whoa There!",
-                            text: "Additional Content Hasn't Been Enabled",
-                            type: "error",
-                            allowOutsideClick: "true",
-                            timer: "1500",
-                            confirmButtonText: "Gotcha"
-                        });
-                    }
+                    enableAdditionalContent();
+                    $('#title4').val(rssObject[e].title);
+                    $('#title4text-div').html(rssObject[e].description);
+                    $('#title4URL').val(rssObject[e].link);
                 });
 
 
@@ -1513,37 +1473,19 @@ $(document).ready(function () {
                     $('#title2URL').val(rssObject[e].link);
                 });
                 $('#rss3Btn'+e).click(function () {
-                    if (additionalContentVal === true) {
+                        enableAdditionalContent();
                         $('#title3').val(rssObject[e].title);
                         $('#title3text-div').html(rssObject[e].description);
                         $('#title3URL').val(rssObject[e].link);
-                    } else {
-                        swal({
-                            title: "Whoa There!",
-                            text: "Additional Content Hasn't Been Enabled",
-                            type: "error",
-                            allowOutsideClick: "true",
-                            timer: "1500",
-                            confirmButtonText: "Gotcha"
-                        });
                     }
-                });
+                );
                 $('#rss4Btn'+e).click(function () {
-                    if (additionalContentVal === true) {
+                        enableAdditionalContent();
                         $('#title4').val(rssObject[e].title);
                         $('#title4text-div').html(rssObject[e].description);
                         $('#title4URL').val(rssObject[e].link);
-                    } else {
-                        swal({
-                            title: "Whoa There!",
-                            text: "Additional Content Hasn't Been Enabled",
-                            type: "error",
-                            allowOutsideClick: "true",
-                            timer: "1500",
-                            confirmButtonText: "Gotcha"
-                        });
                     }
-                });
+                );
 
             }
             for(var n=0; n < 9; n++){
@@ -1668,10 +1610,26 @@ $(document).ready(function () {
     }
     additionalContentBuilder(1,2, $('#choiceRow')); //builds our initial story section
 
+
+    function enableAdditionalContent () {
+        var i = $('#choiceRow2');
+        additionalContentVal = true;
+        var checkbox = $('#additionalContentCheckbox');
+        checkbox.prop('checked', true);
+        console.log("Additional Content: "+additionalContentVal);
+        additionalContentBuilder(3,4, i);
+        i.show();
+    };
+
+    function disableAdditionalContent() {
+        additionalContentVal = false;
+        console.log("Additional Content: "+additionalContentVal);
+        $('#choiceRow2').hide();
+    }
     //If this is checked, adds the second story box
     $('#additionalContentCheckbox').click(function(){
+        var i = $('#choiceRow2');
         if (this.checked) {
-            var i = $('#choiceRow2');
             additionalContentVal = true;
             console.log("Additional Content: "+additionalContentVal);
             additionalContentBuilder(3,4, i);
@@ -1679,7 +1637,7 @@ $(document).ready(function () {
         } else {
             additionalContentVal = false;
             console.log("Additional Content: "+additionalContentVal);
-            $('#choiceRow2').hide();
+            i.hide();
         }
     });
 
@@ -1774,6 +1732,22 @@ $(document).ready(function () {
         } );
     }
 
+    function makeCopyKeycodeButton(){
+        var client = new ZeroClipboard($("#copyKeycode-button"));
+        client.on( "ready", function( readyEvent ) {
+            client.on( "aftercopy", function( event ) {
+                swal({
+                    title: event.data["text/plain"],
+                    text: "The Keycode has been copied to your clipboard",
+                    type: "success",
+                    allowOutsideClick: "true",
+                    timer: "1000",
+                    showConfirmButton: "false"
+                });
+            } );
+        } );
+    }
+
 
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
@@ -1791,6 +1765,7 @@ $(document).ready(function () {
                     makeKeyCodeTest();
                     compileEmail(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
                     makeCopyButton();
+                    makeCopyKeycodeButton();
                     usageCounter();
                 }, 500);
             }
