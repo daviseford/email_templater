@@ -22,443 +22,66 @@ $(document).ready(function () {
     imgHeight = []; //global image container
     imgWidth = [];
 
-    var adReferenceILN = {
+    var adReferenceDEMO2 = {
         IMG: {
-            link: 'http://www.independentlivingnews.com/video/usr-vsl.php',
-            shortCode: 'USR',
-            longCode: 'Ultimate Self Reliance Manual',
+            link: 'http://www.daviseford.com/',
+            shortCode: 'IMG',
+            longCode: 'Banner Advertisements',
             advertisements: {
                 0: {
-                    name: 'USR1',
-                    description: "Image with copy"
+                    name: 'IMG1',
+                    description: "Banner 450x150"
                 },
                 1: {
-                    name: 'USR2',
-                    description: "GIF 468x80"
+                    name: 'IMG2',
+                    description: "Banner 580x90"
                 },
                 2: {
-                    name: 'USR3',
-                    description: 'Image with copy (2)'
+                    name: 'IMG3',
+                    description: 'Banner 250x250'
                 }
             }
         },
-        GAB: {
-            link: 'http://www.independentlivingnews.com/video/great-american-blackout-ihnp.php',
-            shortCode: 'GAB',
-            longCode: 'Great American Blackout',
+        TEXT: {
+            link: 'http://www.daviseford.com/',
+            shortCode: 'TEXT',
+            longCode: 'Native (In-line) Advertising',
             advertisements: {
                 0: {
-                    name: 'GAB1',
-                    description: 'Image with copy'
-                }
-            }
-        },
-        FOOD: {
-            link: 'http://www.independentlivingnews.com/video/comfort-food-reserve.php',
-            shortCode: 'FOOD',
-            longCode: '30 Day Emergency Food Reserve',
-            advertisements: {
-                0: {
-                    name: 'FOOD1',
-                    description: 'Banner 580x58'
-                },
-                1: {
-                    name: 'FOOD2',
-                    description: 'Banner 580x58'
-                },
-                2: {
-                    name: 'FOOD3',
-                    description: 'Banner 580x58'
-                }
-            }
-        },
-        CSG: {
-            link: 'https://www.independentlivingnews.com/video/csg-video.php',
-            shortCode: 'CSG',
-            longCode: 'Colloidal Silver Generator',
-            advertisements: {
-                0: {
-                    name: 'CSG1',
-                    description: "Banner 580x58"
-                },
-                1: {
-                    name: 'CSG2',
-                    description: "Image with copy"
-                }
-            }
-        },
-        LPL: {
-            link: 'http://www.independentlivingnews.com/video/lpl-video.php',
-            shortCode: 'LPL',
-            longCode: 'Low Profile Living Manual',
-            advertisements: {
-                0: {
-                    name: 'LPL1',
-                    description: "Image with copy"
-                },
-                1: {
-                    name: 'LPL2',
-                    description: "Banner 580x58"
-                }
-            }
-        },
-        EPACK: {
-            link: 'http://www.independentlivingnews.com/video/epack2-video.php',
-            shortCode: 'EPACK',
-            longCode: 'Emergency Pack',
-            advertisements: {
-                0: {
-                    name: 'EPACK1',
-                    description: "Image with copy"
-                },
-                1: {
-                    name: 'EPACK2',
-                    description: "Banner 580x58"
-                },
-                2: {
-                    name: 'EPACK3',
-                    description: 'EPACK - Banner 580x58'
-                },
-                3: {
-                    name: 'EPACK4',
-                    description: 'EPACK - GIF 580x75'
-                }
-            }
-        },
-        STREK: {
-            link: 'http://www.independentlivingnews.com/video/suntrek/',
-            shortCode: 'STREK',
-            longCode: 'Sun Trek',
-            advertisements: {
-                0: {
-                    name: 'STREK1',
-                    description: "Image with copy"
-                },
-                1: {
-                    name: 'STREK2',
-                    description: "Banner (Holiday Theme)"
-                }
-            }
-        },
-        MSR: {
-            link: 'http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html',
-            shortCode: 'MSR',
-            longCode: 'Medical Self Reliance Mega Manual',
-            advertisements: {
-                0: {
-                    name: 'MSR1',
-                    description: "GIF 468x60"
-                },
-                1: {
-                    name: 'MSR2',
-                    description: "Image with copy"
-                }
-            }
-
-        },
-        FFL: {
-            link: 'http://www.independentlivingnews.com/video/ffl-vsl.php',
-            shortCode: 'FFL',
-            longCode: 'Freedom Fortress Library',
-            advertisements: {
-                0: {
-                    name: 'FFL1',
-                    description: "Image with copy"
-                }
-            }
-        },
-        XCOM: {
-            link: 'http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html',
-            shortCode: 'XCOM',
-            longCode: 'Extreme Weather Combo',
-            advertisements: {
-                0: {
-                    name: 'XCOM1',
-                    description: "Image with copy"
-                },
-                1: {
-                    name: 'XCOM2',
-                    description: "Banner (White + Green)"
-                }
-            }
-        },
-        PW: {
-            link: 'http://www.independentlivingnews.com/video/pw-vsl.php',
-            shortCode: 'PW',
-            longCode: 'Power Whisperer',
-            advertisements: {
-                0: {
-                    name: 'PW1',
-                    description: "Image with copy"
-                },
-                1: {
-                    name: 'PW2',
-                    description: "Banner 580x58"
-                }
-            }
-        },
-        CAN: {
-            link: 'http://www.survivalproshop.com/survival-essentials/survival-kit-in-a-can.html',
-            shortCode: 'CAN',
-            longCode: 'Survival Can in a Kit',
-            advertisements: {
-                0: {
-                    name: 'CAN1',
-                    description: 'Image with copy'
-                }
-            }
-        },
-        SUB: {
-            link: 'http://www.independentlivingnews.com/signup/membership.stml',
-            shortCode: 'SUB',
-            longCode: 'Subscription to Independent Living News',
-            advertisements: {
-                0: {
-                    name: 'SUB1',
-                    description: 'Image with copy'
-                },
-                1: {
-                    name: 'SUB2',
-                    description: 'Smaller Image with copy'
+                    name: 'TEXT1',
+                    description: 'Native Advertising'
                 }
             }
         }
     };
-    var adReferenceWJMA = {
-        ALPAC: {
-            link: 'http://americanlibertypac.com',
-            shortCode: 'ALPAC',
-            longCode: 'General ALPAC Ads',
+    var adReferenceDEMO = {
+        IMG: {
+            link: 'http://www.daviseford.com/',
+            shortCode: 'IMG',
+            longCode: 'Banner Advertisements',
             advertisements: {
                 0: {
-                    name: 'ALPAC1',
-                    description: 'Twitter Banner',
-                    link: 'https://twitter.com/uslibertypac'
+                    name: 'IMG1',
+                    description: "Banner 450x150"
                 },
                 1: {
-                    name: 'ALPAC2',
-                    description: 'Facebook Banner',
-                    link: 'https://www.facebook.com/AmericanLibertyPAC'
+                    name: 'IMG2',
+                    description: "Banner 580x90"
                 },
                 2: {
-                    name: 'ALPAC3',
-                    description: 'Pinterest Banner',
-                    link: 'https://www.pinterest.com/amlibpac/'
-                },
-                3: {
-                    name: 'ALPAC4',
-                    description: 'RallyCongress - Audit the Fed',
-                    link: 'http://americanlibertypac.rallycongress.com/17525/rand-is-right-its-time-to-audit-fed-passs-264/'
-                },
-                4: {
-                    name: 'ALPAC5',
-                    description: 'RallyCongress - Benghazi',
-                    link: 'http://americanlibertypac.rallycongress.com/17526/message-to-obama-tell-truth-whole-truth-nothing-but-truth/'
-                },
-                5: {
-                    name: 'ALPAC6',
-                    description: 'RallyCongress - Obamacare Bailout',
-                    link: 'http://americanlibertypac.rallycongress.com/17528/stop-an-obamacare-bailout/'
+                    name: 'IMG3',
+                    description: 'Banner 250x250'
                 }
             }
         },
-        CRNPOLL: {
-            link: 'http://conservativerepublicannews.com',
-            shortCode: 'CRNPOLL',
-            longCode: 'CRN Polls',
+        TEXT: {
+            link: 'http://www.daviseford.com/',
+            shortCode: 'TEXT',
+            longCode: 'Native (In-line) Advertising',
             advertisements: {
                 0: {
-                    name: 'CRNPOLL1',
-                    description: 'Is it time to go after ISIS?',
-                    link: 'http://conservativerepublicannews.com/poll-is-it-time-to-go-after-isis/'
-                },
-                1: {
-                    name: 'CRNPOLL2',
-                    description: 'Do you trust the Mainstream Media?',
-                    link: 'http://conservativerepublicannews.com/poll-do-you-trust-the-media/'
-                },
-                2: {
-                    name: 'CRNPOLL3',
-                    description: 'Obama Impeachment',
-                    link: 'http://conservativerepublicannews.com/poll-impeach-obama/'
-                },
-                3: {
-                    name: 'CRNPOLL4',
-                    description: 'Do You Trust The IRS?',
-                    link: 'http://conservativerepublicannews.com/poll-do-you-trust-the-irs/'
-                },
-                4: {
-                    name: 'CRNPOLL5',
-                    description: 'Do You Think Social Security Is Running Out?',
-                    link: 'http://conservativerepublicannews.com/poll-do-you-think-social-security-is-running-out/'
-                },
-                5: {
-                    name: 'CRNPOLL6',
-                    description: 'Should Kids Be Vaccinated?',
-                    link: 'http://conservativerepublicannews.com/poll-should-kids-be-vaccinated/'
-                },
-                6: {
-                    name: 'CRNPOLL7',
-                    description: 'Will Obama Declare Martial Law?',
-                    link: 'http://conservativerepublicannews.com/poll-obama-martial-law/'
-                }
-            }
-        },
-        PREZ: {
-            link: 'http://americanlibertypac.com/madness-round-2/',
-            shortCode: 'PREZ',
-            longCode: 'Presidential Madness 2015',
-            advertisements: {
-                0: {
-                    name: 'PREZ1',
-                    description: 'Banner (Blue Text)'
-                },
-                1: {
-                    name: 'PREZ2',
-                    description: 'Banner (Red Text)'
-                }
-            }
-        },
-        PPP: {
-            link: 'http://americanlibertypac.com/2016-presidential-preference-poll-2/',
-            shortCode: 'PPP',
-            longCode: 'Presidential Preference Poll 2016',
-            advertisements: {
-                0: {
-                    name: 'PPP1',
-                    description: 'Rand Paul | Mitt Romney'
-                },
-                1: {
-                    name: 'PPP2',
-                    description: 'Jeb Bush | Scott Walker'
-                },
-                2: {
-                    name: 'PPP3',
-                    description: 'Mike Lee | Rand Paul'
-                },
-                3: {
-                    name: 'PPP4',
-                    description: 'Scott Walker | Ben Carson'
-                },
-                4: {
-                    name: 'PPP5',
-                    description: 'Rand Paul | Ted Cruz'
-                }
-            }
-        },
-        HILL: {
-            link: 'https://secure.yourpatriot.com/ou/alpac/1826/donate.aspx',
-            shortCode: 'HILL',
-            longCode: 'Not Ready For Hillary',
-            advertisements: {
-                0: {
-                    name: 'HILL1',
-                    description: 'Bumper Sticker (350x137)'
-                },
-                1: {
-                    name: 'HILL2',
-                    description: 'Bumper Sticker (500x196)'
-                },
-                2: {
-                    name: 'HILL3',
-                    description: 'Grey Square Ad'
-                },
-                3: {
-                    name: 'HILL4',
-                    description: 'Black Square Ad'
-                }
-            }
-
-        },
-        STICKER: {
-            link: 'https://secure.yourpatriot.com/ou/alpac/1761/donate.aspx',
-            shortCode: 'STICKER',
-            longCode: 'ALPAC Bumper Stickers',
-            advertisements: {
-                0: {
-                    name: 'STICKER1',
-                    description: 'Freedom Sticker'
-                },
-                1: {
-                    name: 'STICKER2',
-                    description: 'Fire the Liars Sticker'
-                },
-                2: {
-                    name: 'STICKER3',
-                    description: 'Rand 2016 Sticker'
-                },
-                3: {
-                    name: 'STICKER4',
-                    description: 'Rand 2016 Bumper Sticker'
-                },
-                4: {
-                    name: 'STICKER5',
-                    description: 'Reboot America Draft Rand Paul'
-                }
-            }
-        },
-        JGM: {
-            link: 'https://minutemanproject.com/donate-2/',
-            shortCode: 'JGM',
-            longCode: 'JGM General Ads',
-            advertisements: {
-                0: {
-                    name: 'JGM1',
-                    description: 'Secure The Border Sticker'
-                },
-                1: {
-                    name: 'JGM2',
-                    description: 'Twitter Banner',
-                    link: 'http://twitter.com/jgmmp'
-                },
-                2: {
-                    name: 'JGM3',
-                    description: 'Facebook Banner',
-                    link: 'https://www.facebook.com/MinutemanProjectNews'
-                },
-                3: {
-                    name: 'JGM4',
-                    description: 'Inline - Revoke Executive Action',
-                    link: 'http://minutemanproject.rallycongress.com/17465/citizens-demand-to-congress-to-revoke-obamas-executive-action/'
-                }
-            }
-        },
-        RAND: {
-            link: 'https://presidentrand.com',
-            shortCode: 'RAND',
-            longCode: 'Draft Rand Paul',
-            advertisements: {
-                0: {
-                    name: 'RAND1',
-                    description: 'Reboot America',
-                    link: 'http://americanlibertypac.com/draft-rand-paul-for-president/'
-                },
-                1: {
-                    name: 'RAND2',
-                    description: 'Grassroots For Rand',
-                    link: 'http://americanlibertypac.com/draft-rand-paul-for-president/'
-                }
-            }
-        },
-        SAA: {
-            link: 'http://senioramericansassociation.com/', //default link to all sub-ads
-            shortCode: 'SAA',
-            longCode: 'Senior Americans Association',
-            advertisements: {
-                0: {
-                    name: 'SAA1',
-                    description: 'Facebook',
-                    link: 'https://www.facebook.com/SeniorAmericans' //this link overrides the default set above
-                },
-                1: {
-                    name: 'SAA2',
-                    description: 'Older Americans Act',
-                    link: 'http://senioramericansassociation.com/3004-2/' //this link overrides the default set above
-                },
-                2: {
-                    name: 'SAA3',
-                    description: 'Inline Coupon Ad',
-                    link: 'http://senioramericansassociation.com/savings-center/'
+                    name: 'TEXT1',
+                    description: 'Native Advertising'
                 }
             }
         }
@@ -484,19 +107,18 @@ $(document).ready(function () {
     }
 
     templateContainer = {
-        //storyTrack: [false, false, false, false], //initialize with all stories turned off.
         keycode: makeKeyCodeTest(),//templateContainer will eventually be the one stop shop for all constant variables
-        ALPAC: {                //we start with the client name
+        NOIMAGE: {                //we start with the client name
             DB: {               //type of template (usually DB or MR)
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm', //location of template file
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/demo/noimage_mr_Tmpl.htm', //location of template file
                 emailCode: 'DB',
-                shortCode: 'ALPACDB',
+                shortCode: 'NOIMAGEDB',
                 longCode: 'Daily Bulletin',
-                imgMaxWidth: 148,
-                imgMaxHeight: 148,
-                productMenu: adReferenceWJMA, //this stores the ads
-                rssFeed: 'http://americanlibertypac.com/feed' + '?nocache=' + ((new Date).getTime()),  //Nocache is important!
-                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
+                imgMaxWidth: '',
+                imgMaxHeight: '',
+                productMenu: adReferenceDEMO, //this stores the ads
+                rssFeed: 'http://www.economist.com/sections/business-finance/rss.xml' + '?nocache=' + ((new Date).getTime()),  //Nocache is important!
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/demo/TheEconomistLogo.jpg',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -508,53 +130,15 @@ $(document).ready(function () {
 
             },
             MR: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_mr_Tmpl.htm',
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/demo/noimage_mr_Tmpl.htm',
                 emailCode: 'MR',
-                shortCode: 'ALPACMR',
+                shortCode: 'NOIMAGEMR',
                 longCode: 'Must Read',
-                imgMaxWidth: 148,
-                imgMaxHeight: 148,
-                productMenu: adReferenceWJMA,
-                rssFeed: 'http://americanlibertypac.com/feed' + '?nocache=' + ((new Date).getTime()),
-                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
-                feedStyle: function() {
-                    getRSSWithImage(this.rssFeed);
-                },
-                utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
-                }
-            },
-            WIR: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_wir_Tmpl.htm',
-                emailCode: 'WIR',
-                shortCode: 'ALPACWIR',
-                longCode: 'Week In Review',
-                imgMaxWidth: 148,
-                imgMaxHeight: 148,
-                productMenu: adReferenceWJMA,
-                rssFeed: 'http://americanlibertypac.com/feed' + '?nocache=' + ((new Date).getTime()),
-                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
-                feedStyle: function() {
-                    getRSSWithImage(this.rssFeed);
-                },
-                utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
-                }
-            },
-            XL: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_xl_Tmpl.htm',
-                emailCode: 'XL',
-                shortCode: 'ALPACXL',
-                longCode: 'XL Edition (Buggy)',
-                imgMaxWidth: 148,
-                imgMaxHeight: 148,
-                productMenu: adReferenceWJMA,
-                rssFeed: 'http://americanlibertypac.com/feed' + '?nocache=' + ((new Date).getTime()),
-                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
+                imgMaxWidth: '',
+                imgMaxHeight: '',
+                productMenu: adReferenceDEMO, //this stores the ads
+                rssFeed: 'http://www.economist.com/sections/business-finance/rss.xml' + '?nocache=' + ((new Date).getTime()),  //Nocache is important!
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/demo/TheEconomistLogo.jpg',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -565,7 +149,7 @@ $(document).ready(function () {
                 }
             }
         },
-        CRN: {
+        IMAGE: {
             DB: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/crn_db_Tmpl.htm',
                 emailCode: 'DB',
@@ -573,9 +157,9 @@ $(document).ready(function () {
                 longCode: 'Daily Bulletin',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
-                productMenu: adReferenceWJMA,
-                rssFeed: 'http://conservativerepublicannews.com/feed' + '?nocache=' + ((new Date).getTime()),
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/crn_75x75.png',
+                productMenu: adReferenceDEMO,
+                rssFeed: 'http://www.economist.com/sections/business-finance/rss.xml' + '?nocache=' + ((new Date).getTime()),  //Nocache is important!
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/demo/TheEconomistLogo.jpg',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -583,148 +167,6 @@ $(document).ready(function () {
                     var x = makeKeyCodeTest();
                     var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
                     return y;
-                }
-            }
-        },
-        JGM: {
-            DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_db_Tmpl.htm',
-                emailCode: 'DB',
-                shortCode: 'JGMDB',
-                longCode: 'Daily Bulletin',
-                imgMaxWidth: 135,
-                imgMaxHeight: 135,
-                productMenu: adReferenceWJMA,
-                rssFeed: 'http://minutemanproject.com/feed/',
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
-                feedStyle: function () {
-                    getRSSWithImage(this.rssFeed);
-                },
-                utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
-                }
-            },
-            MR: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_mr_Tmpl.htm',
-                emailCode: 'MR',
-                shortCode: 'JGMMR',
-                longCode: 'Must Read',
-                imgMaxWidth: 135,
-                imgMaxHeight: 135,
-                productMenu: adReferenceWJMA,
-                rssFeed: 'http://minutemanproject.com/feed/',
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
-                feedStyle: function () {
-                    getRSSWithImage(this.rssFeed);
-                },
-                utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
-                }
-            }
-        },
-        SAA: {
-            DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_db_Tmpl.htm',
-                emailCode: 'DB',
-                shortCode: 'SAADB',
-                longCode: 'Daily Bulletin',
-                imgMaxWidth: 135,
-                imgMaxHeight: 135,
-                productMenu: adReferenceWJMA,
-                rssFeed: 'http://senioramericansassociation.com/feed' + '?nocache=' + ((new Date).getTime()),
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
-                feedStyle: function () {
-                    getRSSWithImage(this.rssFeed);
-                },
-                utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
-                }
-            },
-            MR: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_mr_Tmpl.htm',
-                emailCode: 'MR',
-                shortCode: 'SAAMR',
-                longCode: 'Must Read',
-                imgMaxWidth: 135,
-                imgMaxHeight: 135,
-                productMenu: adReferenceWJMA,
-                rssFeed: 'http://senioramericansassociation.com/feed' + '?nocache=' + ((new Date).getTime()),
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
-                feedStyle: function () {
-                    getRSSWithImage(this.rssFeed);
-                },
-                utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
-                }
-            }
-        },
-        ILN: {
-            DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/iln_db_Tmpl.htm',
-                emailCode: 'DB',
-                shortCode: 'ILNDB',
-                longCode: 'Daily Bulletin',
-                imgMaxWidth: '175',
-                imgMaxHeight: '175',
-                productMenu: adReferenceILN,
-                rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/iln_75x75.png',
-                feedStyle: function() {
-                    getILNAPI();
-                },
-                utmStyle: function() {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
-                    return y;
-                }
-            }
-        },
-        RFAR: {
-            DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/rfar_db_Tmpl.htm',
-                emailCode: 'DB',
-                shortCode: 'RFARDB',
-                longCode: 'Daily Bulletin',
-                imgMaxWidth: '130',
-                imgMaxHeight: '130',
-                productMenu: adReferenceILN,
-                rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/iln_75x75.png',
-                feedStyle: function() {
-                    getILNAPI();
-                },
-                utmStyle: function() {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
-                    return y;
-                }
-            }
-        },
-        LL: {
-            DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/ll_db_Tmpl.htm',
-                emailCode: 'DB',
-                shortCode: 'LLDB',
-                longCode: 'Daily Bulletin',
-                imgMaxWidth: '',
-                imgMaxHeight: '',
-                productMenu: '',
-                rssFeed: 'http://opportunities.theihs.org/rss.xml?&t[]=200&w=100',
-                defaultLogo: '',
-                feedStyle: function() {
-                    getRSSWithoutImage(this.rssFeed);
-                },
-                utmStyle: function() {
-                    //return blank. if we add a utm style, this is where it will go
-                    return '';
                 }
             }
         },
@@ -796,34 +238,9 @@ $(document).ready(function () {
         var subjectLine = $.trim($('#subjectInput').val());
         var keycode = makeKeyCodeTest();
 
-        var utmILN = templateContainer.ILN.DB.utmStyle();
-        var utmALPAC = templateContainer.ALPAC.DB.utmStyle();
-
         templateContainer.smartFocus = {       //we use the smartfocus section for constant values like unsubscribe links, privacy policies, etc.
             title: subjectLine,
-            keycode: keycode,
-            ALPAC: {
-                keycode: keycode,
-                advertise: '<a href="mailto:info@americanlibertypac.org" target="_top">ADVERTISE</a>',
-                subscribe: '<a href="http://americanlibertypac.com/join/" target="_blank">SUBSCRIBE</a>',
-                unsubscribe: '<a href="http://news.extras-americanlibertypac.com/LP/ZHpjXCznPeQ" target="_blank">Unsubscribe</a> (You will be missed!)',
-                privacy: '<a href="http://conservativeemail.com/privacy-policy.html" target="_blank">View our policy.</a>',
-                alpacHeader: '<a href="http://www.americanlibertypac.com' + utmALPAC + '" target="new"><img src="http://p5tre.emv3.com/IL/0/0/1/1101054001/1686937737.gif" alt="American Liberty PAC" width="580" height="108" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block;" align="left" />'
-
-            },
-            ALP: {
-                keycode: keycode,
-                safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmILN + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
-                prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycode + '-P" linkname="Email Preferences">Email Preferences</a>',
-                unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycode + '-U" linkname="Bottom Unsubscribe">Unsubscribe</a>',
-                spamLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam">Mark as Spam</a>',
-                rfarHeader: '<a href="http://www.independentlivingnews.com/preppers' + utmILN + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="118" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="580" /></a>',
-                subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmILN + '" target="_blank">',
-                ilnHeader: '<a href="http://www.independentlivingnews.com' + utmILN + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="118" src="http://www.independentlivingnews.com/email/images/ILN_LB_header_edited.jpg" style="display:block;" width="580" /></a>'
-            },
-            SAA: {
-                keycode: keycode
-            }
+            keycode: keycode
         };
     }
 
@@ -967,57 +384,24 @@ $(document).ready(function () {
         .button()
         .click(function(){
             $('#downloadForm').submit();
+            swal({
+                title: "Downloading Email",
+                text: "Feel free to import into your favorite email client and see what the Easy Email Generator can do for you.",
+                type: "success",
+                allowOutsideClick: "true",
+                timer: "10000",
+                confirmButtonText: "Fantastic!"
+            });
         });
 
     function sendEmail() {
-        var x = $("#resultsTextArea").val();
-        var z = $("#keycodeInput").val();
-        var y = S(x).unescapeHTML().s;
-        z = z.toUpperCase();
-        $.ajax({
-            type: "POST",
-            dataType: "text",
-            processData: "false",
-            url: "https://mandrillapp.com/api/1.0/messages/send.json",
-            data: {
-                'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
-                'message': {
-                    'from_email': 'digitalmedia@wjmassociates.com',
-                    'to': [
-                        {
-                            'email': 'trigger@recipe.ifttt.com',
-                            'name': 'Trigger',
-                            'type': 'to'
-                        }
-                    ],
-                    'autotext': 'true',
-                    'subject': z,
-                    'text': y
-                }
-            }
-        }).done();
-        $.ajax({
-            type: "POST",
-            dataType: "text",
-            url: "https://mandrillapp.com/api/1.0/messages/send.json",
-            data: {
-                'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
-                'message': {
-                    'from_email': 'digitalmedia@wjmassociates.com',
-                    'to': [
-                        {
-                            'email': 'dford@wjmassociates.com',
-                            'name': 'Davis Ford',
-                            'type': 'to'
-                        }
-                    ],
-                    'autotext': 'true',
-                    'subject': '[SUBMISSION] ' + z,
-                    'text': y
-                }
-            }
-        }).done(function() {
-            $('#emailHTML').text('Email Sent!').effect('highlight', 'fast');
+        swal({
+            title: "Email Sent!",
+            text: "Well, not really. This is just a demo page. This can be linked up to a company dropbox, Google Drive, or a myriad of other services via Zapier/IFTTT",
+            type: "info",
+            allowOutsideClick: "true",
+            timer: "10000",
+            confirmButtonText: "Understood!"
         });
     }
 
@@ -1095,7 +479,7 @@ $(document).ready(function () {
             productSelect.selectmenu('refresh'); //refresh our changes. doesn't work without this.
         }
     }
-    makeProductMenu(adReferenceILN); //initialize our menu with ILN values, since the menu defaults to RFAR
+    makeProductMenu(adReferenceDEMO2); //initialize our menu with ILN values, since the menu defaults to RFAR
 
     function updateTemplateMenu() {
         var list = $('#listSelect').val();
@@ -1145,7 +529,6 @@ $(document).ready(function () {
     //sanitizeRender takes the value of our template and removes the head, body, html, and style sections.
     //I used string replace because simply removing the tags was not enough.
     function sanitizeRender(content){
-        var that = this;
         if(S(content).contains('<style>')) {
             var x = true;
             var i = 0;
@@ -1194,84 +577,6 @@ $(document).ready(function () {
         };
         img.src = src;
     }
-
-
-    function getILNAPI(){
-        //event.preventDefault();
-        var resultsHolder = [];
-        var formatStorage = [];
-        $.ajax({
-            url:"https://www.kimonolabs.com/api/5pbx5hy0?apikey=t6jhRsPktqd4z4ZU72c3JRv97ji2EiPP",
-            crossDomain: true,
-            dataType: "jsonp",
-            success: function (response) {
-                var original = response;
-                var numStories = original.count;
-                var results = original.results.health;
-                var x = getCurrentTemplateSettings();
-
-                function removeNewLine(title){
-                    //This javascript replaces all 3 types of line breaks with a space
-                    //credit: http://www.textfixer.com/tutorials/javascript-line-breaks.php
-                    return (title.replace(/(\r\n|\n|\r)/gm," "));
-                }
-
-                for (var i=0; i < numStories; i++){
-                    resultsHolder[i] = {
-                        storyNum: i,
-                        title: removeNewLine(results[i].title),
-                        link: results[i].link,
-                        imgsrc: x.defaultLogo
-                    };
-                }
-
-                for (var q = 0; q < 9; q++) { //displays 9 results
-                    var btnID1 = 'rss1Btn' + resultsHolder[q].storyNum;
-                    var btnID2 = 'rss2Btn' + resultsHolder[q].storyNum;
-                    var btnID3 = 'rss3Btn' + resultsHolder[q].storyNum;
-                    var btnID4 = 'rss4Btn' + resultsHolder[q].storyNum;
-                    formatStorage[q] =
-                        '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;"><img src="' + resultsHolder[q].imgsrc + '" width="75" height="75" style="float: left"/>' +
-                        resultsHolder[q].title +
-                        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
-                        '</center></p></div>';
-                }
-
-            },
-            error: function (xhr, status) {
-                console.log('ERROR Retrieving ILN API');
-            }
-        }).done(function() {
-            var joinRSS = formatStorage.join('');
-            $('#rssPreviewGeneral').html(joinRSS);
-            function buttonUpdateField(e) {
-                $('#rss1Btn'+e).click(function () {
-                    $('#title1').val(resultsHolder[e].title);
-                    $('#title1URL').val(resultsHolder[e].link);
-                });
-                $('#rss2Btn'+e).click(function () {
-                    $('#title2').val(resultsHolder[e].title);
-                    $('#title2URL').val(resultsHolder[e].link);
-                });
-                $('#rss3Btn'+e).click(function () {
-                    enableAdditionalContent();
-                    $('#title3').val(resultsHolder[e].title);
-                    $('#title3URL').val(resultsHolder[e].link);
-                });
-                $('#rss4Btn'+e).click(function () {
-                    enableAdditionalContent();
-                    $('#title4').val(resultsHolder[e].title);
-                    $('#title4URL').val(resultsHolder[e].link);
-                });
-
-            }
-            for(var n=0; n < 9; n++){ //makes nine buttons
-                buttonUpdateField(n);
-            }
-        });
-        equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
-    }
-
 
 
     function getRSSWithImage(feed) {
@@ -1672,7 +977,6 @@ $(document).ready(function () {
         twitterTitle = S(twitterTitle).stripPunctuation();
         twitterTitle = S(twitterTitle).replaceAll(' ', '%20');
         var twitter = '<a href="http://twitter.com/share?text='+twitterTitle+'&url='+titleURL+'">';
-        //http://www.facebook.com/sharer.php?u=http://americanlibertypac.com/draft-rand-paul-petition/
         var facebook = '<a href="http://www.facebook.com/sharer.php?u='+titleURL+'">';
         //picture
         //The URL of a picture attached to this post.
@@ -1705,13 +1009,13 @@ $(document).ready(function () {
     //the counter script is located.. well, you can figure it out
     //credit: http://www.phpjunkyard.com/php-text-hit-counter.php
     function usageCounter() {
-        $.get( "http://daviseford.com/sites/default/files/email_templater/php/counter.php?page=templaterCounter", function( data ) {
+        $.get( "http://daviseford.com/sites/default/files/email_templater/php/counter.php?page=demoCounter", function( data ) {
             var counterDiv = $('#counterDiv');
             var dataNum = parseInt(data);
             var a = (Math.floor(dataNum * 19))/60;
             var estimateTimeSaved = Math.floor(a);
-            var insertText2 = '<ul class="list-group"><li class="list-group-item"><span class="badge">'+data+'</span>Times Used: </li><li class="list-group-item"><span class="badge">'+estimateTimeSaved+'</span>Hours Saved: </li></ul>';
-            var insertText = '<center><p class="bg-info">This application has been used <strong>' + data + '</strong> times.<br/>Time saved: <strong>' + estimateTimeSaved + '</strong> hours</p></center>';
+            var insertText2 = '<ul class="list-group"><li class="list-group-item"><span class="badge">'+data+'</span>Times Used: </li></ul>';
+            var insertText = '<center><p class="bg-info">This application has been used <strong>' + data + '</strong> times.</p></center>';
             counterDiv.html(insertText2);
         });
     }
@@ -1776,4 +1080,5 @@ $(document).ready(function () {
 
         }
     );
+
 });

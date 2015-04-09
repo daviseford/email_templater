@@ -21,7 +21,7 @@ $(document).ready(function () {
     imgWidth = [];
 
     var adReferenceILN = {
-        USR: {
+        IMG: {
             link: 'http://www.independentlivingnews.com/video/usr-vsl.php',
             shortCode: 'USR',
             longCode: 'Ultimate Self Reliance Manual',
