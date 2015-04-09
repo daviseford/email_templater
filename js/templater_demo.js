@@ -2,6 +2,7 @@
 //TODO change background of RSS. Maybe masonry?
 
 $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
     //*******************************
     // DOCUMENT AND VAR SETUP
     //*******************************
