@@ -23,7 +23,7 @@ $(document).ready(function () {
     imgWidth = [];
 
     var adReferenceILN = {
-        IMG: {
+        USR: {
             link: 'http://www.independentlivingnews.com/video/usr-vsl.php',
             shortCode: 'USR',
             longCode: 'Ultimate Self Reliance Manual',
@@ -740,6 +740,7 @@ $(document).ready(function () {
                     var adNum = (templateNumber - 1);
                     var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
                     var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
+
                     var templateShortCode = adRef[e].shortCode; //This is the same as writing adReference.XCOM.longCode
                     var templateLongCode = adRef[e].longCode;
                     var templateLink;
@@ -974,51 +975,89 @@ $(document).ready(function () {
         var z = $("#keycodeInput").val();
         var y = S(x).unescapeHTML().s;
         z = z.toUpperCase();
-        $.ajax({
-            type: "POST",
-            dataType: "text",
-            processData: "false",
-            url: "https://mandrillapp.com/api/1.0/messages/send.json",
-            data: {
-                'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
-                'message': {
-                    'from_email': 'digitalmedia@wjmassociates.com',
-                    'to': [
-                        {
-                            'email': 'trigger@recipe.ifttt.com',
-                            'name': 'Trigger',
-                            'type': 'to'
-                        }
-                    ],
-                    'autotext': 'true',
-                    'subject': z,
-                    'text': y
+        function ajaxSendEmail() {
+            $.ajax({
+                type: "POST",
+                dataType: "text",
+                processData: "false",
+                url: "https://mandrillapp.com/api/1.0/messages/send.json",
+                data: {
+                    'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                    'message': {
+                        'from_email': 'digitalmedia@wjmassociates.com',
+                        'to': [
+                            {
+                                'email': 'trigger@recipe.ifttt.com',
+                                'name': 'Trigger',
+                                'type': 'to'
+                            }
+                        ],
+                        'autotext': 'true',
+                        'subject': z,
+                        'text': y
+                    }
                 }
-            }
-        }).done();
-        $.ajax({
-            type: "POST",
-            dataType: "text",
-            url: "https://mandrillapp.com/api/1.0/messages/send.json",
-            data: {
-                'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
-                'message': {
-                    'from_email': 'digitalmedia@wjmassociates.com',
-                    'to': [
-                        {
-                            'email': 'dford@wjmassociates.com',
-                            'name': 'Davis Ford',
-                            'type': 'to'
-                        }
-                    ],
-                    'autotext': 'true',
-                    'subject': '[SUBMISSION] ' + z,
-                    'text': y
+            }).done();
+            $.ajax({
+                type: "POST",
+                dataType: "text",
+                url: "https://mandrillapp.com/api/1.0/messages/send.json",
+                data: {
+                    'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                    'message': {
+                        'from_email': 'digitalmedia@wjmassociates.com',
+                        'to': [
+                            {
+                                'email': 'dford@wjmassociates.com',
+                                'name': 'Davis Ford',
+                                'type': 'to'
+                            }
+                        ],
+                        'autotext': 'true',
+                        'subject': '[SUBMISSION] ' + z,
+                        'text': y
+                    }
                 }
-            }
-        }).done(function() {
-            $('#emailHTML').text('Email Sent!').effect('highlight', 'fast');
-        });
+            }).done(function () {
+                $('#emailHTML').text('Email Sent!').effect('highlight', 'fast');
+            });
+        }
+        if(templateContainer.currentProduct.enabled !== true) {
+            swal({
+                    title: "No Advertisement Selected",
+                    text: "Are you sure you want to send an email without an advertisement?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, send it!",
+                    cancelButtonText: "No, I forgot!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        ajaxSendEmail();
+                        swal({
+                            title: "Sent!",
+                            text: "Your email "+z+" has been sent!",
+                            type: "success",
+                            allowOutsideClick: "true",
+                            timer: "2000",
+                            showConfirmButton: "false"
+                        });
+                    }
+                });
+        } else {
+            ajaxSendEmail();
+            swal({
+                title: "Sent!",
+                text: "Your email "+z+" has been sent!",
+                type: "success",
+                allowOutsideClick: "true",
+                timer: "2000",
+                showConfirmButton: "false"
+            });
+        }
     }
 
 
@@ -1715,6 +1754,8 @@ $(document).ready(function () {
             counterDiv.html(insertText2);
         });
     }
+
+
     function makeCopyButton(){
         var client = new ZeroClipboard($("#copy-button"));
         client.on( "ready", function( readyEvent ) {
