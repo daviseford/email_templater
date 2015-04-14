@@ -753,6 +753,7 @@ $(document).ready(function () {
                     var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
                     var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
 
+
                     var templateShortCode = adRef[e].shortCode; //This is the same as writing adReference.XCOM.longCode
                     var templateLongCode = adRef[e].longCode;
                     var templateLink;
@@ -768,12 +769,14 @@ $(document).ready(function () {
                         templateLink = adRef[e].link;
                     }
                     var templateTrackedURL = templateLink + utm;
+                    var templateUnTrackedLink = '<a href="'+ templateLink +'" target="_blank">';
                     var templateTrackedLink = '<a href="'+ templateTrackedURL +'" target="_blank">';
 
                     templateContainer.currentProduct = {
                         template: templateName,
                         link: templateLink,
-                        trackedLink: templateTrackedLink,
+                        trackedLink: templateTrackedLink, //e.g. <a href="url+utm" >
+                        untrackedLink: templateUnTrackedLink, //e.g. <a href="url" >
                         trackedURL: templateTrackedURL, //trackedURL is the raw URL + utm, whereas trackedLink is formatted with href
                         tmplNum: templateNumber,
                         shortCode: templateShortCode,
