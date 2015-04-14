@@ -463,6 +463,7 @@ $(document).ready(function () {
             }
         },
         EXTERNAL: {
+            link: 'http://wjmassociates.com',
             shortCode: 'EXTERNAL',
             longCode: 'Third Party Ads',
             advertisements: {
