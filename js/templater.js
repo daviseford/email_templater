@@ -461,6 +461,17 @@ $(document).ready(function () {
                     link: 'http://senioramericansassociation.com/savings-center/'
                 }
             }
+        },
+        EXTERNAL: {
+            shortCode: 'EXTERNAL',
+            longCode: 'Third Party Ads',
+            advertisements: {
+                0: {
+                    name: 'EXTERNAL1',
+                    description: 'Lose The Back Pain',
+                    link: 'http://www.losethebackpain.com/aff/index.php?p=MMP41515&w=advt-5most'
+                }
+            }
         }
     };
 
