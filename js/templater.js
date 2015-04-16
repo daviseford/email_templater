@@ -740,6 +740,27 @@ $(document).ready(function () {
                 }
             }
         },
+        SRC: {
+            DB: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_db_Tmpl.htm',
+                emailCode: 'DB',
+                shortCode: 'SRCDB',
+                longCode: 'Daily Bulletin',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://selfreliancecentral.com/feed' + '?nocache=' + ((new Date).getTime()),
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
+            }
+        },
         helpers: {
             updateCurrentProduct: function (adReference, utmStyle) { //returns the correct ad. for example, adReferenceILN.XCOM.
                 var b;
