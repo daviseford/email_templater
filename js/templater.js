@@ -586,7 +586,7 @@ $(document).ready(function () {
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://conservativerepublicannews.com/feed/',
+                rssFeed: 'http://conservativerepublicannews.com/feed' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/crn_75x75.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
@@ -626,7 +626,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://minutemanproject.com/feed/',
+                rssFeed: 'http://minutemanproject.com/feed' + '?nocache=' + ((new Date).getTime()),
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
