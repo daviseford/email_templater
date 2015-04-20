@@ -759,6 +759,25 @@ $(document).ready(function () {
                     var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
                     return y;
                 }
+            },
+            SL: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_sl_Tmpl.htm',
+                emailCode: 'SL',
+                shortCode: 'SRCSL',
+                longCode: 'Sales Letter',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://selfreliancecentral.com/feed' + '?nocache=' + ((new Date).getTime()),
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
             }
         },
         helpers: {
@@ -1754,6 +1773,7 @@ $(document).ready(function () {
         var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
         var trackedURL = titleURL + utm;
         var storyName = 'story'+storyNum;
+        var imageSalesLetter = urlInsert +  '<img src="' + titleIMG + '" alt="" width="' + adjustedWidth +'" height="' + adjustedHeight + '" align="left" style="display: block; -ms-interpolation-mode: bicubic; width: ' + adjustedWidth +'px; max-width: ' + adjustedWidth +'px; height: ' + adjustedHeight  + 'px; border: 0px solid #ffffff; border-radius: 0px; background-color: transparent;" />';
 
         var twitterTitle = S(title).escapeHTML();
         twitterTitle = S(twitterTitle).stripPunctuation();
@@ -1780,6 +1800,7 @@ $(document).ready(function () {
             urlInsert: urlInsert,
             insertImage: linkedImage,
             insertImageAlignedRight: imageAlignedRight,
+            insertImageSalesLetter: imageSalesLetter,
             utm: utm,
             trackedURL: trackedURL,
             social: {
