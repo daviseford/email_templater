@@ -507,7 +507,7 @@ $(document).ready(function () {
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA, //this stores the ads
-                rssFeed: 'http://americanlibertypac.com/feed' + '?nocache=' + ((new Date).getTime()),  //Nocache is important!
+                rssFeed: 'http://americanlibertypac.com/feed',  //Nocache is now handled within getRSSWithImage
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
@@ -527,7 +527,7 @@ $(document).ready(function () {
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://americanlibertypac.com/feed' + '?nocache=' + ((new Date).getTime()),
+                rssFeed: 'http://americanlibertypac.com/feed',
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
@@ -546,7 +546,7 @@ $(document).ready(function () {
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://americanlibertypac.com/feed' + '?nocache=' + ((new Date).getTime()),
+                rssFeed: 'http://americanlibertypac.com/feed',
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
@@ -565,7 +565,7 @@ $(document).ready(function () {
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://americanlibertypac.com/feed' + '?nocache=' + ((new Date).getTime()),
+                rssFeed: 'http://americanlibertypac.com/feed',
                 defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
@@ -586,7 +586,7 @@ $(document).ready(function () {
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://conservativerepublicannews.com/feed' + '?nocache=' + ((new Date).getTime()),
+                rssFeed: 'http://conservativerepublicannews.com/feed',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/crn_75x75.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
@@ -607,7 +607,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://minutemanproject.com/feed' + '?nocache=' + ((new Date).getTime()),
+                rssFeed: 'http://minutemanproject.com/feed',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
@@ -626,7 +626,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://minutemanproject.com/feed' + '?nocache=' + ((new Date).getTime()),
+                rssFeed: 'http://minutemanproject.com/feed',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
@@ -647,7 +647,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://senioramericansassociation.com/feed' + '?nocache=' + ((new Date).getTime()),
+                rssFeed: 'http://senioramericansassociation.com/feed',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
@@ -666,7 +666,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://senioramericansassociation.com/feed' + '?nocache=' + ((new Date).getTime()),
+                rssFeed: 'http://senioramericansassociation.com/feed',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
@@ -749,7 +749,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://selfreliancecentral.com/feed' + '?nocache=' + ((new Date).getTime()),
+                rssFeed: 'http://selfreliancecentral.com/feed',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
@@ -768,7 +768,7 @@ $(document).ready(function () {
                 imgMaxWidth: 170,
                 imgMaxHeight: 170,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://selfreliancecentral.com/feed' + '?nocache=' + ((new Date).getTime()),
+                rssFeed: 'http://selfreliancecentral.com/feed',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
@@ -1372,162 +1372,162 @@ $(document).ready(function () {
         var storyNumber = 0;
         var formatStorage = [];
         var rssObject = [];
-        $.ajax({
-            url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(feed),
-            dataType: 'json',
-            success: function (data) {
-                if (data.responseData !== null) {
-                    if (data.responseData.feed && data.responseData.feed.entries) {
-                        $.each(data.responseData.feed.entries, function (i, e) {
-                            var f = e.content;
-                            //console.log('content = ' +f);
+        var originalFeed = feed;
+        var noCache = '?nocache=' + ((new Date).getTime());
+        var feedCacheBust = feed + noCache;
 
-                            function cleanDescription(desc) {
-                                var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font').s;
-                                return x;
-                            }
+        function fetchRSS(rssfeed) {
+            $.ajax({
+                url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(rssfeed),
+                dataType: 'json',
+                success: function (data) {
+                    if (data.responseData !== null) {
+                        if (data.responseData.feed && data.responseData.feed.entries) {
+                            $.each(data.responseData.feed.entries, function (i, e) {
+                                var f = e.content;
 
-                            //this chunk grabs img src values from the RSS feed
-                            //var content = document.createElement("content");
-                            //content.innerHTML = e.content;
-                            //var images = $(content).find('img').map(function () {
-                            //    return $(this).attr('src');
-                            //}).get(); // backup of how this used to work
-
-
-                            //this chunk grabs img src values from the RSS feed
-                            var content = document.createElement("content");
-                            content.innerHTML = e.content;
-                            var images = $(content).find('img').map(function () {
-                                var i = [];
-                                i.push($(this).attr('src'), $(this).attr('width'), $(this).attr('height'));
-                                return i;
-                            }).get();
-
-                            //console.log('imgSrc = ' + images[0]);
-                            //console.log('imgW = ' + images[1]);
-                            //console.log('imgH = ' + images[2]);
-                            //I've disabled this functionality for a few reasons
-                            //1.) Breaks the div container that it spawns in. Maybe look into Flexbox for making these containers?
-                            //function getImageSize(currentWidth, currentHeight) {
-                            //    var maxWidth = 75; // Max width for the image
-                            //    var maxHeight = 75;    // Max height for the image
-                            //    var correctedSizes = []; //holding container for image sizes
-                            //    var ratio = 0;  // Used for aspect ratio
-                            //    var width = currentWidth;    // Current image width
-                            //    var height = currentHeight;  // Current image height
-                            //
-                            //    // Check if the current width is larger than the max
-                            //    if (width > maxWidth && width >= height) {
-                            //        ratio = maxWidth / width;   // get ratio for scaling image
-                            //        images[1] = maxWidth;    // Reset width to match scaled image
-                            //        images[2] = Math.floor(height * ratio);    // Reset height to match scaled image
-                            //    } else if (height > maxHeight) {
-                            //        ratio = maxHeight / height; // get ratio for scaling image
-                            //        images[1] = Math.floor(width * ratio);    // Reset width to match scaled image
-                            //        images[2] = maxHeight;    // Reset height to match scaled image
-                            //    }
-                            //}
-                            //getImageSize(images[1], images[2]);
-
-
-                            function defaultImageCheck() { //replaces undefined images with a default
-                                if (images[0] === undefined) {
-                                    var x = getCurrentTemplateSettings();
-                                    images[0] = x.defaultLogo;
-                                    console.log('No image found in getRSSWithImage(), using defaultLogo');
+                                function cleanDescription(desc) {
+                                    var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font').s;
+                                    return x;
                                 }
-                            }
 
-                            defaultImageCheck();
+                                //this chunk grabs img src values from the RSS feed
+                                var content = document.createElement("content");
+                                content.innerHTML = e.content;
+                                var images = $(content).find('img').map(function () {
+                                    var i = [];
+                                    i.push($(this).attr('src'), $(this).attr('width'), $(this).attr('height'));
+                                    return i;
+                                }).get();
 
-                            rssObject[i] = {
-                                storyNum: storyNumber,
-                                title: e.title,
-                                link: e.link,
-                                imgsrc: images[0],
-                                thumbW: images[1],
-                                thumbH: images[2],
-                                description: cleanDescription(f)
-                            };
+                                //console.log('imgSrc = ' + images[0]);
+                                //console.log('imgW = ' + images[1]);
+                                //console.log('imgH = ' + images[2]);
+                                //I've disabled this functionality for a few reasons
+                                //1.) Breaks the div container that it spawns in. Maybe look into Flexbox for making these containers?
+                                //function getImageSize(currentWidth, currentHeight) {
+                                //    var maxWidth = 75; // Max width for the image
+                                //    var maxHeight = 75;    // Max height for the image
+                                //    var correctedSizes = []; //holding container for image sizes
+                                //    var ratio = 0;  // Used for aspect ratio
+                                //    var width = currentWidth;    // Current image width
+                                //    var height = currentHeight;  // Current image height
+                                //
+                                //    // Check if the current width is larger than the max
+                                //    if (width > maxWidth && width >= height) {
+                                //        ratio = maxWidth / width;   // get ratio for scaling image
+                                //        images[1] = maxWidth;    // Reset width to match scaled image
+                                //        images[2] = Math.floor(height * ratio);    // Reset height to match scaled image
+                                //    } else if (height > maxHeight) {
+                                //        ratio = maxHeight / height; // get ratio for scaling image
+                                //        images[1] = Math.floor(width * ratio);    // Reset width to match scaled image
+                                //        images[2] = maxHeight;    // Reset height to match scaled image
+                                //    }
+                                //}
+                                //getImageSize(images[1], images[2]);
 
-                            var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
-                            var btnID2 = 'rss2Btn' + rssObject[i].storyNum;
-                            var btnID3 = 'rss3Btn' + rssObject[i].storyNum;
-                            var btnID4 = 'rss4Btn' + rssObject[i].storyNum;
 
-                            var divID = 'rssStory' + rssObject[i].storyNum;
-                            var imgID = 'rssImg' + rssObject[i].storyNum;
+                                function defaultImageCheck() { //replaces undefined images with a default
+                                    if (images[0] === undefined) {
+                                        var x = getCurrentTemplateSettings();
+                                        images[0] = x.defaultLogo;
+                                        console.log('No image found in getRSSWithImage(), using defaultLogo');
+                                    }
+                                }
 
-                            if (storyNumber < 9) { //displays 9 results
-                                var storage = [];
-                                var a = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '">';
-                                var b = '<p style="font-size: 10px; text-align: center;">';
-                                //var c = '<img src="' + rssObject[i].imgsrc + '" width="' + rssObject[i].thumbW + '" height="' + rssObject[i].thumbH + '" id="' + imgID + '" align="left" style=""/>';
-                                //disabled above, as it was causing all sorts of resizing issues
-                                var c = '<img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" align="left" class="img-circle" style=""/>';
-                                var d = rssObject[i].title;
-                                var eecenter = '<br /><center>';
-                                var btn1 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button>';
-                                var btn2 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button>';
-                                var btn3 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button>';
-                                var btn4 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>';
-                                var fend = '</center></p></div>';
-                                storage.push(a, b, c, d, eecenter, btn1, btn2, btn3, btn4, fend);
-                                formatStorage[storyNumber] = storage.join('');
-                            }
-                            storyNumber++; // increment by one to keep the loop ticking up
+                                defaultImageCheck();
+
+                                rssObject[i] = {
+                                    storyNum: storyNumber,
+                                    title: e.title,
+                                    link: e.link,
+                                    imgsrc: images[0],
+                                    thumbW: images[1],
+                                    thumbH: images[2],
+                                    description: cleanDescription(f)
+                                };
+
+                                var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
+                                var btnID2 = 'rss2Btn' + rssObject[i].storyNum;
+                                var btnID3 = 'rss3Btn' + rssObject[i].storyNum;
+                                var btnID4 = 'rss4Btn' + rssObject[i].storyNum;
+
+                                var divID = 'rssStory' + rssObject[i].storyNum;
+                                var imgID = 'rssImg' + rssObject[i].storyNum;
+
+                                if (storyNumber < 9) { //displays 9 results
+                                    var storage = [];
+                                    var a = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '">';
+                                    var b = '<p style="font-size: 10px; text-align: center;">';
+                                    //var c = '<img src="' + rssObject[i].imgsrc + '" width="' + rssObject[i].thumbW + '" height="' + rssObject[i].thumbH + '" id="' + imgID + '" align="left" style=""/>';
+                                    //disabled above, as it was causing all sorts of resizing issues
+                                    var c = '<img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" align="left" class="img-circle" style=""/>';
+                                    var d = rssObject[i].title;
+                                    var eecenter = '<br /><center>';
+                                    var btn1 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button>';
+                                    var btn2 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button>';
+                                    var btn3 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button>';
+                                    var btn4 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>';
+                                    var fend = '</center></p></div>';
+                                    storage.push(a, b, c, d, eecenter, btn1, btn2, btn3, btn4, fend);
+                                    formatStorage[storyNumber] = storage.join('');
+                                }
+                                storyNumber++; // increment by one to keep the loop ticking up
+                            });
+                        }
+                    } else { //if we fail to fetch the feed, do this
+                        swal({
+                            title: "RSS Failed!",
+                            text: "Couldn't connect! We've tried to fix it automatically!",
+                            type: "error",
+                            allowOutsideClick: "true",
+                            timer: "1500",
+                            confirmButtonText: "Okay!"
                         });
+                        fetchRSS(originalFeed); //retries the feed without nocache, as it sometimes breaks
                     }
-                } else {
-                    swal({
-                        title: "RSS Failed!",
-                        text: "Couldn't connect! Try again!",
-                        type: "error",
-                        allowOutsideClick: "true",
-                        timer: "1500",
-                        confirmButtonText: "Okay!"
-                    });
                 }
-            }
-        }).done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
-            var joinRSS = formatStorage.join('');
-            $('#rssPreviewGeneral').html(joinRSS);
-            function buttonUpdateField(e) {
-                $('#rss1Btn'+e).click(function () {
-                    $('#title1').val(rssObject[e].title);
-                    $('#title1text-div').html(rssObject[e].description);
-                    $('#title1URL').val(rssObject[e].link);
-                    $('#title1IMG').val(rssObject[e].imgsrc);
-                });
-                $('#rss2Btn'+e).click(function () {
-                    $('#title2').val(rssObject[e].title);
-                    $('#title2text-div').html(rssObject[e].description);
-                    $('#title2URL').val(rssObject[e].link);
-                    $('#title2IMG').val(rssObject[e].imgsrc);
-                });
-                $('#rss3Btn'+e).click(function () {
-                    enableAdditionalContent();
-                    $('#title3').val(rssObject[e].title);
-                    $('#title3text-div').html(rssObject[e].description);
-                    $('#title3URL').val(rssObject[e].link);
-                    $('#title3IMG').val(rssObject[e].imgsrc);
-                });
-                $('#rss4Btn'+e).click(function () {
-                    enableAdditionalContent();
-                    $('#title4').val(rssObject[e].title);
-                    $('#title4text-div').html(rssObject[e].description);
-                    $('#title4URL').val(rssObject[e].link);
-                    $('#title4IMG').val(rssObject[e].imgsrc);
-                });
+            }).done(function () {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
+                var joinRSS = formatStorage.join('');
+                $('#rssPreviewGeneral').html(joinRSS);
+                function buttonUpdateField(e) {
+                    $('#rss1Btn' + e).click(function () {
+                        $('#title1').val(rssObject[e].title);
+                        $('#title1text-div').html(rssObject[e].description);
+                        $('#title1URL').val(rssObject[e].link);
+                        $('#title1IMG').val(rssObject[e].imgsrc);
+                    });
+                    $('#rss2Btn' + e).click(function () {
+                        $('#title2').val(rssObject[e].title);
+                        $('#title2text-div').html(rssObject[e].description);
+                        $('#title2URL').val(rssObject[e].link);
+                        $('#title2IMG').val(rssObject[e].imgsrc);
+                    });
+                    $('#rss3Btn' + e).click(function () {
+                        enableAdditionalContent();
+                        $('#title3').val(rssObject[e].title);
+                        $('#title3text-div').html(rssObject[e].description);
+                        $('#title3URL').val(rssObject[e].link);
+                        $('#title3IMG').val(rssObject[e].imgsrc);
+                    });
+                    $('#rss4Btn' + e).click(function () {
+                        enableAdditionalContent();
+                        $('#title4').val(rssObject[e].title);
+                        $('#title4text-div').html(rssObject[e].description);
+                        $('#title4URL').val(rssObject[e].link);
+                        $('#title4IMG').val(rssObject[e].imgsrc);
+                    });
 
 
-            }
-            for(var n=0; n < 9; n++){
-                buttonUpdateField(n);
-            }
-        });
-        equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
+                }
+
+                for (var n = 0; n < 9; n++) {
+                    buttonUpdateField(n);
+                }
+            });
+            equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
+        }
+        fetchRSS(feedCacheBust);
     }
     function getRSSWithoutImage(feed) {
         var q = 0;
