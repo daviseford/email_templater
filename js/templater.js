@@ -462,15 +462,99 @@ $(document).ready(function () {
                 }
             }
         },
-        EXTERNAL: {
-            link: 'http://wjmassociates.com',
-            shortCode: 'EXTERNAL',
-            longCode: 'Third Party Ads',
+        BLACKOUTWW: {
+            link: 'http://www.blackoutusa.org/vsl/index.php?hop=camsales1', //default link to all sub-ads
+            shortCode: 'BLACKOUTWW',
+            longCode: 'Blackout USA WW3',
             advertisements: {
                 0: {
-                    name: 'EXTERNAL1',
-                    description: 'Lose The Back Pain',
-                    link: 'http://www.losethebackpain.com/aff/index.php?p=MMP41515&w=advt-5most'
+                    name: 'BLACKOUTWW1',
+                    description: 'ALPAC DB',
+                    link: 'http://403e2-ijz5wzvv363f215yaw40.hop.clickbank.net/?tid=ALPACWW3' //this link overrides the default set above
+                },
+                1: {
+                    name: 'BLACKOUTWW2',
+                    description: 'ALPAC MR',
+                    link: 'http://631ca1mk68r2tqe8sk635nby8m.hop.clickbank.net/?tid=ALPACMRWW3' //this link overrides the default set above
+                },
+                2: {
+                    name: 'BLACKOUTWW3',
+                    description: 'JGM DB',
+                    link: 'http://5d4d17dj7wm14p5z3hx25s5meh.hop.clickbank.net/?tid=JGMDBWW3'
+                },
+                3: {
+                    name: 'BLACKOUTWW4',
+                    description: 'JGM MR',
+                    link: 'http://280931nhv-q81zbazh45eo3p5z.hop.clickbank.net/?tid=JGMMRWW3' //this link overrides the default set above
+                },
+                4: {
+                    name: 'BLACKOUTWW5',
+                    description: 'CRN DB',
+                    link: 'http://017968jf55z91-57vm10ckdn0i.hop.clickbank.net/?tid=CRNDBWW3' //this link overrides the default set above
+                }
+            }
+        },
+        BLACKOUTNASA: {
+            link: 'http://www.blackoutusa.org/vsl/index.php?hop=camsales1', //default link to all sub-ads
+            shortCode: 'BLACKOUTNASA',
+            longCode: 'Blackout USA NASA',
+            advertisements: {
+                0: {
+                    name: 'BLACKOUTNASA1',
+                    description: 'ALPAC DB',
+                    link: 'http://d51429ki72s52xawpkt33oaz4y.hop.clickbank.net/?tid=ALPACDBNASA' //this link overrides the default set above
+                },
+                1: {
+                    name: 'BLACKOUTNASA2',
+                    description: 'ALPAC MR',
+                    link: 'http://3f2c88nc1zzzvtb8usv7fzdqfu.hop.clickbank.net/?tid=ALPACMRNASA' //this link overrides the default set above
+                },
+                2: {
+                    name: 'BLACKOUTNASA3',
+                    description: 'JGM DB',
+                    link: 'http://f03338nk25o-3zb-xe-7fy3l81.hop.clickbank.net/?tid=JGMDBNASA'
+                },
+                3: {
+                    name: 'BLACKOUTNASA4',
+                    description: 'JGM MR',
+                    link: 'http://2453c4la-ys97rb7-o10et2p9r.hop.clickbank.net/?tid=JGMMRNASA' //this link overrides the default set above
+                },
+                4: {
+                    name: 'BLACKOUTNASA5',
+                    description: 'CRN DB',
+                    link: 'http://7281d5dl09067ua8yov2fk7r08.hop.clickbank.net/?tid=CRNMRNASA' //this link overrides the default set above
+                }
+            }
+        },
+        AMMO: {
+            link: 'http://ammoindependence.com/html/vsl2/index15060.html', //default link to all sub-ads
+            shortCode: 'AMMO',
+            longCode: 'Ammo Independence',
+            advertisements: {
+                0: {
+                    name: 'AMMO1',
+                    description: 'ALPAC DB',
+                    link: 'http://9269d2il7-sz3w05nlynvfgxwc.hop.clickbank.net/?tid=ALPACDBAI' //this link overrides the default set above
+                },
+                1: {
+                    name: 'AMMO2',
+                    description: 'ALPAC MR',
+                    link: 'http://bd7cd0oh7wt51oeirsxlvtfw4d.hop.clickbank.net/?tid=ALPACMRAI' //this link overrides the default set above
+                },
+                2: {
+                    name: 'AMMO3',
+                    description: 'JGM DB',
+                    link: 'http://9d6efxfe-xn76xdgqmvfxioo30.hop.clickbank.net/?tid=JGMDBAI'
+                },
+                3: {
+                    name: 'AMMO4',
+                    description: 'JGM MR',
+                    link: 'http://6b362ylew9n5vx6awswpznqj6y.hop.clickbank.net/?tid=JGMMRAI' //this link overrides the default set above
+                },
+                4: {
+                    name: 'AMMO5',
+                    description: 'CRN DB',
+                    link: 'http://fe3430gkt7r53v96no6o5kqmwf.hop.clickbank.net/?tid=CRNDBAI' //this link overrides the default set above
                 }
             }
         }
