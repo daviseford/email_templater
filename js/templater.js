@@ -557,6 +557,38 @@ $(document).ready(function () {
                     link: 'http://fe3430gkt7r53v96no6o5kqmwf.hop.clickbank.net/?tid=CRNDBAI' //this link overrides the default set above
                 }
             }
+        },
+        FC: {
+            link: 'http://www.thefoodcrisis.org/index.php', //default link to all sub-ads
+            shortCode: 'FC',
+            longCode: 'Food Crisis',
+            advertisements: {
+                0: {
+                    name: 'FC1',
+                    description: 'ALPAC DB',
+                    link: 'http://ccef90e6u1n8tma2w8ra2gwhxx.hop.clickbank.net/?tid=ALPACFCDB' //this link overrides the default set above
+                },
+                1: {
+                    name: 'FC2',
+                    description: 'ALPAC MR',
+                    link: 'http://a2e976bc-2zbt-30znh2y5694m.hop.clickbank.net/?tid=ALPACFCMR' //this link overrides the default set above
+                },
+                2: {
+                    name: 'FC3',
+                    description: 'JGM DB',
+                    link: 'http://92522ag93vrdt-19ubl9uhua-t.hop.clickbank.net/?tid=JGMFCDB'
+                },
+                3: {
+                    name: 'FC4',
+                    description: 'JGM MR',
+                    link: 'http://4b9080e74-t91n54pmp01309x1.hop.clickbank.net/?tid=JGMFCMR' //this link overrides the default set above
+                },
+                4: {
+                    name: 'FC5',
+                    description: 'CRN DB',
+                    link: 'http://b2fde9hd64oauub7ugmz2a7dwd.hop.clickbank.net/?tid=CRNFCDB' //this link overrides the default set above
+                }
+            }
         }
     };
 
