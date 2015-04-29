@@ -857,11 +857,11 @@ $(document).ready(function () {
             }
         },
         SRC: {
-            DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_db_Tmpl.htm',
-                emailCode: 'DB',
-                shortCode: 'SRCDB',
-                longCode: 'Daily Bulletin',
+            AP: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_ap_Tmpl.htm',
+                emailCode: 'AP',
+                shortCode: 'SRCAP',
+                longCode: 'Always Prepared',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
@@ -876,13 +876,13 @@ $(document).ready(function () {
                     return y;
                 }
             },
-            SL: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_sl_Tmpl.htm',
-                emailCode: 'SL',
-                shortCode: 'SRCSL',
-                longCode: 'Sales Letter',
-                imgMaxWidth: 170,
-                imgMaxHeight: 170,
+            DB: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_db_Tmpl.htm',
+                emailCode: 'DB',
+                shortCode: 'SRCDB',
+                longCode: 'Daily Bulletin',
+                imgMaxWidth: 300,
+                imgMaxHeight: 300,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://selfreliancecentral.com/feed',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
