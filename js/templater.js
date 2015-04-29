@@ -881,8 +881,8 @@ $(document).ready(function () {
                 emailCode: 'DB',
                 shortCode: 'SRCDB',
                 longCode: 'Daily Bulletin',
-                imgMaxWidth: 300,
-                imgMaxHeight: 300,
+                imgMaxWidth: 200,
+                imgMaxHeight: 200,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://selfreliancecentral.com/feed',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
@@ -1006,8 +1006,8 @@ $(document).ready(function () {
         $('#story4Form').find('input').each(textFix);
         var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
 
-        var genericW = 130;
-        var genericH = 130;
+        var genericW = 200;
+        var genericH = 200;
 
         var title1IMG = $("#title1IMG").val();
         var title2IMG = $("#title2IMG").val();
