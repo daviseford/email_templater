@@ -463,130 +463,109 @@ $(document).ready(function () {
             }
         },
         BLACKOUTWW: {
-            link: 'http://www.blackoutusa.org/vsl/index.php?hop=camsales1', //default link to all sub-ads
+            link: 'http://b79c75cgzvt1tyb3-m00an3o8d.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'BLACKOUTWW',
             longCode: 'Blackout USA WW3',
             advertisements: {
                 0: {
                     name: 'BLACKOUTWW1',
-                    description: 'ALPAC DB',
-                    link: 'http://403e2-ijz5wzvv363f215yaw40.hop.clickbank.net/?tid=ALPACWW3' //this link overrides the default set above
-                },
-                1: {
-                    name: 'BLACKOUTWW2',
-                    description: 'ALPAC MR',
-                    link: 'http://631ca1mk68r2tqe8sk635nby8m.hop.clickbank.net/?tid=ALPACMRWW3' //this link overrides the default set above
-                },
-                2: {
-                    name: 'BLACKOUTWW3',
-                    description: 'JGM DB',
-                    link: 'http://5d4d17dj7wm14p5z3hx25s5meh.hop.clickbank.net/?tid=JGMDBWW3'
-                },
-                3: {
-                    name: 'BLACKOUTWW4',
-                    description: 'JGM MR',
-                    link: 'http://280931nhv-q81zbazh45eo3p5z.hop.clickbank.net/?tid=JGMMRWW3' //this link overrides the default set above
-                },
-                4: {
-                    name: 'BLACKOUTWW5',
-                    description: 'CRN DB',
-                    link: 'http://017968jf55z91-57vm10ckdn0i.hop.clickbank.net/?tid=CRNDBWW3' //this link overrides the default set above
+                    description: '300 x 250'
                 }
             }
         },
         BLACKOUTNASA: {
-            link: 'http://www.blackoutusa.org/vsl/index.php?hop=camsales1', //default link to all sub-ads
+            link: 'http://b79c75cgzvt1tyb3-m00an3o8d.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'BLACKOUTNASA',
             longCode: 'Blackout USA NASA',
             advertisements: {
                 0: {
                     name: 'BLACKOUTNASA1',
-                    description: 'ALPAC DB',
-                    link: 'http://d51429ki72s52xawpkt33oaz4y.hop.clickbank.net/?tid=ALPACDBNASA' //this link overrides the default set above
-                },
-                1: {
-                    name: 'BLACKOUTNASA2',
-                    description: 'ALPAC MR',
-                    link: 'http://3f2c88nc1zzzvtb8usv7fzdqfu.hop.clickbank.net/?tid=ALPACMRNASA' //this link overrides the default set above
-                },
-                2: {
-                    name: 'BLACKOUTNASA3',
-                    description: 'JGM DB',
-                    link: 'http://f03338nk25o-3zb-xe-7fy3l81.hop.clickbank.net/?tid=JGMDBNASA'
-                },
-                3: {
-                    name: 'BLACKOUTNASA4',
-                    description: 'JGM MR',
-                    link: 'http://2453c4la-ys97rb7-o10et2p9r.hop.clickbank.net/?tid=JGMMRNASA' //this link overrides the default set above
-                },
-                4: {
-                    name: 'BLACKOUTNASA5',
-                    description: 'CRN DB',
-                    link: 'http://7281d5dl09067ua8yov2fk7r08.hop.clickbank.net/?tid=CRNMRNASA' //this link overrides the default set above
+                    description: '250 x 200'
                 }
             }
         },
         AMMO: {
-            link: 'http://ammoindependence.com/html/vsl2/index15060.html', //default link to all sub-ads
+            link: 'http://edc049of2--85y64zovssouv0y.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'AMMO',
             longCode: 'Ammo Independence',
             advertisements: {
                 0: {
                     name: 'AMMO1',
-                    description: 'ALPAC DB',
-                    link: 'http://9269d2il7-sz3w05nlynvfgxwc.hop.clickbank.net/?tid=ALPACDBAI' //this link overrides the default set above
+                    description: '336 x 280 - Red TXT, White BG'
                 },
                 1: {
                     name: 'AMMO2',
-                    description: 'ALPAC MR',
-                    link: 'http://bd7cd0oh7wt51oeirsxlvtfw4d.hop.clickbank.net/?tid=ALPACMRAI' //this link overrides the default set above
+                    description: '600 x 74 - Red TXT, White BG'
                 },
                 2: {
                     name: 'AMMO3',
-                    description: 'JGM DB',
-                    link: 'http://9d6efxfe-xn76xdgqmvfxioo30.hop.clickbank.net/?tid=JGMDBAI'
-                },
-                3: {
-                    name: 'AMMO4',
-                    description: 'JGM MR',
-                    link: 'http://6b362ylew9n5vx6awswpznqj6y.hop.clickbank.net/?tid=JGMMRAI' //this link overrides the default set above
-                },
-                4: {
-                    name: 'AMMO5',
-                    description: 'CRN DB',
-                    link: 'http://fe3430gkt7r53v96no6o5kqmwf.hop.clickbank.net/?tid=CRNDBAI' //this link overrides the default set above
+                    description: '250 x 250 - Grey BG'
                 }
             }
         },
         FC: {
-            link: 'http://www.thefoodcrisis.org/index.php', //default link to all sub-ads
+            link: 'http://f7b6abnhyxt1xx213hgzu7x5ud.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'FC',
             longCode: 'Food Crisis',
             advertisements: {
                 0: {
                     name: 'FC1',
-                    description: 'ALPAC DB',
-                    link: 'http://ccef90e6u1n8tma2w8ra2gwhxx.hop.clickbank.net/?tid=ALPACFCDB' //this link overrides the default set above
+                    description: '468 x 60'
                 },
                 1: {
                     name: 'FC2',
-                    description: 'ALPAC MR',
-                    link: 'http://a2e976bc-2zbt-30znh2y5694m.hop.clickbank.net/?tid=ALPACFCMR' //this link overrides the default set above
+                    description: '600 x 72'
                 },
                 2: {
                     name: 'FC3',
-                    description: 'JGM DB',
-                    link: 'http://92522ag93vrdt-19ubl9uhua-t.hop.clickbank.net/?tid=JGMFCDB'
+                    description: '250 x 250 - Gif'
                 },
                 3: {
                     name: 'FC4',
-                    description: 'JGM MR',
-                    link: 'http://4b9080e74-t91n54pmp01309x1.hop.clickbank.net/?tid=JGMFCMR' //this link overrides the default set above
+                    description: '250 x 250'
                 },
                 4: {
                     name: 'FC5',
-                    description: 'CRN DB',
-                    link: 'http://b2fde9hd64oauub7ugmz2a7dwd.hop.clickbank.net/?tid=CRNFCDB' //this link overrides the default set above
+                    description: '234 x 60'
+                },
+                5: {
+                    name: 'FC6',
+                    description: '240 x 400 - Gif'
+                }
+            }
+        },
+        AAC: {
+            link: 'http://58e26xpavxu6zr8a1c5o0rjhk8.hop.clickbank.net/?tid=', //default link to all sub-ads
+            shortCode: 'AAC',
+            longCode: 'Alive After Crisis',
+            advertisements: {
+                0: {
+                    name: 'AAC1',
+                    description: '300 x 250 '
+                },
+                1: {
+                    name: 'AAC2',
+                    description: '180 x 150 - Shocking Video'
+                },
+                2: {
+                    name: 'AAC3',
+                    description: '180 x 150 - Leaked Report'
+                },
+                3: {
+                    name: 'AAC4',
+                    description: '180 x 150 - Disaster'
+                },
+                4: {
+                    name: 'AAC5',
+                    description: '180 x 150 - Market Crash'
+                },
+                5: {
+                    name: 'AAC6',
+                    description: '180 x 150 - 7 Things'
+                },
+                6: {
+                    name: 'AAC7',
+                    description: '320 x 50'
                 }
             }
         }
@@ -909,8 +888,14 @@ $(document).ready(function () {
                     var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
                     var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
 
+                    var currentEmailTemplate = getCurrentTemplateSettings();
+                    var currentEmailTemplateShortCode = currentEmailTemplate.shortCode;
+                    console.log('shortcode = ' + currentEmailTemplateShortCode);
 
-                    var templateShortCode = adRef[e].shortCode; //This is the same as writing adReference.XCOM.longCode
+                    var currentEmailKeycode = makeKeyCodeTest();
+
+
+                    var templateShortCode = adRef[e].shortCode; //This is the same as writing adReference.XCOM.shortCode
                     var templateLongCode = adRef[e].longCode;
                     var templateLink;
                     var currentAd = adRef[e].advertisements[adNum];
@@ -930,13 +915,15 @@ $(document).ready(function () {
 
                     templateContainer.currentProduct = {
                         template: templateName,
-                        link: templateLink,
+                        link: templateLink,                 // raw link e.g. www.google.com
                         trackedLink: templateTrackedLink, //e.g. <a href="url+utm" >
                         untrackedLink: templateUnTrackedLink, //e.g. <a href="url" >
                         trackedURL: templateTrackedURL, //trackedURL is the raw URL + utm, whereas trackedLink is formatted with href
                         tmplNum: templateNumber,
                         shortCode: templateShortCode,
                         longCode: templateLongCode,
+                        currentEmailTemplateShortCode: currentEmailTemplateShortCode,
+                        currentEmailKeycode: currentEmailKeycode,
                         enabled: true
                     };
                 } else {
@@ -948,6 +935,8 @@ $(document).ready(function () {
                         tmplNum: '',
                         shortCode: '',
                         longCode: '',
+                        currentEmailTemplateShortCode: '',
+                        currentEmailKeycode: '',
                         enabled: false //this tells jsrender not to render the ad section. important!
                     };
                     console.log('No Product selected!');
