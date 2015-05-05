@@ -873,6 +873,25 @@ $(document).ready(function () {
                     var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
                     return y;
                 }
+            },
+            DBSS: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_dbss_Tmpl.htm',
+                emailCode: 'DBSS',
+                shortCode: 'SRCDBSS',
+                longCode: 'Daily Bulletin Sans Serif',
+                imgMaxWidth: 200,
+                imgMaxHeight: 200,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://selfreliancecentral.com/feed',
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
             }
         },
         helpers: {
