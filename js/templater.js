@@ -1567,8 +1567,8 @@ $(document).ready(function () {
                                     title: e.title,
                                     link: e.link,
                                     imgsrc: images[0],
-                                    thumbW: images[1],
-                                    thumbH: images[2],
+                                    thumbW: images[1], //unused
+                                    thumbH: images[2], //unused
                                     description: cleanDescription(f)
                                 };
 
@@ -1786,6 +1786,7 @@ $(document).ready(function () {
                     parserRules:  wysihtml5ParserRules // defined in parser rules set
                 });
                 break;
+            //Cases 5 and 6 are unused, but can be added in later
             case 5:
                 x = new wysihtml5.Editor("title5text-div", { // id of textarea element
                     toolbar:      "wysihtml-toolbar5", // id of toolbar element
