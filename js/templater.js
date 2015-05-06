@@ -844,7 +844,7 @@ $(document).ready(function () {
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://selfreliancecentral.com/feed',
+                rssFeed: 'http://www.selfreliancecentral.com/news/feed/', //had to update this to /news/feed when it broke. Maybe the result of using a fixed front page in Wordpress?
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
@@ -863,7 +863,7 @@ $(document).ready(function () {
                 imgMaxWidth: 200,
                 imgMaxHeight: 200,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://selfreliancecentral.com/feed',
+                rssFeed: 'http://www.selfreliancecentral.com/news/feed/',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
@@ -874,15 +874,15 @@ $(document).ready(function () {
                     return y;
                 }
             },
-            DBSS: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_dbss_Tmpl.htm',
-                emailCode: 'DBSS',
-                shortCode: 'SRCDBSS',
+            SS: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_ss_Tmpl.htm',
+                emailCode: 'SS',
+                shortCode: 'SRCSS',
                 longCode: 'Daily Bulletin Sans Serif',
                 imgMaxWidth: 200,
                 imgMaxHeight: 200,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://selfreliancecentral.com/feed',
+                rssFeed: 'http://www.selfreliancecentral.com/news/feed/',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
@@ -1499,6 +1499,7 @@ $(document).ready(function () {
         var originalFeed = feed;
         var noCache = '?nocache=' + ((new Date).getTime());
         var feedCacheBust = feed + noCache;
+        var noLoopHere = false;
 
         function fetchRSS(rssfeed) {
             $.ajax({
@@ -1600,15 +1601,18 @@ $(document).ready(function () {
                             });
                         }
                     } else { //if we fail to fetch the feed, do this
-                        swal({
-                            title: "RSS Failed!",
-                            text: "Couldn't connect! We've tried to fix it automatically!",
-                            type: "error",
-                            allowOutsideClick: "true",
-                            timer: "1500",
-                            confirmButtonText: "Okay!"
-                        });
-                        fetchRSS(originalFeed); //retries the feed without nocache, as it sometimes breaks
+                        if (noLoopHere === false) {
+                            noLoopHere = true; //set this to true, we only want to retry once.
+                            fetchRSS(originalFeed); //retries the feed without nocache, as it sometimes breaks
+                        } else {
+                            swal({
+                                title: "RSS Failed!",
+                                text: "Couldn't connect! Please try again. If it doesn't work, come back in a few minutes. If this is broken for more than 10 minutes, please contact the administrator.",
+                                type: "error",
+                                allowOutsideClick: "true",
+                                confirmButtonText: "Okay"
+                            });
+                        }
                     }
                 }
             }).done(function () {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
