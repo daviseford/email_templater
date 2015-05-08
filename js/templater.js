@@ -469,7 +469,15 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'BLACKOUTWW1',
-                    description: '300 x 250'
+                    description: '300 x 250 - Michelle Obama'
+                },
+                1: {
+                    name: 'BLACKOUTWW2',
+                    description: '300 x 250 - Putin'
+                },
+                2: {
+                    name: 'BLACKOUTWW3',
+                    description: '300 x 250 - Putin'
                 }
             }
         },
@@ -681,7 +689,7 @@ $(document).ready(function () {
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
-                rssFeed: 'http://conservativerepublicannews.com/feed',
+                rssFeed: 'http://conservativerepublicannews.com/blog/feed/',
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/crn_75x75.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
