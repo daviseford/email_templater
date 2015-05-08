@@ -1082,4 +1082,69 @@ $(document).ready(function () {
         }
     );
 
+
+
+    function butthole2 () {
+        var stringTest = JSON.stringify({url:"http://americanlibertypac.com/feed/"});
+        $.ajax({
+            type: 'POST',
+            datatype: 'json',
+            url: 'http://daviseford.com/sites/default/files/email_templater/php/magpierss-0.72/example.php',
+            data: "val=http://americanlibertypac.com/feed/"
+        })
+            .done(function(data){
+
+                console.log(data);
+
+            })
+            .fail(function() {
+
+                // just in case posting your form failed
+                alert( "Posting failed." );
+
+            });
+
+        // to prevent refreshing the whole page page
+        return false;
+    }
+
+    function butthole () {
+        var stringTest = JSON.stringify({url:"http://americanlibertypac.com/feed/"});
+        $.getJSON("http://daviseford.com/sites/default/files/email_templater/php/magpierss-0.72/example.php", stringTest)
+            .done(function (json) {
+                console.log("JSON Data Title: " + json);
+            })
+            .fail(function (jqxhr, textStatus, error) {
+                var err = textStatus + ", " + error;
+                console.log("Request Failed: " + err);
+            });
+    }
+
+    function asshole() {
+        var stringTestALPAC = JSON.stringify({"url": "http://americanlibertypac.com/feed/"});
+        var stringTestSRC = JSON.stringify({"url": "http://selfreliancecentral.com/news/feed/"});
+        var request = $.ajax({
+            url: "http://daviseford.com/sites/default/files/email_templater/php/magpierss-0.72/example.php",
+            contentType: "application/json; charset=utf-8",
+            method: "POST",
+            data: stringTestSRC,
+            dataType: "json"
+        });
+
+        request.done(function (msg) {
+            var data = msg;
+            for (i=0; i < msg.length; i++) {
+                console.log("Number: " + i + data[i]["url"]);
+                console.log("Number: " + i + data[i]["imageArray"]["outertext"]);
+            }
+        });
+
+        request.fail(function (jqXHR, textStatus) {
+            alert("Request failed: " + textStatus);
+        });
+    }
+    asshole();
+
+    //butthole();
+
 });

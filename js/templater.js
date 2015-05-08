@@ -1239,6 +1239,109 @@ $(document).ready(function () {
         }
     }
 
+    function makeTestEmailBtn() {
+        $("#emailTestHTML")
+            .button()
+            .show()
+            .mouseup(function() {
+                sendTestEmail();
+            });
+    }
+
+    function sendTestEmail() {
+        var w = $("#subjectInput").val();
+        var x = $("#resultsTextArea").val();
+        var z = $("#keycodeInput").val();
+        var y = S(x).unescapeHTML().s;
+        z = z.toUpperCase();
+        function ajaxSendEmail() {
+            $.ajax({
+                type: "POST",
+                dataType: "html",
+                url: "https://mandrillapp.com/api/1.0/messages/send.json",
+                data: {
+                    'key': 'MXTAqFwwNNGZdGtKOzG_Jw',
+                    'message': {
+                        'from_email': 'digitalmedia@wjmassociates.com',
+                        'from_name': 'Template Generator',
+                        'to': [
+                            {
+                                'email': 'dford@wjmassociates.com',
+                                'name': 'Davis Ford',
+                                'type': 'to'
+                            },
+                            {
+                                'email': 'abitely@wjmassociates.com',
+                                'name': 'Adam Bitely',
+                                'type': 'to'
+                            },
+                            {
+                                'email': 'adamrbitely@gmail.com',
+                                'name': 'Adam Bitely (Gmail)',
+                                'type': 'to'
+                            },
+                            {
+                                'email': 'kgregerson@wjmassociates.com',
+                                'name': 'Katie Gregerson',
+                                'type': 'to'
+                            },
+                            {
+                                'email': 'kelly@mustgoto.com',
+                                'name': 'Kelly McCarthy',
+                                'type': 'to'
+                            }
+                        ],
+                        'auto_html': 'true',
+                        'inline_css': 'true',
+                        'subject': '[TEST] ' + w + ' - ' + z,
+                        'html': y
+                    }
+                }
+            }).done(function () {
+                $('#emailTestHTML')
+                    .text('Email Sent!')
+                    .effect('highlight', 'fast')
+                    .button('disable');
+            });
+        }
+        if(templateContainer.currentProduct.enabled !== true) {
+            swal({
+                    title: "No Advertisement Selected",
+                    text: "Are you sure you want to send an email without an advertisement?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, send it!",
+                    cancelButtonText: "No, I forgot!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        ajaxSendEmail();
+                        swal({
+                            title: "Sent!",
+                            text: "Your email "+z+" has been sent!",
+                            type: "success",
+                            allowOutsideClick: "true",
+                            timer: "2000",
+                            showConfirmButton: "false"
+                        });
+                    }
+                });
+        } else {
+            ajaxSendEmail();
+            swal({
+                title: "Sent!",
+                text: "Your email "+z+" has been sent!",
+                type: "success",
+                allowOutsideClick: "true",
+                timer: "2000",
+                showConfirmButton: "false"
+            });
+        }
+    }
+
 
     //*******************************
     // GETTERS AND FUNCTIONS
@@ -1270,6 +1373,7 @@ $(document).ready(function () {
                 $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                 $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
                 makeEmailBtn(); //take this out if it gets abused
+                makeTestEmailBtn();
             }).fail(function () {
                 console.log("spawnTemplate(" + tmplLink + "): Something went wrong!");
             });
@@ -1313,7 +1417,7 @@ $(document).ready(function () {
             productSelect.selectmenu('refresh'); //refresh our changes. doesn't work without this.
         }
     }
-    makeProductMenu(adReferenceILN); //initialize our menu with ILN values, since the menu defaults to RFAR
+    makeProductMenu(adReferenceWJMA); //initialize our menu with WJMA values, since we default to ALPAC
 
     function updateTemplateMenu() {
         var list = $('#listSelect').val();
@@ -1490,6 +1594,33 @@ $(document).ready(function () {
         equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
     }
 
+
+
+    //TODO integrate this as my rss fetcher
+    //function asshole() {
+    //    var stringTestALPAC = JSON.stringify({"url": "http://americanlibertypac.com/feed/"});
+    //    var stringTestSRC = JSON.stringify({"url": "http://selfreliancecentral.com/news/feed/"});
+    //    var request = $.ajax({
+    //        url: "http://daviseford.com/sites/default/files/email_templater/php/magpierss-0.72/example.php",
+    //        contentType: "application/json; charset=utf-8",
+    //        method: "POST",
+    //        data: stringTestSRC,
+    //        dataType: "json"
+    //    });
+    //
+    //    request.done(function (msg) {
+    //        var data = msg;
+    //        for (i=0; i < msg.length; i++) {
+    //            console.log("Number: " + i + data[i]["url"]);
+    //            console.log("Number: " + i + data[i]["imageArray"]["outertext"]);
+    //        }
+    //    });
+    //
+    //    request.fail(function (jqXHR, textStatus) {
+    //        alert("Request failed: " + textStatus);
+    //    });
+    //}
+    //asshole();
 
 
     function getRSSWithImage(feed) {
@@ -1945,7 +2076,7 @@ $(document).ready(function () {
         $.get( "http://daviseford.com/sites/default/files/email_templater/php/counter.php?page=templaterCounter", function( data ) {
             var counterDiv = $('#counterDiv');
             var dataNum = parseInt(data);
-            var a = (Math.floor(dataNum * 19))/60;
+            var a = (dataNum * 19)/60;
             var estimateTimeSaved = Math.floor(a);
             var insertText2 = '<ul class="list-group"><li class="list-group-item"><span class="badge">'+data+'</span>Times Used: </li><li class="list-group-item"><span class="badge">'+estimateTimeSaved+'</span>Hours Saved: </li></ul>';
             var insertText = '<center><p class="bg-info">This application has been used <strong>' + data + '</strong> times.<br/>Time saved: <strong>' + estimateTimeSaved + '</strong> hours</p></center>';

@@ -49,7 +49,7 @@ $unique_hours = 24;
 $min_digits = 0;
 
 // Thousands separator; 1,999,999 or 1.999.999 or 1 999 999 or just 1999999
-$thousands_separator = ',';
+$thousands_separator = '';
 
 
 ////////////////////////////////////////////////////////////////////////////////
