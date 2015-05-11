@@ -15,6 +15,7 @@ foreach ($rss->items as $item ) {
 		
 	$encoded = $item[content][encoded];
 	$html = str_get_html($encoded);
+	$htmlTest = htmlentities($item[description]);
 	
 	// find all images in an individual RSS entry
 	$imageInfo = array();
@@ -27,9 +28,10 @@ foreach ($rss->items as $item ) {
 	}
 	//add all items to our array, will be sent to JS
 	$storyTest = array (
-		"title" => json_encode($item[title]),
+		"title" => $item[title],
 		"url" => $item[link],
 		"desc" => $item[description],
+		"descTest" => $htmlTest,
 		"encoded" => $encoded,
 		"imageArray" => $imageInfo,
 		);

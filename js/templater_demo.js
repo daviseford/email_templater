@@ -629,6 +629,7 @@ $(document).ready(function () {
                     console.log("Story #" + i + " : "+ thisRSS["title"]);
                     console.log("Link: " + thisRSS["url"]);
                     console.log("Description: " + thisRSS["desc"]);
+                    console.log("Description Test: " + thisRSS["descTest"]);
                     console.log("Content: " + thisRSS["content"]);
                     //console.log("Number: " + i + thisRSS["imageArray"]["outertext"]);
                     console.log("Image Info: " + thisRSS["imageArray"]["width"] + "x" + thisRSS["imageArray"]["height"] + " -- "+thisRSS["imageArray"]["src"]);
@@ -643,6 +644,12 @@ $(document).ready(function () {
                             imgSrc = thisRSS["imageArray"]["src"];
                         }
                         return imgSrc;
+                    }
+
+                    if(thisRSS["descTest"]!== null && thisRSS["descTest"] !== undefined) {
+                        var x = thisRSS["descTest"];
+                        var y = S(x).unescapeHTML().s;
+                        console.log("y = " + y);
                     }
 
                     function cleanDescription(desc) {
