@@ -615,10 +615,10 @@ $(document).ready(function () {
 
 
         var request = $.ajax({
-            url: "http://daviseford.com/sites/default/files/email_templater/php/magpierss-0.72/example.php",
+            url: "http://daviseford.com/sites/default/files/email_templater/php/magpierss-0.72/RSS_Fetcher_Davis_Ford.php",
             contentType: "application/json; charset=utf-8",
             method: "POST",
-            data: JSON.stringify({"url": feed}),
+            data: JSON.stringify({"url": feed}), //send a JSON-encoded URL to the php script.
             dataType: 'json',
             success: function (data) {
                 var dataNew = data;
@@ -629,9 +629,6 @@ $(document).ready(function () {
                     console.log("Story #" + i + " : "+ thisRSS["title"]);
                     console.log("Link: " + thisRSS["url"]);
                     console.log("Description: " + thisRSS["desc"]);
-                    console.log("Description Test: " + thisRSS["descTest"]);
-                    console.log("Content: " + thisRSS["content"]);
-                    //console.log("Number: " + i + thisRSS["imageArray"]["outertext"]);
                     console.log("Image Info: " + thisRSS["imageArray"]["width"] + "x" + thisRSS["imageArray"]["height"] + " -- "+thisRSS["imageArray"]["src"]);
 
                     function defaultImageCheck() { //replaces undefined images with a default
@@ -646,10 +643,18 @@ $(document).ready(function () {
                         return imgSrc;
                     }
 
-                    if(thisRSS["descTest"]!== null && thisRSS["descTest"] !== undefined) {
-                        var x = thisRSS["descTest"];
-                        var y = S(x).unescapeHTML().s;
-                        console.log("y = " + y);
+                    function fixDescription() {
+                        var description = thisRSS["desc"];
+                        if (description !== null && description !== undefined) {
+                            return S(description).unescapeHTML().s;
+                        }
+                    }
+
+                    function fixTitle() {
+                        var title = thisRSS["title"];
+                        if (title !== null && title !== undefined) {
+                            return S(title).unescapeHTML().s;
+                        }
                     }
 
                     function cleanDescription(desc) {
@@ -663,12 +668,12 @@ $(document).ready(function () {
 
                     rssObject[i] = {
                         storyNum: i,
-                        title: thisRSS["title"],
+                        title: fixTitle(),
                         link: thisRSS["url"],
                         imgsrc: defaultImageCheck(),
                         imgW: thisRSS["imageArray"]["width"],
                         imgH: thisRSS["imageArray"]["height"],
-                        description: thisRSS["desc"]
+                        description: fixDescription()
                     };
 
                     var btnID1 = 'rss1Btn' + rssObject[i].storyNum;

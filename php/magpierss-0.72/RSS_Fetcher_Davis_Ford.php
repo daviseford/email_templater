@@ -1,5 +1,5 @@
 <?php
-require_once 'rss_fetch.inc'; //
+require_once 'rss_fetch.inc'; 
 include('simple_html_dom.php'); //http://sourceforge.net/projects/simplehtmldom/files/
  
 $post = file_get_contents('php://input'); //workaround for $_POST, this data arrives in the form of a URL
@@ -13,9 +13,8 @@ $storageArray = array();
 
 foreach ($rss->items as $item ) {	
 		
-	$encoded = $item[content][encoded];
+	/* $encoded = $item[content][encoded]; */
 	$html = str_get_html($encoded);
-	$htmlTest = htmlentities($item[description]);
 	
 	// find all images in an individual RSS entry
 	$imageInfo = array();
@@ -28,11 +27,9 @@ foreach ($rss->items as $item ) {
 	}
 	//add all items to our array, will be sent to JS
 	$storyTest = array (
-		"title" => $item[title],
+		"title" => utf8_encode($item[title]),
 		"url" => $item[link],
-		"desc" => $item[description],
-		"descTest" => $htmlTest,
-		"encoded" => $encoded,
+		"desc" => utf8_encode($item[description]),
 		"imageArray" => $imageInfo,
 		);
 		

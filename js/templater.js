@@ -576,6 +576,33 @@ $(document).ready(function () {
                     description: '320 x 50'
                 }
             }
+        },
+        NSA: {
+            link: 'http://a3e452m915sd3s3kfhqhsjca69.hop.clickbank.net/?tid=', //default link to all sub-ads
+            shortCode: 'NSA',
+            longCode: 'NSA',
+            advertisements: {
+                0: {
+                    name: 'NSA1',
+                    description: '300 x 250 - Stop Spying Thugs'
+                },
+                1: {
+                    name: 'NSA2',
+                    description: '300 x 250 - NSA Loopholes Revealed'
+                },
+                2: {
+                    name: 'NSA3',
+                    description: '300 x 250 - 13 Words/Big Brother'
+                },
+                3: {
+                    name: 'NSA4',
+                    description: '300 x 250 - NSA Banned This Video'
+                },
+                4: {
+                    name: 'NSA5',
+                    description: '300 x 250 - 13 Words'
+                }
+            }
         }
     };
 
