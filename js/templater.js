@@ -599,7 +599,6 @@ $(document).ready(function () {
     }
 
     templateContainer = {
-        //storyTrack: [false, false, false, false], //initialize with all stories turned off.
         keycode: makeKeyCodeTest(),//templateContainer will eventually be the one stop shop for all constant variables
         ALPAC: {                //we start with the client name
             DB: {               //type of template (usually DB or MR)
@@ -2130,6 +2129,22 @@ $(document).ready(function () {
         } );
     }
 
+    function makePreviewEmailBtn() {
+        $("#previewEmailBtn")
+            .button()
+            .show()
+            .mouseup(function() {
+                openPreviewWindow();
+            });
+    }
+
+    function openPreviewWindow() {
+        var html = $('#resultsTextArea').val();
+        var keycode = templateContainer.keycode;
+        var win = window.open("", "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=650, height=800");
+        win.document.body.innerHTML = html;
+    }
+
 
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
@@ -2148,6 +2163,7 @@ $(document).ready(function () {
                     compileEmail(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
                     makeCopyButton();
                     makeCopyKeycodeButton();
+                    makePreviewEmailBtn();
                     usageCounter();
                 }, 500);
             }
