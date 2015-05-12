@@ -57,10 +57,10 @@ foreach ($feed->get_items() as $item ) {
 	$imageInfo = array(
 		"src" => $e->src,				//the URI of the image
 		"alt" => $e->alt,				//alt property
-		"width" => $origW,			//width
-		"height" => $origH,			//height
+		"width" => $origW,				//width
+		"height" => $origH,				//height
 		"outertext" => $e->outertext,	//fully formatted, original. not recommended to use because it will likely have broken tags
-		"fixedHeight" => $fixedHeight,
+		"fixedHeight" => $fixedHeight,	//not used yet
 		"fixedWidth" => $fixedWidth,
 	);
 	

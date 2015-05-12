@@ -1273,7 +1273,7 @@ $(document).ready(function () {
         }
     }
 
-    function makeTestEmailBtn() {
+    function makeWJMAEmailBtn() {
         $("#emailTestHTML")
             .button()
             .show()
@@ -1407,7 +1407,7 @@ $(document).ready(function () {
                 $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                 $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
                 makeEmailBtn(); //take this out if it gets abused
-                makeTestEmailBtn();
+                makeWJMAEmailBtn();
             }).fail(function () {
                 console.log("spawnTemplate(" + tmplLink + "): Something went wrong!");
             });
@@ -1527,8 +1527,6 @@ $(document).ready(function () {
         var maxHeight = height;    // Max height for the image
 
         img.onload = function () {
-            //console.log('maxSize: ' + maxWidth + 'x' + maxHeight);
-            //console.log('Original Size of image ' + (storage + 1) + ': ' + img.naturalWidth + 'x' + img.naturalHeight);
             var ratio = 0;  // Used for aspect ratio
             var width = this.naturalWidth;    // Current image width
             var height = this.naturalHeight;  // Current image height
@@ -1536,14 +1534,10 @@ $(document).ready(function () {
             // Check if the current width is larger than the max
             if (width > maxWidth && width >= height) {
                 ratio = maxWidth / width;   // get ratio for scaling image
-                //console.log('RESIZE ----WIDTH---');
-                //console.log('Now: ' + maxWidth + 'x' + Math.floor(height * ratio));
                 imgHeight[storage] = Math.floor(height * ratio);    // Reset height to match scaled image
                 imgWidth[storage] = maxWidth;    // Reset width to match scaled image
             } else if (height > maxHeight) {
                 ratio = maxHeight / height; // get ratio for scaling image
-                //console.log('RESIZE -----HEIGHT--');
-                //console.log('Now: ' + Math.floor(width * ratio) + 'x' + maxHeight);   // Set new height
                 imgWidth[storage] = Math.floor(width * ratio);    // Reset width to match scaled image
                 imgHeight[storage] = maxHeight;    // Reset height to match scaled image
             }
@@ -1553,7 +1547,6 @@ $(document).ready(function () {
 
 
     function getILNAPI(){
-        //event.preventDefault();
         var resultsHolder = [];
         var formatStorage = [];
         $.ajax({
@@ -1571,15 +1564,6 @@ $(document).ready(function () {
                     //credit: http://www.textfixer.com/tutorials/javascript-line-breaks.php
                     return (title.replace(/(\r\n|\n|\r)/gm," "));
                 }
-
-                //for (var i=0; i < numStories; i++){
-                //    resultsHolder[i] = {
-                //        storyNum: i,
-                //        title: removeNewLine(results[i].title),
-                //        link: results[i].link,
-                //        imgsrc: x.defaultLogo
-                //    };
-                //}
 
                 for (var q = 0; q < 9; q++) { //displays 9 results
                     resultsHolder[q] = {
@@ -1684,8 +1668,8 @@ $(document).ready(function () {
                     //console.log("Link: " + itemRSS.url);
                     //console.log("Description: " + itemRSS.description);
                     //console.log("Comments: " + itemRSS.comments);
-                    console.log("Height: " + imageRSS.fixedHeight);
-                    console.log("Width: " + imageRSS.fixedWidth);
+                    //console.log("Height: " + imageRSS.fixedHeight);
+                    //console.log("Width: " + imageRSS.fixedWidth);
                     //console.log("Image Info: " + imageRSS.width + "x" + imageRSS.height + " -- "+ imageRSS.src);
 
                     rssObject[i] = {
