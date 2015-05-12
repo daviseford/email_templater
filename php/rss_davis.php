@@ -1,5 +1,5 @@
 <?php
-require_once 'rss_fetch.inc'; 
+require_once 'magpierss-0.72/rss_fetch.inc'; 
 include('simple_html_dom.php'); //http://sourceforge.net/projects/simplehtmldom/files/
  
 $post = file_get_contents('php://input'); //workaround for $_POST, this data arrives in the form of a URL
@@ -13,8 +13,13 @@ $storageArray = array();
 
 foreach ($rss->items as $item ) {	
 		
-	/* $encoded = $item[content][encoded]; */
+	$encoded = $item[content][encoded];
 	$html = str_get_html($encoded);
+	$descutf = utf8_encode($item[description]);
+	/* $descjson = json_encode($descutf); */
+	$titleutf = utf8_encode($item[title]);
+	$titlehtml = htmlspecialchars($item[title], ENT_QUOTES | ENT_HTML401, UTF-8);
+	
 	
 	// find all images in an individual RSS entry
 	$imageInfo = array();
@@ -25,12 +30,15 @@ foreach ($rss->items as $item ) {
 		$imageInfo["outertext"] = $e->outertext;	//fully formatted, original. not recommended to use because it will likely have broken tags
 
 	}
+	
+	$encodedTitle = utf8_encode($item[title]);
 	//add all items to our array, will be sent to JS
 	$storyTest = array (
-		"title" => utf8_encode($item[title]),
+		"title" => $titlehtml,
 		"url" => $item[link],
-		"desc" => utf8_encode($item[description]),
+		"desc" => $descutf,
 		"imageArray" => $imageInfo,
+		"comments" => $item[slash][comments],
 		);
 		
 	$storageArray[$loopCounter] = $storyTest;

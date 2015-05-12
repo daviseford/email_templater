@@ -609,13 +609,9 @@ $(document).ready(function () {
     function getRSSWithImage(feed) {
         var formatStorage = [];
         var rssObject = [];
-        var stringTestALPAC = JSON.stringify({"url": "http://americanlibertypac.com/feed/"});
-        var stringTestSRC = JSON.stringify({"url": "http://selfreliancecentral.com/news/feed/"});
-
-
 
         var request = $.ajax({
-            url: "http://daviseford.com/sites/default/files/email_templater/php/magpierss-0.72/RSS_Fetcher_Davis_Ford.php",
+            url: "http://daviseford.com/sites/default/files/email_templater/php/rss_davis.php",
             contentType: "application/json; charset=utf-8",
             method: "POST",
             data: JSON.stringify({"url": feed}), //send a JSON-encoded URL to the php script.
@@ -744,6 +740,7 @@ $(document).ready(function () {
             }
         });
         equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
+        //TODO replace with masonry
     }
 
 
