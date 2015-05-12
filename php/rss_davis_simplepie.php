@@ -36,20 +36,43 @@ foreach ($feed->get_items() as $item ) {
 	// uses simple_html_dom_parser
 	$html = str_get_html($content);
 	$e = $html->find('img', 0);
+	
+	//give us proper email sizes if we're given the right JSON values
+	$tmplW = $postdec["width"];  //maximum dimensions for the template, passed from JS
+	$tmplH = $postdec["height"]; 
+	$origW = $e->width;
+	$origH = $e->height;
+	
+	if ($origW > $tmplW && $origW >= $origH) {
+		$ratio = $tmplW / $origW; //get ratio for scaling image
+		$fixedHeight = floor($origH * $ratio);
+		$fixedWidth = $tmplW;	
+	} else if ($origH > $tmplH) {
+		$ratio = $tmplH / $origH; //get ratio for scaling image
+		$fixedHeight = $tmplH;
+		$fixedWidth = floor($origW * $ratio);	
+	}
+	
+	
 	$imageInfo = array(
 		"src" => $e->src,				//the URI of the image
 		"alt" => $e->alt,				//alt property
-		"width" => $e->width,			//width
-		"height" => $e->height,			//height
+		"width" => $origW,			//width
+		"height" => $origH,			//height
 		"outertext" => $e->outertext,	//fully formatted, original. not recommended to use because it will likely have broken tags
+		"fixedHeight" => $fixedHeight,
+		"fixedWidth" => $fixedWidth,
 	);
+	
+	
+	
 	
 	
 	//add all items to our array, will be sent to JS
 	$storyArray = array (
 		"title" => $title,
 		"url" => $permalink,
-		"desc" => $content,
+		"description" => $content,
 		"comments" => $number,
 		"imageArray" => $imageInfo,
 		);

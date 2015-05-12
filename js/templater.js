@@ -1636,6 +1636,31 @@ $(document).ready(function () {
     }
 
 
+    var rssFeedHelpers = {
+        defaultImageCheck: function (imgURL) { //replaces undefined images with a default
+            var imgSrc;
+            if (imgURL === undefined || imgURL === null) {
+                var template = getCurrentTemplateSettings();
+                imgSrc = template.defaultLogo;
+                console.log('No image found in getRSSWithImage(), using defaultLogo');
+            } else {
+                imgSrc = imgURL;
+            }
+            return imgSrc;
+        },
+        fixDescription: function (description) {  //strips extraneous html tags from the story
+            if (description !== null && description !== undefined) {
+                var desc = S(description).unescapeHTML().s;
+                return S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font').s;
+            }
+        },
+        fixTitle: function (title) {
+            if (title !== null && title !== undefined) {
+                return S(title).unescapeHTML().s;
+            }
+        }
+
+    };
 
     function getRSSWithImage(feed) { //feed arrives in the form of a URL e.g. http://americanlibertypac.com/feed/
         var formatStorage = [];
@@ -1645,63 +1670,32 @@ $(document).ready(function () {
             url: "http://daviseford.com/sites/default/files/email_templater/php/rss_davis_simplepie.php",
             contentType: "application/json; charset=utf-8",
             method: "POST",
-            data: JSON.stringify({"url": feed}), //send a JSON-encoded URL to the php script.
+            data: JSON.stringify({"url": feed, "width": 135, "height": 135}), //send a JSON-encoded URL to the php script.
             dataType: 'json',
             success: function (data) {
-                var dataNew = data;
 
                 for (var i=0; i < data.length; i++) {
-                    var thisRSS = dataNew[i];
-                    console.log("------------------------------------");
-                    console.log("Story #" + i + " : "+ thisRSS["title"]);
-                    console.log("Link: " + thisRSS["url"]);
-                    console.log("Description: " + thisRSS["desc"]);
-                    console.log("Comments: " + thisRSS["comments"]);
-                    console.log("Image Info: " + thisRSS["imageArray"]["width"] + "x" + thisRSS["imageArray"]["height"] + " -- "+thisRSS["imageArray"]["src"]);
 
-                    function defaultImageCheck() { //replaces undefined images with a default
-                        var imgSrc;
-                        if (thisRSS["imageArray"]["src"] === undefined || thisRSS["imageArray"]["src"] === null) {
-                            var template = getCurrentTemplateSettings();
-                            imgSrc = template.defaultLogo;
-                            console.log('No image found in getRSSWithImage(), using defaultLogo');
-                        } else {
-                            imgSrc = thisRSS["imageArray"]["src"];
-                        }
-                        return imgSrc;
-                    }
+                    var itemRSS = data[i];
+                    var imageRSS = itemRSS.imageArray;
 
-                    function fixDescription() {
-                        var description = thisRSS["desc"];
-                        if (description !== null && description !== undefined) {
-                            return S(description).unescapeHTML().s;
-                        }
-                    }
-
-                    function fixTitle() {
-                        var title = thisRSS["title"];
-                        if (title !== null && title !== undefined) {
-                            return S(title).unescapeHTML().s;
-                        }
-                    }
-
-                    function cleanDescription(desc) {
-                        if(desc !== null || desc !== undefined) {
-                            var x = S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font').s;
-                            return x;
-                        }
-                    }
-                    //console.log("cleanup: " + cleanDescription(thisRSS["desc"]));
-
+                    //console.log("------------------------------------");
+                    //console.log("Story #" + i + " : "+ itemRSS.title);
+                    //console.log("Link: " + itemRSS.url);
+                    //console.log("Description: " + itemRSS.description);
+                    //console.log("Comments: " + itemRSS.comments);
+                    console.log("Height: " + imageRSS.fixedHeight);
+                    console.log("Width: " + imageRSS.fixedWidth);
+                    //console.log("Image Info: " + imageRSS.width + "x" + imageRSS.height + " -- "+ imageRSS.src);
 
                     rssObject[i] = {
                         storyNum: i,
-                        title: fixTitle(),
-                        link: thisRSS["url"],
-                        imgsrc: defaultImageCheck(),
-                        imgW: thisRSS["imageArray"]["width"],
-                        imgH: thisRSS["imageArray"]["height"],
-                        description: fixDescription()
+                        title: rssFeedHelpers.fixTitle(itemRSS.title),
+                        link: itemRSS.url,
+                        imgsrc: rssFeedHelpers.defaultImageCheck(imageRSS.src),
+                        imgW: imageRSS.width,
+                        imgH: imageRSS.height,
+                        description: rssFeedHelpers.fixDescription(itemRSS.description)
                     };
 
                     var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
