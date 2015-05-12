@@ -1642,7 +1642,7 @@ $(document).ready(function () {
         var rssObject = [];
 
         var request = $.ajax({
-            url: "http://daviseford.com/sites/default/files/email_templater/php/rss_davis.php",
+            url: "http://daviseford.com/sites/default/files/email_templater/php/rss_davis_simplepie.php",
             contentType: "application/json; charset=utf-8",
             method: "POST",
             data: JSON.stringify({"url": feed}), //send a JSON-encoded URL to the php script.

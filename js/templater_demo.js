@@ -118,7 +118,7 @@ $(document).ready(function () {
                 imgMaxWidth: '',
                 imgMaxHeight: '',
                 productMenu: adReferenceDEMO, //this stores the ads
-                rssFeed: 'http://americanlibertypac.com/feed/',  //Nocache is important!
+                rssFeed: 'http://www.selfreliancecentral.com/news/feed/',  //Nocache is important!
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/demo/TheEconomistLogo.jpg',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
@@ -159,7 +159,7 @@ $(document).ready(function () {
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceDEMO,
-                rssFeed: 'http://americanlibertypac.com/feed/',  //Nocache is important!
+                rssFeed: 'http://www.selfreliancecentral.com/news/feed/',  //Nocache is important!
                 defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/demo/TheEconomistLogo.jpg',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
@@ -583,7 +583,7 @@ $(document).ready(function () {
         var stringTestALPAC = JSON.stringify({"url": "http://americanlibertypac.com/feed/"});
         var stringTestSRC = JSON.stringify({"url": "http://selfreliancecentral.com/news/feed/"});
         var request = $.ajax({
-            url: "http://daviseford.com/sites/default/files/email_templater/php/magpierss-0.72/example.php",
+            url: "http://daviseford.com/sites/default/files/email_templater/php/rss_davis_simplepie.php",
             contentType: "application/json; charset=utf-8",
             method: "POST",
             data: stringTestSRC,
@@ -594,7 +594,7 @@ $(document).ready(function () {
             var data = msg;
             for (i=0; i < msg.length; i++) {
                 console.log("Number: " + i + data[i]["url"]);
-                console.log("Number: " + i + data[i]["imageArray"]["outertext"]);
+                console.log("Number: " + i + data[i]["title"]);
                 //console.log("Number: " + i + data[i]["imageArray"]["resized"]);
             }
         });
@@ -611,7 +611,7 @@ $(document).ready(function () {
         var rssObject = [];
 
         var request = $.ajax({
-            url: "http://daviseford.com/sites/default/files/email_templater/php/rss_davis.php",
+            url: "http://daviseford.com/sites/default/files/email_templater/php/rss_davis_simplepie.php",
             contentType: "application/json; charset=utf-8",
             method: "POST",
             data: JSON.stringify({"url": feed}), //send a JSON-encoded URL to the php script.
@@ -626,6 +626,7 @@ $(document).ready(function () {
                     console.log("Link: " + thisRSS["url"]);
                     console.log("Description: " + thisRSS["desc"]);
                     console.log("Image Info: " + thisRSS["imageArray"]["width"] + "x" + thisRSS["imageArray"]["height"] + " -- "+thisRSS["imageArray"]["src"]);
+                    console.log("Comments: " + thisRSS["comments"]);
 
                     function defaultImageCheck() { //replaces undefined images with a default
                         var imgSrc;
