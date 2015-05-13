@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Form</title>
+
+    <!-- Loading Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/wysihtml-toolbar.min.js" type="text/javascript"></script>
+    <script src="js/advanced.js" type="text/javascript"></script>
+    <script type="application/javascript">
+        $(document).ready(function() {
+            x = new wysihtml5.Editor("title1text-div", { // id of textarea element
+                toolbar:      "wysihtml-toolbar1", // id of toolbar element
+                parserRules:  wysihtml5ParserRules // defined in parser rules set
+            });
+            y = new wysihtml5.Editor("title2text-div", { // id of textarea element
+                toolbar:      "wysihtml-toolbar2", // id of toolbar element
+                parserRules:  wysihtml5ParserRules // defined in parser rules set
+            });
+			
+			$('#story').submit(function() {
+				event.preventDefault();
+				// Send the data using post
+				var random1 = $('#random1').val();
+  var posting = $.post( "php/test_template.php", { s: random1 } );
+			
+        });
+		});
+    </script>
+
+    <!-- Loading CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+</head>
+<body>
+<div class="container">
+    <h1><a>Untitled Form</a></h1>
+    <div class="row" id="choiceRow1">
+        <div class="col-lg-6 col-md-6" id="story1Div">
+        <label for="random1">rad </label>
+        <input class="form-control" type="text" id="random1" name="random1"/>
+            <form id="story">
+                <div class="form-group">
+                    <label for="title1">Title </label>
+                    <input class="form-control" type="text" id="title1" name="title1"/>
+                </div>
+                <div class="form-group">
+                    <label for="title1text-div">Story </label>
+                    <textarea id="title1text-div" name="title1text-div" class="form-control" rows="3" placeholder="Enter your text ..." autofocus></textarea>
+                    <!-- <div id="title1text-div" style="width: 100%; height: 100%" data-placeholder="" class="form-control"></div> -->
+                    <div id="wysihtml-toolbar1" style="display: none;"><a data-wysihtml5-command="bold"><strong>bold </strong></a><a data-wysihtml5-command="italic"><em>italic </em></a><a data-wysihtml5-command="createLink">insert link </a>
+                        <div data-wysihtml5-dialog="createLink" style="display: none;">
+                            <label>Link:
+                                <input data-wysihtml5-dialog-field="href" value="http://" class="text" />
+                            </label>
+                            <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title1URL">Story URL: </label>
+                    <input class="form-control" type="text" id="title1URL" name="title1URL" placeholder="Put the link to the article here."/>
+                </div>
+                <div class="form-group">
+                    <label for="title1IMG">Image URL: </label>
+                    <input class="form-control" type="text" id="title1IMG" name="title1IMG" placeholder=""/>
+                    <br />
+                </div>
+        </div>
+        <div class="col-lg-6 col-md-6" id="story2Div">
+            <div class="form-group">
+                <label for="title2">Title #2: </label>
+                <input class="form-control" type="text" id="title2" name="title2"/>
+            </div>
+            <div class="form-group">
+                <label for="title2text-div">Story #2: </label>
+                <textarea id="title2text-div" name="title2text-div" class="form-control" rows="3" placeholder="Enter your text ..." autofocus></textarea>
+                <div id="wysihtml-toolbar2" style="display: none;"><a data-wysihtml5-command="bold"><strong>bold </strong></a><a data-wysihtml5-command="italic"><em>italic </em></a><a data-wysihtml5-command="createLink">insert link </a>
+                    <div data-wysihtml5-dialog="createLink" style="display: none;">
+                        <label>Link:
+                            <input data-wysihtml5-dialog-field="href" value="http://" class="text" />
+                        </label>
+                        <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title2URL">
+                  <input class="form-control" type="text" id="title2URL" name="title2URL" placeholder="Link to the article here."/>
+                Story URL: </label>
+            </div>
+            <div class="form-group">
+                <label for="title2IMG">Image URL: </label>
+                <input class="form-control" type="text" id="title2IMG" name="title2IMG" placeholder=""/>
+            </div>
+            <input type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
