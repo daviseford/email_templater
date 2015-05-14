@@ -603,6 +603,129 @@ $(document).ready(function () {
                     description: '300 x 250 - 13 Words'
                 }
             }
+        },
+        SAC: {
+            link: 'http://38c1e5i7zzx81mbp6o-4adf79s.hop.clickbank.net/?tid=', //default link to all sub-ads
+            shortCode: 'SAC',
+            longCode: 'Survive After Crisis',
+            advertisements: {
+                0: {
+                    name: 'SAC1',
+                    description: '120 x 600 - Blackbelt Secrets of Firearms '
+                },
+                1: {
+                    name: 'SAC2',
+                    description: '160 x 600 - Ex-Military Tell-All'
+                },
+                2: {
+                    name: 'SAC3',
+                    description: '250 x 250 - America Collapses'
+                },
+                3: {
+                    name: 'SAC4',
+                    description: '250 x 250- America Collapses (2)'
+                },
+                4: {
+                    name: 'SAC5',
+                    description: '300 x 250 - I Do Not Want To Scare You'
+                },
+                5: {
+                    name: 'SAC6',
+                    description: '300 x 300 - To All Men'
+                },
+                6: {
+                    name: 'SAC7',
+                    description: '300 x 300 - To All Men (2)'
+                },
+                7: {
+                    name: 'SAC8',
+                    description: '600 x 66 - Key Ingredients'
+                },
+                8: {
+                    name: 'SAC9',
+                    description: '600 x 66 - You Might Not Survive'
+                },
+                9: {
+                    name: 'SAC10',
+                    description: '600 x 74 - Mental Game - Scared Girl'
+                },
+                10: {
+                    name: 'SAC11',
+                    description: '600 x 66 - Mental Game - Soldiers'
+                },
+                11: {
+                    name: 'SAC12',
+                    description: '600 x 66 - To All Men (3)'
+                },
+                12: {
+                    name: 'SAC13',
+                    description: '250 x 250 - Shit Hits The Fan'
+                },
+                13: {
+                    name: 'SAC14',
+                    description: '250 x 250 - You Might Not Survive (2)'
+                },
+                14: {
+                    name: 'SAC15',
+                    description: '300 x 300 - Ex-Military Tell-All (2)'
+                },
+                15: {
+                    name: 'SAC16',
+                    description: '300 x 300 - Ex-Military Tell-All (3)'
+                },
+                16: {
+                    name: 'SAC17',
+                    description: '300 x 250 - America Collapses (3)'
+                },
+                17: {
+                    name: 'SAC18',
+                    description: '300 x 300 - Countdown To Chaos'
+                },
+                18: {
+                    name: 'SAC19',
+                    description: '300 x 300 - Survival Secrets'
+                },
+                19: {
+                    name: 'SAC20',
+                    description: '300 x 250 - How To Survive'
+                },
+                20: {
+                    name: 'SAC21',
+                    description: '300 x 250 - How To Survive (GIF)'
+                },
+                21: {
+                    name: 'SAC22',
+                    description: '250 x 250 - Key Ingredients (GIF)'
+                },
+                22: {
+                    name: 'SAC23',
+                    description: '250 x 250 - America Collapses (GIF)'
+                },
+                23: {
+                    name: 'SAC24',
+                    description: '125 x 125 - Watch Free Video'
+                },
+                24: {
+                    name: 'SAC25',
+                    description: '125 x 125 - Watch Free Video (2)'
+                },
+                25: {
+                    name: 'SAC26',
+                    description: '125 x 125 - Survival Shocker Secrets'
+                },
+                26: {
+                    name: 'SAC27',
+                    description: '125 x 125 - To All Men (4)'
+                },
+                27: {
+                    name: 'SAC28',
+                    description: '600 x 74 - To All Men (GIF)'
+                },
+                28: {
+                    name: 'SAC29',
+                    description: '600 x 74 - Countdown To Collapse (GIF)'
+                }
+            }
         }
     };
 
