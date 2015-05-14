@@ -197,15 +197,19 @@ table.sf-reco img {
             
             <!-- END BANNER BLOCK --> 
             
-            <!-- template ALPACDBIMG --> 
-            <!-- START ALPACDBIMG -->
-            
+            <!-- START ALPACDBIMG -->            
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
               <tr>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 75%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
                     <tr>
-                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><h2 style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 20px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: bold;font-style: normal;text-transform: none;background-color: transparent;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;"> <a target="_blank" style="background-color: transparent;color: #0000FF;font-family: Verdana, Geneva, sans-serif;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;" href="#"> <?php echo $_POST["title1"]; ?> </a> </h2>
-                        <span style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;"><?php echo $_POST["title1text-div"]; ?></span> <br /></td>
+                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                      <h2 style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 20px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: bold;font-style: normal;text-transform: none;background-color: transparent;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;">
+                      <a target="_blank" style="background-color: transparent;color: #0000FF;font-family: Verdana, Geneva, sans-serif;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;" href="<?php echo $_POST["title1URL"] . $_POST["utm"]; ?>"> <?php echo $_POST["title1"]; ?> </a> </h2>
+                        <span style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">
+                        <!-- BEGIN STORY -->
+						<?php echo $_POST["title1text-div"]; ?>
+                        <!-- END STORY -->
+                        </span> <br /></td>
                     </tr>
                   </table></td>
                 <td class="sf-td hide-on-responsive" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 25%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
@@ -230,15 +234,19 @@ table.sf-reco img {
             
             <!-- END ALPACDBIMG --> 
             
-            <!-- template ALPACDBIMG --> 
-            <!-- START ALPACDBIMG -->
-            
+            <!-- START ALPACDBIMG -->            
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
               <tr>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 75%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
                     <tr>
-                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><h2 style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 20px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: bold;font-style: normal;text-transform: none;background-color: transparent;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;"> <a target="_blank" style="background-color: transparent;color: #0000FF;font-family: Verdana, Geneva, sans-serif;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;" href="#"> <?php echo $_POST["title2"]; ?> </a> </h2>
-                        <span style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;"><?php echo $_POST["title2text-div"]; ?></span> <br /></td>
+                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                      <h2 style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 20px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: bold;font-style: normal;text-transform: none;background-color: transparent;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;">
+                      <a target="_blank" style="background-color: transparent;color: #0000FF;font-family: Verdana, Geneva, sans-serif;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;" href="<?php echo $_POST["title2URL"] . $_POST["utm"]; ?>"> <?php echo $_POST["title2"]; ?> </a> </h2>
+                        <span style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">
+                        <!-- BEGIN STORY -->
+						<?php echo $_POST["title2text-div"]; ?>
+                        <!-- END STORY -->
+                        </span> <br /></td>
                     </tr>
                   </table></td>
                 <td class="sf-td hide-on-responsive" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 25%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
@@ -246,6 +254,17 @@ table.sf-reco img {
                       <td align="left" class="sf-img sf-td" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: auto;"><center>
                           <br />
                           <br />
+                          <a href="<?php echo $_POST["title2URL"]; ?>" target="_blank">
+                           <?php 
+						   $title2resize = resizeImage($_POST["title2IMG"]);
+						   $title2FixedW = $title2resize["fixedWidth"];
+						   $title2FixedH = $title2resize["fixedHeight"];
+						   ?>
+                          <img class="no-scale" align="middle" src="<?php echo $_POST["title2IMG"]; ?>" alt="<?php echo $_POST["title1"]; ?>" height="<?php echo $title2FixedH ?>" width="<?php echo $title2FixedW ?>"> -->
+                          <p>
+						  <?php echo $title2FixedW." x ".$title2FixedH; ?>
+                          </p>
+                          </a>
                         </center></td>
                     </tr>
                   </table></td>

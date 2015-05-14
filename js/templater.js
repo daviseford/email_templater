@@ -848,6 +848,25 @@ $(document).ready(function () {
                     var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
                     return y;
                 }
+            },
+            SL: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/crn_sl_Tmpl.htm',
+                emailCode: 'SL',
+                shortCode: 'CRNSL',
+                longCode: '3rd Party Sales Letter',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://conservativerepublicannews.com/blog/feed/',
+                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/crn_75x75.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function() {
+                    var x = makeKeyCodeTest();
+                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
+                    return y;
+                }
             }
         },
         JGM: {
@@ -1765,6 +1784,16 @@ $(document).ready(function () {
             if (title !== null && title !== undefined) {
                 return S(title).unescapeHTML().s;
             }
+        },
+        masonry: function (container) {
+            var $container = $(container);
+            // initialize
+            $container.imagesLoaded(function () {
+                $container.masonry({
+                    columnWidth: '.col-md-4',
+                    itemSelector: '.rssHolder'
+                });
+            });
         }
 
     };
@@ -1813,21 +1842,71 @@ $(document).ready(function () {
                     var divID = 'rssStory' + rssObject[i].storyNum;
                     var imgID = 'rssImg' + rssObject[i].storyNum;
 
+                    //if (i < 9) { //displays 9 results
+                    //    var storage = [];
+                    //    var a = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '">';
+                    //    var b = '<p>';
+                    //    //var c = '<img src="' + rssObject[i].imgsrc + '" width="' + rssObject[i].thumbW + '" height="' + rssObject[i].thumbH + '" id="' + imgID + '" align="left" style=""/>';
+                    //    //disabled above, as it was causing all sorts of resizing issues
+                    //    var c = '<img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" align="left" class="img-circle" style=""/>';
+                    //    var d = rssObject[i].title;
+                    //    var eecenter = '<br /><center>';
+                    //    var btn1 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button>';
+                    //    var btn2 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button>';
+                    //    var btn3 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button>';
+                    //    var btn4 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>';
+                    //    var fend = '</center></p></div>';
+                    //    storage.push(a, b, c, d, eecenter, btn1, btn2, btn3, btn4, fend);
+                    //    formatStorage[i] = storage.join('');
+                    //}
+
+                    function testReturn(i) {
+                        return i;
+                    }
+
                     if (i < 9) { //displays 9 results
                         var storage = [];
-                        var a = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '">';
-                        var b = '<p style="font-size: 10px; text-align: center;">';
+                        var rowstart = '';
+                        var rowend = '';
+
+                        switch(testReturn(i)){
+                            case 0:
+                                rowstart = '<div class="row clearfix rssRow">';
+                                break;
+                            case 2:
+                                rowend = '</div>';
+                                break;
+                            case 3:
+                                rowstart = '<div class="row clearfix rssRow">';
+                                break;
+                            case 5:
+                                rowend = '</div>';
+                                break;
+                            case 6:
+                                rowstart = '<div class="row clearfix rssRow">';
+                                break;
+                            case 8:
+                                rowend = '</div>';
+                                break;
+                            default:
+                                rowstart = '';
+                                rowend = '';
+                        }
+
+
+                        var a = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 column rssHolder" id="' + divID + '">';
+                        var b = '<div class="row clearfix"><div class="col-md-3 column">';
                         //var c = '<img src="' + rssObject[i].imgsrc + '" width="' + rssObject[i].thumbW + '" height="' + rssObject[i].thumbH + '" id="' + imgID + '" align="left" style=""/>';
                         //disabled above, as it was causing all sorts of resizing issues
-                        var c = '<img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" align="left" class="img-circle" style=""/>';
-                        var d = rssObject[i].title;
-                        var eecenter = '<br /><center>';
-                        var btn1 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button>';
-                        var btn2 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button>';
-                        var btn3 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button>';
-                        var btn4 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>';
-                        var fend = '</center></p></div>';
-                        storage.push(a, b, c, d, eecenter, btn1, btn2, btn3, btn4, fend);
+                        var c = '<img src="' + rssObject[i].imgsrc + '" alt="' + rssObject[i].title + '"width="75" height="75" id="' + imgID + '" class="img-circle"/>';
+                        var d = '</div><div class="col-md-9 column"><h5 class="text-left">' + rssObject[i].title + '</h5>';
+                        var ee = '<div class="btn-group">';
+                        var btn1 = '<button type="button" class="btn btn-default btn-sm" id="' + btnID1 + '">Add To Story 1</button>';
+                        var btn2 = '<button type="button" class="btn btn-default btn-sm" id="' + btnID2 + '">2</button>';
+                        var btn3 = '<button type="button" class="btn btn-default btn-sm" id="' + btnID3 + '">3</button>';
+                        var btn4 = '<button type="button" class="btn btn-default btn-sm" id="' + btnID4 + '">4</button>';
+                        var fend = '</center></div></div></div></div>';
+                        storage.push(rowstart, a, b, c, d, ee, btn1, btn2, btn3, btn4, fend, rowend);
                         formatStorage[i] = storage.join('');
                     }
 
@@ -1838,6 +1917,7 @@ $(document).ready(function () {
         request.done(function() {  //assigns values to the buttons, after ajax request is done. if we don't wait for ajax, this won't render correctly.
             var joinRSS = formatStorage.join('');
             $('#rssPreviewGeneral').html(joinRSS);
+
             function buttonUpdateField(e) {
                 $('#rss1Btn'+e).click(function () {
                     $('#title1').val(rssObject[e].title);
@@ -1874,7 +1954,11 @@ $(document).ready(function () {
         });
         equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
         //TODO replace with masonry
+
+
     }
+
+
 
     function additionalContentBuilder(firstStoryNumber, secondStoryNumber, location) { //location is where the generated form will spawn
         var choiceRowNumber = 0;
@@ -2091,9 +2175,13 @@ $(document).ready(function () {
             var counterDiv = $('#counterDiv');
             var dataNum = parseInt(data);
             var a = (dataNum * 19)/60;
-            var estimateTimeSaved = Math.floor(a);
-            var insertText2 = '<ul class="list-group"><li class="list-group-item"><span class="badge">'+data+'</span>Times Used: </li><li class="list-group-item"><span class="badge">'+estimateTimeSaved+'</span>Hours Saved: </li></ul>';
-            var insertText = '<center><p class="bg-info">This application has been used <strong>' + data + '</strong> times.<br/>Time saved: <strong>' + estimateTimeSaved + '</strong> hours</p></center>';
+            var estimateTimeSavedHours = Math.floor(a);
+            var estimateTimeSavedDays = Math.floor(estimateTimeSavedHours/24);
+            var estimateTimeSavedWeeks = Math.floor(estimateTimeSavedDays/7);
+            var fruitFlyLives = Math.floor(estimateTimeSavedDays/45);
+            var baseballGames = Math.floor(estimateTimeSavedHours/3);
+            var insertText2 = '<ul class="list-group"><li class="list-group-item"><span class="badge">'+data+'</span>Times Used: </li><li class="list-group-item"><span class="badge">'+estimateTimeSavedHours+'</span>Hours Saved: </li><li class="list-group-item"><span class="badge">'+estimateTimeSavedDays+'</span>Days Saved: </li></ul>';
+            var insertText = '<center><p class="bg-info">This application has been used <strong>' + data + '</strong> times.<br/>Time saved: <strong>' + estimateTimeSavedHours + '</strong> hours</p></center>';
             counterDiv.html(insertText2);
         });
     }
