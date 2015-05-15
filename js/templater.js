@@ -764,10 +764,9 @@ $(document).ready(function () {
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
-                utmStyle: function() {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                utmStyle: function () {
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
 
             },
@@ -785,9 +784,8 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
             WIR: {
@@ -804,9 +802,8 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
             XL: {
@@ -823,9 +820,8 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             }
         },
@@ -843,10 +839,9 @@ $(document).ready(function () {
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
-                utmStyle: function() {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                utmStyle: function () {
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
             SL: {
@@ -862,10 +857,9 @@ $(document).ready(function () {
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
-                utmStyle: function() {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                utmStyle: function () {
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             }
         },
@@ -884,9 +878,8 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
             MR: {
@@ -903,9 +896,8 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             }
         },
@@ -924,9 +916,8 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
             MR: {
@@ -943,9 +934,8 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             }
         },
@@ -1005,9 +995,9 @@ $(document).ready(function () {
                 feedStyle: function() {
                     getRSSWithoutImage(this.rssFeed);
                 },
-                utmStyle: function() {
-                    //return blank. if we add a utm style, this is where it will go
-                    return '';
+                utmStyle: function () {
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             }
         },
@@ -1026,9 +1016,8 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
             DB: {
@@ -1045,9 +1034,8 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
             SS: {
@@ -1064,9 +1052,8 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var x = makeKeyCodeTest();
-                    var y = '?utm_source=' + x + '&utm_medium=email&utm_campaign=' + x;
-                    return y;
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             }
         },
@@ -1177,9 +1164,6 @@ $(document).ready(function () {
                 rfarHeader: '<a href="http://www.independentlivingnews.com/preppers' + utmILN + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="118" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="580" /></a>',
                 subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmILN + '" target="_blank">',
                 ilnHeader: '<a href="http://www.independentlivingnews.com' + utmILN + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="118" src="http://www.independentlivingnews.com/email/images/ILN_LB_header_edited.jpg" style="display:block;" width="580" /></a>'
-            },
-            SAA: {
-                keycode: keycode
             }
         };
     }
@@ -1281,7 +1265,7 @@ $(document).ready(function () {
             width: 150,
             change: function() {
                 var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
-                var a = x.join('');
+                var a = x.join(''); //e.g. RFARDB
 
                 updateTemplateMenu(); //update valid email styles. e.g. DB, MR. call this first to avoid conflict with updateAdReferenceMenu()
                 updateAdReferenceMenu(); //added to cut down on makeProductMenu references
@@ -1870,7 +1854,7 @@ $(document).ready(function () {
                         var rowstart = '';
                         var rowend = '';
 
-                        switch(testReturn(i)){
+                        switch(testReturn(i)){ //this handles setting the row clearfixes every 3 columns for bootstrap
                             case 0:
                                 rowstart = '<div class="row clearfix rssRow">';
                                 break;
@@ -2090,11 +2074,6 @@ $(document).ready(function () {
         }
     };
 
-    function disableAdditionalContent() {
-        additionalContentVal = false;
-        console.log("Additional Content: "+additionalContentVal);
-        $('#choiceRow2').hide();
-    }
     //If this is checked, adds the second story box
     $('#additionalContentCheckbox').click(function(){
         var i = $('#choiceRow2');
