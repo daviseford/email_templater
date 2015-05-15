@@ -1078,14 +1078,15 @@ $(document).ready(function () {
                 b = $('#productSelect').val(); //example value: XCOM1
                 var templateName = 'ad_templates_'+b;
                 if (b !== '' && b !== null) { //if there is a product selected, update currentProduct
-                    var templateNumber = S(b).right(1).toInt(); //gives us our ad template number (1)
-                    var adNum = (templateNumber - 1);
                     var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
                     var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
 
+                    var templateNumber = S(b).strip(e).s; //gives us our ad template number (1)
+                    var adNum = (templateNumber - 1);
+
                     var currentEmailTemplate = getCurrentTemplateSettings();
                     var currentEmailTemplateShortCode = currentEmailTemplate.shortCode;
-                    console.log('shortcode = ' + currentEmailTemplateShortCode);
+                    //console.log('shortcode = ' + currentEmailTemplateShortCode);
 
                     var currentEmailKeycode = makeKeyCodeTest();
 
