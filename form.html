@@ -20,6 +20,28 @@
                 toolbar:      "wysihtml-toolbar2", // id of toolbar element
                 parserRules:  wysihtml5ParserRules // defined in parser rules set
             });
+
+            $('#testingBtn').button()
+                    .click(function(){
+                            var stringTestAd1 = JSON.stringify({"clientCode": "AAC1"});
+                            var request = $.ajax({
+                                url: "http://daviseford.com/sites/default/files/email_templater/php/ad_image_template.php",
+                                contentType: "application/json; charset=utf-8",
+                                method: "POST",
+                                data: stringTestAd1
+                                //dataType: "json"
+                            });
+
+                            request.done(function (msg) {
+                                var data = msg;
+								//alert(msg);
+                                $('#testingText').val(msg);
+                            });
+
+                            request.fail(function (jqXHR, textStatus) {
+                                alert("Request failed: " + textStatus);
+                            });
+                    })
         });
     </script>
 
@@ -33,7 +55,9 @@
     <h1><a>Untitled Form</a></h1>
     <div class="row" id="choiceRow1">
         <div class="col-lg-6 col-md-6" id="story1Div">
-            <form id="story" method="post" action="php/test_template.php">
+            <button id="testingBtn" type="button" name="testingBtn">Click me</button>
+            <textarea cols="20" style="width: 100%; height: 200px;" id="testingText"></textarea>
+            <form id="story" method="post" action="php/alpac_db_Tmpl.php">
                 <div class="form-group">
                     <label for="title1">Title </label>
                     <input class="form-control" type="text" id="title1" name="title1"/>
