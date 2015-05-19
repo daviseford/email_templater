@@ -21,6 +21,12 @@
                 parserRules:  wysihtml5ParserRules // defined in parser rules set
             });
 
+            //Establishing the datepicker
+            $( "#datepicker" ).datepicker({
+                dateFormat: "ymmdd" //Outputs as YYMMDD
+            });
+            $( '#datepicker').datepicker( 'show' );
+
             $('#testingBtn').button()
                     .click(function(){
                             var stringTestAd1 = JSON.stringify({"clientCode": "AAC1"});
@@ -57,12 +63,27 @@
         <div class="col-lg-6 col-md-6" id="story1Div">
             <button id="testingBtn" type="button" name="testingBtn">Click me</button>
             <textarea cols="20" style="width: 100%; height: 200px;" id="testingText"></textarea>
-            <form id="story" method="post" action="php/alpac_db_Tmpl.php">
+            <form id="story" method="post" action="php/template_sort_davis.php">
                 <div class="form-group">
                     <label for="title1">Title </label>
                     <input class="form-control" type="text" id="title1" name="title1"/>
                 </div>
                 <div class="form-group">
+
+                    <input type="text" id="datepicker" name="datepicker"/>
+
+                    <select name="client" id="client">
+                        <option value="ALPAC" selected="selected">ALPAC</option>
+                    </select>
+
+                    <select name="template" id="template">
+                        <option value="DB" selected="selected">DB</option>
+                    </select>
+
+                    <select name="advertisement" id="advertisement">
+                        <option value="SAC1" selected="selected">SAC1</option>
+                    </select>
+
                     <label for="title1text-div">Story </label>
                     <textarea id="title1text-div" name="title1text-div" class="form-control" rows="3" placeholder="Enter your text ..." autofocus></textarea>
                     <!-- <div id="title1text-div" style="width: 100%; height: 100%" data-placeholder="" class="form-control"></div> -->

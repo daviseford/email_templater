@@ -760,7 +760,7 @@ $(document).ready(function () {
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA, //this stores the ads
                 rssFeed: 'http://americanlibertypac.com/feed',  //Nocache is now handled within getRSSWithImage
-                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/880203000.png', //generally 150x150 to be safe
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -779,7 +779,7 @@ $(document).ready(function () {
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://americanlibertypac.com/feed',
-                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/880203000.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -797,7 +797,7 @@ $(document).ready(function () {
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://americanlibertypac.com/feed',
-                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/880203000.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -815,7 +815,7 @@ $(document).ready(function () {
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://americanlibertypac.com/feed',
-                defaultLogo: 'http://americanlibertypac.com/wp-content/uploads/2015/02/AMLIBPAC_circle_130x130.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/880203000.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -835,7 +835,7 @@ $(document).ready(function () {
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://conservativerepublicannews.com/blog/feed/',
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/crn_75x75.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1569720608.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -853,7 +853,7 @@ $(document).ready(function () {
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://conservativerepublicannews.com/blog/feed/',
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/crn_75x75.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1569720608.png',
                 feedStyle: function() {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -873,7 +873,7 @@ $(document).ready(function () {
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://minutemanproject.com/feed',
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1081516611.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -891,7 +891,7 @@ $(document).ready(function () {
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://minutemanproject.com/feed',
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/mmp_75x75.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1081516611.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -911,7 +911,7 @@ $(document).ready(function () {
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://senioramericansassociation.com/feed',
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1917859770.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -929,7 +929,7 @@ $(document).ready(function () {
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://senioramericansassociation.com/feed',
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/saa_75x75.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1917859770.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -1011,7 +1011,7 @@ $(document).ready(function () {
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://www.selfreliancecentral.com/news/feed/', //had to update this to /news/feed when it broke. Maybe the result of using a fixed front page in Wordpress?
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/2060965152.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -1029,7 +1029,7 @@ $(document).ready(function () {
                 imgMaxHeight: 200,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://www.selfreliancecentral.com/news/feed/',
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/2060965152.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -1047,7 +1047,7 @@ $(document).ready(function () {
                 imgMaxHeight: 200,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://www.selfreliancecentral.com/news/feed/',
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/src_135x135.png',
+                defaultLogo: 'http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/2060965152.png',
                 feedStyle: function () {
                     getRSSWithImage(this.rssFeed);
                 },
@@ -1762,7 +1762,7 @@ $(document).ready(function () {
         fixDescription: function (description) {  //strips extraneous html tags from the story
             if (description !== null && description !== undefined) {
                 var desc = S(description).unescapeHTML().s;
-                return S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font').s;
+                return S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link').s;
             }
         },
         fixTitle: function (title) {

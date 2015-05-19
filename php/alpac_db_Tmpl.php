@@ -5,6 +5,8 @@ $ad_Enabled = 'true';
 //extract data from the post
 extract($_POST);
 
+echo $_POST['keycode'];
+
 function resizeImage($imgurl){
 	list($origW, $origH) = getimagesize($imgurl);
 	//give us proper email sizes if we're given the right JSON values
@@ -187,7 +189,8 @@ table.sf-reco img {
             
             <!-- END TEXT HEADER BLOCK --> 
             
-            <!-- BEGIN BANNER BLOCK -->            
+            <!-- BEGIN BANNER BLOCK -->
+            
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
               <tr>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
@@ -196,10 +199,14 @@ table.sf-reco img {
                     </tr>
                   </table></td>
               </tr>
-            </table>            
-            <!-- END BANNER BLOCK --> 
-                        
-            <!-- START ALPACDBIMG1 -->            
+            </table>
+            
+            <!-- END BANNER BLOCK -->
+            
+            <?php if( isset($_POST['title1']) && $_POST['title1'] != ""): ?>
+            
+            <!-- START ALPACDBIMG1 -->
+            
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
               <tr>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 75%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
@@ -207,6 +214,7 @@ table.sf-reco img {
                       <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><h2 style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 20px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: bold;font-style: normal;text-transform: none;background-color: transparent;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;"> <a target="_blank" style="background-color: transparent;color: #0000FF;font-family: Verdana, Geneva, sans-serif;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;" href="<?php echo $_POST["title1URL"] . $_POST["utm"]; ?>"> <?php echo $_POST["title1"]; ?> </a> </h2>
                         <span style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;"> 
                         <!-- BEGIN STORY --> 
+                        <?php echo $_POST['storyPost']["title1text-div"]; ?> 
                         <?php echo $_POST["title1text-div"]; ?> 
                         <!-- END STORY --> 
                         </span> <br /></td>
@@ -228,10 +236,19 @@ table.sf-reco img {
                     </tr>
                   </table></td>
               </tr>
-            </table>            
-            <!-- END ALPACDBIMG1 --> 
+            </table>
             
-            <!-- START ALPACDBIMG2 -->            
+            <!-- END ALPACDBIMG1 -->
+            
+            <?php else: ?>
+            
+            <!-- TITLE1 NOT SET! -->
+            
+            <?php endif; ?>
+            <?php if( isset($_POST['title2']) && $_POST['title2'] != ""): ?>
+            
+            <!-- START ALPACDBIMG2 -->
+            
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
               <tr>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 75%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
@@ -246,7 +263,9 @@ table.sf-reco img {
                   </table></td>
                 <td class="sf-td hide-on-responsive" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 25%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
                     <tr>
-                      <td align="left" class="sf-img sf-td" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: auto;"><center>
+                      <td align="left" class="sf-img sf-td" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: auto;">
+                      <?php if( isset($_POST['title2IMG']) && $_POST['title2IMG'] != "" ): ?>
+                      <center>
                           <br />
                           <br />
                           <a href="<?php echo $_POST["title2URL"]; ?>" target="_blank">
@@ -256,14 +275,25 @@ table.sf-reco img {
 						   $title2FixedH = $title2resize["fixedHeight"];
 						   ?>
                           <img class="no-scale" align="middle" src="<?php echo $_POST["title2IMG"]; ?>" alt="<?php echo $_POST["title2"]; ?>" height="<?php echo $title2FixedH ?>" width="<?php echo $title2FixedW ?>" style="width: <?php echo $title2FixedW.'px'; ?>; max-width: <?php echo $title2FixedH.'px'; ?>; height: <?php echo $title2FixedH.'px'; ?>"/> </a>
-                        </center></td>
+                        </center>
+                        <?php endif; ?>
+                        </td>
                     </tr>
                   </table></td>
               </tr>
-            </table>            
-            <!-- END ALPACDBIMG2 --> 
+            </table>
             
-            <!-- BEGIN PRODUCT BLOCK -->            
+            <!-- END ALPACDBIMG2 -->
+            
+            <?php else: ?>
+            
+            <!-- TITLE2 NOT SET! -->
+            
+            <?php endif; ?>
+            
+            <!-- TODO - Add "if Post[ad] isset -->
+            <!-- BEGIN PRODUCT BLOCK -->
+            
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
               <tr>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: auto;">
@@ -304,12 +334,93 @@ $url = 'http://daviseford.com/sites/default/files/email_templater/php/ad_image_t
               </tr>
             </table>
             
-            <!-- END PRODUCT BLOCK --> 
+            <!-- END PRODUCT BLOCK -->
             
-            <!-- BEGIN STORY BLOCK --> 
-            {{for story3 tmpl="addDiv_templates_ALPACDBIMG" /}}
-            {{for story4 tmpl="addDiv_templates_ALPACDBIMG" /}} 
-            <!-- END STORY BLOCK --> 
+            <?php if( isset($_POST['title3']) && $_POST['title3'] != "" ): ?>
+            
+            <!-- START ALPACDBIMG3 -->
+            
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
+              <tr>
+                <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 75%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                    <tr>
+                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><h2 style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 20px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: bold;font-style: normal;text-transform: none;background-color: transparent;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;"> <a target="_blank" style="background-color: transparent;color: #0000FF;font-family: Verdana, Geneva, sans-serif;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;" href="<?php echo $_POST["title3URL"] . $_POST["utm"]; ?>"> <?php echo $_POST["title3"]; ?> </a> </h2>
+                        <span style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;"> 
+                        <!-- BEGIN STORY --> 
+                        <?php echo $_POST["title3text-div"]; ?> 
+                        <!-- END STORY --> 
+                        </span> <br /></td>
+                    </tr>
+                  </table></td>
+                <td class="sf-td hide-on-responsive" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 25%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                    <tr>
+                      <td align="left" class="sf-img sf-td" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: auto;">
+                      <?php if( isset($_POST['title3IMG']) && $_POST['title3IMG'] != "" ): ?>
+                      <center>
+                          <br />
+                          <br />
+                          <a href="<?php echo $_POST["title3URL"]; ?>" target="_blank">
+                          <?php 
+						   $title3resize = resizeImage($_POST["title3IMG"]);
+						   $title3FixedW = $title3resize["fixedWidth"];
+						   $title3FixedH = $title3resize["fixedHeight"];
+						   ?>
+                          <img class="no-scale" align="middle" src="<?php echo $_POST["title3IMG"]; ?>" alt="<?php echo $_POST["title3"]; ?>" height="<?php echo $title3FixedH ?>" width="<?php echo $title3FixedW ?>" style="width: <?php echo $title3FixedW.'px'; ?>; max-width: <?php echo $title3FixedH.'px'; ?>; height: <?php echo $title3FixedH.'px'; ?>"/> </a>
+                        </center>
+                        <?php endif; ?></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            
+            <!-- END ALPACDBIMG3 -->
+            
+            <?php else: ?>
+            
+            <!-- TITLE3 NOT SET! -->
+            
+            <?php endif; ?>
+            <?php if( isset($_POST['title4']) && $_POST['title4'] != ""): ?>
+            
+            <!-- START ALPACDBIMG3 -->
+            
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
+              <tr>
+                <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 75%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                    <tr>
+                      <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><h2 style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 20px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: bold;font-style: normal;text-transform: none;background-color: transparent;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;"> <a target="_blank" style="background-color: transparent;color: #0000FF;font-family: Verdana, Geneva, sans-serif;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;" href="<?php echo $_POST["title4URL"] . $_POST["utm"]; ?>"> <?php echo $_POST["title4"]; ?> </a> </h2>
+                        <span style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;"> 
+                        <!-- BEGIN STORY --> 
+                        <?php echo $_POST["title4text-div"]; ?> 
+                        <!-- END STORY --> 
+                        </span> <br /></td>
+                    </tr>
+                  </table></td>
+                <td class="sf-td hide-on-responsive" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 25%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                    <tr>
+                      <td align="left" class="sf-img sf-td" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: auto;"><center>
+                          <br />
+                          <br />
+                          <a href="<?php echo $_POST["title4URL"]; ?>" target="_blank">
+                          <?php 
+						   $title4resize = resizeImage($_POST["title4IMG"]);
+						   $title4FixedW = $title4resize["fixedWidth"];
+						   $title4FixedH = $title4resize["fixedHeight"];
+						   ?>
+                          <img class="no-scale" align="middle" src="<?php echo $_POST["title4IMG"]; ?>" alt="<?php echo $_POST["title4"]; ?>" height="<?php echo $title4FixedH ?>" width="<?php echo $title4FixedW ?>" style="width: <?php echo $title4FixedW.'px'; ?>; max-width: <?php echo $title4FixedH.'px'; ?>; height: <?php echo $title4FixedH.'px'; ?>"/> </a>
+                        </center></td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            
+            <!-- END ALPACDBIMG4 -->
+            
+            <?php else: ?>
+            
+            <!-- TITLE4 NOT SET! -->
+            
+            <?php endif; ?>
             
             <!-- BEGIN SIGNATURE BLOCK -->
             
@@ -367,7 +478,23 @@ $url = 'http://daviseford.com/sites/default/files/email_templater/php/ad_image_t
                               </center></td>
                           </tr>
                           <tr>
-                            <td class="center" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; color: #222222; font-family: Verdana, Geneva, sans-serif; font-weight: normal; line-height: 19px; font-size: 10px; margin: 0; padding: 0px 0px 10px;" align="center" valign="top"> {{for smartFocus.ALPAC tmpl="addDiv_templates_ALPACFOOTER" /}} </td>
+                            <td class="center" style="word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; vertical-align: top; text-align: center; color: #222222; font-family: Verdana, Geneva, sans-serif; font-weight: normal; line-height: 19px; font-size: 10px; margin: 0; padding: 0px 0px 10px;" align="center" valign="top">
+                            <!-- START ALPACFOOTER --> 
+                                This email is never sent unsolicited.
+                                <br />
+                                You have received this <a href="http://americanlibertypac.com/" target="_blank">AmericanLibertyPAC.com</a> email because you subscribed to it or someone forwarded it to you.
+                              <br />
+                                To opt out, see the links below.
+                              <br />
+                                If this email has been forwarded to you and you would like to sign up: {{:subscribe}}
+                              <br />
+                                For information on advertising with American Liberty PAC, please click: {{:advertise}}
+                              <br />
+                                We respect your right to privacy. {{:privacy}}
+                              <br />
+                                {{:unsubscribe}}
+                              <!-- END ALPACFOOTER -->
+                              </td>
                           </tr>
                         </table></td>
                     </tr>

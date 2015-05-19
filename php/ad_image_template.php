@@ -2,6 +2,7 @@
 /*
 Author: Davis Ford
 Date: May 2015
+Purpose: Interprets which template is requested from POST data, retrieves advertisement info from MySQL, and returns the result to the ad template that called it.
 */
 
 $post = file_get_contents('php://input'); //workaround for $_POST, this data arrives in the form of a URL
@@ -47,6 +48,7 @@ if ($result->num_rows > 0) {
 
 $conn->close();	
 
+//if the ad is marked non-responsive, add css to hide on mobile
 if($adArray["responsive"] == 0){
 	$responsive_insert = "hide-on-responsive";
 } else {
