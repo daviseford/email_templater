@@ -726,6 +726,96 @@ $(document).ready(function () {
                     description: '600 x 74 - Countdown To Collapse (GIF)'
                 }
             }
+        },
+        WTR: {
+            link: 'http://7a2aa3ih5-0z4z0awl79rdvdn7.hop.clickbank.net/?tid=', //default link to all sub-ads
+            shortCode: 'WTR',
+            longCode: 'World War Water',
+            advertisements: {
+                0: {
+                    name: 'WTR1',
+                    description: '300 x 250 - Air Into Water'
+                },
+                1: {
+                    name: 'WTR2',
+                    description: '300 x 250 - Air Into Water (2)'
+                },
+                2: {
+                    name: 'WTR3',
+                    description: '300 x 250 - Climate Manipulation'
+                },
+                3: {
+                    name: 'WTR4',
+                    description: '300 x 250 - Weather Weapon'
+                },
+                4: {
+                    name: 'WTR5',
+                    description: '300 x 250 - Air Into Water (3)'
+                }
+            }
+        },
+        SMD: {
+            link: 'http://76cc96o8-yx6wvbkvqybon5o2j.hop.clickbank.net/?tid=', //default link to all sub-ads
+            shortCode: 'SMD',
+            longCode: 'Survival MD',
+            advertisements: {
+                0: {
+                    name: 'SMD1',
+                    description: '180 x 150 - Bug'
+                },
+                1: {
+                    name: 'SMD2',
+                    description: '180 x 150 - Ebola False Flag'
+                },
+                2: {
+                    name: 'SMD3',
+                    description: '180 x 150 - Bug (2)'
+                },
+                3: {
+                    name: 'SMD4',
+                    description: '234 x 60 - Bug'
+                },
+                4: {
+                    name: 'SMD5',
+                    description: '234 x 60 - Bug (2)'
+                },
+                5: {
+                    name: 'SMD6',
+                    description: '234 x 60 - Ebola False Flag'
+                },
+                6: {
+                    name: 'SMD7',
+                    description: '234 x 60 - Mass Medical Crisis'
+                },
+                7: {
+                    name: 'SMD8',
+                    description: '300 x 100 - Mass Medical Crisis'
+                },
+                8: {
+                    name: 'SMD9',
+                    description: '300 x 100 - Mass Medical Crisis (2)'
+                },
+                9: {
+                    name: 'SMD10',
+                    description: '300 x 250 - SWAT Teams'
+                },
+                10: {
+                    name: 'SMD11',
+                    description: '300 x 250 - SWAT Teams (2)'
+                },
+                11: {
+                    name: 'SMD12',
+                    description: '300 x 250 - Mass Medical Crisis'
+                },
+                12: {
+                    name: 'SMD13',
+                    description: '300 x 250 - Bug'
+                },
+                13: {
+                    name: 'SMD14',
+                    description: '300 x 250 - Bug (2)'
+                }
+            }
         }
     };
 
@@ -1025,6 +1115,24 @@ $(document).ready(function () {
                 emailCode: 'DB',
                 shortCode: 'SRCDB',
                 longCode: 'Daily Bulletin',
+                imgMaxWidth: 200,
+                imgMaxHeight: 200,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://www.selfreliancecentral.com/news/feed/',
+                defaultLogo: 'http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/2060965152.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
+            SL: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_sl_Tmpl.htm',
+                emailCode: 'SL',
+                shortCode: 'SRCSL',
+                longCode: 'Sales Letter',
                 imgMaxWidth: 200,
                 imgMaxHeight: 200,
                 productMenu: adReferenceWJMA,
