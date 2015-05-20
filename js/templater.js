@@ -1762,7 +1762,7 @@ $(document).ready(function () {
         fixDescription: function (description) {  //strips extraneous html tags from the story
             if (description !== null && description !== undefined) {
                 var desc = S(description).unescapeHTML().s;
-                return S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link').s;
+                return S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link').s;
             }
         },
         fixTitle: function (title) {
