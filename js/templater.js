@@ -1071,26 +1071,6 @@ $(document).ready(function () {
                 }
             }
         },
-        LL: {
-            DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/ll_db_Tmpl.htm',
-                emailCode: 'DB',
-                shortCode: 'LLDB',
-                longCode: 'Daily Bulletin',
-                imgMaxWidth: '',
-                imgMaxHeight: '',
-                productMenu: '',
-                rssFeed: 'http://opportunities.theihs.org/rss.xml?&t[]=200&w=100',
-                defaultLogo: '',
-                feedStyle: function() {
-                    getRSSWithoutImage(this.rssFeed);
-                },
-                utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
-                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
-                }
-            }
-        },
         SRC: {
             AP: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_ap_Tmpl.htm',
