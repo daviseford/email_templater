@@ -1145,24 +1145,6 @@ $(document).ready(function () {
                     var keycode = makeKeyCodeTest();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
-            },
-            SS: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_ss_Tmpl.htm',
-                emailCode: 'SS',
-                shortCode: 'SRCSS',
-                longCode: 'Daily Bulletin Sans Serif',
-                imgMaxWidth: 200,
-                imgMaxHeight: 200,
-                productMenu: adReferenceWJMA,
-                rssFeed: 'http://www.selfreliancecentral.com/news/feed/',
-                defaultLogo: 'http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/2060965152.png',
-                feedStyle: function () {
-                    getRSSWithImage(this.rssFeed);
-                },
-                utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
-                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
-                }
             }
         },
         helpers: {
@@ -1870,7 +1852,7 @@ $(document).ready(function () {
         fixDescription: function (description) {  //strips extraneous html tags from the story
             if (description !== null && description !== undefined) {
                 var desc = S(description).unescapeHTML().s;
-                return S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link').s;
+                return S(desc).stripTags('div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link').s;
             }
         },
         fixTitle: function (title) {
