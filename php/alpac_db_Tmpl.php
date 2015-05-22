@@ -5,8 +5,6 @@ $ad_Enabled = 'true';
 //extract data from the post
 extract($_POST);
 
-echo $_POST['keycode'];
-
 function resizeImage($imgurl){
 	list($origW, $origH) = getimagesize($imgurl);
 	//give us proper email sizes if we're given the right JSON values
@@ -202,7 +200,7 @@ table.sf-reco img {
             </table>
             
             <!-- END BANNER BLOCK -->
-            
+                      
             <?php if( isset($_POST['title1']) && $_POST['title1'] != ""): ?>
             
             <!-- START ALPACDBIMG1 -->
@@ -214,7 +212,6 @@ table.sf-reco img {
                       <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><h2 style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 20px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: bold;font-style: normal;text-transform: none;background-color: transparent;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;"> <a target="_blank" style="background-color: transparent;color: #0000FF;font-family: Verdana, Geneva, sans-serif;font-size: 16px;font-weight: bold;font-style: normal;text-transform: none;text-decoration: underline;" href="<?php echo $_POST["title1URL"] . $_POST["utm"]; ?>"> <?php echo $_POST["title1"]; ?> </a> </h2>
                         <span style="color: #000000;font-family: Verdana, Geneva, sans-serif;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;"> 
                         <!-- BEGIN STORY --> 
-                        <?php echo $_POST['storyPost']["title1text-div"]; ?> 
                         <?php echo $_POST["title1text-div"]; ?> 
                         <!-- END STORY --> 
                         </span> <br /></td>
@@ -222,7 +219,9 @@ table.sf-reco img {
                   </table></td>
                 <td class="sf-td hide-on-responsive" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 25%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
                     <tr>
-                      <td align="left" class="sf-img sf-td" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: auto;"><center>
+                      <td align="left" class="sf-img sf-td" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: auto;">
+                      <?php if( isset($_POST['title1IMG']) && $_POST['title1IMG'] != "" ): ?>
+                      <center>
                           <br />
                           <br />
                           <a href="<?php echo $_POST["title1URL"]; ?>" target="_blank">
@@ -232,7 +231,9 @@ table.sf-reco img {
 						   $title1FixedH = $title1resize["fixedHeight"];
 						   ?>
                           <img class="no-scale" align="middle" src="<?php echo $_POST["title1IMG"]; ?>" alt="<?php echo $_POST["title1"]; ?>" height="<?php echo $title1FixedH ?>" width="<?php echo $title1FixedW ?>" style="width: <?php echo $title1FixedW.'px'; ?>; max-width: <?php echo $title1FixedH.'px'; ?>; height: <?php echo $title1FixedH.'px'; ?>"/> </a>
-                        </center></td>
+                        </center>
+                        <?php endif; ?>
+                        </td>
                     </tr>
                   </table></td>
               </tr>
@@ -245,6 +246,7 @@ table.sf-reco img {
             <!-- TITLE1 NOT SET! -->
             
             <?php endif; ?>
+            
             <?php if( isset($_POST['title2']) && $_POST['title2'] != ""): ?>
             
             <!-- START ALPACDBIMG2 -->
@@ -292,42 +294,41 @@ table.sf-reco img {
             <?php endif; ?>
             
             <!-- TODO - Add "if Post[ad] isset -->
+            
+            <?php if( isset($_POST['advertisement']) && $_POST['advertisement'] != ""): ?>
+            
             <!-- BEGIN PRODUCT BLOCK -->
             
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
               <tr>
                 <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: auto;">
                     <tr>
-                      <?php 	
-					  if($ad_Enabled == 'true'){	
-					  /*
-					  $clientCode = $_POST["clientCode"];	//implement eventually
-					  $keycode = $_POST["keycode"];			//implement eventually
-					  $utmStyle = $_POST["utmStyle"];		//implement eventually
-					  */
-					$clientCode = "AAC1";
-					$keycode = "SAMPLEKEYCODE";
-					$utmStyle = "";
+                      <?php 		
+					$clientCode = $_POST['clientCode'];
+					$advertisement = $_POST['advertisement'];
+					$keycode = $_POST['keycode'];
+					//$utmStyle = $_POST['utmStyle'];
 $url = 'http://daviseford.com/sites/default/files/email_templater/php/ad_image_template.php';
 					$fields = array(
 						'clientCode' => $clientCode,
 						'keycode' => $keycode,
-						'utmStyle' => $utmStyle,
+						'advertisement' => $advertisement,
 					);
 					//open connection
 					$ch = curl_init();
 
 					//set the url, number of POST vars, POST data
-					curl_setopt($ch,CURLOPT_URL, $url);
+					curl_setopt($ch,CURLOPT_URL, $url);					
 					curl_setopt($ch,CURLOPT_POST, TRUE);
-					curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($fields));
+					curl_setopt($ch,CURLOPT_MAXREDIRS, 0);
+					curl_setopt($ch,CURLOPT_FOLLOWLOCATION, 0); //anti-redirect
+					curl_setopt($ch,CURLOPT_POSTFIELDS, $fields);
 
 					//execute post
 					$curlResult = curl_exec($ch);
 
 					//close connection
 					curl_close($ch);	
-					} else {}
 					?>
                     </tr>
                   </table></td>
@@ -335,6 +336,12 @@ $url = 'http://daviseford.com/sites/default/files/email_templater/php/ad_image_t
             </table>
             
             <!-- END PRODUCT BLOCK -->
+            
+            <?php else: ?>
+            
+            <!-- PRODUCT NOT SET! -->
+            
+            <?php endif; ?>
             
             <?php if( isset($_POST['title3']) && $_POST['title3'] != "" ): ?>
             
@@ -470,7 +477,8 @@ $url = 'http://daviseford.com/sites/default/files/email_templater/php/ad_image_t
                                 <center style="width: 100%;">
                                   Not authorized by any candidate or candidate's committee.
                                 </center>
-                                </span> <span style="font-size: 10px; text-align: center;">
+                                </span> 
+                                <span style="font-size: 10px; text-align: center;">
                                 <center style="width: 100%;">
                                   Contributions to American Liberty PAC are not tax-deductible for federal income tax purposes.
                                 </center>
