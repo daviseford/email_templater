@@ -816,6 +816,53 @@ $(document).ready(function () {
                     description: '300 x 250 - Bug (2)'
                 }
             }
+        },
+        BYL: {
+            link: 'http://586f28j61xqz1ra4d8xzkcwp36.hop.clickbank.net/?tid=', //default link to all sub-ads
+            shortCode: 'BYL',
+            longCode: 'Backyard Liberty',
+            advertisements: {
+                0: {
+                    name: 'BYL1',
+                    description: '600 x 250 - Government Is After This'
+                },
+                1: {
+                    name: 'BYL2',
+                    description: '600 x 250 - Government Is After This (2)'
+                },
+                2: {
+                    name: 'BYL3',
+                    description: '600 x 250 - Government Is After This (3)'
+                },
+                3: {
+                    name: 'BYL4',
+                    description: '600 x 250 - Big Government Weapon'
+                },
+                4: {
+                    name: 'BYL5',
+                    description: '600 x 96 - Leaked Prepper Video'
+                },
+                5: {
+                    name: 'BYL6',
+                    description: '600 x 100 - Leaked Prepper Video (2)'
+                },
+                6: {
+                    name: 'BYL7',
+                    description: '300 x 100 - Big Government Weapon'
+                },
+                7: {
+                    name: 'BYL8',
+                    description: '300 x 100 - Big Government Weapon (2)'
+                },
+                8: {
+                    name: 'BYL9',
+                    description: '300 x 250 - Taking Your Food'
+                },
+                9: {
+                    name: 'BYL10',
+                    description: '300 x 250 - Leaked Prepper Video'
+                }
+            }
         }
     };
 
