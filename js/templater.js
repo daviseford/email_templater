@@ -225,43 +225,6 @@ $(document).ready(function () {
         }
     };
     var adReferenceWJMA = {
-        ALPAC: {
-            link: 'http://americanlibertypac.com',
-            shortCode: 'ALPAC',
-            longCode: 'General ALPAC Ads',
-            advertisements: {
-                0: {
-                    name: 'ALPAC1',
-                    description: 'Twitter Banner',
-                    link: 'https://twitter.com/uslibertypac'
-                },
-                1: {
-                    name: 'ALPAC2',
-                    description: 'Facebook Banner',
-                    link: 'https://www.facebook.com/AmericanLibertyPAC'
-                },
-                2: {
-                    name: 'ALPAC3',
-                    description: 'Pinterest Banner',
-                    link: 'https://www.pinterest.com/amlibpac/'
-                },
-                3: {
-                    name: 'ALPAC4',
-                    description: 'RallyCongress - Audit the Fed',
-                    link: 'http://americanlibertypac.rallycongress.com/17525/rand-is-right-its-time-to-audit-fed-passs-264/'
-                },
-                4: {
-                    name: 'ALPAC5',
-                    description: 'RallyCongress - Benghazi',
-                    link: 'http://americanlibertypac.rallycongress.com/17526/message-to-obama-tell-truth-whole-truth-nothing-but-truth/'
-                },
-                5: {
-                    name: 'ALPAC6',
-                    description: 'RallyCongress - Obamacare Bailout',
-                    link: 'http://americanlibertypac.rallycongress.com/17528/stop-an-obamacare-bailout/'
-                }
-            }
-        },
         CRNPOLL: {
             link: 'http://conservativerepublicannews.com',
             shortCode: 'CRNPOLL',
