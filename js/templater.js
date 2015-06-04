@@ -979,6 +979,24 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
+            WL: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_wl_Tmpl.htm',
+                emailCode: 'WL',
+                shortCode: 'ALPACWL',
+                longCode: 'Welcome Letter',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://americanlibertypac.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/880203000.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
             XL: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_xl_Tmpl.htm',
                 emailCode: 'XL',
@@ -1126,6 +1144,24 @@ $(document).ready(function () {
                     var keycode = makeKeyCodeTest();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
+            },
+            WL: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_wl_Tmpl.htm',
+                emailCode: 'WL',
+                shortCode: 'JGMWL',
+                longCode: 'Welcome Letter',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://minutemanproject.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1081516611.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
             }
         },
         SAA: {
@@ -1206,6 +1242,24 @@ $(document).ready(function () {
                 emailCode: 'SL',
                 shortCode: 'SAASL',
                 longCode: '3rd Party Sales Letter - DMS',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://senioramericansassociation.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1917859770.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCodeTest();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
+            WL: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_wl_Tmpl.htm',
+                emailCode: 'WL',
+                shortCode: 'SAAWL',
+                longCode: 'Welcome Letter',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
