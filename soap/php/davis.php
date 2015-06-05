@@ -5,7 +5,6 @@ $postdec = json_decode($post, true);
 
 $clientCode = $postdec["clientCode"]; //e.g. ALPAC
 $html = $postdec["html"];  //html contents of email
-$title = $postdec["title"];
 
 $wsdl_location = 'http://econnect.dmsgs.com:82/?wsdl';
 $userName = 'dford@wjmassociates.com';
@@ -74,7 +73,8 @@ function encodeToIso($string) {
 
 //conversion, may mess with this
 $htmlConvert = mb_convert_encoding($postdec["html"], "ISO-8859-1", "auto");
-$titleConvert = mb_convert_encoding($postdec["title"], "ISO-8859-1", "auto"); 
+$titleConvert = encodeToUtf8($postdec["title"]); 
+//$titleConvert = mb_convert_encoding($postdec["title"], "ISO-8859-1", "auto"); 
 
 //all credit to http://www.chuggnutt.com/html2text-source for the html to text conversion
 //I slightly modified it to remove the url generator, as it was giving links to my private blog!
