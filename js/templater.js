@@ -2401,8 +2401,8 @@ $(document).ready(function () {
             adjustedWidth = 130;
         }
 
-        var linkedImage = urlInsert + '<img class="no-scale" align="middle" src="' + titleIMG + '" alt="" height="' + adjustedHeight + '" width="' + adjustedWidth +'"></a>';
-        var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '"/></a>';
+        var linkedImage = urlInsert + '<img class="no-scale" align="middle" src="' + titleIMG + '" alt="" height="' + adjustedHeight + '" width="' + adjustedWidth +'" /></a>';
+        var imageAlignedRight = urlInsert + '<img align="right" alt="" src="' + titleIMG + '" style="padding: 6px; float:right;" height="' + adjustedHeight  + '" width="' + adjustedWidth + '" /></a>';
         var trackedURL = titleURL + utm;
         var storyName = 'story'+storyNum;
         var imageSalesLetter = urlInsert +  '<img src="' + titleIMG + '" alt="" width="' + adjustedWidth +'" height="' + adjustedHeight + '" align="left" style="display: block; -ms-interpolation-mode: bicubic; width: ' + adjustedWidth +'px; max-width: ' + adjustedWidth +'px; height: ' + adjustedHeight  + 'px; border: 0px solid #ffffff; border-radius: 0px; background-color: transparent;" />';
@@ -2410,10 +2410,9 @@ $(document).ready(function () {
         var twitterTitle = S(title).escapeHTML();
         twitterTitle = S(twitterTitle).stripPunctuation();
         twitterTitle = S(twitterTitle).replaceAll(' ', '%20');
-        var twitter = '<a href="http://twitter.com/share?text='+twitterTitle+'&url='+titleURL+'">';
+        var twitter = 'http://twitter.com/share?url='+titleURL;
         //http://www.facebook.com/sharer.php?u=http://americanlibertypac.com/draft-rand-paul-petition/
-        var facebook = '<a href="http://www.facebook.com/sharer.php?u='+titleURL+'">';
-        //picture
+        var facebook = 'http://www.facebook.com/sharer.php?u='+titleURL;
         //The URL of a picture attached to this post.
         //https://developers.facebook.com/docs/sharing/reference/feed-dialog/v2.2
         // The picture must be at least 200px by 200px.
@@ -2514,10 +2513,46 @@ $(document).ready(function () {
         win.document.body.innerHTML = html;
     }
 
+    function checkAdStatusDMS(){
+        if(templateContainer.currentProduct.enabled !== true) {
+            swal({
+                    title: "No Advertisement Selected",
+                    text: "Are you sure you want to send an email without an advertisement?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, send it!",
+                    cancelButtonText: "No, I forgot!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        sendToDMS();
+                    }
+                });
+        } else {
+            swal({
+                    title: "Confirmation",
+                    text: "Are you sure you want to send this email to the DMS Database?",
+                    type: "info",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, send it!",
+                    cancelButtonText: "Nope!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        sendToDMS();
+                    }
+                });
+        }
+    }
     function sendToDMS() {
         var templateStyle = getTemplateStyle();
         var clientCode = templateStyle[0]; //e.g ALPAC
-        var templateCode = templateStyle[1]; //e.g. DB (not sure if using yet)
         var html = $('#resultsTextArea').val();
         var keycode = makeKeyCodeTest();
         console.log("keycode = " + keycode);
@@ -2535,14 +2570,35 @@ $(document).ready(function () {
                     "title": title
                 }
             ), //send a JSON-encoded POST request to the php script.
-            dataType: 'json',
             success: function (data) {
-                alert(data);
+                if (data !== "Array") {
+                    swal({
+                        title: "Sent To DMS!",
+                        text: "The email " + data + " has been created in DMS.",
+                        type: "success",
+                        allowOutsideClick: "true",
+                        timer: "20000",
+                        showConfirmButton: "true"
+                    });
+                    console.log("done with DMS: data = " + data);
+                    console.log("data type = " + typeof data);
+                } else {
+                    swal({
+                        title: "Error!",
+                        text: "The email was not created in DMS!",
+                        type: "error",
+                        allowOutsideClick: "true",
+                        timer: "10000",
+                        showConfirmButton: "true"
+                    });
+                    console.log("done with DMS: data = " + data);
+                    console.log("data type = " + typeof data);
+                }
             }
         });
 
-        request.done(function() {
-            console.log("done with DMS");
+        //returns 'Array' if it failed.
+        request.done(function(data) {
         });
     }
 
@@ -2550,8 +2606,9 @@ $(document).ready(function () {
         $("#sendToDMSBtn")
             .button()
             .show()
-            .mouseup(function() {
-                sendToDMS();
+            .mouseup(function(e) {
+                e.stopPropagation();
+                checkAdStatusDMS();
             });
     }
 
@@ -2564,7 +2621,7 @@ $(document).ready(function () {
         .click(function(event) {
             event.preventDefault(); //Stops page from reloading
             updateKeyCodeField();
-            if ($("#title1").val() === "") {
+            if ($("#title1").val() === "" || $("#subjectInput").val() === "") {
                 swal("Slow down!", "Please enter a story first!", "error");
             } else {
                 imageDelay();
