@@ -872,8 +872,8 @@ $(document).ready(function () {
             },
             DBDMS: {               //type of template (usually DB or MR)
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_dms_Tmpl.htm', //location of template file
-                emailCode: 'DB',
-                shortCode: 'ALPACDB',
+                emailCode: 'DBDMS',
+                shortCode: 'ALPACDBDMS',
                 longCode: 'Daily Bulletin - DMS',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
@@ -909,8 +909,8 @@ $(document).ready(function () {
             },
             MRDMS: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_mr_dms_Tmpl.htm',
-                emailCode: 'MR',
-                shortCode: 'ALPACMR',
+                emailCode: 'MRDMS',
+                shortCode: 'ALPACMRDMS',
                 longCode: 'Must Read - DMS',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
@@ -963,8 +963,8 @@ $(document).ready(function () {
             },
             WIRDMS: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_wir_dms_Tmpl.htm',
-                emailCode: 'WIR',
-                shortCode: 'ALPACWIR',
+                emailCode: 'WIRDMS',
+                shortCode: 'ALPACWIRDMS',
                 longCode: 'Week In Review - DMS',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
@@ -1075,8 +1075,8 @@ $(document).ready(function () {
             },
             DBDMS: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_db_dms_Tmpl.htm',
-                emailCode: 'DB',
-                shortCode: 'JGMDB',
+                emailCode: 'DBDMS',
+                shortCode: 'JGMDBDMS',
                 longCode: 'Daily Bulletin - DMS',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
@@ -1093,7 +1093,7 @@ $(document).ready(function () {
             },
             MR: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_mr_Tmpl.htm',
-                emailCode: 'MR',
+                emailCode: 'MRDMS',
                 shortCode: 'JGMMR',
                 longCode: 'Must Read',
                 imgMaxWidth: 135,
@@ -1111,8 +1111,8 @@ $(document).ready(function () {
             },
             MRDMS: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_mr_dms_Tmpl.htm',
-                emailCode: 'MR',
-                shortCode: 'JGMMR',
+                emailCode: 'MRDMS',
+                shortCode: 'JGMMRDMS',
                 longCode: 'Must Read - DMS',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
@@ -1185,8 +1185,8 @@ $(document).ready(function () {
             },
             DBDMS: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_db_dms_Tmpl.htm',
-                emailCode: 'DB',
-                shortCode: 'SAADB',
+                emailCode: 'DBDMS',
+                shortCode: 'SAADBDMS',
                 longCode: 'Daily Bulletin - DMS',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
@@ -1221,8 +1221,8 @@ $(document).ready(function () {
             },
             MRDMS: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_mr_dms_Tmpl.htm',
-                emailCode: 'MR',
-                shortCode: 'SAAMR',
+                emailCode: 'MRDMS',
+                shortCode: 'SAAMRDMS',
                 longCode: 'Must Read - DMS',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
@@ -2503,15 +2503,56 @@ $(document).ready(function () {
             .button()
             .show()
             .mouseup(function() {
+                e.stopPropagation();
                 openPreviewWindow();
             });
     }
 
     function openPreviewWindow() {
         var html = $('#resultsTextArea').val();
-        var keycode = templateContainer.keycode;
         var win = window.open("", "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=650, height=800");
         win.document.body.innerHTML = html;
+    }
+
+    function sendToDMS() {
+        var templateStyle = getTemplateStyle();
+        var clientCode = templateStyle[0]; //e.g ALPAC
+        var templateCode = templateStyle[1]; //e.g. DB (not sure if using yet)
+        var html = $('#resultsTextArea').val();
+        var keycode = makeKeyCodeTest();
+        console.log("keycode = " + keycode);
+        var title = $('#subjectInput').val();
+
+        var request = $.ajax({
+            url: "http://daviseford.com/sites/default/files/email_templater/soap/php/davis.php",
+            contentType: "application/json; charset=utf-8",
+            method: "POST",
+            data: JSON.stringify(
+                {
+                    "clientCode": clientCode,
+                    "html": html,
+                    "keycode": keycode,
+                    "title": title
+                }
+            ), //send a JSON-encoded POST request to the php script.
+            dataType: 'json',
+            success: function (data) {
+                alert(data);
+            }
+        });
+
+        request.done(function() {
+            console.log("done with DMS");
+        });
+    }
+
+    function makeDMSBtn() {
+        $("#sendToDMSBtn")
+            .button()
+            .show()
+            .mouseup(function() {
+                sendToDMS();
+            });
     }
 
 
@@ -2533,6 +2574,7 @@ $(document).ready(function () {
                     makeCopyButton();
                     makeCopyKeycodeButton();
                     makePreviewEmailBtn();
+                    makeDMSBtn();
                     usageCounter();
                 }, 500);
             }
