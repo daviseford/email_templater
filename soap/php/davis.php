@@ -49,6 +49,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
+//find the MySQL row, e.g. ALPAC
 $sql = "SELECT * FROM DMS WHERE clientCode = '$clientCode'";
 $result = $conn->query($sql);
 
