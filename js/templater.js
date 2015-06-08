@@ -2447,7 +2447,7 @@ $(document).ready(function () {
         $.get( "http://daviseford.com/sites/default/files/email_templater/php/counter.php?page=templaterCounter", function( data ) {
             var counterDiv = $('#counterDiv');
             var dataNum = parseInt(data);
-            var a = (dataNum * 19)/60;
+            var a = (dataNum * 22)/60;
             var estimateTimeSavedHours = Math.floor(a);
             var estimateTimeSavedDays = Math.floor(estimateTimeSavedHours/24);
             var estimateTimeSavedWeeks = Math.floor(estimateTimeSavedDays/7);
@@ -2502,7 +2502,6 @@ $(document).ready(function () {
             .button()
             .show()
             .mouseup(function() {
-                e.stopPropagation();
                 openPreviewWindow();
             });
     }
