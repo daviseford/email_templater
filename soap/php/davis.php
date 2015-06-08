@@ -73,6 +73,7 @@ function encodeToIso($string) {
 }
 
 //conversion, may mess with this
+//$htmlConvert = mb_convert_encoding($postdec["html"], "ISO-8859-1", "auto");
 $htmlConvert = mb_convert_encoding($postdec["html"], "ISO-8859-1", "auto");
 $titleConvert = encodeToUtf8($postdec["title"]); 
 //$titleConvert = mb_convert_encoding($postdec["title"], "ISO-8859-1", "auto"); 
@@ -108,7 +109,7 @@ $content_Text = $h2t->get_text(); 	//Simply call the get_text() method for the c
 			'MimePartName' => 'html', 
 			'Body' => $content_HTML, 
 			'Encoding' => '8bit', 
-			'CharSetID' => 1
+			'CharSetID' => 3
 		);
         
 		$DocParts = array ($DocPartText, $DocPartHtml);
