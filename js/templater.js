@@ -717,6 +717,25 @@ $(document).ready(function () {
                 }
             }
         },
+        HP: {
+            link: 'http://7e0c82nhx3p0vn8g-jpmztgh3x.hop.clickbank.net/?tid=', //default link to all sub-ads
+            shortCode: 'HP',
+            longCode: 'Home Power',
+            advertisements: {
+                0: {
+                    name: 'HP1',
+                    description: '300 x 250 - ISIS New Plan'
+                },
+                1: {
+                    name: 'HP2',
+                    description: '300 x 250 - The World You Know'
+                },
+                2: {
+                    name: 'HP3',
+                    description: '300 x 250 - New Terrorist Plot'
+                }
+            }
+        },
         SMD: {
             link: 'http://76cc96o8-yx6wvbkvqybon5o2j.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'SMD',
