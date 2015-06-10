@@ -74,8 +74,8 @@ function encodeToIso($string) {
 
 //conversion, may mess with this
 //$htmlConvert = mb_convert_encoding($postdec["html"], "ISO-8859-1", "auto");
-$htmlConvert = mb_convert_encoding($postdec["html"], "ISO-8859-1", "auto");
-$titleConvert = encodeToUtf8($postdec["title"]); 
+$htmlConvert = $postdec["html"];
+$titleConvert = $postdec["title"]; 
 //$titleConvert = mb_convert_encoding($postdec["title"], "ISO-8859-1", "auto"); 
 
 //all credit to http://www.chuggnutt.com/html2text-source for the html to text conversion
@@ -109,13 +109,13 @@ $content_Text = $h2t->get_text(); 	//Simply call the get_text() method for the c
 			'MimePartName' => 'html', 
 			'Body' => $content_HTML, 
 			'Encoding' => '8bit', 
-			'CharSetID' => 3
+			'CharSetID' => 1
 		);
         
 		$DocParts = array ($DocPartText, $DocPartHtml);
         
 		$contentStruct = array(
-			'NativeTitle' => $content_Native_Title, 
+			'NativeTitle' => '[TEST]'.$content_Native_Title, //prepends our testing naming convetion to the title
 			'Description' => $content_Description, 
 			'Title' => $content_Title, 
 			'HeaderTo' => $content_HeaderTo, 
