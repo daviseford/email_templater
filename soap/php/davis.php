@@ -102,16 +102,16 @@ $content_Text = $h2t->get_text(); 	//Simply call the get_text() method for the c
 		'MimePartName' => 'text',
 		'Body' => $content_Text, 
 		'Encoding' => '8bit', 
-		'CharSetID' => 1
+		'CharSetID' => 16			//set CharSetID to 16 per James Beecher, DMS, who found the fix for this encoding error.
 		);
 		
         $DocPartHtml = array (
 			'MimePartName' => 'html', 
 			'Body' => $content_HTML, 
 			'Encoding' => '8bit', 
-			'CharSetID' => 1
+			'CharSetID' => 16 		//set CharSetID to 16 per James Beecher, DMS, who found the fix for this encoding error.
 		);
-        
+		
 		$DocParts = array ($DocPartText, $DocPartHtml);
         
 		$contentStruct = array(
