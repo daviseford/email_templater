@@ -91,18 +91,18 @@ if ($result->num_rows > 0) {
 					//header('Content-Type: text/html; charset=utf-8');
 					
 					
-					header("Cache-Control: public");
-header("Content-Description: File Transfer");
-header('Content-Length: '.strlen($curlResult));
-header("Content-Disposition: attachment; filename=hullo.html");
-header("Content-Type: application/octet-stream; "); 
-header("Content-Transfer-Encoding: binary");
+					//header("Cache-Control: public");
+//header("Content-Description: File Transfer");
+//header('Content-Length: '.strlen($curlResult));
+//header("Content-Disposition: attachment; filename=hullo.html");
+//header("Content-Type: application/octet-stream; "); 
+//header("Content-Transfer-Encoding: binary");
 
-
-					echo $curlResult;
-					//close connection
-					curl_close($ch);
+curl_close($ch);
 					
 					$conn->close();	
+
+
+					echo json_encode($curlResult);
 					
 					?>
