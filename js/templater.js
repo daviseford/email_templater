@@ -1015,24 +1015,6 @@ $(document).ready(function () {
                     var keycode = makeKeyCodeTest();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
-            },
-            XL: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_xl_Tmpl.htm',
-                emailCode: 'XL',
-                shortCode: 'ALPACXL',
-                longCode: 'XL Edition (Buggy)',
-                imgMaxWidth: 148,
-                imgMaxHeight: 148,
-                productMenu: adReferenceWJMA,
-                rssFeed: 'http://americanlibertypac.com/feed',
-                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/880203000.png',
-                feedStyle: function() {
-                    getRSSWithImage(this.rssFeed);
-                },
-                utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
-                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
-                }
             }
         },
         CRN: {
