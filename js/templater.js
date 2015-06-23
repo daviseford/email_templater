@@ -2123,24 +2123,6 @@ $(document).ready(function () {
                     var divID = 'rssStory' + rssObject[i].storyNum;
                     var imgID = 'rssImg' + rssObject[i].storyNum;
 
-                    //if (i < 9) { //displays 9 results
-                    //    var storage = [];
-                    //    var a = '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder" id="' + divID + '">';
-                    //    var b = '<p>';
-                    //    //var c = '<img src="' + rssObject[i].imgsrc + '" width="' + rssObject[i].thumbW + '" height="' + rssObject[i].thumbH + '" id="' + imgID + '" align="left" style=""/>';
-                    //    //disabled above, as it was causing all sorts of resizing issues
-                    //    var c = '<img src="' + rssObject[i].imgsrc + '" width="75" height="75" id="' + imgID + '" align="left" class="img-circle" style=""/>';
-                    //    var d = rssObject[i].title;
-                    //    var eecenter = '<br /><center>';
-                    //    var btn1 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button>';
-                    //    var btn2 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button>';
-                    //    var btn3 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button>';
-                    //    var btn4 = '<button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>';
-                    //    var fend = '</center></p></div>';
-                    //    storage.push(a, b, c, d, eecenter, btn1, btn2, btn3, btn4, fend);
-                    //    formatStorage[i] = storage.join('');
-                    //}
-
                     function returnCurrentStoryNumber(i) {
                         return i;
                     }
