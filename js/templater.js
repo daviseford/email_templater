@@ -2057,7 +2057,8 @@ $(document).ready(function () {
         fixDescription: function (description) {  //strips extraneous html tags from the story
             if (description !== null && description !== undefined) {
                 var desc = S(description).unescapeHTML().s;
-                return S(desc).stripTags('div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link').s;
+                console.log("desc = " + S(desc).stripTags('div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link', 'span', 'header').s);
+                return S(desc).stripTags('div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link', 'span', 'header').s;
             }
         },
         fixTitle: function (title) {
@@ -2140,7 +2141,7 @@ $(document).ready(function () {
                     //    formatStorage[i] = storage.join('');
                     //}
 
-                    function testReturn(i) {
+                    function returnCurrentStoryNumber(i) {
                         return i;
                     }
 
@@ -2149,7 +2150,7 @@ $(document).ready(function () {
                         var rowstart = '';
                         var rowend = '';
 
-                        switch(testReturn(i)){ //this handles setting the row clearfixes every 3 columns for bootstrap
+                        switch(returnCurrentStoryNumber(i)){ //this handles setting the row clearfixes every 3 columns for bootstrap
                             case 0:
                                 rowstart = '<div class="row clearfix rssRow">';
                                 break;
@@ -2464,12 +2465,7 @@ $(document).ready(function () {
     function makeCopyButton(){
         var client = new ZeroClipboard($("#copy-button"));
         client.on( "ready", function( readyEvent ) {
-            // alert( "ZeroClipboard SWF is ready!" );
             client.on( "aftercopy", function( event ) {
-                // `this` === `client`
-                // `event.target` === the element that was clicked
-                //event.target.style.display = "none";
-                //alert("Copied text to clipboard: " + event.data["text/plain"] );
                 swal({
                     title: "Copied!",
                     text: "Ctrl + V wildly!",
@@ -2507,14 +2503,14 @@ $(document).ready(function () {
             });
     }
 
-    function openPreviewWindow() {
+    function openPreviewWindow() {  //opens a 900x800px window to preview the email.
         var html = $('#resultsTextArea').val();
-        var win = window.open("", "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=650, height=800");
+        var win = window.open("", "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=900, height=800");
         win.document.body.innerHTML = html;
     }
 
-    function checkAdStatusDMS(){
-        if(templateContainer.currentProduct.enabled !== true) {
+    function checkAdStatusDMS(){ //make sure our user doesn't send an email without an ad
+        if(templateContainer.currentProduct.enabled !== true) { //if there's no ad enabled, throw up a warning
             swal({
                     title: "No Advertisement Selected",
                     text: "Are you sure you want to send an email without an advertisement?",
@@ -2526,7 +2522,7 @@ $(document).ready(function () {
                     closeOnConfirm: false,
                     closeOnCancel: true
                 },
-                function(isConfirm){
+                function(isConfirm){ //if they confirm that they don't want an ad, use sendToDMS function
                     if (isConfirm) {
                         sendToDMS();
                     }
