@@ -2075,8 +2075,9 @@ $(document).ready(function () {
         fixDescription: function (description) {  //strips extraneous html tags from the story
             if (description !== null && description !== undefined) {
                 var desc = S(description).unescapeHTML().s;
-                console.log("desc = " + S(desc).stripTags('div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link', 'span', 'header').s);
-                return S(desc).stripTags('div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link', 'span', 'header').s;
+                var stripDesc = S(desc).stripTags('div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link', 'span', 'header').s;
+                //console.log("desc = " + S(desc).stripTags('div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link', 'span', 'header').s);
+                return stripDesc;
             }
         },
         fixTitle: function (title) {
