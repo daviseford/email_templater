@@ -37,7 +37,7 @@ $lmapi = $lmapiClient->getProxy();
 //set basic authentication
 $lmapi->setCredentials($userName,$password, 'basic');
 
-$servername = "10.209.129.184";
+$servername = "testprocess.db";
 $username = "testuser1";
 $password = "Number24!";
 $dbname = "testSchema";

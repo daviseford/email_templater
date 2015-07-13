@@ -2571,7 +2571,7 @@ $(document).ready(function () {
                 if (data !== "Array" && data !== "") {
                     swal({
                         title: "Sent To DMS!",
-                        text: "The email " + data + " has been created in DMS.",
+                        text: "The email has been created in DMS.", //sloppily hiding a random nusoap error message. wtf?
                         type: "success",
                         allowOutsideClick: "true",
                         timer: "20000",
