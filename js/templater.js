@@ -909,7 +909,7 @@ $(document).ready(function () {
 
 
 
-    function makeKeyCodeTest() {
+    function makeKeyCode() {
         var x =[];
         x = [$("#inlinedate").val(),$("#listSelect").val(),$("#tmplSelect").val(),$("#productSelect").val()];
         x = x.join('');
@@ -926,8 +926,7 @@ $(document).ready(function () {
         $('#keycodeHiddenForm').val(x); //this updates the hidden form in resultsContainer2. Our PHP script uses this value to name the downloaded .html file.
     }
 
-    templateContainer = {
-        keycode: makeKeyCodeTest(),//templateContainer will eventually be the one stop shop for all constant variables
+    templateContainer = {       //templateContainer holds all template-related variables. this really should be in a database
         ALPAC: {                //we start with the client name
             DB: {               //type of template (usually DB or MR)
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm', //location of template file
@@ -943,7 +942,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
 
@@ -962,7 +961,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
 
@@ -981,7 +980,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -999,7 +998,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1017,7 +1016,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1035,7 +1034,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1053,7 +1052,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1071,7 +1070,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             }
@@ -1091,7 +1090,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1109,7 +1108,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1127,7 +1126,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             }
@@ -1147,7 +1146,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1165,7 +1164,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1183,7 +1182,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1201,7 +1200,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1219,7 +1218,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1237,7 +1236,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             }
@@ -1257,7 +1256,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1275,7 +1274,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1293,7 +1292,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1311,7 +1310,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1329,7 +1328,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1347,7 +1346,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             }
@@ -1367,7 +1366,7 @@ $(document).ready(function () {
                     getILNAPI();
                 },
                 utmStyle: function() {
-                    var x = makeKeyCodeTest();
+                    var x = makeKeyCode();
                     var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
                     return y;
                 }
@@ -1388,7 +1387,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1406,7 +1405,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
@@ -1424,7 +1423,7 @@ $(document).ready(function () {
                     getRSSWithImage(this.rssFeed);
                 },
                 utmStyle: function () {
-                    var keycode = makeKeyCodeTest();
+                    var keycode = makeKeyCode();
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             }
@@ -1447,7 +1446,7 @@ $(document).ready(function () {
                     var currentEmailTemplateShortCode = currentEmailTemplate.shortCode;
                     //console.log('shortcode = ' + currentEmailTemplateShortCode);
 
-                    var currentEmailKeycode = makeKeyCodeTest();
+                    var currentEmailKeycode = makeKeyCode();
 
 
                     var templateShortCode = adRef[e].shortCode; //This is the same as writing adReference.XCOM.shortCode
@@ -1510,7 +1509,7 @@ $(document).ready(function () {
 
     function enableSmartFocusVars() {
         var subjectLine = $.trim($('#subjectInput').val());
-        var keycode = makeKeyCodeTest();
+        var keycode = makeKeyCode();
 
         var utmILN = templateContainer.ILN.DB.utmStyle();
         var utmALPAC = templateContainer.ALPAC.DB.utmStyle();
@@ -2149,16 +2148,6 @@ $(document).ready(function () {
             if (title !== null && title !== undefined) {
                 return S(title).unescapeHTML().s;
             }
-        },
-        masonry: function (container) {
-            var $container = $(container);
-            // initialize
-            $container.imagesLoaded(function () {
-                $container.masonry({
-                    columnWidth: '.col-md-4',
-                    itemSelector: '.rssHolder'
-                });
-            });
         }
 
     };
@@ -2613,7 +2602,7 @@ $(document).ready(function () {
         var templateStyle = getTemplateStyle();
         var clientCode = templateStyle[0]; //e.g ALPAC
         var html = $('#resultsTextArea').val();
-        var keycode = makeKeyCodeTest();
+        var keycode = makeKeyCode();
         console.log("keycode = " + keycode);
         var title = $('#subjectInput').val();
 
@@ -2685,7 +2674,7 @@ $(document).ready(function () {
             } else {
                 imageDelay();
                 setTimeout(function(){
-                    makeKeyCodeTest();
+                    makeKeyCode();
                     compileEmail(templateContainer); //pass in our object that contains all our template setup vars. info goes like this: templateContainer -> ALPAC -> DB -> shortCode: 'ALPACDB'
                     makeCopyButton();
                     makeCopyKeycodeButton();

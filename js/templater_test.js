@@ -2024,7 +2024,7 @@ $(document).ready(function () {
 
     function openPreviewWindow() {
         var html = $('#resultsTextArea').val();
-        var keycode = templateContainer.keycode;
+        var keycode = makeKeyCodeTest();
         var win = window.open("", "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=650, height=800");
         win.document.body.innerHTML = html;
     }
