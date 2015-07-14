@@ -2075,7 +2075,13 @@ $(document).ready(function () {
         fixDescription: function (description) {  //strips extraneous html tags from the story
             if (description !== null && description !== undefined) {
                 var desc = S(description).unescapeHTML().s;
-                var stripDesc = S(desc).stripTags('div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4', 'h5', 'link', 'span', 'header', 'label').s;
+                var stripDesc = S(desc).stripTags('div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'meta',
+                    'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4',
+                    'h5', 'link', 'span', 'header','label', 'person', 'location', 'org', 'chron').s;
+                /**
+                 * Added 'person', 'location', 'label', 'org', 'chron' to deal with AP's markup (https://developer.ap.org/ap-metadata-services)
+                 */
+
                 //console.log("desc = " + stripDesc);
                 return stripDesc;
             }
