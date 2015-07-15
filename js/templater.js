@@ -900,8 +900,35 @@ $(document).ready(function () {
                 },
                 3: {
                     name: 'EVAC4',
-                    description: '100 x 600 - Ultimate Evacuation and Survival Kit (4)',
+                    description: '160 x 600 - Ultimate Evacuation and Survival Kit (4)',
                     link: 'http://secure.ultracart.com/aff/FE82483EF3A27B014E8E510BA3051500/index.html?subid='
+                }
+            }
+        },
+        ML: {
+            link: 'http://secure.ultracart.com/aff/6A018EB4E2B15E014E92AE8A55051500/index.html?subid=', //default link to all sub-ads
+            shortCode: 'ML',
+            longCode: 'Martial Law Book',
+            advertisements: {
+                0: {
+                    name: 'ML1',
+                    description: '600 x 74 - Martial Law',
+                    link: 'http://secure.ultracart.com/aff/6A018EB4E2B15E014E92AE8A55051500/index.html?subid='
+                },
+                1: {
+                    name: 'ML2',
+                    description: '468 x 60 - Martial Law (2)',
+                    link: 'http://secure.ultracart.com/aff/3063403B026580014E92B1C1BA051500/index.html?subid='
+                },
+                2: {
+                    name: 'ML3',
+                    description: '300 x 250 - Martial Law (3)',
+                    link: 'http://secure.ultracart.com/aff/5EA94E8EE195A4014E92B384AC051500/index.html?subid='
+                },
+                3: {
+                    name: 'ML4',
+                    description: '125 x 200 - Martial Law (4)',
+                    link: 'http://secure.ultracart.com/aff/65F99CF5C7DDEC014E92B4B68F051500/index.html?subid='
                 }
             }
         }
