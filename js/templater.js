@@ -931,6 +931,33 @@ $(document).ready(function () {
                     link: 'http://secure.ultracart.com/aff/65F99CF5C7DDEC014E92B4B68F051500/index.html?subid='
                 }
             }
+        },
+        SOLOV: {
+            link: 'http://secure.ultracart.com/aff/F2B496723453B1014E92DB8B5E051500/index.html?subid=', //default link to all sub-ads
+            shortCode: 'SOLOV',
+            longCode: 'SFS Solar Oven',
+            advertisements: {
+                0: {
+                    name: 'SOLOV1',
+                    description: '600 x 74 - Solar Oven',
+                    link: 'http://secure.ultracart.com/aff/F2B496723453B1014E92DB8B5E051500/index.html?subid='
+                },
+                1: {
+                    name: 'SOLOV2',
+                    description: '336 x 280 - Solar Oven (2)',
+                    link: 'http://secure.ultracart.com/aff/8FDD5C8D753A68014E92DE2D37051500/index.html?subid='
+                },
+                2: {
+                    name: 'SOLOV3',
+                    description: '250 x 250 - Solar Oven (3)',
+                    link: 'http://secure.ultracart.com/aff/AABC9C3DF8FE28014E92E123F6051500/index.html?subid='
+                },
+                3: {
+                    name: 'SOLOV4',
+                    description: '160 x 600 - Solar Oven (4)',
+                    link: 'http://secure.ultracart.com/aff/2DEA3AB6C83CDB014E92E2FB19051500/index.html?subid='
+                }
+            }
         }
     };
 
