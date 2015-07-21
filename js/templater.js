@@ -1166,6 +1166,24 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
+            EI: {
+                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/crn_ei_Tmpl.htm',
+                emailCode: 'EI',
+                shortCode: 'CRNEI',
+                longCode: 'Election Insider - DMS',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://conservativerepublicannews.com/blog/feed/',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1569720608.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
             SL: {
                 tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/crn_sl_Tmpl.htm',
                 emailCode: 'SL',
