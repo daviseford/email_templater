@@ -846,38 +846,38 @@ $(document).ready(function () {
                 }
             }
         },
-        PG: {
-            link: 'http://secure.ultracart.com/aff/C6E87D470E9952014E8E0F3E8F051400/index.html?subid=', //default link to all sub-ads
-            shortCode: 'PG',
-            longCode: 'Power Generator',
-            advertisements: {
-                0: {
-                    name: 'PG1',
-                    description: '300 x 250 - Secret Power Plant',
-                    link: 'http://secure.ultracart.com/aff/C6E87D470E9952014E8E0F3E8F051400/index.html?subid='
-                },
-                1: {
-                    name: 'PG2',
-                    description: '300 x 250 - Secret Power Plant (2)',
-                    link: 'http://secure.ultracart.com/aff/19C7C901E53EAE014E8E33F9BB051500/index.html?subid='
-                },
-                2: {
-                    name: 'PG3',
-                    description: '600 x 160 - Secret Power Plant (3)',
-                    link: 'http://secure.ultracart.com/aff/4C60D5615BD980014E8E39EF3E051500/index.html?subid='
-                },
-                3: {
-                    name: 'PG4',
-                    description: '600 x 160 - Secret Power Plant (4)',
-                    link: 'http://secure.ultracart.com/aff/6528625A184943014E8E3BB17F051500/index.html?subid='
-                },
-                4: {
-                    name: 'PG5',
-                    description: '468 x 60 - Secret Power Plant (5)',
-                    link: 'http://secure.ultracart.com/aff/A3FDCD57387F33014E8E43E953051500/index.html?subid='
-                }
-            }
-        },
+        //PG: {
+        //    link: 'http://secure.ultracart.com/aff/C6E87D470E9952014E8E0F3E8F051400/index.html?subid=', //default link to all sub-ads
+        //    shortCode: 'PG',
+        //    longCode: 'Power Generator',
+        //    advertisements: {
+        //        0: {
+        //            name: 'PG1',
+        //            description: '300 x 250 - Secret Power Plant',
+        //            link: 'http://secure.ultracart.com/aff/C6E87D470E9952014E8E0F3E8F051400/index.html?subid='
+        //        },
+        //        1: {
+        //            name: 'PG2',
+        //            description: '300 x 250 - Secret Power Plant (2)',
+        //            link: 'http://secure.ultracart.com/aff/19C7C901E53EAE014E8E33F9BB051500/index.html?subid='
+        //        },
+        //        2: {
+        //            name: 'PG3',
+        //            description: '600 x 160 - Secret Power Plant (3)',
+        //            link: 'http://secure.ultracart.com/aff/4C60D5615BD980014E8E39EF3E051500/index.html?subid='
+        //        },
+        //        3: {
+        //            name: 'PG4',
+        //            description: '600 x 160 - Secret Power Plant (4)',
+        //            link: 'http://secure.ultracart.com/aff/6528625A184943014E8E3BB17F051500/index.html?subid='
+        //        },
+        //        4: {
+        //            name: 'PG5',
+        //            description: '468 x 60 - Secret Power Plant (5)',
+        //            link: 'http://secure.ultracart.com/aff/A3FDCD57387F33014E8E43E953051500/index.html?subid='
+        //        }
+        //    }
+        //},
         EVAC: {
             link: 'http://secure.ultracart.com/aff/86EDCB6EDFA369014E8E4B35DF051500/index.html?subid=', //default link to all sub-ads
             shortCode: 'EVAC',
