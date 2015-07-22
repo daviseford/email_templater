@@ -2732,6 +2732,27 @@ $(document).ready(function () {
             });
     }
 
+    function makeSmartFocusBtn() {
+        $("#sendToSmartFocusBtn")
+            .button()
+            .show()
+            .mouseup(function() {
+                $.get(handleSmartFocus(), function(data, status) {
+                    alert("Data = " + data + "\nStatus = " + status);
+                });
+            });
+    }
+
+    function handleSmartFocus() {
+        var loginObject =  {
+            "login": "wjmadigitalmedia",
+            "password": "Number24!",
+            "apiKey": "jrnzg28xcpqaak5qxd5h8pfw"
+        };
+        //opening a connection: https://api-help.campaigncommander.com/#CAMPAIGN_MANAGEMENT_SOAP-REST/REST/Open_Connection.htm%3FTocPath%3DCampaign%2520Management%2520-%2520REST%7CConnection%7C_____1
+        return "https://p5cce.campaigncommander.com/apiccmd/services/rest/connect/open/" + loginObject.login + "/" + loginObject.password + "/" + loginObject.apiKey;
+    }
+
 
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
@@ -2752,6 +2773,8 @@ $(document).ready(function () {
                     makeCopyKeycodeButton();
                     makePreviewEmailBtn();
                     makeDMSBtn();
+                    //makeSmartFocusBtn();
+                    //TODO: uncomment this
                     usageCounter();
                 }, 500);
             }
