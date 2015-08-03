@@ -958,6 +958,33 @@ $(document).ready(function () {
                     link: 'http://secure.ultracart.com/aff/2DEA3AB6C83CDB014E92E2FB19051500/index.html?subid='
                 }
             }
+        },
+        PWF: {
+            link: 'http://secure.ultracart.com/aff/F5ABAC209183F1014EF4126207051500/index.html?subid=', //default link to all sub-ads
+            shortCode: 'PWF',
+            longCode: 'Paratrooper Water Filter',
+            advertisements: {
+                0: {
+                    name: 'PWF1',
+                    description: '600 x 74 - Water Filter',
+                    link: 'http://secure.ultracart.com/aff/A3EDD9206E6D42014EF4180C39051500/index.html?subid='
+                },
+                1: {
+                    name: 'PWF2',
+                    description: '336 x 280 - Water Filter (2)',
+                    link: 'http://secure.ultracart.com/aff/41CE242ADDD570014EF4172598051500/index.html?subid='
+                },
+                2: {
+                    name: 'PWF3',
+                    description: '250 x 250 - Water Filter (3)',
+                    link: 'http://secure.ultracart.com/aff/847BD905C93AD1014EF41934FF051500/index.html?subid='
+                },
+                3: {
+                    name: 'PWF4',
+                    description: '160 x 600 - Water Filter (4)',
+                    link: 'http://secure.ultracart.com/aff/F5ABAC209183F1014EF4126207051500/index.html?subid='
+                }
+            }
         }
     };
 
@@ -2745,12 +2772,21 @@ $(document).ready(function () {
         var loginObject =  {
             "login": "wjmadigitalmedia",
             "password": "Number24!",
-            "apiKey": "jrnzg28xcpqaak5qxd5h8pfw"
+            "apiKey": "CdX7CrxR51yOlUlaWdYut5eCfBUrJsq5h0ntS5hXne54rkXC"
         };
         //opening a connection: https://api-help.campaigncommander.com/#CAMPAIGN_MANAGEMENT_SOAP-REST/REST/Open_Connection.htm%3FTocPath%3DCampaign%2520Management%2520-%2520REST%7CConnection%7C_____1
-        var loginURL = "https://p5cce.campaigncommander.com/apiccmd/services/rest/connect/open/" + loginObject.login + "/" + loginObject.password + "/" + loginObject.apiKey;
-        $.get(loginURL, function(data, status) {
-            alert("Data = " + data + "\nStatus = " + status);
+        var loginURL = "http://p5apie.emv3.com/apiccmd/services/rest/connect/open/" + loginObject.login + "/" + loginObject.password + "/" + loginObject.apiKey;
+        //$.get(loginURL, function(data, status) {
+        //    alert("Data = " + data + "\nStatus = " + status);
+        //});
+
+        $.ajax({
+            url: loginURL,
+            dataType: "jsonp",
+            success: function (data) {
+                console.log(data);
+                alert(data);
+            }
         });
     }
 
@@ -2774,8 +2810,7 @@ $(document).ready(function () {
                     makeCopyKeycodeButton();
                     makePreviewEmailBtn();
                     makeDMSBtn();
-                    //makeSmartFocusBtn();
-                    //TODO: uncomment this
+                    makeSmartFocusBtn();
                     usageCounter();
                 }, 500);
             }
