@@ -225,141 +225,6 @@ $(document).ready(function () {
         }
     };
     var adReferenceWJMA = {
-        CRNPOLL: {
-            link: 'http://conservativerepublicannews.com',
-            shortCode: 'CRNPOLL',
-            longCode: 'CRN Polls',
-            advertisements: {
-                0: {
-                    name: 'CRNPOLL1',
-                    description: 'Is it time to go after ISIS?',
-                    link: 'http://conservativerepublicannews.com/poll-is-it-time-to-go-after-isis/'
-                },
-                1: {
-                    name: 'CRNPOLL2',
-                    description: 'Do you trust the Mainstream Media?',
-                    link: 'http://conservativerepublicannews.com/poll-do-you-trust-the-media/'
-                },
-                2: {
-                    name: 'CRNPOLL3',
-                    description: 'Obama Impeachment',
-                    link: 'http://conservativerepublicannews.com/poll-impeach-obama/'
-                },
-                3: {
-                    name: 'CRNPOLL4',
-                    description: 'Do You Trust The IRS?',
-                    link: 'http://conservativerepublicannews.com/poll-do-you-trust-the-irs/'
-                },
-                4: {
-                    name: 'CRNPOLL5',
-                    description: 'Do You Think Social Security Is Running Out?',
-                    link: 'http://conservativerepublicannews.com/poll-do-you-think-social-security-is-running-out/'
-                },
-                5: {
-                    name: 'CRNPOLL6',
-                    description: 'Should Kids Be Vaccinated?',
-                    link: 'http://conservativerepublicannews.com/poll-should-kids-be-vaccinated/'
-                },
-                6: {
-                    name: 'CRNPOLL7',
-                    description: 'Will Obama Declare Martial Law?',
-                    link: 'http://conservativerepublicannews.com/poll-obama-martial-law/'
-                }
-            }
-        },
-        PREZ: {
-            link: 'http://americanlibertypac.com/march-madness-final-round/',
-            shortCode: 'PREZ',
-            longCode: 'Presidential Madness 2015',
-            advertisements: {
-                0: {
-                    name: 'PREZ1',
-                    description: 'Banner (Blue Text)'
-                },
-                1: {
-                    name: 'PREZ2',
-                    description: 'Banner (Red Text)'
-                }
-            }
-        },
-        PPP: {
-            link: 'http://americanlibertypac.com/2016-presidential-preference-poll-2/',
-            shortCode: 'PPP',
-            longCode: 'Presidential Preference Poll 2016',
-            advertisements: {
-                0: {
-                    name: 'PPP1',
-                    description: 'Rand Paul | Mitt Romney'
-                },
-                1: {
-                    name: 'PPP2',
-                    description: 'Jeb Bush | Scott Walker'
-                },
-                2: {
-                    name: 'PPP3',
-                    description: 'Mike Lee | Rand Paul'
-                },
-                3: {
-                    name: 'PPP4',
-                    description: 'Scott Walker | Ben Carson'
-                },
-                4: {
-                    name: 'PPP5',
-                    description: 'Rand Paul | Ted Cruz'
-                }
-            }
-        },
-        HILL: {
-            link: 'https://secure.yourpatriot.com/ou/alpac/1826/donate.aspx',
-            shortCode: 'HILL',
-            longCode: 'Not Ready For Hillary',
-            advertisements: {
-                0: {
-                    name: 'HILL1',
-                    description: 'Bumper Sticker (350x137)'
-                },
-                1: {
-                    name: 'HILL2',
-                    description: 'Bumper Sticker (500x196)'
-                },
-                2: {
-                    name: 'HILL3',
-                    description: 'Grey Square Ad'
-                },
-                3: {
-                    name: 'HILL4',
-                    description: 'Black Square Ad'
-                }
-            }
-
-        },
-        STICKER: {
-            link: 'https://secure.yourpatriot.com/ou/alpac/1761/donate.aspx',
-            shortCode: 'STICKER',
-            longCode: 'ALPAC Bumper Stickers',
-            advertisements: {
-                0: {
-                    name: 'STICKER1',
-                    description: 'Freedom Sticker'
-                },
-                1: {
-                    name: 'STICKER2',
-                    description: 'Fire the Liars Sticker'
-                },
-                2: {
-                    name: 'STICKER3',
-                    description: 'Rand 2016 Sticker'
-                },
-                3: {
-                    name: 'STICKER4',
-                    description: 'Rand 2016 Bumper Sticker'
-                },
-                4: {
-                    name: 'STICKER5',
-                    description: 'Reboot America Draft Rand Paul'
-                }
-            }
-        },
         JGM: {
             link: 'https://minutemanproject.com/donate-2/',
             shortCode: 'JGM',
@@ -371,35 +236,8 @@ $(document).ready(function () {
                 },
                 1: {
                     name: 'JGM2',
-                    description: 'Twitter Banner',
-                    link: 'http://twitter.com/jgmmp'
-                },
-                2: {
-                    name: 'JGM3',
-                    description: 'Facebook Banner',
-                    link: 'https://www.facebook.com/MinutemanProjectNews'
-                },
-                3: {
-                    name: 'JGM4',
                     description: 'Inline - Revoke Executive Action',
                     link: 'http://minutemanproject.rallycongress.com/17465/citizens-demand-to-congress-to-revoke-obamas-executive-action/'
-                }
-            }
-        },
-        RAND: {
-            link: 'https://presidentrand.com',
-            shortCode: 'RAND',
-            longCode: 'Draft Rand Paul',
-            advertisements: {
-                0: {
-                    name: 'RAND1',
-                    description: 'Reboot America',
-                    link: 'http://americanlibertypac.com/draft-rand-paul-for-president/'
-                },
-                1: {
-                    name: 'RAND2',
-                    description: 'Grassroots For Rand',
-                    link: 'http://americanlibertypac.com/draft-rand-paul-for-president/'
                 }
             }
         },
@@ -410,48 +248,36 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'SAA1',
-                    description: 'Facebook',
-                    link: 'https://www.facebook.com/SeniorAmericans' //this link overrides the default set above
-                },
-                1: {
-                    name: 'SAA2',
                     description: 'Older Americans Act',
                     link: 'http://senioramericansassociation.com/3004-2/' //this link overrides the default set above
                 },
-                2: {
-                    name: 'SAA3',
+                1: {
+                    name: 'SAA2',
                     description: 'Inline Coupon Ad',
                     link: 'http://senioramericansassociation.com/savings-center/'
                 }
             }
         },
-        BLACKOUTWW: {
+        BLACKOUTUSA: {
             link: 'http://b79c75cgzvt1tyb3-m00an3o8d.hop.clickbank.net/?tid=', //default link to all sub-ads
-            shortCode: 'BLACKOUTWW',
-            longCode: 'Blackout USA WW3',
+            shortCode: 'BLACKOUTUSA',
+            longCode: 'Blackout USA',
             advertisements: {
                 0: {
-                    name: 'BLACKOUTWW1',
+                    name: 'BLACKOUTUSA1',
                     description: '300 x 250 - Michelle Obama'
                 },
                 1: {
-                    name: 'BLACKOUTWW2',
+                    name: 'BLACKOUTUSA2',
                     description: '300 x 250 - Putin'
                 },
                 2: {
-                    name: 'BLACKOUTWW3',
+                    name: 'BLACKOUTUSA3',
                     description: '300 x 250 - Putin'
-                }
-            }
-        },
-        BLACKOUTNASA: {
-            link: 'http://b79c75cgzvt1tyb3-m00an3o8d.hop.clickbank.net/?tid=', //default link to all sub-ads
-            shortCode: 'BLACKOUTNASA',
-            longCode: 'Blackout USA NASA',
-            advertisements: {
-                0: {
-                    name: 'BLACKOUTNASA1',
-                    description: '250 x 200'
+                },
+                3: {
+                    name: 'BLACKOUTUSA4',
+                    description: '250 x 200 - NASA'
                 }
             }
         },
@@ -463,15 +289,15 @@ $(document).ready(function () {
                 0: {
                     name: 'AMMO1',
                     description: '336 x 280 - Red TXT, White BG'
-                },
-                1: {
-                    name: 'AMMO2',
-                    description: '600 x 74 - Red TXT, White BG'
-                },
-                2: {
-                    name: 'AMMO3',
-                    description: '250 x 250 - Grey BG'
                 }
+                //1: {
+                //    name: 'AMMO2',
+                //    description: '600 x 74 - Red TXT, White BG'
+                //},
+                //2: {
+                //    name: 'AMMO3',
+                //    description: '250 x 250 - Grey BG'
+                //}
             }
         },
         FC: {
@@ -516,26 +342,6 @@ $(document).ready(function () {
                 },
                 1: {
                     name: 'AAC2',
-                    description: '180 x 150 - Shocking Video'
-                },
-                2: {
-                    name: 'AAC3',
-                    description: '180 x 150 - Leaked Report'
-                },
-                3: {
-                    name: 'AAC4',
-                    description: '180 x 150 - Disaster'
-                },
-                4: {
-                    name: 'AAC5',
-                    description: '180 x 150 - Market Crash'
-                },
-                5: {
-                    name: 'AAC6',
-                    description: '180 x 150 - 7 Things'
-                },
-                6: {
-                    name: 'AAC7',
                     description: '320 x 50'
                 }
             }
@@ -666,26 +472,10 @@ $(document).ready(function () {
                 },
                 23: {
                     name: 'SAC24',
-                    description: '125 x 125 - Watch Free Video'
+                    description: '600 x 74 - To All Men (GIF)'
                 },
                 24: {
                     name: 'SAC25',
-                    description: '125 x 125 - Watch Free Video (2)'
-                },
-                25: {
-                    name: 'SAC26',
-                    description: '125 x 125 - Survival Shocker Secrets'
-                },
-                26: {
-                    name: 'SAC27',
-                    description: '125 x 125 - To All Men (4)'
-                },
-                27: {
-                    name: 'SAC28',
-                    description: '600 x 74 - To All Men (GIF)'
-                },
-                28: {
-                    name: 'SAC29',
                     description: '600 x 74 - Countdown To Collapse (GIF)'
                 }
             }
@@ -822,11 +612,11 @@ $(document).ready(function () {
                 },
                 4: {
                     name: 'BYL5',
-                    description: '600 x 96 - Leaked Prepper Video'
+                    description: '600 x 96 - Taking Your Food'
                 },
                 5: {
                     name: 'BYL6',
-                    description: '600 x 100 - Leaked Prepper Video (2)'
+                    description: '600 x 100 - Leaked Prepper Video'
                 },
                 6: {
                     name: 'BYL7',
@@ -846,38 +636,50 @@ $(document).ready(function () {
                 }
             }
         },
-        //PG: {
-        //    link: 'http://secure.ultracart.com/aff/C6E87D470E9952014E8E0F3E8F051400/index.html?subid=', //default link to all sub-ads
-        //    shortCode: 'PG',
-        //    longCode: 'Power Generator',
-        //    advertisements: {
-        //        0: {
-        //            name: 'PG1',
-        //            description: '300 x 250 - Secret Power Plant',
-        //            link: 'http://secure.ultracart.com/aff/C6E87D470E9952014E8E0F3E8F051400/index.html?subid='
-        //        },
-        //        1: {
-        //            name: 'PG2',
-        //            description: '300 x 250 - Secret Power Plant (2)',
-        //            link: 'http://secure.ultracart.com/aff/19C7C901E53EAE014E8E33F9BB051500/index.html?subid='
-        //        },
-        //        2: {
-        //            name: 'PG3',
-        //            description: '600 x 160 - Secret Power Plant (3)',
-        //            link: 'http://secure.ultracart.com/aff/4C60D5615BD980014E8E39EF3E051500/index.html?subid='
-        //        },
-        //        3: {
-        //            name: 'PG4',
-        //            description: '600 x 160 - Secret Power Plant (4)',
-        //            link: 'http://secure.ultracart.com/aff/6528625A184943014E8E3BB17F051500/index.html?subid='
-        //        },
-        //        4: {
-        //            name: 'PG5',
-        //            description: '468 x 60 - Secret Power Plant (5)',
-        //            link: 'http://secure.ultracart.com/aff/A3FDCD57387F33014E8E43E953051500/index.html?subid='
-        //        }
-        //    }
-        //},
+        PG: {
+            link: 'http://secure.ultracart.com/aff/7F58F59BAAF154014EFF7C7F6F051400/index.html?subid=', //default link to all sub-ads
+            shortCode: 'PG',
+            longCode: 'Power Generator',
+            advertisements: {
+                0: {
+                    name: 'PG1',
+                    description: '300 x 250 - Secret Power Plant',
+                    link: 'http://secure.ultracart.com/aff/7F58F59BAAF154014EFF7C7F6F051400/index.html?subid='
+                }
+                //1: {
+                //    name: 'PG2',
+                //    description: '300 x 250 - Secret Power Plant (2)',
+                //    link: 'http://secure.ultracart.com/aff/19C7C901E53EAE014E8E33F9BB051500/index.html?subid='
+                //},
+                //2: {
+                //    name: 'PG3',
+                //    description: '600 x 160 - Secret Power Plant (3)',
+                //    link: 'http://secure.ultracart.com/aff/4C60D5615BD980014E8E39EF3E051500/index.html?subid='
+                //},
+                //3: {
+                //    name: 'PG4',
+                //    description: '600 x 160 - Secret Power Plant (4)',
+                //    link: 'http://secure.ultracart.com/aff/6528625A184943014E8E3BB17F051500/index.html?subid='
+                //},
+                //4: {
+                //    name: 'PG5',
+                //    description: '468 x 60 - Secret Power Plant (5)',
+                //    link: 'http://secure.ultracart.com/aff/A3FDCD57387F33014E8E43E953051500/index.html?subid='
+                //}
+            }
+        },
+        HM: {
+            link: 'http://secure.ultracart.com/aff/BC52322B3C2DC3014EFF234C20051400/index.html?subid=', //default link to all sub-ads
+            shortCode: 'HM',
+            longCode: 'Herbal Medicine',
+            advertisements: {
+                0: {
+                    name: 'HM1',
+                    description: '300 x 250 - Powerful Herbal Medicine',
+                    link: 'http://secure.ultracart.com/aff/BC52322B3C2DC3014EFF234C20051400/index.html?subid='
+                }
+            }
+        },
         EVAC: {
             link: 'http://secure.ultracart.com/aff/86EDCB6EDFA369014E8E4B35DF051500/index.html?subid=', //default link to all sub-ads
             shortCode: 'EVAC',
