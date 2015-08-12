@@ -1567,6 +1567,8 @@ $(document).ready(function () {
             }
         });
 
+
+    /* Removed for now from index.html*/
     function makeEmailBtn() {
         $("#emailHTML")
             .button()
@@ -1805,8 +1807,8 @@ $(document).ready(function () {
                 var html = templateLoader.render(templateContainer);
                 $("#resultsTextArea").val(html); //Puts the raw HTML into the textbox so we can easily copy it.
                 $("#resultsDiv").html(sanitizeRender(html)); //Renders the HTML version of the email
-                makeEmailBtn(); //take this out if it gets abused
-                makeWJMAEmailBtn();
+                //makeEmailBtn(); //this is disabled due to lack of use
+                //makeWJMAEmailBtn();
             }).fail(function () {
                 console.log("spawnTemplate(" + tmplLink + "): Something went wrong!");
             });
@@ -2034,9 +2036,9 @@ $(document).ready(function () {
         fixDescription: function (description) {  //strips extraneous html tags from the story
             if (description !== null && description !== undefined) {
                 var desc = S(description).unescapeHTML().s;
-                var stripDesc = S(desc).stripTags('div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'meta',
+                var stripDesc = S(desc).stripTags('span', 'div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'meta',
                     'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4',
-                    'h5', 'link', 'span', 'header','label', 'person', 'location', 'org', 'chron').s;
+                    'h5', 'link', 'header', 'label', 'person', 'location', 'org', 'chron').s;
                 /**
                  * Added 'person', 'location', 'label', 'org', 'chron' to deal with AP's markup (https://developer.ap.org/ap-metadata-services)
                  */
