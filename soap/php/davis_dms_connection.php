@@ -73,10 +73,8 @@ function encodeToIso($string) {
 }
 
 //conversion, may mess with this
-//$htmlConvert = mb_convert_encoding($postdec["html"], "ISO-8859-1", "auto");
 $htmlConvert = $postdec["html"];
 $titleConvert = $postdec["title"]; 
-//$titleConvert = mb_convert_encoding($postdec["title"], "ISO-8859-1", "auto"); 
 
 //all credit to http://www.chuggnutt.com/html2text-source for the html to text conversion
 //I slightly modified it to remove the url generator, as it was giving links to my private blog!
@@ -95,21 +93,24 @@ $content_HeaderTo = $headerTo;
 $content_HeaderFrom = $headerFrom; 			
 $content_HTML = $htmlConvert;
 $content_Text = $h2t->get_text(); 	//Simply call the get_text() method for the class to 
-									//convert the HTML to the plain text. Store it into the variable.
+									//convert the HTML to the plain text. 
+									//Store it into the variable.
 
 		// Create Content
         $DocPartText = array (
 		'MimePartName' => 'text',
 		'Body' => $content_Text, 
 		'Encoding' => '8bit', 
-		'CharSetID' => 16			//set CharSetID to 16 per James Beecher, DMS, who found the fix for this encoding error.
+		'CharSetID' => 16			//set CharSetID to 16 per James Beecher, DMS, 
+									//who found the fix for this encoding error.
 		);
 		
         $DocPartHtml = array (
 			'MimePartName' => 'html', 
 			'Body' => $content_HTML, 
 			'Encoding' => '8bit', 
-			'CharSetID' => 16 		//set CharSetID to 16 per James Beecher, DMS, who found the fix for this encoding error.
+			'CharSetID' => 16 		//set CharSetID to 16 per James Beecher, DMS,
+									//who found the fix for this encoding error.
 		);
 		
 		$DocParts = array ($DocPartText, $DocPartHtml);

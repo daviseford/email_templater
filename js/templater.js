@@ -289,15 +289,15 @@ $(document).ready(function () {
                 0: {
                     name: 'AMMO1',
                     description: '336 x 280 - Red TXT, White BG'
+                },
+                1: {
+                    name: 'AMMO2',
+                    description: '600 x 74 - Red TXT, White BG'
+                },
+                2: {
+                    name: 'AMMO3',
+                    description: '250 x 250 - Grey BG'
                 }
-                //1: {
-                //    name: 'AMMO2',
-                //    description: '600 x 74 - Red TXT, White BG'
-                //},
-                //2: {
-                //    name: 'AMMO3',
-                //    description: '250 x 250 - Grey BG'
-                //}
             }
         },
         FC: {
@@ -785,6 +785,33 @@ $(document).ready(function () {
                     name: 'PWF4',
                     description: '160 x 600 - Water Filter (4)',
                     link: 'http://secure.ultracart.com/aff/F5ABAC209183F1014EF4126207051500/index.html?subid='
+                }
+            }
+        },
+        EFS: {
+            link: 'http://secure.ultracart.com/aff/4865988CD38CA7014F2CAA6F2B051500/index.html?subid=', //default link to all sub-ads
+            shortCode: 'EFS',
+            longCode: 'Grab N Go Emergency Food Supply',
+            advertisements: {
+                0: {
+                    name: 'EFS1',
+                    description: '600 x 74 - Food Supply',
+                    link: 'http://secure.ultracart.com/aff/4865988CD38CA7014F2CAA6F2B051500/index.html?subid='
+                },
+                1: {
+                    name: 'EFS2',
+                    description: '336 x 280 - Food Supply (2)',
+                    link: 'http://secure.ultracart.com/aff/178099CE4BE744014F2CACE40F051500/index.html?subid='
+                },
+                2: {
+                    name: 'EFS3',
+                    description: '250 x 250 - Food Supply (3)',
+                    link: 'http://secure.ultracart.com/aff/E8B934C3D88461014F2CADBF34051500/index.html?subid='
+                },
+                3: {
+                    name: 'EFS4',
+                    description: '160 x 600 - Food Supply (4)',
+                    link: 'http://secure.ultracart.com/aff/A2C5FC9A77C770014F2CAE96CE051500/index.html?subid='
                 }
             }
         }
@@ -1880,6 +1907,9 @@ $(document).ready(function () {
 
     function textFix(){
         var inputVal = $.trim($(this).val());
+        S(inputVal).stripTags('span', 'div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'meta',
+            'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4',
+            'h5', 'link', 'header', 'label', 'person', 'location', 'org', 'chron').s;
         if(S(inputVal).contains('.stml')) {
             var splitSTML = $.trim($(this).val().split('.stml')[0]); //split the value into two parts of an array.
             $(this).val(splitSTML+".stml");	//re-add the .stml ending
@@ -2072,14 +2102,23 @@ $(document).ready(function () {
                     var itemRSS = data[i];
                     var imageRSS = itemRSS.imageArray;
 
+                    //Enable this for debugging
                     //console.log("------------------------------------");
                     //console.log("Story #" + i + " : "+ itemRSS.title);
                     //console.log("Link: " + itemRSS.url);
-                    //console.log("Description: " + itemRSS.description);
+                    console.log("Description: " + itemRSS.description);
                     //console.log("Comments: " + itemRSS.comments);
                     //console.log("Height: " + imageRSS.fixedHeight);
                     //console.log("Width: " + imageRSS.fixedWidth);
                     //console.log("Image Info: " + imageRSS.width + "x" + imageRSS.height + " -- "+ imageRSS.src);
+
+                    //messing with the description here, maybe a function that strips it twice? it's hard to replicate this behavior
+                    //well, now I can't get it to malfunction. If it happens again I'll come back to this
+                    //TODO: determine what the hell is going on here
+                    //I keep getting a random <span style="line-height: blah blah"> tag added to the text-div. This throws off styling in the client and I think in the email overall
+                    //Trying to replicate without much success
+
+
 
                     rssObject[i] = {
                         storyNum: i,
@@ -2510,7 +2549,7 @@ $(document).ready(function () {
         var title = $('#subjectInput').val();
 
         var request = $.ajax({
-            url: "http://daviseford.com/sites/default/files/email_templater/soap/php/davis.php",
+            url: "http://daviseford.com/sites/default/files/email_templater/soap/php/davis_dms_connection.php",
             contentType: "application/json; charset=utf-8",
             method: "POST",
             data: JSON.stringify(
@@ -2567,30 +2606,99 @@ $(document).ready(function () {
         $("#sendToSmartFocusBtn")
             .button()
             .show()
-            .mouseup(function() {
-                makeSmartFocusConnection();
+            .mouseup(function(e) {
+                e.stopPropagation();
+                checkAdStatusSmartFocus();
             });
     }
 
-    function makeSmartFocusConnection() {
-        var loginObject =  {
-            "login": "wjmadigitalmedia",
-            "password": "Number24!",
-            "apiKey": "CdX7CrxR51yOlUlaWdYut5eCfBUrJsq5h0ntS5hXne54rkXC"
-        };
-        //opening a connection: https://api-help.campaigncommander.com/#CAMPAIGN_MANAGEMENT_SOAP-REST/REST/Open_Connection.htm%3FTocPath%3DCampaign%2520Management%2520-%2520REST%7CConnection%7C_____1
-        var loginURL = "http://p5apie.emv3.com/apiccmd/services/rest/connect/open/" + loginObject.login + "/" + loginObject.password + "/" + loginObject.apiKey;
-        //$.get(loginURL, function(data, status) {
-        //    alert("Data = " + data + "\nStatus = " + status);
-        //});
+    function checkAdStatusSmartFocus(){ //make sure our user doesn't send an email without an ad
+        if(templateContainer.currentProduct.enabled !== true) { //if there's no ad enabled, throw up a warning
+            swal({
+                    title: "No Advertisement Selected",
+                    text: "Are you sure you want to send an email without an advertisement?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, send it!",
+                    cancelButtonText: "No, I forgot!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                function(isConfirm){ //if they confirm that they don't want an ad, use sendToDMS function
+                    if (isConfirm) {
+                        sendToSmartFocus();
+                    }
+                });
+        } else {
+            swal({
+                    title: "Confirmation",
+                    text: "Are you sure you want to send this email to SmartFocus?",
+                    type: "info",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, send it!",
+                    cancelButtonText: "Nope!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        sendToSmartFocus();
+                    }
+                });
+        }
+    }
 
-        $.ajax({
-            url: loginURL,
-            dataType: "jsonp",
+    function sendToSmartFocus() {
+        var templateStyle = getTemplateStyle();
+        var clientCode = templateStyle[0]; //e.g ALPAC
+        var html = $('#resultsTextArea').val();
+        var keycode = makeKeyCode();
+        console.log("keycode = " + keycode);
+        var title = $('#subjectInput').val();
+
+        var request = $.ajax({
+            url: "http://daviseford.com/sites/default/files/email_templater/soap/php/davis_smartfocus_connection.php",
+            contentType: "application/json; charset=utf-8",
+            method: "POST",
+            data: JSON.stringify(
+                {
+                    "clientCode": clientCode,
+                    "html": html,
+                    "keycode": keycode,
+                    "title": title
+                }
+            ), //send a JSON-encoded POST request to the php script.
             success: function (data) {
-                console.log(data);
-                alert(data);
+                if (data !== "Array" && data !== "") {
+                    swal({
+                        title: "Sent To SmartFocus!",
+                        text: "The email has been created in SmartFocus!",
+                        type: "success",
+                        allowOutsideClick: "true",
+                        timer: "20000",
+                        showConfirmButton: "true"
+                    });
+                    console.log("done with SmartFocus: data = " + data);
+                    console.log("data type = " + typeof data);
+                } else {
+                    swal({
+                        title: "Error!",
+                        text: "The email was not created in SmartFocus!",
+                        type: "error",
+                        allowOutsideClick: "true",
+                        timer: "10000",
+                        showConfirmButton: "true"
+                    });
+                    console.log("done with SmartFocus: data = " + data);
+                    console.log("data type = " + typeof data);
+                }
             }
+        });
+
+        //returns 'Array' if it failed.
+        request.done(function(data) {
         });
     }
 
