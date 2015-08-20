@@ -104,23 +104,6 @@ $content_Text = $h2t->get_text(); 	//Simply call the get_text() method for the c
 
 //********************** CREATE AN EMAIL *******************************\\
 
-/* SAMPLE MESSAGE
-'<message>
-  <type>email</type>
-  <body>[EMV HTMLPART]test</body>
-  <isBounceback>false</isBounceback>
-  <description>desc test</description>
-  <encoding>UTF8</encoding>
-  <from>johnsmith@smartfocus.com</from>
-  <name>test name</name>
-  <replyTo>johnsmith@smartfocus.com</replyTo>
-  <replyToEmail>johnsmith@smartfocus.com</replyToEmail>
-  <subject>test subject</subject>
-  <to>janescott@smartfocus.com</to>
-  <hotmailUnsubFlg>true</hotmailUnsubFlg>
-  <hotmailUnsubUrl>http://www.smartfocus.com</hotmailUnsubUrl>
-</message>'
-*/
 
 // Assembling the XML string that we'll forward to Smartfocus API
 $input_XML = '<message>
@@ -135,7 +118,7 @@ $input_XML = '<message>
   					<replyTo>'.$content_ReplyTo.'</replyTo>
   					<replyToEmail>'.$content_ReplyToEmail.'</replyToEmail>
   					<subject>'.$content_Native_Title.'</subject>
-  					<to>'.$content_HeaderTo.'[EMV /FIELD]</to>
+  					<to>'.$content_HeaderTo.'</to>
   					<hotmailUnsubFlg>true</hotmailUnsubFlg>
   					<hotmailUnsubUrl>http://www.smartfocus.com</hotmailUnsubUrl>
 				</message>';
@@ -173,7 +156,35 @@ function CreateEmailAPI($token, $input_XML) {
 $createEmail = CreateEmailAPI($token, $input_XML);
 $result_XML = new SimpleXMLElement($createEmail);
 
-echo $result_XML->result;	//returns the number of the email created in SmartFocus
-							//e.g. var_dump($output) = string(242) "2167328"
+$emailID = $result_XML->result; //should add some error handling here? shouldn't fail, to be honest
 
+
+//********************** TRACK LINKS *******************************\\
+function trackLinks($token, $emailID) {
+	//auto-track all links
+	//https://{server}/apiccmd/services/rest/message/trackAllLinks/{token}/{id}
+	//https://api-help.campaigncommander.com/#CAMPAIGN_MANAGEMENT_SOAP-REST/REST/Track_All_Links.htm%3FTocPath%3DCampaign%2520Management%2520-%2520REST%7CMessage%7C_____16
+	$trackLinks = download_page('https://p5apie.emv3.com/apiccmd/services/rest/message/trackAllLinks/'.$token.'/'.$emailID);
+	$result_XML = new SimpleXMLElement($trackLinks);
+	return $result_XML->result;
+}
+
+
+//********************** SEND TEST TO GROUP MEMBERS *******************************\\
+//https://api-help.campaigncommander.com/#CAMPAIGN_MANAGEMENT_SOAP-REST/REST/Test_Email_Message_by_Group.htm%3FTocPath%3DCampaign%2520Management%2520-%2520REST%7CMessage%7C_____24
+//segment id: 1911739
+//https://{server}/apiccmd/services/rest/message/testEmailMessageByGroup/{token}/{id}/{groupId}/{campaignName}/{subject}/{part}
+
+function sendTestEmail($token, $emailID, $groupID, $campaignName, $subject, $part = 'HTML') {
+	$sendAPIRequest = download_page('https://p5apie.emv3.com/apiccmd/services/rest/message/testEmailMessageByGroup/'.$token.'/'.$emailID.'/'.$groupID.'/Test/'.$subject.'/HTML');	
+	return var_dump($sendAPIRequest);	
+}
+//sendTestEmail($token, $emailID, '1911739', 'TestCampaign', $content_Native_Title, 'HTML');
+
+
+//********************** RETURN RESULTS *******************************\\
+echo 'Links Tracked: '.trackLinks($token, $emailID)."\n";
+echo 'Email ID: '.$emailID."\n";	//returns the number of the email created in SmartFocus
+echo 'Token: '.$token."\n";
+echo 'Send Test Result: '.sendTestEmail($token, $emailID, '1911739', 'TestCampaign', $content_Native_Title, 'HTML');
 ?>

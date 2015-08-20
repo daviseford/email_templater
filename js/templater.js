@@ -2106,7 +2106,7 @@ $(document).ready(function () {
                     //console.log("------------------------------------");
                     //console.log("Story #" + i + " : "+ itemRSS.title);
                     //console.log("Link: " + itemRSS.url);
-                    console.log("Description: " + itemRSS.description);
+                    //console.log("Description: " + itemRSS.description);
                     //console.log("Comments: " + itemRSS.comments);
                     //console.log("Height: " + imageRSS.fixedHeight);
                     //console.log("Width: " + imageRSS.fixedWidth);
