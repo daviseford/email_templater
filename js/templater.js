@@ -814,6 +814,230 @@ $(document).ready(function () {
                     link: 'http://secure.ultracart.com/aff/A2C5FC9A77C770014F2CAE96CE051500/index.html?subid='
                 }
             }
+        },
+        GOLD: {
+            link: 'http://secure.ultracart.com/aff/738D1D343CF9B0014F5162099B051600/index.html?subid=', //default link to all sub-ads
+            shortCode: 'GOLD',
+            longCode: 'Gold Buying Survival Secrets',
+            advertisements: {
+                0: {
+                    name: 'GOLD1',
+                    description: '600 x 74 - Gold Book',
+                    link: 'http://secure.ultracart.com/aff/738D1D343CF9B0014F5162099B051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=E6A0D9C1918787014F517189CF051600',
+                    imgW: '600',
+                    imgH: '74'
+                },
+                1: {
+                    name: 'GOLD2',
+                    description: '336 x 280 - Gold Book (2)',
+                    link: 'http://secure.ultracart.com/aff/E86CD68A8569FE014F5173E747051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=738D1D343CF9B0014F5162099B051600',
+                    imgW: '336',
+                    imgH: '280'
+                },
+                2: {
+                    name: 'GOLD3',
+                    description: '250 x 250 - Gold Book (3)',
+                    link: 'http://secure.ultracart.com/aff/40F491664BDF32014F51748104051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=40F491664BDF32014F51748104051600',
+                    imgW: '250',
+                    imgH: '250'
+                },
+                3: {
+                    name: 'GOLD4',
+                    description: '160 x 600 - Gold Book (4)',
+                    link: 'http://secure.ultracart.com/aff/5702C5F48C0016014F51754BE8051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=5702C5F48C0016014F51754BE8051600',
+                    imgW: '160',
+                    imgH: '600'
+                }
+            }
+        },
+        SILVER: {
+            link: 'http://secure.ultracart.com/aff/E6A0D9C1918787014F517189CF051600/index.html?subid=', //default link to all sub-ads
+            shortCode: 'SILVER',
+            longCode: 'Silver Buying Survival Secrets',
+            advertisements: {
+                0: {
+                    name: 'SILVER1',
+                    description: '600 x 74 - Silver Book',
+                    link: 'http://secure.ultracart.com/aff/E6A0D9C1918787014F517189CF051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=E6A0D9C1918787014F517189CF051600',
+                    imgW: '600',
+                    imgH: '74'
+                },
+                1: {
+                    name: 'SILVER2',
+                    description: '336 x 280 - Silver Book (2)',
+                    link: 'http://secure.ultracart.com/aff/346158FD691C91014F516FFB6C051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=346158FD691C91014F516FFB6C051600',
+                    imgW: '336',
+                    imgH: '280'
+                },
+                2: {
+                    name: 'SILVER3',
+                    description: '250 x 250 - Silver Book (3)',
+                    link: 'http://secure.ultracart.com/aff/968AACBEA039C0014F516A33E3051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=968AACBEA039C0014F516A33E3051600',
+                    imgW: '250',
+                    imgH: '250'
+                },
+                3: {
+                    name: 'SILVER4',
+                    description: '160 x 600 - Silver Book (4)',
+                    link: 'http://secure.ultracart.com/aff/6D941F56B04BBE014F516F1A00051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=6D941F56B04BBE014F516F1A00051600',
+                    imgW: '160',
+                    imgH: '600'
+                },
+                4: {
+                    name: 'SILVER5',
+                    description: '468 x 60 - Silver Book (5)',
+                    link: 'http://secure.ultracart.com/aff/AA811E95E7AEF6014F51A43459051400/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=AA811E95E7AEF6014F51A43459051400',
+                    imgW: '468',
+                    imgH: '60'
+                }
+            }
+        },
+        FAMINE: {
+            link: 'http://secure.ultracart.com/aff/0BDAD1793890B3014F517A2BFD051600/index.html?subid=', //default link to all sub-ads
+            shortCode: 'FAMINE',
+            longCode: 'Famine Forecast',
+            advertisements: {
+                0: {
+                    name: 'FAMINE1',
+                    description: '600 x 74 - Famine Book',
+                    link: 'http://secure.ultracart.com/aff/0BDAD1793890B3014F517A2BFD051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=0BDAD1793890B3014F517A2BFD051600',
+                    imgW: '600',
+                    imgH: '74'
+                },
+                1: {
+                    name: 'FAMINE2',
+                    description: '336 x 280 - Famine Book (2)',
+                    link: 'http://secure.ultracart.com/aff/645044B99EA03A014F517D2F7D051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=645044B99EA03A014F517D2F7D051600',
+                    imgW: '336',
+                    imgH: '280'
+                },
+                2: {
+                    name: 'FAMINE3',
+                    description: '250 x 250 - Famine Book (3)',
+                    link: 'http://secure.ultracart.com/aff/217F286F6281FF014F517E1B4F051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=217F286F6281FF014F517E1B4F051600',
+                    imgW: '250',
+                    imgH: '250'
+                },
+                3: {
+                    name: 'FAMINE4',
+                    description: '160 x 600 - Famine Book (4)',
+                    link: 'http://secure.ultracart.com/aff/63A1BA9764A354014F517EC2E0051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=63A1BA9764A354014F517EC2E0051600',
+                    imgW: '160',
+                    imgH: '600'
+                }
+            }
+        },
+        SEEDBANK: {
+            link: 'http://secure.ultracart.com/aff/5EFDD34634DD38014F5181E33D051600/index.html?subid=', //default link to all sub-ads
+            shortCode: 'SEEDBANK',
+            longCode: 'Survival Seed Bank',
+            advertisements: {
+                0: {
+                    name: 'SEEDBANK1',
+                    description: '600 x 120 - Survival Seed Bank',
+                    link: 'http://secure.ultracart.com/aff/5EFDD34634DD38014F5181E33D051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=5EFDD34634DD38014F5181E33D051600',
+                    imgW: '600',
+                    imgH: '120'
+                },
+                1: {
+                    name: 'SEEDBANK2',
+                    description: '300 x 250 - Survival Seed Bank (2)',
+                    link: 'http://secure.ultracart.com/aff/18091F0495DE4D014F5183A3EC051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=18091F0495DE4D014F5183A3EC051600',
+                    imgW: '300',
+                    imgH: '250'
+                },
+                2: {
+                    name: 'SEEDBANK3',
+                    description: '600 x 160 - Survival Seed Bank (3)',
+                    link: 'http://secure.ultracart.com/aff/2A5F4C73BE3EFB014F51856B4D051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=2A5F4C73BE3EFB014F51856B4D051600',
+                    imgW: '600',
+                    imgH: '160'
+                },
+                3: {
+                    name: 'SEEDBANK4',
+                    description: '150 x 200 - Survival Seed Bank (4)',
+                    link: 'http://secure.ultracart.com/aff/2651DE6DFCE85D014F5186998B051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=2651DE6DFCE85D014F5186998B051600',
+                    imgW: '150',
+                    imgH: '200'
+                }
+            }
+        },
+        PROTOGROW: {
+            link: 'http://secure.ultracart.com/aff/66C12C24DDF688014F51913B48051600/index.html?subid=', //default link to all sub-ads
+            shortCode: 'PROTOGROW',
+            longCode: 'Super Fertilizer',
+            advertisements: {
+                0: {
+                    name: 'PROTOGROW1',
+                    description: '600 x 74 - Super Fertilizer',
+                    link: 'http://secure.ultracart.com/aff/66C12C24DDF688014F51913B48051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=66C12C24DDF688014F51913B48051600',
+                    imgW: '600',
+                    imgH: '74'
+                },
+                1: {
+                    name: 'PROTOGROW2',
+                    description: '300 x 250 - Super Fertilizer (2)',
+                    link: 'http://secure.ultracart.com/aff/C3E5707113DF05014F5193D689051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=C3E5707113DF05014F5193D689051600',
+                    imgW: '300',
+                    imgH: '250'
+                },
+                2: {
+                    name: 'PROTOGROW3',
+                    description: '600 x 160 - Super Fertilizer (3)',
+                    link: 'http://secure.ultracart.com/aff/B54F068034CAD3014F519306A5051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=B54F068034CAD3014F519306A5051600',
+                    imgW: '600',
+                    imgH: '160'
+                },
+                3: {
+                    name: 'PROTOGROW4',
+                    description: '468 x 60 - Super Fertilizer (4)',
+                    link: 'http://secure.ultracart.com/aff/17AAB7FAF0F340014F5194F4AF051600/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=17AAB7FAF0F340014F5194F4AF051600',
+                    imgW: '468',
+                    imgH: '60'
+                }
+            }
         }
     };
 
@@ -1358,7 +1582,7 @@ $(document).ready(function () {
         },
         helpers: {
             updateCurrentProduct: function (adReference, utmStyle) { //returns the correct ad. for example, adReferenceILN.XCOM.
-                var b;
+                var b, adImgSrc, adImgH, adImgW;
                 var adRef = adReference;
                 var utm = utmStyle;
                 b = $('#productSelect').val(); //example value: XCOM1
@@ -1391,6 +1615,22 @@ $(document).ready(function () {
                     } else { //if there's no link set, fall back to the 'category' link, which is set by default
                         templateLink = adRef[e].link;
                     }
+
+                    //check if this is using a default template setting
+                    if (currentAd.hasOwnProperty('template')) {
+                        if (currentAd.template !== undefined || currentAd.template !== '') {
+                            console.log('currentAd.template = '+ currentAd.template);
+                            templateName = 'ad_templates_'+currentAd.template;
+                        }
+                    } else { //if there's no template set, do the usual way of finding template
+                        templateName = 'ad_templates_'+b;
+                    }
+
+                    if (currentAd.hasOwnProperty('imgsrc')){
+                        adImgSrc = currentAd.imgsrc;
+                        adImgW = currentAd.imgW;
+                        adImgH = currentAd.imgH;
+                    }
                     var templateTrackedURL = templateLink + utm;
                     var templateUnTrackedLink = '<a href="'+ templateLink +'" target="_blank">';
                     var templateTrackedLink = '<a href="'+ templateTrackedURL +'" target="_blank">';
@@ -1406,6 +1646,9 @@ $(document).ready(function () {
                         longCode: templateLongCode,
                         currentEmailTemplateShortCode: currentEmailTemplateShortCode,
                         currentEmailKeycode: currentEmailKeycode,
+                        imgsrc: adImgSrc,
+                        imgW: adImgW,
+                        imgH: adImgH,
                         enabled: true
                     };
                 } else {
@@ -1419,6 +1662,9 @@ $(document).ready(function () {
                         longCode: '',
                         currentEmailTemplateShortCode: '',
                         currentEmailKeycode: '',
+                        imgsrc: '',
+                        imgW: '',
+                        imgH: '',
                         enabled: false //this tells jsrender not to render the ad section. important!
                     };
                     console.log('No Product selected!');
@@ -1907,9 +2153,6 @@ $(document).ready(function () {
 
     function textFix(){
         var inputVal = $.trim($(this).val());
-        S(inputVal).stripTags('span', 'div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'meta',
-            'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4',
-            'h5', 'link', 'header', 'label', 'person', 'location', 'org', 'chron').s;
         if(S(inputVal).contains('.stml')) {
             var splitSTML = $.trim($(this).val().split('.stml')[0]); //split the value into two parts of an array.
             $(this).val(splitSTML+".stml");	//re-add the .stml ending
