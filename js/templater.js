@@ -596,43 +596,83 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'BYL1',
-                    description: '600 x 250 - Government Is After This'
+                    description: '600 x 250 - Government Is After This',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/byl_600x250_4.jpg',
+                    imgW: '600',
+                    imgH: '250'
                 },
                 1: {
                     name: 'BYL2',
-                    description: '600 x 250 - Government Is After This (2)'
+                    description: '600 x 250 - Government Is After This (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/byl_600x250_3.jpg',
+                    imgW: '600',
+                    imgH: '250'
                 },
                 2: {
                     name: 'BYL3',
-                    description: '600 x 250 - Government Is After This (3)'
+                    description: '600 x 250 - Government Is After This (3)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/byl_600x250_2.jpg',
+                    imgW: '600',
+                    imgH: '250'
                 },
                 3: {
                     name: 'BYL4',
-                    description: '600 x 250 - Big Government Weapon'
+                    description: '600 x 250 - Big Government Weapon',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/byl_600x250_1.jpg',
+                    imgW: '600',
+                    imgH: '250'
                 },
                 4: {
                     name: 'BYL5',
-                    description: '600 x 96 - Taking Your Food'
+                    description: '600 x 96 - Taking Your Food',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/byl_600x96_1.gif',
+                    imgW: '600',
+                    imgH: '96'
                 },
                 5: {
                     name: 'BYL6',
-                    description: '600 x 100 - Leaked Prepper Video'
+                    description: '600 x 100 - Leaked Prepper Video',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/byl_600x100_1.gif',
+                    imgW: '600',
+                    imgH: '100'
                 },
                 6: {
                     name: 'BYL7',
-                    description: '300 x 100 - Big Government Weapon'
+                    description: '300 x 100 - Big Government Weapon',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/byl_300x100_2.jpg',
+                    imgW: '300',
+                    imgH: '100'
                 },
                 7: {
                     name: 'BYL8',
-                    description: '300 x 100 - Big Government Weapon (2)'
+                    description: '300 x 100 - Big Government Weapon (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/byl_300x100_1.jpg',
+                    imgW: '300',
+                    imgH: '100'
                 },
                 8: {
                     name: 'BYL9',
-                    description: '300 x 250 - Taking Your Food'
+                    description: '300 x 250 - Taking Your Food',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner300_250.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 9: {
                     name: 'BYL10',
-                    description: '300 x 250 - Leaked Prepper Video'
+                    description: '300 x 250 - Leaked Prepper Video',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner300_250_2.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 }
             }
         },
@@ -644,28 +684,12 @@ $(document).ready(function () {
                 0: {
                     name: 'PG1',
                     description: '300 x 250 - Secret Power Plant',
-                    link: 'http://secure.ultracart.com/aff/7F58F59BAAF154014EFF7C7F6F051400/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/7F58F59BAAF154014EFF7C7F6F051400/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=C6E87D470E9952014E8E0F3E8F051400',
+                    imgW: '300',
+                    imgH: '250'
                 }
-                //1: {
-                //    name: 'PG2',
-                //    description: '300 x 250 - Secret Power Plant (2)',
-                //    link: 'http://secure.ultracart.com/aff/19C7C901E53EAE014E8E33F9BB051500/index.html?subid='
-                //},
-                //2: {
-                //    name: 'PG3',
-                //    description: '600 x 160 - Secret Power Plant (3)',
-                //    link: 'http://secure.ultracart.com/aff/4C60D5615BD980014E8E39EF3E051500/index.html?subid='
-                //},
-                //3: {
-                //    name: 'PG4',
-                //    description: '600 x 160 - Secret Power Plant (4)',
-                //    link: 'http://secure.ultracart.com/aff/6528625A184943014E8E3BB17F051500/index.html?subid='
-                //},
-                //4: {
-                //    name: 'PG5',
-                //    description: '468 x 60 - Secret Power Plant (5)',
-                //    link: 'http://secure.ultracart.com/aff/A3FDCD57387F33014E8E43E953051500/index.html?subid='
-                //}
             }
         },
         HM: {
@@ -676,7 +700,11 @@ $(document).ready(function () {
                 0: {
                     name: 'HM1',
                     description: '300 x 250 - Powerful Herbal Medicine',
-                    link: 'http://secure.ultracart.com/aff/BC52322B3C2DC3014EFF234C20051400/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/BC52322B3C2DC3014EFF234C20051400/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=BC52322B3C2DC3014EFF234C20051400',
+                    imgW: '300',
+                    imgH: '250'
                 }
             }
         },
@@ -688,22 +716,38 @@ $(document).ready(function () {
                 0: {
                     name: 'EVAC1',
                     description: '600 x 74 - Ultimate Evacuation and Survival Kit',
-                    link: 'http://secure.ultracart.com/aff/86EDCB6EDFA369014E8E4B35DF051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/86EDCB6EDFA369014E8E4B35DF051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=86EDCB6EDFA369014E8E4B35DF051500',
+                    imgW: '600',
+                    imgH: '74'
                 },
                 1: {
                     name: 'EVAC2',
                     description: '336 x 280 - Ultimate Evacuation and Survival Kit (2)',
-                    link: 'http://secure.ultracart.com/aff/C790B253A5D042014E8E4DF122051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/C790B253A5D042014E8E4DF122051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=C790B253A5D042014E8E4DF122051500',
+                    imgW: '336',
+                    imgH: '280'
                 },
                 2: {
                     name: 'EVAC3',
                     description: '250 x 250 - Ultimate Evacuation and Survival Kit (3)',
-                    link: 'http://secure.ultracart.com/aff/AA214D1913F2A6014E8E4ECD21051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/AA214D1913F2A6014E8E4ECD21051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=AA214D1913F2A6014E8E4ECD21051500',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 3: {
                     name: 'EVAC4',
                     description: '160 x 600 - Ultimate Evacuation and Survival Kit (4)',
-                    link: 'http://secure.ultracart.com/aff/FE82483EF3A27B014E8E510BA3051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/FE82483EF3A27B014E8E510BA3051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=FE82483EF3A27B014E8E510BA3051500',
+                    imgW: '160',
+                    imgH: '600'
                 }
             }
         },
@@ -715,22 +759,38 @@ $(document).ready(function () {
                 0: {
                     name: 'ML1',
                     description: '600 x 74 - Martial Law',
-                    link: 'http://secure.ultracart.com/aff/6A018EB4E2B15E014E92AE8A55051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/6A018EB4E2B15E014E92AE8A55051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=6A018EB4E2B15E014E92AE8A55051500',
+                    imgW: '600',
+                    imgH: '74'
                 },
                 1: {
                     name: 'ML2',
                     description: '468 x 60 - Martial Law (2)',
-                    link: 'http://secure.ultracart.com/aff/3063403B026580014E92B1C1BA051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/3063403B026580014E92B1C1BA051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=3063403B026580014E92B1C1BA051500',
+                    imgW: '468',
+                    imgH: '60'
                 },
                 2: {
                     name: 'ML3',
                     description: '300 x 250 - Martial Law (3)',
-                    link: 'http://secure.ultracart.com/aff/5EA94E8EE195A4014E92B384AC051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/5EA94E8EE195A4014E92B384AC051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=5EA94E8EE195A4014E92B384AC051500',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 3: {
                     name: 'ML4',
                     description: '125 x 200 - Martial Law (4)',
-                    link: 'http://secure.ultracart.com/aff/65F99CF5C7DDEC014E92B4B68F051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/65F99CF5C7DDEC014E92B4B68F051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=65F99CF5C7DDEC014E92B4B68F051500',
+                    imgW: '125',
+                    imgH: '200'
                 }
             }
         },
@@ -742,22 +802,38 @@ $(document).ready(function () {
                 0: {
                     name: 'SOLOV1',
                     description: '600 x 74 - Solar Oven',
-                    link: 'http://secure.ultracart.com/aff/F2B496723453B1014E92DB8B5E051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/F2B496723453B1014E92DB8B5E051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=F2B496723453B1014E92DB8B5E051500',
+                    imgW: '600',
+                    imgH: '74'
                 },
                 1: {
                     name: 'SOLOV2',
                     description: '336 x 280 - Solar Oven (2)',
-                    link: 'http://secure.ultracart.com/aff/8FDD5C8D753A68014E92DE2D37051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/8FDD5C8D753A68014E92DE2D37051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=8FDD5C8D753A68014E92DE2D37051500',
+                    imgW: '336',
+                    imgH: '280'
                 },
                 2: {
                     name: 'SOLOV3',
                     description: '250 x 250 - Solar Oven (3)',
-                    link: 'http://secure.ultracart.com/aff/AABC9C3DF8FE28014E92E123F6051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/AABC9C3DF8FE28014E92E123F6051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=AABC9C3DF8FE28014E92E123F6051500',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 3: {
                     name: 'SOLOV4',
                     description: '160 x 600 - Solar Oven (4)',
-                    link: 'http://secure.ultracart.com/aff/2DEA3AB6C83CDB014E92E2FB19051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/2DEA3AB6C83CDB014E92E2FB19051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=2DEA3AB6C83CDB014E92E2FB19051500',
+                    imgW: '160',
+                    imgH: '600'
                 }
             }
         },
@@ -769,22 +845,38 @@ $(document).ready(function () {
                 0: {
                     name: 'PWF1',
                     description: '600 x 74 - Water Filter',
-                    link: 'http://secure.ultracart.com/aff/A3EDD9206E6D42014EF4180C39051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/A3EDD9206E6D42014EF4180C39051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=A3EDD9206E6D42014EF4180C39051500',
+                    imgW: '600',
+                    imgH: '74'
                 },
                 1: {
                     name: 'PWF2',
                     description: '336 x 280 - Water Filter (2)',
-                    link: 'http://secure.ultracart.com/aff/41CE242ADDD570014EF4172598051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/41CE242ADDD570014EF4172598051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=41CE242ADDD570014EF4172598051500',
+                    imgW: '336',
+                    imgH: '280'
                 },
                 2: {
                     name: 'PWF3',
                     description: '250 x 250 - Water Filter (3)',
-                    link: 'http://secure.ultracart.com/aff/847BD905C93AD1014EF41934FF051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/847BD905C93AD1014EF41934FF051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=847BD905C93AD1014EF41934FF051500',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 3: {
                     name: 'PWF4',
                     description: '160 x 600 - Water Filter (4)',
-                    link: 'http://secure.ultracart.com/aff/F5ABAC209183F1014EF4126207051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/F5ABAC209183F1014EF4126207051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=F5ABAC209183F1014EF4126207051500',
+                    imgW: '160',
+                    imgH: '600'
                 }
             }
         },
@@ -796,22 +888,38 @@ $(document).ready(function () {
                 0: {
                     name: 'EFS1',
                     description: '600 x 74 - Food Supply',
-                    link: 'http://secure.ultracart.com/aff/4865988CD38CA7014F2CAA6F2B051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/4865988CD38CA7014F2CAA6F2B051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=4865988CD38CA7014F2CAA6F2B051500',
+                    imgW: '600',
+                    imgH: '74'
                 },
                 1: {
                     name: 'EFS2',
                     description: '336 x 280 - Food Supply (2)',
-                    link: 'http://secure.ultracart.com/aff/178099CE4BE744014F2CACE40F051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/178099CE4BE744014F2CACE40F051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=178099CE4BE744014F2CACE40F051500',
+                    imgW: '336',
+                    imgH: '280'
                 },
                 2: {
                     name: 'EFS3',
                     description: '250 x 250 - Food Supply (3)',
-                    link: 'http://secure.ultracart.com/aff/E8B934C3D88461014F2CADBF34051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/E8B934C3D88461014F2CADBF34051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=E8B934C3D88461014F2CADBF34051500',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 3: {
                     name: 'EFS4',
                     description: '160 x 600 - Food Supply (4)',
-                    link: 'http://secure.ultracart.com/aff/A2C5FC9A77C770014F2CAE96CE051500/index.html?subid='
+                    link: 'http://secure.ultracart.com/aff/A2C5FC9A77C770014F2CAE96CE051500/index.html?subid=',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=A2C5FC9A77C770014F2CAE96CE051500',
+                    imgW: '160',
+                    imgH: '600'
                 }
             }
         },
