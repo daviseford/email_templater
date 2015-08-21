@@ -9,6 +9,11 @@ $feedurl = $postdec["url"]; 				//e.g http://sample.com/feed
 // We'll process this feed with all of the default options.
 $feed = new SimplePie();
 
+//reduce cache duration - implemented 8/21/2015 by Davis Ford. 
+//Was having trouble with RSS feeds and W3TC cache 
+//more here - http://daviseford.com/node/69
+$feed->set_cache_duration(900); //15 minutes (default: 3600 = 60 minutes)
+
 $feed->set_feed_url($feedurl);
 //$feed->set_feed_url("http://selfreliancecentral.com/?feed=rss2");
 
