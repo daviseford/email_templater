@@ -2091,10 +2091,27 @@ $(document).ready(function () {
     }
 
     function imageDelay() {
-        $('#story1Form').find('input').each(textFix);
+        $('#story1Form').find('input').each(textFix); //remove existing utm stuff, other processing provided in textFix
         $('#story2Form').find('input').each(textFix);
         $('#story3Form').find('input').each(textFix);
         $('#story4Form').find('input').each(textFix);
+
+        //this will take the <span style="line-height: 1.42857143;"></span> out of the
+        //toolbar div - causing visual inconsistencies
+        // <div id="title1text-div" style="width: 100%; height: 100%" data-placeholder="" class="form-control wysihtml5-sandbox wysihtml5-editor" contenteditable="true">
+        //      <p>
+        //          <span style="line-height: 1.42857143;"></span>
+        //      </p>
+        // </div>
+        //needs to go through up to 4 stories, probably just search by name for future extensibility
+        // #title1text-div up to #title4text-div
+
+        //#title1text-div > p:nth-child(1) > span
+
+
+
+
+
         var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
 
         var genericW = 200;
@@ -2122,10 +2139,10 @@ $(document).ready(function () {
     }
 
     function compileEmail(templateContainer){ //pass in our references
-        var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
+        var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "ALPAC","DB"
         var list = x[0];
         var tmpl = x[1];
-        var currentTemplateSettings = templateContainer[list][tmpl]; //e.g. templateContainer.LL.DB
+        var currentTemplateSettings = templateContainer[list][tmpl]; //e.g. templateContainer.ALPAC.DB
 
         getStoryValues(1);
         getStoryValues(2);
@@ -2142,13 +2159,14 @@ $(document).ready(function () {
         //pass the current product menu and current UTM style (keycodes are already pre-filled)
 
 
-        if (currentTemplateSettings.tmplLink !== '') {
+        if (currentTemplateSettings.tmplLink !== '') { //don't render non-existant template
             spawnTemplate(currentTemplateSettings.tmplLink); //Sends link to spawnTemplate()
             $("#resultsContainer1").show("drop"); //Shows the results once everything is ready.
             $("#resultsContainer2").show("drop"); //Shows the results once everything is ready.
             $("#emailBtnDiv").show('drop');
         }
     }
+    //end of compileEmail
 
     //*******************************
     // BUTTON AND MENU SETUP START
