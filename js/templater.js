@@ -308,27 +308,51 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'FC1',
-                    description: '468 x 60'
+                    description: '468 x 60',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/468x60ani.gif',
+                    imgW: '468',
+                    imgH: '60'
                 },
                 1: {
                     name: 'FC2',
-                    description: '600 x 72'
+                    description: '600 x 72',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/728x90ani.gif',
+                    imgW: '600',
+                    imgH: '72'
                 },
                 2: {
                     name: 'FC3',
-                    description: '250 x 250 - Gif'
+                    description: '250 x 250 - Gif',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/250x250ani.gif',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 3: {
                     name: 'FC4',
-                    description: '250 x 250'
+                    description: '250 x 250',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/250x250-1.jpg',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 4: {
                     name: 'FC5',
-                    description: '234 x 60'
+                    description: '234 x 60',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/234x60ani.gif',
+                    imgW: '234',
+                    imgH: '60'
                 },
                 5: {
                     name: 'FC6',
-                    description: '240 x 400 - Gif'
+                    description: '240 x 400 - Gif',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/240x400ani.gif',
+                    imgW: '240',
+                    imgH: '400'
                 }
             }
         },
@@ -339,11 +363,19 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'AAC1',
-                    description: '300 x 250 '
+                    description: '300 x 250 ',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/spotlightHopfeedCreative.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 1: {
                     name: 'AAC2',
-                    description: '320 x 50'
+                    description: '320 x 50',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/csmsurvive_4468.jpeg',
+                    imgW: '320',
+                    imgH: '50'
                 }
             }
         },
@@ -354,23 +386,43 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'NSA1',
-                    description: '300 x 250 - Stop Spying Thugs'
+                    description: '300 x 250 - Stop Spying Thugs',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/breaking1.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 1: {
                     name: 'NSA2',
-                    description: '300 x 250 - NSA Loopholes Revealed'
+                    description: '300 x 250 - NSA Loopholes Revealed',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/cable-guy-nsa-loophole.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 2: {
                     name: 'NSA3',
-                    description: '300 x 250 - 13 Words/Big Brother'
+                    description: '300 x 250 - 13 Words/Big Brother',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Eyeball-ad-300x2501-300x250.png',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 3: {
                     name: 'NSA4',
-                    description: '300 x 250 - NSA Banned This Video'
+                    description: '300 x 250 - NSA Banned This Video',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/mask-man-nsa-300x250.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 4: {
                     name: 'NSA5',
-                    description: '300 x 250 - 13 Words'
+                    description: '300 x 250 - 13 Words',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/NSA-at-door-300x250.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 }
             }
         },
@@ -381,103 +433,203 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'SAC1',
-                    description: '120 x 600 - Blackbelt Secrets of Firearms '
+                    description: '120 x 600 - Blackbelt Secrets of Firearms ',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner_120x6002.jpg',
+                    imgW: '120',
+                    imgH: '600'
                 },
                 1: {
                     name: 'SAC2',
-                    description: '160 x 600 - Ex-Military Tell-All'
+                    description: '160 x 600 - Ex-Military Tell-All',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner_160x6002.jpg',
+                    imgW: '160',
+                    imgH: '600'
                 },
                 2: {
                     name: 'SAC3',
-                    description: '250 x 250 - America Collapses'
+                    description: '250 x 250 - America Collapses',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner_250x2502.jpg',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 3: {
                     name: 'SAC4',
-                    description: '250 x 250- America Collapses (2)'
+                    description: '250 x 250- America Collapses (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner_250x250.jpg',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 4: {
                     name: 'SAC5',
-                    description: '300 x 250 - I Do Not Want To Scare You'
+                    description: '300 x 250 - I Do Not Want To Scare You',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner_300x2502.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 5: {
                     name: 'SAC6',
-                    description: '300 x 300 - To All Men'
+                    description: '300 x 300 - To All Men',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner_300x300.jpg',
+                    imgW: '300',
+                    imgH: '300'
                 },
                 6: {
                     name: 'SAC7',
-                    description: '300 x 300 - To All Men (2)'
+                    description: '300 x 300 - To All Men (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner_300x3002.jpg',
+                    imgW: '300',
+                    imgH: '300'
                 },
                 7: {
                     name: 'SAC8',
-                    description: '600 x 66 - Key Ingredients'
+                    description: '600 x 66 - Key Ingredients',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner_728x802.jpg',
+                    imgW: '600',
+                    imgH: '66'
                 },
                 8: {
                     name: 'SAC9',
-                    description: '600 x 66 - You Might Not Survive'
+                    description: '600 x 66 - You Might Not Survive',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner_728x80.jpg',
+                    imgW: '600',
+                    imgH: '66'
                 },
                 9: {
                     name: 'SAC10',
-                    description: '600 x 74 - Mental Game - Scared Girl'
+                    description: '600 x 74 - Mental Game - Scared Girl',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner_728x902.jpg',
+                    imgW: '600',
+                    imgH: '74'
                 },
                 10: {
                     name: 'SAC11',
-                    description: '600 x 66 - Mental Game - Soldiers'
+                    description: '600 x 66 - Mental Game - Soldiers',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Banner-for-Vunderwoood_kk_728X80_5.jpg',
+                    imgW: '600',
+                    imgH: '66'
                 },
                 11: {
                     name: 'SAC12',
-                    description: '600 x 66 - To All Men (3)'
+                    description: '600 x 66 - To All Men (3)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Banner-for-Vunderwoood_kk_728X80_6.jpg',
+                    imgW: '600',
+                    imgH: '66'
                 },
                 12: {
                     name: 'SAC13',
-                    description: '250 x 250 - Shit Hits The Fan'
+                    description: '250 x 250 - Shit Hits The Fan',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Banner-for-Vunderwoood-RK-250-x-250-3.jpg',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 13: {
                     name: 'SAC14',
-                    description: '250 x 250 - You Might Not Survive (2)'
+                    description: '250 x 250 - You Might Not Survive (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Banner-for-Vunderwoood-RK-250-x-250-4.jpg',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 14: {
                     name: 'SAC15',
-                    description: '300 x 300 - Ex-Military Tell-All (2)'
+                    description: '300 x 300 - Ex-Military Tell-All (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Banner-for-Vunderwoood-RK-300-X-300-5.jpg',
+                    imgW: '300',
+                    imgH: '300'
                 },
                 15: {
                     name: 'SAC16',
-                    description: '300 x 300 - Ex-Military Tell-All (3)'
+                    description: '300 x 300 - Ex-Military Tell-All (3)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Banner-for-Vunderwoood-RK-300-X-300-_6.jpg',
+                    imgW: '300',
+                    imgH: '300'
                 },
                 16: {
                     name: 'SAC17',
-                    description: '300 x 250 - America Collapses (3)'
+                    description: '300 x 250 - America Collapses (3)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://www.selfreliancecentral.com/wp-content/uploads/2015/08/300x250_amerca_collapses.png',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 17: {
                     name: 'SAC18',
-                    description: '300 x 300 - Countdown To Chaos'
+                    description: '300 x 300 - Countdown To Chaos',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Banners-for-Vunderwoood_aNu_13-11-13__300x3001.jpg',
+                    imgW: '300',
+                    imgH: '300'
                 },
                 18: {
                     name: 'SAC19',
-                    description: '300 x 300 - Survival Secrets'
+                    description: '300 x 300 - Survival Secrets',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Vunderwoood-AN-8-11-2013-300x300.jpg',
+                    imgW: '300',
+                    imgH: '300'
                 },
                 19: {
                     name: 'SAC20',
-                    description: '300 x 250 - How To Survive'
+                    description: '300 x 250 - How To Survive',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Vunderwoood-new-AN-11-11-2013-300x250.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 20: {
                     name: 'SAC21',
-                    description: '300 x 250 - How To Survive (GIF)'
+                    description: '300 x 250 - How To Survive (GIF)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Vunderwoood-new-AN-12-11-2013-300x250.gif',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 21: {
                     name: 'SAC22',
-                    description: '250 x 250 - Key Ingredients (GIF)'
+                    description: '250 x 250 - Key Ingredients (GIF)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Vunderwoood-new-AN-12-11-2013-300x250.gif',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 22: {
                     name: 'SAC23',
-                    description: '250 x 250 - America Collapses (GIF)'
+                    description: '250 x 250 - America Collapses (GIF)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Banners-for-Vunderwoood_aNu_13-11-13__250x250.gif',
+                    imgW: '250',
+                    imgH: '250'
                 },
                 23: {
                     name: 'SAC24',
-                    description: '600 x 74 - To All Men (GIF)'
+                    description: '600 x 74 - To All Men (GIF)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Banners-for-Vunderwoood_aNu_13-11-13__728x80.gif',
+                    imgW: '600',
+                    imgH: '74'
                 },
                 24: {
                     name: 'SAC25',
-                    description: '600 x 74 - Countdown To Collapse (GIF)'
+                    description: '600 x 74 - Countdown To Collapse (GIF)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/Vunderwoood-new-AN-11-11-2013-728x80.gif',
+                    imgW: '600',
+                    imgH: '74'
                 }
             }
         },
