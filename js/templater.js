@@ -18,6 +18,7 @@ $(document).ready(function () {
 
 
     var additionalContentVal = false; //This makes us default to a one-story format.
+                                        //if set to 'true', will show the story 3 and 4 boxes
     var templateContainer;
     imgHeight = []; //global image container
     imgWidth = [];
@@ -487,23 +488,43 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'WTR1',
-                    description: '300 x 250 - Air Into Water'
+                    description: '300 x 250 - Air Into Water',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/water2.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 1: {
                     name: 'WTR2',
-                    description: '300 x 250 - Air Into Water (2)'
+                    description: '300 x 250 - Air Into Water (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/water8.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 2: {
                     name: 'WTR3',
-                    description: '300 x 250 - Climate Manipulation'
+                    description: '300 x 250 - Climate Manipulation',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/water4.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 3: {
                     name: 'WTR4',
-                    description: '300 x 250 - Weather Weapon'
+                    description: '300 x 250 - Weather Weapon',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/water3.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 4: {
                     name: 'WTR5',
-                    description: '300 x 250 - Air Into Water (3)'
+                    description: '300 x 250 - Air Into Water (3)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/water7.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 }
             }
         },
@@ -514,15 +535,27 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'HP1',
-                    description: '300 x 250 - ISIS New Plan'
+                    description: '300 x 250 - ISIS New Plan',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/10.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 1: {
                     name: 'HP2',
-                    description: '300 x 250 - The World You Know'
+                    description: '300 x 250 - The World You Know',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/09.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 2: {
                     name: 'HP3',
-                    description: '300 x 250 - New Terrorist Plot'
+                    description: '300 x 250 - New Terrorist Plot',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/07.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 }
             }
         },
@@ -533,59 +566,115 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'SMD1',
-                    description: '180 x 150 - Bug'
+                    description: '180 x 150 - Bug',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/180x150_sm_02.jpg',
+                    imgW: '180',
+                    imgH: '150'
                 },
                 1: {
                     name: 'SMD2',
-                    description: '180 x 150 - Ebola False Flag'
+                    description: '180 x 150 - Ebola False Flag',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/180x150_sm_01.jpg',
+                    imgW: '180',
+                    imgH: '150'
                 },
                 2: {
                     name: 'SMD3',
-                    description: '180 x 150 - Bug (2)'
+                    description: '180 x 150 - Bug (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/180x150_sm_03.jpg',
+                    imgW: '180',
+                    imgH: '150'
                 },
                 3: {
                     name: 'SMD4',
-                    description: '234 x 60 - Bug'
+                    description: '234 x 60 - Bug',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/234x60_smd_01.jpg',
+                    imgW: '234',
+                    imgH: '60'
                 },
                 4: {
                     name: 'SMD5',
-                    description: '234 x 60 - Bug (2)'
+                    description: '234 x 60 - Bug (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/234x60_smd_02.jpg',
+                    imgW: '234',
+                    imgH: '60'
                 },
                 5: {
                     name: 'SMD6',
-                    description: '234 x 60 - Ebola False Flag'
+                    description: '234 x 60 - Ebola False Flag',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/234x60_smd_03.jpg',
+                    imgW: '234',
+                    imgH: '60'
                 },
                 6: {
                     name: 'SMD7',
-                    description: '234 x 60 - Mass Medical Crisis'
+                    description: '234 x 60 - Mass Medical Crisis',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/234x60_smd_04.jpg',
+                    imgW: '234',
+                    imgH: '60'
                 },
                 7: {
                     name: 'SMD8',
-                    description: '300 x 100 - Mass Medical Crisis'
+                    description: '300 x 100 - Mass Medical Crisis',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/300x100_smd_01.jpg',
+                    imgW: '300',
+                    imgH: '100'
                 },
                 8: {
                     name: 'SMD9',
-                    description: '300 x 100 - Mass Medical Crisis (2)'
+                    description: '300 x 100 - Mass Medical Crisis (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/300x100_smd_02.jpg',
+                    imgW: '300',
+                    imgH: '100'
                 },
                 9: {
                     name: 'SMD10',
-                    description: '300 x 250 - SWAT Teams'
+                    description: '300 x 250 - SWAT Teams',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/smd_yf2.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 10: {
                     name: 'SMD11',
-                    description: '300 x 250 - SWAT Teams (2)'
+                    description: '300 x 250 - SWAT Teams (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/smd_yf1.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 11: {
                     name: 'SMD12',
-                    description: '300 x 250 - Mass Medical Crisis'
+                    description: '300 x 250 - Mass Medical Crisis',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/smd_tr13.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 12: {
                     name: 'SMD13',
-                    description: '300 x 250 - Bug'
+                    description: '300 x 250 - Bug',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/smd_tr6.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 13: {
                     name: 'SMD14',
-                    description: '300 x 250 - Bug (2)'
+                    description: '300 x 250 - Bug (2)',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/smd_tr7.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 }
             }
         },
