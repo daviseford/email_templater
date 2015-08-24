@@ -266,19 +266,35 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'BLACKOUTUSA1',
-                    description: '300 x 250 - Michelle Obama'
+                    description: '300 x 250 - Michelle Obama',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/30days_banner.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 1: {
                     name: 'BLACKOUTUSA2',
-                    description: '300 x 250 - Putin'
+                    description: '300 x 250 - Putin',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner300_2501.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 2: {
                     name: 'BLACKOUTUSA3',
-                    description: '300 x 250 - Putin'
+                    description: '300 x 250 - Putin',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/banner300_250_21.jpg',
+                    imgW: '300',
+                    imgH: '250'
                 },
                 3: {
                     name: 'BLACKOUTUSA4',
-                    description: '250 x 200 - NASA'
+                    description: '250 x 200 - NASA',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/emp_100-d4d0288.jpg',
+                    imgW: '250',
+                    imgH: '200'
                 }
             }
         },
@@ -289,15 +305,27 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'AMMO1',
-                    description: '336 x 280 - Red TXT, White BG'
+                    description: '336 x 280 - Red TXT, White BG',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/336-280-ammoshortage.png',
+                    imgW: '336',
+                    imgH: '280'
                 },
                 1: {
                     name: 'AMMO2',
-                    description: '600 x 74 - Red TXT, White BG'
+                    description: '600 x 74 - Red TXT, White BG',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/ammo_600x74.png',
+                    imgW: '600',
+                    imgH: '74'
                 },
                 2: {
                     name: 'AMMO3',
-                    description: '250 x 250 - Grey BG'
+                    description: '250 x 250 - Grey BG',
+                    template: 'DEFAULT_IMAGE_AD',
+                    imgsrc: 'http://americanlibertypac.com/wp-content/uploads/2015/08/ammo_250x250.png',
+                    imgW: '250',
+                    imgH: '250'
                 }
             }
         },
