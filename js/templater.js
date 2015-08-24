@@ -2107,9 +2107,28 @@ $(document).ready(function () {
         // #title1text-div up to #title4text-div
 
         //#title1text-div > p:nth-child(1) > span
+        //console.log('Stuff Before = ' + $('#title1text-div').html());
 
+        function removeSpan(textDiv){
+            if ($('#' + textDiv).length) { //make sure it exists
+                var divHTMLValue = $('#' + textDiv).html();
+                var strippedHTML = S(divHTMLValue).stripTags('span').s;
 
+                //console.log('current div = ' + textDiv);
+                //console.log('divHTMLValue = ' + divHTMLValue);
+                //console.log('someTestVar = ' + strippedHTML);
+                console.log('Removed span from ' + textDiv);
 
+                $('#' + textDiv).html(strippedHTML);
+            } else {
+                //console.log('Does not exist, error caught');
+            }
+        }
+
+        removeSpan('title1text-div');
+        removeSpan('title2text-div');
+        removeSpan('title3text-div');
+        removeSpan('title4text-div');
 
 
         var currentTemplateSettings = getCurrentTemplateSettings(); //e.g. templateContainer.LL.DB
