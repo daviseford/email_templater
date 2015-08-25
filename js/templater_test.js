@@ -1632,13 +1632,13 @@ $(document).ready(function () {
             }
             return imgSrc;
         },
-        fixDescription: function (description) {  //strips extraneous html tags from the story
+        stripTagsFromDescription: function (description) {  //strips extraneous html tags from the story
             if (description !== null && description !== undefined) {
                 var desc = S(description).unescapeHTML().s;
                 return S(desc).stripTags('div', 'img', 'html', 'script', 'iframe', 'a', 'tr', 'td', 'style', 'blockquote', 'caption', 'table', 'font').s;
             }
         },
-        fixTitle: function (title) {
+        unescapeTitleHTML: function (title) {
             if (title !== null && title !== undefined) {
                 return S(title).unescapeHTML().s;
             }
@@ -1674,12 +1674,12 @@ $(document).ready(function () {
 
                     rssObject[i] = {
                         storyNum: i,
-                        title: rssFeedHelpers.fixTitle(itemRSS.title),
+                        title: rssFeedHelpers.unescapeTitleHTML(itemRSS.title),
                         link: itemRSS.url,
                         imgsrc: rssFeedHelpers.defaultImageCheck(imageRSS.src),
                         imgW: imageRSS.width,
                         imgH: imageRSS.height,
-                        description: rssFeedHelpers.fixDescription(itemRSS.description)
+                        description: rssFeedHelpers.stripTagsFromDescription(itemRSS.description)
                     };
 
                     var btnID1 = 'rss1Btn' + rssObject[i].storyNum;

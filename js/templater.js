@@ -1211,7 +1211,7 @@ $(document).ready(function () {
                     description: '336 x 280 - Gold Book (2)',
                     link: 'http://secure.ultracart.com/aff/E86CD68A8569FE014F5173E747051600/index.html?subid=',
                     template: 'DEFAULT_IMAGE_AD',
-                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=738D1D343CF9B0014F5162099B051600',
+                    imgsrc: 'http://secure.ultracart.com/affiliate/displayImage.jsp?code=E86CD68A8569FE014F5173E747051600',
                     imgW: '336',
                     imgH: '280'
                 },
@@ -2017,7 +2017,7 @@ $(document).ready(function () {
                         link: templateLink,                 // raw link e.g. www.google.com
                         trackedLink: templateTrackedLink, //e.g. <a href="url+utm" >
                         untrackedLink: templateUnTrackedLink, //e.g. <a href="url" >
-                        trackedURL: templateTrackedURL, //trackedURL is the raw URL + utm, whereas trackedLink is formatted with href
+                        trackedURL: templateTrackedURL, //trackedURL is the raw URL + utm, whereas trackedLink is formatted with href tags
                         tmplNum: templateNumber,
                         shortCode: templateShortCode,
                         longCode: templateLongCode,
@@ -2053,9 +2053,9 @@ $(document).ready(function () {
 
     //checks our template style for us, useful when doing keycodes
     function getTemplateStyle(){
-        var y = [$('#listSelect').val(), $('#tmplSelect').val()]; //RFAR,DB
-        var x = y.join(''); //can't return x the way I have it constructed
-        return y; //return RFAR,DB
+        var y = [$('#listSelect').val(), $('#tmplSelect').val()]; //ALPAC,DB
+        var x = y.join('');
+        return y; //return ALPAC,DB
     }
 
     function enableSmartFocusVars() {
@@ -2091,10 +2091,10 @@ $(document).ready(function () {
     }
 
     function imageDelay() {
-        $('#story1Form').find('input').each(textFix); //remove existing utm stuff, other processing provided in textFix
-        $('#story2Form').find('input').each(textFix);
-        $('#story3Form').find('input').each(textFix);
-        $('#story4Form').find('input').each(textFix);
+        $('#story1Form').find('input').each(urlFix); //remove existing utm stuff, other processing provided in urlFix
+        $('#story2Form').find('input').each(urlFix);
+        $('#story3Form').find('input').each(urlFix);
+        $('#story4Form').find('input').each(urlFix);
 
         //this will take the <span style="line-height: 1.42857143;"></span> out of the
         //toolbar div - causing visual inconsistencies
@@ -2145,15 +2145,15 @@ $(document).ready(function () {
         var maxH = currentTemplateSettings.imgMaxHeight;
 
         if (maxH === '' || maxH === undefined || maxH === 0) {
-            getImageSize(title1IMG, 0, genericW, genericH);
-            getImageSize(title2IMG, 1, genericW, genericH); //if we don't have an image size set, use generic
-            getImageSize(title3IMG, 2, genericW, genericH);
-            getImageSize(title3IMG, 3, genericW, genericH);
+            resizeImage(title1IMG, 0, genericW, genericH);
+            resizeImage(title2IMG, 1, genericW, genericH); //if we don't have an image size set, use generic
+            resizeImage(title3IMG, 2, genericW, genericH);
+            resizeImage(title3IMG, 3, genericW, genericH);
         } else {
-            getImageSize(title1IMG, 0, maxW, maxH); //otherwise use the currentTemplate's setting
-            getImageSize(title2IMG, 1, maxW, maxH); //image url, storage value, width, height
-            getImageSize(title3IMG, 2, maxW, maxH);
-            getImageSize(title4IMG, 3, maxW, maxH);
+            resizeImage(title1IMG, 0, maxW, maxH); //otherwise use the currentTemplate's setting
+            resizeImage(title2IMG, 1, maxW, maxH); //image url, storage value, width, height
+            resizeImage(title3IMG, 2, maxW, maxH);
+            resizeImage(title4IMG, 3, maxW, maxH);
         }
     }
 
@@ -2196,11 +2196,11 @@ $(document).ready(function () {
         dateFormat: "ymmdd" //Outputs as YYMMDD
     });
 
-
     function updateAdReferenceMenu() {
         var x = getCurrentTemplateSettings();
         makeProductMenu(x.productMenu);
     }
+
     function getCurrentTemplateSettings(){
         var x = getTemplateStyle(); //returns two values in an array, first value is the list, second is the template, e.g "RFAR","DB"
         var list = x[0]; //list, e.g. RFAR
@@ -2219,6 +2219,7 @@ $(document).ready(function () {
             event.preventDefault();
             setupRSSBtn();
         });
+
     $('#listSelect')
         .selectmenu({
             width: 150,
@@ -2229,13 +2230,6 @@ $(document).ready(function () {
                 updateTemplateMenu(); //update valid email styles. e.g. DB, MR. call this first to avoid conflict with updateAdReferenceMenu()
                 updateAdReferenceMenu(); //added to cut down on makeProductMenu references
 
-                var title1Label = $("#title1label");
-
-                if (a === 'ILNDB' || a === 'JGMMR' || a === 'ALPACMR') {
-                    title1Label.text('Modal Headline:');
-                } else {
-                    title1Label.text('Title #1:');
-                }
             }
         });
 
@@ -2565,7 +2559,7 @@ $(document).ready(function () {
     //BEGIN TEXT HANDLING  *
     //**********************
 
-    function textFix(){
+    function urlFix(){
         var inputVal = $.trim($(this).val());
         if(S(inputVal).contains('.stml')) {
             var splitSTML = $.trim($(this).val().split('.stml')[0]); //split the value into two parts of an array.
@@ -2582,14 +2576,14 @@ $(document).ready(function () {
         }
 
     }
-    //The textFix scrubs links of anything extending past
+    //The urlFix scrubs links of anything extending past
     // .html | .stml | ?utm_source |  - See more at:
     //Additionally, it strips existing UTM codes away, which is Kelly-proof (hopefully)
 
     //sanitizeRender takes the value of our template and removes the head, body, html, and style sections.
+    //When the template is rendered in-line in the tool, I don't need those ending tags
     //I used string replace because simply removing the tags was not enough.
     function sanitizeRender(content){
-        var that = this;
         if(S(content).contains('<style>')) {
             var x = true;
             var i = 0;
@@ -2606,7 +2600,7 @@ $(document).ready(function () {
         return (S(content).stripTags('html', 'head', 'body').s);
     }
 
-    function getImageSize(src, storage, width, height) { //e is the image src, x is the storage value in imgWidth/Height
+    function resizeImage(src, storage, width, height) { //e is the image src, x is the storage value in imgWidth/Height
         if (src === undefined){  //if we send an invalid (empty) image source, just return. This helps prevent fetching invalid objects
             return;
         }
@@ -2720,7 +2714,7 @@ $(document).ready(function () {
             }
             return imgSrc;
         },
-        fixDescription: function (description) {  //strips extraneous html tags from the story
+        stripTagsFromDescription: function (description) {  //strips extraneous html tags from the story
             if (description !== null && description !== undefined) {
                 var desc = S(description).unescapeHTML().s;
                 var stripDesc = S(desc).stripTags('span', 'div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'meta',
@@ -2734,7 +2728,7 @@ $(document).ready(function () {
                 return stripDesc;
             }
         },
-        fixTitle: function (title) {
+        unescapeTitleHTML: function (title) {
             if (title !== null && title !== undefined) {
                 return S(title).unescapeHTML().s;
             }
@@ -2769,22 +2763,14 @@ $(document).ready(function () {
                     //console.log("Width: " + imageRSS.fixedWidth);
                     //console.log("Image Info: " + imageRSS.width + "x" + imageRSS.height + " -- "+ imageRSS.src);
 
-                    //messing with the description here, maybe a function that strips it twice? it's hard to replicate this behavior
-                    //well, now I can't get it to malfunction. If it happens again I'll come back to this
-                    //TODO: determine what the hell is going on here
-                    //I keep getting a random <span style="line-height: blah blah"> tag added to the text-div. This throws off styling in the client and I think in the email overall
-                    //Trying to replicate without much success
-
-
-
                     rssObject[i] = {
                         storyNum: i,
-                        title: rssFeedHelpers.fixTitle(itemRSS.title),
+                        title: rssFeedHelpers.unescapeTitleHTML(itemRSS.title),
                         link: itemRSS.url,
                         imgsrc: rssFeedHelpers.defaultImageCheck(imageRSS.src),
                         imgW: imageRSS.width,
                         imgH: imageRSS.height,
-                        description: rssFeedHelpers.fixDescription(itemRSS.description)
+                        description: rssFeedHelpers.stripTagsFromDescription(itemRSS.description)
                     };
 
                     var btnID1 = 'rss1Btn' + rssObject[i].storyNum;
@@ -2892,7 +2878,7 @@ $(document).ready(function () {
 
 
 
-    function additionalContentBuilder(firstStoryNumber, secondStoryNumber, location) { //location is where the generated form will spawn
+    function buildAdditionalContentForm(firstStoryNumber, secondStoryNumber, location) { //location is where the generated form will spawn
         var choiceRowNumber = 0;
         var storyNumber1 = firstStoryNumber;
         var storyNumber2 = secondStoryNumber;
@@ -3006,7 +2992,7 @@ $(document).ready(function () {
                 break;
         }
     }
-    additionalContentBuilder(1,2, $('#choiceRow')); //builds our initial story section
+    buildAdditionalContentForm(1,2, $('#choiceRow')); //builds our initial story section
 
 
     function enableAdditionalContent () {
@@ -3016,7 +3002,7 @@ $(document).ready(function () {
             var checkbox = $('#additionalContentCheckbox');
             checkbox.prop('checked', true);
             console.log("Additional Content: " + additionalContentVal);
-            additionalContentBuilder(3, 4, i);
+            buildAdditionalContentForm(3, 4, i);
             i.show();
         }
     };
@@ -3027,7 +3013,7 @@ $(document).ready(function () {
         if (this.checked) {
             additionalContentVal = true;
             console.log("Additional Content: "+additionalContentVal);
-            additionalContentBuilder(3,4, i);
+            buildAdditionalContentForm(3,4, i);
             i.show();
         } else {
             additionalContentVal = false;
@@ -3096,7 +3082,7 @@ $(document).ready(function () {
 
     //the counter script is located.. well, you can figure it out
     //credit: http://www.phpjunkyard.com/php-text-hit-counter.php
-    function usageCounter() {
+    function updateUsageCounter() {
         $.get( "http://daviseford.com/sites/default/files/email_templater/php/counter.php?page=templaterCounter", function( data ) {
             var counterDiv = $('#counterDiv');
             var dataNum = parseInt(data);
@@ -3138,7 +3124,7 @@ $(document).ready(function () {
                     text: "The Keycode has been copied to your clipboard",
                     type: "success",
                     allowOutsideClick: "true",
-                    timer: "1000",
+                    timer: "4000",
                     showConfirmButton: "false"
                 });
             } );
@@ -3206,7 +3192,7 @@ $(document).ready(function () {
         var title = $('#subjectInput').val();
 
         var request = $.ajax({
-            url: "http://daviseford.com/sites/default/files/email_templater/soap/php/davis_dms_connection.php",
+            url: "http://daviseford.com/sites/default/files/email_templater/php/davis_dms_connection.php",
             contentType: "application/json; charset=utf-8",
             method: "POST",
             data: JSON.stringify(
@@ -3316,7 +3302,7 @@ $(document).ready(function () {
         var title = $('#subjectInput').val();
 
         var request = $.ajax({
-            url: "http://daviseford.com/sites/default/files/email_templater/soap/php/davis_smartfocus_connection.php",
+            url: "http://daviseford.com/sites/default/files/email_templater/php/davis_smartfocus_connection.php",
             contentType: "application/json; charset=utf-8",
             method: "POST",
             data: JSON.stringify(
@@ -3380,7 +3366,7 @@ $(document).ready(function () {
                     makePreviewEmailBtn();
                     makeDMSBtn();
                     makeSmartFocusBtn();
-                    usageCounter();
+                    updateUsageCounter();
                 }, 500);
             }
 
