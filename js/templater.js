@@ -3192,7 +3192,7 @@ $(document).ready(function () {
         var title = $('#subjectInput').val();
 
         var request = $.ajax({
-            url: "http://daviseford.com/sites/default/files/email_templater/php/davis_dms_connection.php",
+            url: "http://daviseford.com/sites/default/files/email_templater/php/soap/davis_dms_connection.php",
             contentType: "application/json; charset=utf-8",
             method: "POST",
             data: JSON.stringify(
@@ -3302,7 +3302,7 @@ $(document).ready(function () {
         var title = $('#subjectInput').val();
 
         var request = $.ajax({
-            url: "http://daviseford.com/sites/default/files/email_templater/php/davis_smartfocus_connection.php",
+            url: "http://daviseford.com/sites/default/files/email_templater/php/soap/davis_smartfocus_connection.php",
             contentType: "application/json; charset=utf-8",
             method: "POST",
             data: JSON.stringify(
