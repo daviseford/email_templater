@@ -25,7 +25,7 @@ You can make a responsive email in less than 30 seconds with this tool. Here's h
 *We need a keycode in order to track our email clicks with our analytics tools. This lets us identify high-performing emails and stories.* 
 
 Keycode format: [YYMMDD][Client][Template][*Optional: Advertisement Code*]  
-For example: 150523ALPACDBCAMPAIGN3  
+For example: 150523SAMPLEDBCAMPAIGN3  
 
 1. Select the mailing date using the calendar  
 2. Select the client name  
