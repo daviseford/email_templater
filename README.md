@@ -22,7 +22,7 @@ You can make a responsive email in less than 30 seconds with this tool. Here's h
 
 ###Step 1: Assembling the Keycode  
 
-*We need a keycode in order to track our email clicks with our analytics tools. This lets us identify high-performing emails and stories. * 
+*We need a keycode in order to track our email clicks with our analytics tools. This lets us identify high-performing emails and stories.* 
 
 Keycode format: [YYMMDD][Client][Template][*Optional: Advertisement Code*]  
 For example: 150523ALPACDBCAMPAIGN3  
@@ -58,8 +58,17 @@ For example: 150523ALPACDBCAMPAIGN3
    * The subject line will be prepended with "[TEST]"   
    * The "To", "From", etc. headers are submitted to DMS along with the email.  
    * The email will automatically be submitted to the correct list  
+   * The plaintext version of the email is generated using html2text  
  * Submit the email to the SmartFocus Database by clicking **Send to SmartFocus**  
    * The "To", "From", etc. headers are submitted to SmartFocus along with the email.  
+   * The plaintext version is automatically generated using html2text  
+
+# Tips  
+
+**If something isn't working, clear your cache!**
+
+If you make changes to any of the input fields (date, descriptions, etc), click "Generate HTML" to view your updated changes.    
+Links will be formatted like this: www.sample.com/?utm_source=150523SAMPLEDBCAMPAIGN2&utm_medium=email&utm_campaign=150523SAMPLEDBCAMPAIGN2  
 
 # Known Issues:  
 1.) In SmartFocus, you may see {cke_protected} or {C} appear at the top of your email.   
@@ -71,6 +80,7 @@ HTML/CSS/Javascript/PHP/MySQL
 jQuery/jQuery UI  
 [JSRender by Boris Moore](https://github.com/borismoore/jsrender)  for template rendering  
 [string.js](http://stringjs.com/#methods/times-n)  for string manipulation  
+[html2text](http://www.chuggnutt.com/html2text) for plain-text conversion  
 [Sweet Alert](http://t4t5.github.io/sweetalert/)  
 SOAP/RESTful API Integrations for [SmartFocus](http://www.smartfocus.com/) and [DMS](http://dmsgs.com/) (Email Service Providers)  
 [SimplePie](http://simplepie.org/)  for RSS scraping  
