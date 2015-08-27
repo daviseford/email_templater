@@ -2719,7 +2719,7 @@ $(document).ready(function () {
                 var desc = S(description).unescapeHTML().s;
                 var stripDesc = S(desc).stripTags('span', 'div', 'center', 'img', 'html', 'script', 'iframe', 'a', 'meta',
                     'table', 'tbody', 'tr', 'td', 'style', 'blockquote', 'caption', 'font', 'h1', 'h2', 'h3', 'h4',
-                    'h5', 'link', 'header', 'label', 'person', 'location', 'org', 'chron').s;
+                    'h5', 'link', 'header', 'label', 'person', 'location', 'org', 'chron', 'video').s;
                 /**
                  * Added 'person', 'location', 'label', 'org', 'chron' to deal with AP's markup (https://developer.ap.org/ap-metadata-services)
                  */

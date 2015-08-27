@@ -81,6 +81,5 @@ Image URL:  <?php echo $_POST["imgURL"]; ?><br />
 Ad URL: <?php echo $_POST["adURL"]; ?><br />
 Dimensions: <?php echo $width . "x" . $height ?>
 
-
 </body>
 </html>
