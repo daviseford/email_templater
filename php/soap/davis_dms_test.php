@@ -31,11 +31,11 @@ $lmapi = $lmapiClient->getProxy();
 //set basic authentication
 $lmapi->setCredentials($userName,$password, 'basic');
 
-$yesterday = date("Y-m-d", strtotime('-4 days'));
+$yesterday = date("Y-m-d", strtotime('-1 days'));
 
 $date = $yesterday; //standard format = '2015-08-26'
 
-$ar = array("ListName = alpac_master", "DateCreated > $date");
+$ar = array("DateCreated > $date");
 $trackingArray = "21898528";
         $result = $lmapi->SelectContent($ar);
 		
@@ -46,8 +46,6 @@ $trackingArray = "21898528";
     		foreach($result as $value) {
 				echo "--------------------------<br />";
 				echo "ContentID: " . $value["ContentID"] . "<br />";
-				//echo "tracking summary: " . var_dump($lmapi->TrackingSummary($trackingArray)) . "<br />";
-				//echo "sql: " . var_dump($lmapi->SqlStatement("SELECT *")) . "<br />";
         		echo "Description: " . $value["Description"] . "<br />";
 				echo "NativeTitle: " . $value["NativeTitle"] . "<br />";
 				echo "DateCreated: " . $value["DateCreated"] . "<br />";
