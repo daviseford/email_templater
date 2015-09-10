@@ -1415,6 +1415,25 @@ $(document).ready(function () {
                     imgH: '60'
                 }
             }
+        },
+        PB: {
+            link: 'http://66f3d4ggyyp9ws4-1k5613v4rv.hop.clickbank.net/?tid=', //default link to all sub-ads
+            shortCode: 'PB',
+            longCode: 'Partner Briefing (Use with Partner Briefing template)',
+            advertisements: {
+                0: {
+                    name: 'PB1',
+                    description: 'Which Survival Plan Really Works When It Hits The Fan?',
+                    link: 'http://66f3d4ggyyp9ws4-1k5613v4rv.hop.clickbank.net/?tid=',
+                    template: 'PB1'
+                },
+                1: {
+                    name: 'PB2',
+                    description: 'This Weapon could kickstart WWIII',
+                    link: 'http://cf0afaed17va5p41uiv47sbw82.hop.clickbank.net/?tid=',
+                    template: 'PB2'
+                }
+            }
         }
     };
 
@@ -1440,7 +1459,7 @@ $(document).ready(function () {
     templateContainer = {       //templateContainer holds all template-related variables. this really should be in a database
         ALPAC: {                //we start with the client name
             DB: {               //type of template (usually DB or MR)
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_Tmpl.htm', //location of template file
+                tmplLink: 'txt/alpac_db_Tmpl.htm', //location of template file
                 emailCode: 'DB',
                 shortCode: 'ALPACDB',
                 longCode: 'Daily Bulletin',
@@ -1459,7 +1478,7 @@ $(document).ready(function () {
 
             },
             DBDMS: {               //type of template (usually DB or MR)
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_db_dms_Tmpl.htm', //location of template file
+                tmplLink: 'txt/alpac_db_dms_Tmpl.htm', //location of template file
                 emailCode: 'DBDMS',
                 shortCode: 'ALPACDBDMS',
                 longCode: 'Daily Bulletin - DMS',
@@ -1478,7 +1497,7 @@ $(document).ready(function () {
 
             },
             MR: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_mr_Tmpl.htm',
+                tmplLink: 'txt/alpac_mr_Tmpl.htm',
                 emailCode: 'MR',
                 shortCode: 'ALPACMR',
                 longCode: 'Must Read',
@@ -1496,7 +1515,7 @@ $(document).ready(function () {
                 }
             },
             MRDMS: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_mr_dms_Tmpl.htm',
+                tmplLink: 'txt/alpac_mr_dms_Tmpl.htm',
                 emailCode: 'MRDMS',
                 shortCode: 'ALPACMRDMS',
                 longCode: 'Must Read - DMS',
@@ -1513,8 +1532,26 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
+            PB: {
+                tmplLink: 'txt/alpac_pb_Tmpl.htm',
+                emailCode: 'PB',
+                shortCode: 'ALPACPB',
+                longCode: 'Partner Briefing',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://americanlibertypac.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/880203000.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
             SL: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_sl_Tmpl.htm',
+                tmplLink: 'txt/alpac_sl_Tmpl.htm',
                 emailCode: 'SL',
                 shortCode: 'ALPACSL',
                 longCode: '3rd Party Sales Letter - DMS',
@@ -1532,7 +1569,7 @@ $(document).ready(function () {
                 }
             },
             WIR: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_wir_Tmpl.htm',
+                tmplLink: 'txt/alpac_wir_Tmpl.htm',
                 emailCode: 'WIR',
                 shortCode: 'ALPACWIR',
                 longCode: 'Week In Review',
@@ -1550,7 +1587,7 @@ $(document).ready(function () {
                 }
             },
             WIRDMS: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_wir_dms_Tmpl.htm',
+                tmplLink: 'txt/alpac_wir_dms_Tmpl.htm',
                 emailCode: 'WIRDMS',
                 shortCode: 'ALPACWIRDMS',
                 longCode: 'Week In Review - DMS',
@@ -1568,7 +1605,7 @@ $(document).ready(function () {
                 }
             },
             WL: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/alpac_wl_Tmpl.htm',
+                tmplLink: 'txt/alpac_wl_Tmpl.htm',
                 emailCode: 'WL',
                 shortCode: 'ALPACWL',
                 longCode: 'Welcome Letter',
@@ -1588,7 +1625,7 @@ $(document).ready(function () {
         },
         CRN: {
             DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/crn_db_Tmpl.htm',
+                tmplLink: 'txt/crn_db_Tmpl.htm',
                 emailCode: 'DB',
                 shortCode: 'CRNDB',
                 longCode: 'Daily Bulletin',
@@ -1606,7 +1643,7 @@ $(document).ready(function () {
                 }
             },
             DBDMS: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/crn_db_dms_Tmpl.htm',
+                tmplLink: 'txt/crn_db_dms_Tmpl.htm',
                 emailCode: 'DBDMS',
                 shortCode: 'CRNDBDMS',
                 longCode: 'Daily Bulletin - DMS',
@@ -1624,7 +1661,7 @@ $(document).ready(function () {
                 }
             },
             EI: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/crn_ei_Tmpl.htm',
+                tmplLink: 'txt/crn_ei_Tmpl.htm',
                 emailCode: 'EI',
                 shortCode: 'CRNEI',
                 longCode: 'Election Insider - DMS',
@@ -1641,8 +1678,26 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
+            PB: {
+                tmplLink: 'txt/crn_pb_Tmpl.htm',
+                emailCode: 'PB',
+                shortCode: 'CRNPB',
+                longCode: 'Partner Briefing',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://conservativerepublicannews.com/blog/feed/',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1569720608.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
             SL: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/crn_sl_Tmpl.htm',
+                tmplLink: 'txt/crn_sl_Tmpl.htm',
                 emailCode: 'SL',
                 shortCode: 'CRNSL',
                 longCode: '3rd Party Sales Letter',
@@ -1662,7 +1717,7 @@ $(document).ready(function () {
         },
         JGM: {
             DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_db_Tmpl.htm',
+                tmplLink: 'txt/jgm_db_Tmpl.htm',
                 emailCode: 'DB',
                 shortCode: 'JGMDB',
                 longCode: 'Daily Bulletin',
@@ -1680,7 +1735,7 @@ $(document).ready(function () {
                 }
             },
             DBDMS: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_db_dms_Tmpl.htm',
+                tmplLink: 'txt/jgm_db_dms_Tmpl.htm',
                 emailCode: 'DBDMS',
                 shortCode: 'JGMDBDMS',
                 longCode: 'Daily Bulletin - DMS',
@@ -1698,7 +1753,7 @@ $(document).ready(function () {
                 }
             },
             MR: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_mr_Tmpl.htm',
+                tmplLink: 'txt/jgm_mr_Tmpl.htm',
                 emailCode: 'MRDMS',
                 shortCode: 'JGMMR',
                 longCode: 'Must Read',
@@ -1716,7 +1771,7 @@ $(document).ready(function () {
                 }
             },
             MRDMS: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_mr_dms_Tmpl.htm',
+                tmplLink: 'txt/jgm_mr_dms_Tmpl.htm',
                 emailCode: 'MRDMS',
                 shortCode: 'JGMMRDMS',
                 longCode: 'Must Read - DMS',
@@ -1733,8 +1788,26 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
+            PB: {
+                tmplLink: 'txt/jgm_pb_Tmpl.htm',
+                emailCode: 'PB',
+                shortCode: 'JGMPB',
+                longCode: 'Partner Briefing',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://minutemanproject.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1081516611.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
             SL: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_sl_Tmpl.htm',
+                tmplLink: 'txt/jgm_sl_Tmpl.htm',
                 emailCode: 'SL',
                 shortCode: 'JGMSL',
                 longCode: '3rd Party Sales Letter - DMS',
@@ -1752,7 +1825,7 @@ $(document).ready(function () {
                 }
             },
             WL: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/jgm_wl_Tmpl.htm',
+                tmplLink: 'txt/jgm_wl_Tmpl.htm',
                 emailCode: 'WL',
                 shortCode: 'JGMWL',
                 longCode: 'Welcome Letter',
@@ -1772,7 +1845,7 @@ $(document).ready(function () {
         },
         SAA: {
             DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_db_Tmpl.htm',
+                tmplLink: 'txt/saa_db_Tmpl.htm',
                 emailCode: 'DB',
                 shortCode: 'SAADB',
                 longCode: 'Daily Bulletin',
@@ -1790,7 +1863,7 @@ $(document).ready(function () {
                 }
             },
             DBDMS: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_db_dms_Tmpl.htm',
+                tmplLink: 'txt/saa_db_dms_Tmpl.htm',
                 emailCode: 'DBDMS',
                 shortCode: 'SAADBDMS',
                 longCode: 'Daily Bulletin - DMS',
@@ -1808,7 +1881,7 @@ $(document).ready(function () {
                 }
             },
             MR: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_mr_Tmpl.htm',
+                tmplLink: 'txt/saa_mr_Tmpl.htm',
                 emailCode: 'MR',
                 shortCode: 'SAAMR',
                 longCode: 'Must Read',
@@ -1826,7 +1899,7 @@ $(document).ready(function () {
                 }
             },
             MRDMS: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_mr_dms_Tmpl.htm',
+                tmplLink: 'txt/saa_mr_dms_Tmpl.htm',
                 emailCode: 'MRDMS',
                 shortCode: 'SAAMRDMS',
                 longCode: 'Must Read - DMS',
@@ -1843,8 +1916,26 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
+            PB: {
+                tmplLink: 'txt/saa_pb_Tmpl.htm',
+                emailCode: 'SL',
+                shortCode: 'SAAPB',
+                longCode: 'Partner Briefing',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://senioramericansassociation.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1917859770.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
             SL: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_sl_Tmpl.htm',
+                tmplLink: 'txt/saa_sl_Tmpl.htm',
                 emailCode: 'SL',
                 shortCode: 'SAASL',
                 longCode: '3rd Party Sales Letter - DMS',
@@ -1862,7 +1953,7 @@ $(document).ready(function () {
                 }
             },
             WL: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/saa_wl_Tmpl.htm',
+                tmplLink: 'txt/saa_wl_Tmpl.htm',
                 emailCode: 'WL',
                 shortCode: 'SAAWL',
                 longCode: 'Welcome Letter',
@@ -1882,7 +1973,7 @@ $(document).ready(function () {
         },
         ILN: {
             DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/iln_db_Tmpl.htm',
+                tmplLink: 'txt/iln_db_Tmpl.htm',
                 emailCode: 'DB',
                 shortCode: 'ILNDB',
                 longCode: 'Daily Bulletin',
@@ -1903,7 +1994,7 @@ $(document).ready(function () {
         },
         SRC: {
             AP: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_ap_Tmpl.htm',
+                tmplLink: 'txt/src_ap_Tmpl.htm',
                 emailCode: 'AP',
                 shortCode: 'SRCAP',
                 longCode: 'Always Prepared',
@@ -1921,7 +2012,7 @@ $(document).ready(function () {
                 }
             },
             DB: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_db_Tmpl.htm',
+                tmplLink: 'txt/src_db_Tmpl.htm',
                 emailCode: 'DB',
                 shortCode: 'SRCDB',
                 longCode: 'Daily Bulletin',
@@ -1938,8 +2029,26 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
+            PB: {
+                tmplLink: 'txt/src_pb_Tmpl.htm',
+                emailCode: 'PB',
+                shortCode: 'SRCPB',
+                longCode: 'Partner Briefing',
+                imgMaxWidth: 200,
+                imgMaxHeight: 200,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://www.selfreliancecentral.com/news/feed/',
+                defaultLogo: 'http://news.extras-americanlibertypac.com//IL/0/0/1/1101054001/2060965152.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
             SL: {
-                tmplLink: 'http://daviseford.com/sites/default/files/email_templater/txt/src_sl_Tmpl.htm',
+                tmplLink: 'txt/src_sl_Tmpl.htm',
                 emailCode: 'SL',
                 shortCode: 'SRCSL',
                 longCode: 'Sales Letter',
