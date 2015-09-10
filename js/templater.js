@@ -1432,6 +1432,42 @@ $(document).ready(function () {
                     description: 'This Weapon could kickstart WWIII',
                     link: 'http://cf0afaed17va5p41uiv47sbw82.hop.clickbank.net/?tid=',
                     template: 'PB2'
+                },
+                2: {
+                    name: 'PB3',
+                    description: 'This Weapon could kickstart WWIII (2)',
+                    link: 'http://cf0afaed17va5p41uiv47sbw82.hop.clickbank.net/?tid=',
+                    template: 'PB3'
+                },
+                3: {
+                    name: 'PB4',
+                    description: 'Backstabbed! No One Ever Thought Obama Was Capable of This!',
+                    link: 'http://d19606ph3604xu011a41vr0jmm.hop.clickbank.net/?tid=',
+                    template: 'PB4'
+                },
+                4: {
+                    name: 'PB5',
+                    description: 'Arizona Farmer Accidentally Discovers Trick to Turn Air into Water',
+                    link: 'http://d19606ph3604xu011a41vr0jmm.hop.clickbank.net/?tid=',
+                    template: 'PB5'
+                },
+                5: {
+                    name: 'PB6',
+                    description: 'Rogue Doctor Exposes Hidden Plot To Kill Millions...',
+                    link: 'http://141002gh39p34ocq1g88g05r32.hop.clickbank.net/?tid=',
+                    template: 'PB6'
+                },
+                6: {
+                    name: 'PB7',
+                    description: 'EMP Attack Against America Imminent. Proof Inside!',
+                    link: 'http://779648ijx6ud1w7fxbngwc0n60.hop.clickbank.net/?tid=',
+                    template: 'PB7'
+                },
+                7: {
+                    name: 'PB8',
+                    description: 'Spotted! Russian Airplanes Patrolling All 4 US Coasts',
+                    link: 'http://779648ijx6ud1w7fxbngwc0n60.hop.clickbank.net/?tid=',
+                    template: 'PB8'
                 }
             }
         }
@@ -3463,7 +3499,7 @@ $(document).ready(function () {
         .click(function(event) {
             event.preventDefault(); //Stops page from reloading
             updateKeyCodeField();
-            if ($("#title1").val() === "" || $("#subjectInput").val() === "") {
+            if ($("#subjectInput").val() === "") {
                 swal("Slow down!", "Please enter a story first!", "error");
             } else {
                 imageDelay();
