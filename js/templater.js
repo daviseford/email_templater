@@ -1470,6 +1470,19 @@ $(document).ready(function () {
                     template: 'PB8'
                 }
             }
+        },
+        ALPAC: {
+            link: 'https://www.wholesaledirectmetals.com/defend-your-money-against-government-confiscation/?cid=AmericanLibertySponsored&st-t=AmericanLibertySponsored', //default link to all sub-ads
+            shortCode: 'ALPAC1',
+            longCode: 'This Week\'s ALPAC Ad',
+            advertisements: {
+                0: {
+                    name: 'ALPAC1',
+                    description: 'This Week\'s ALPAC Ad',
+                    link: 'https://www.wholesaledirectmetals.com/defend-your-money-against-government-confiscation/?cid=AmericanLibertySponsored&st-t=AmericanLibertySponsored',
+                    template: 'ALPAC1'
+                }
+            }
         }
     };
 
@@ -3318,6 +3331,7 @@ $(document).ready(function () {
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Yes, send it!",
                     cancelButtonText: "Nope!",
+                    allowOutsideClick: false,
                     closeOnConfirm: false,
                     closeOnCancel: true
                 },
@@ -3354,9 +3368,9 @@ $(document).ready(function () {
                         title: "Sent To DMS!",
                         text: "The email has been created in DMS.", //sloppily hiding a random nusoap error message. wtf?
                         type: "success",
-                        allowOutsideClick: "true",
+                        allowOutsideClick: true,
                         timer: "20000",
-                        showConfirmButton: "true"
+                        showConfirmButton: true
                     });
                     console.log("done with DMS: data = " + data);
                     console.log("data type = " + typeof data);
@@ -3365,12 +3379,12 @@ $(document).ready(function () {
                         title: "Error!",
                         text: "The email was not created in DMS!",
                         type: "error",
-                        allowOutsideClick: "true",
+                        allowOutsideClick: true,
                         timer: "10000",
-                        showConfirmButton: "true"
+                        showConfirmButton: true
                     });
-                    console.log("done with DMS: data = " + data);
-                    console.log("data type = " + typeof data);
+                    console.log("done with DMS: ERROR: data = " + data);
+                    console.log("data type ERROR: = " + typeof data);
                 }
             }
         });
