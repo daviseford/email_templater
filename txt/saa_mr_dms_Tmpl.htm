@@ -141,6 +141,19 @@
                             </tr>
                         </table>
                         <!-- END BANNER BLOCK -->
+                        
+                        <!-- BEGIN INTRODUCTION TEXT BLOCK -->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
+                            <tr>
+                                <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                                    <tr>
+                                        <td class="sf-html sf-td" style="padding: 13px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"><p style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;">I thought this item would interest you.</p>
+                                        <p style="color: #000000;font-family: Verdana;font-size: 16px;mso-line-height-rule: exactly;line-height: 1.14em;font-weight: normal;font-style: normal;text-transform: none;margin-top: 0.5em;margin-left: 0;margin-right: 0;margin-bottom: 0.5em;padding: 0;"><em>Gil</em></p></td>
+                                    </tr>
+                                </table></td>
+                            </tr>
+                        </table>
+                        <!-- END INTRODUCTION TEXT BLOCK -->
 
                         {{for story1 tmpl="addDiv_templates_SAAMR" /}}
 
@@ -157,6 +170,20 @@
                             </tr>
                         </table>
                         <!-- END SIGNATURE BLOCK -->
+                        
+                        <!-- BEGIN PRODUCT BLOCK -->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
+                            <tr>
+                                <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: auto;">
+                                    <tr>
+                                        {{if currentProduct.enabled}}
+                                        {{include tmpl=currentProduct.template /}}
+                                        {{/if}}
+                                    </tr>
+                                </table></td>
+                            </tr>
+                        </table>
+                        <!-- END PRODUCT BLOCK -->
                         
                         <!-- START TAKEACTION BLOCK-->
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
@@ -177,19 +204,6 @@
                         <!-- END TAKEACTION BLOCK -->
 
 
-                        <!-- BEGIN PRODUCT BLOCK -->
-                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent;">
-                            <tr>
-                                <td class="sf-td" valign="top" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border: 0px solid transparent; width: 100%;"><table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="table-layout: fixed; border: 0px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; margin: auto;">
-                                    <tr>
-                                        {{if currentProduct.enabled}}
-                                        {{include tmpl=currentProduct.template /}}
-                                        {{/if}}
-                                    </tr>
-                                </table></td>
-                            </tr>
-                        </table>
-                        <!-- END PRODUCT BLOCK -->
 
                         <br>
                         <br>

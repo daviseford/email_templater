@@ -23,208 +23,6 @@ $(document).ready(function () {
     imgHeight = []; //global image container
     imgWidth = [];
 
-    var adReferenceILN = {
-        USR: {
-            link: 'http://www.independentlivingnews.com/video/usr-vsl.php',
-            shortCode: 'USR',
-            longCode: 'Ultimate Self Reliance Manual',
-            advertisements: {
-                0: {
-                    name: 'USR1',
-                    description: "Image with copy"
-                },
-                1: {
-                    name: 'USR2',
-                    description: "GIF 468x80"
-                },
-                2: {
-                    name: 'USR3',
-                    description: 'Image with copy (2)'
-                }
-            }
-        },
-        GAB: {
-            link: 'http://www.independentlivingnews.com/video/great-american-blackout-ihnp.php',
-            shortCode: 'GAB',
-            longCode: 'Great American Blackout',
-            advertisements: {
-                0: {
-                    name: 'GAB1',
-                    description: 'Image with copy'
-                }
-            }
-        },
-        FOOD: {
-            link: 'http://www.independentlivingnews.com/video/comfort-food-reserve.php',
-            shortCode: 'FOOD',
-            longCode: '30 Day Emergency Food Reserve',
-            advertisements: {
-                0: {
-                    name: 'FOOD1',
-                    description: 'Banner 580x58'
-                },
-                1: {
-                    name: 'FOOD2',
-                    description: 'Banner 580x58'
-                },
-                2: {
-                    name: 'FOOD3',
-                    description: 'Banner 580x58'
-                }
-            }
-        },
-        CSG: {
-            link: 'https://www.independentlivingnews.com/video/csg-video.php',
-            shortCode: 'CSG',
-            longCode: 'Colloidal Silver Generator',
-            advertisements: {
-                0: {
-                    name: 'CSG1',
-                    description: "Banner 580x58"
-                },
-                1: {
-                    name: 'CSG2',
-                    description: "Image with copy"
-                }
-            }
-        },
-        LPL: {
-            link: 'http://www.independentlivingnews.com/video/lpl-video.php',
-            shortCode: 'LPL',
-            longCode: 'Low Profile Living Manual',
-            advertisements: {
-                0: {
-                    name: 'LPL1',
-                    description: "Image with copy"
-                },
-                1: {
-                    name: 'LPL2',
-                    description: "Banner 580x58"
-                }
-            }
-        },
-        EPACK: {
-            link: 'http://www.independentlivingnews.com/video/epack2-video.php',
-            shortCode: 'EPACK',
-            longCode: 'Emergency Pack',
-            advertisements: {
-                0: {
-                    name: 'EPACK1',
-                    description: "Image with copy"
-                },
-                1: {
-                    name: 'EPACK2',
-                    description: "Banner 580x58"
-                },
-                2: {
-                    name: 'EPACK3',
-                    description: 'EPACK - Banner 580x58'
-                },
-                3: {
-                    name: 'EPACK4',
-                    description: 'EPACK - GIF 580x75'
-                }
-            }
-        },
-        STREK: {
-            link: 'http://www.independentlivingnews.com/video/suntrek/',
-            shortCode: 'STREK',
-            longCode: 'Sun Trek',
-            advertisements: {
-                0: {
-                    name: 'STREK1',
-                    description: "Image with copy"
-                },
-                1: {
-                    name: 'STREK2',
-                    description: "Banner (Holiday Theme)"
-                }
-            }
-        },
-        MSR: {
-            link: 'http://www.survivalproshop.com/publications/medical-self-reliance-mega-manual.html',
-            shortCode: 'MSR',
-            longCode: 'Medical Self Reliance Mega Manual',
-            advertisements: {
-                0: {
-                    name: 'MSR1',
-                    description: "GIF 468x60"
-                },
-                1: {
-                    name: 'MSR2',
-                    description: "Image with copy"
-                }
-            }
-
-        },
-        FFL: {
-            link: 'http://www.independentlivingnews.com/video/ffl-vsl.php',
-            shortCode: 'FFL',
-            longCode: 'Freedom Fortress Library',
-            advertisements: {
-                0: {
-                    name: 'FFL1',
-                    description: "Image with copy"
-                }
-            }
-        },
-        XCOM: {
-            link: 'http://www.survivalproshop.com/extreme-weather-combo-30-day-maximum-shelf-life-food-reserve.html',
-            shortCode: 'XCOM',
-            longCode: 'Extreme Weather Combo',
-            advertisements: {
-                0: {
-                    name: 'XCOM1',
-                    description: "Image with copy"
-                },
-                1: {
-                    name: 'XCOM2',
-                    description: "Banner (White + Green)"
-                }
-            }
-        },
-        PW: {
-            link: 'http://www.independentlivingnews.com/video/pw-vsl.php',
-            shortCode: 'PW',
-            longCode: 'Power Whisperer',
-            advertisements: {
-                0: {
-                    name: 'PW1',
-                    description: "Image with copy"
-                },
-                1: {
-                    name: 'PW2',
-                    description: "Banner 580x58"
-                }
-            }
-        },
-        CAN: {
-            link: 'http://www.survivalproshop.com/survival-essentials/survival-kit-in-a-can.html',
-            shortCode: 'CAN',
-            longCode: 'Survival Can in a Kit',
-            advertisements: {
-                0: {
-                    name: 'CAN1',
-                    description: 'Image with copy'
-                }
-            }
-        },
-        SUB: {
-            link: 'http://www.independentlivingnews.com/signup/membership.stml',
-            shortCode: 'SUB',
-            longCode: 'Subscription to Independent Living News',
-            advertisements: {
-                0: {
-                    name: 'SUB1',
-                    description: 'Image with copy'
-                },
-                1: {
-                    name: 'SUB2',
-                    description: 'Smaller Image with copy'
-                }
-            }
-        }
-    };
     var adReferenceWJMA = {
         JGM: {
             link: 'https://minutemanproject.com/donate-2/',
@@ -1470,19 +1268,6 @@ $(document).ready(function () {
                     template: 'PB8'
                 }
             }
-        },
-        ALPAC: {
-            link: 'https://www.wholesaledirectmetals.com/defend-your-money-against-government-confiscation/?cid=AmericanLibertySponsored&st-t=AmericanLibertySponsored', //default link to all sub-ads
-            shortCode: 'ALPAC1',
-            longCode: 'This Week\'s ALPAC Ad',
-            advertisements: {
-                0: {
-                    name: 'ALPAC1',
-                    description: 'This Week\'s ALPAC Ad',
-                    link: 'https://www.wholesaledirectmetals.com/defend-your-money-against-government-confiscation/?cid=AmericanLibertySponsored&st-t=AmericanLibertySponsored',
-                    template: 'ALPAC1'
-                }
-            }
         }
     };
 
@@ -2020,27 +1805,6 @@ $(document).ready(function () {
                 }
             }
         },
-        ILN: {
-            DB: {
-                tmplLink: 'txt/iln_db_Tmpl.htm',
-                emailCode: 'DB',
-                shortCode: 'ILNDB',
-                longCode: 'Daily Bulletin',
-                imgMaxWidth: '175',
-                imgMaxHeight: '175',
-                productMenu: adReferenceILN,
-                rssFeed: '', //we use getILNAPI for this case, because their RSS isn't helpful
-                defaultLogo: 'http://daviseford.com/sites/default/files/email_templater/images/iln_75x75.png',
-                feedStyle: function() {
-                    getILNAPI();
-                },
-                utmStyle: function() {
-                    var x = makeKeyCode();
-                    var y = '?utm_source=' + x + '&keycode=' + x + '&u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]';
-                    return y;
-                }
-            }
-        },
         SRC: {
             AP: {
                 tmplLink: 'txt/src_ap_Tmpl.htm',
@@ -2116,15 +1880,15 @@ $(document).ready(function () {
             }
         },
         helpers: {
-            updateCurrentProduct: function (adReference, utmStyle) { //returns the correct ad. for example, adReferenceILN.XCOM.
+            updateCurrentProduct: function (adReference, utmStyle) { //returns the correct ad. for example, adReferenceWJMA.GOLD.
                 var b, adImgSrc, adImgH, adImgW;
                 var adRef = adReference;
                 var utm = utmStyle;
-                b = $('#productSelect').val(); //example value: XCOM1
+                b = $('#productSelect').val(); //example value: GOLD1
                 var templateName = 'ad_templates_'+b;
                 if (b !== '' && b !== null) { //if there is a product selected, update currentProduct
                     var d = S(b).strip('1', '2', '3', '4', '5', '6', '7', '8', '9', '0').s;
-                    var e = d.toString();               //so we get the text portion of the keycode, which could be "XCOM" or "CAN".
+                    var e = d.toString();               //so we get the text portion of the keycode, which could be "GOLD" or "CAN".
 
                     var templateNumber = S(b).strip(e).s; //gives us our ad template number (1)
                     var adNum = (templateNumber - 1);
@@ -2184,7 +1948,7 @@ $(document).ready(function () {
                         imgsrc: adImgSrc,
                         imgW: adImgW,
                         imgH: adImgH,
-                        enabled: true
+                        enabled: true //jsrender checks this value to see if it should render the Product section! must be true to render
                     };
                 } else {
                     templateContainer.currentProduct = { //otherwise, update it to be blank
@@ -2220,7 +1984,6 @@ $(document).ready(function () {
         var subjectLine = $.trim($('#subjectInput').val());
         var keycode = makeKeyCode();
 
-        var utmILN = templateContainer.ILN.DB.utmStyle();
         var utmALPAC = templateContainer.ALPAC.DB.utmStyle();
 
         templateContainer.smartFocus = {       //we use the smartfocus section for constant values like unsubscribe links, privacy policies, etc.
@@ -2234,16 +1997,6 @@ $(document).ready(function () {
                 privacy: '<a href="http://conservativeemail.com/privacy-policy.html" target="_blank">View our policy.</a>',
                 alpacHeader: '<a href="http://www.americanlibertypac.com' + utmALPAC + '" target="new"><img src="http://p5tre.emv3.com/IL/0/0/1/1101054001/1686937737.gif" alt="American Liberty PAC" width="580" height="108" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block;" align="left" />'
 
-            },
-            ALP: {
-                keycode: keycode,
-                safeSend:'<a href="http://www.independentlivingnews.com/il/whitelisting.php' + utmILN + '" linkname="safe sender" target="_blank">Add as Safe Sender</a>',
-                prefLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycode + '-P" linkname="Email Preferences">Email Preferences</a>',
-                unsubLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=' + keycode + '-U" linkname="Bottom Unsubscribe">Unsubscribe</a>',
-                spamLink: '<a href="http://www.independentlivingnews.com/email/preferences/?u=[EMV FIELD]EMAIL_UUID[EMV /FIELD]&amp;k=-S&amp;spam=1" linkname="Is this spam">Mark as Spam</a>',
-                rfarHeader: '<a href="http://www.independentlivingnews.com/preppers' + utmILN + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Ready For Anything Report" border="0" height="118" src="http://www.independentlivingnews.com/email/images/iln_lb_ready-for-anything_header.jpg" style="display:block;" width="580" /></a>',
-                subILN: '<a href="http://www.independentlivingnews.com/signup/membership.stml' + utmILN + '" target="_blank">',
-                ilnHeader: '<a href="http://www.independentlivingnews.com' + utmILN + '" linkname="Todays Headlines" target="new"><img alt="Lee Bellingers Independent Living" border="0" height="118" src="http://www.independentlivingnews.com/email/images/ILN_LB_header_edited.jpg" style="display:block;" width="580" /></a>'
             }
         };
     }
@@ -2784,81 +2537,6 @@ $(document).ready(function () {
         };
         img.src = src;
     }
-
-
-    function getILNAPI(){
-        var resultsHolder = [];
-        var formatStorage = [];
-        $.ajax({
-            url:"https://www.kimonolabs.com/api/5pbx5hy0?apikey=t6jhRsPktqd4z4ZU72c3JRv97ji2EiPP",
-            crossDomain: true,
-            dataType: "jsonp",
-            success: function (response) {
-                var original = response;
-                var numStories = original.count;
-                var results = original.results.health;
-                var x = getCurrentTemplateSettings();
-
-                function removeNewLine(title){
-                    //This javascript replaces all 3 types of line breaks with a space
-                    //credit: http://www.textfixer.com/tutorials/javascript-line-breaks.php
-                    return (title.replace(/(\r\n|\n|\r)/gm," "));
-                }
-
-                for (var q = 0; q < 9; q++) { //displays 9 results
-                    resultsHolder[q] = {
-                        storyNum: q,
-                        title: removeNewLine(results[q].title),
-                        link: results[q].link,
-                        imgsrc: x.defaultLogo
-                    };
-
-                    var btnID1 = 'rss1Btn' + resultsHolder[q].storyNum;
-                    var btnID2 = 'rss2Btn' + resultsHolder[q].storyNum;
-                    var btnID3 = 'rss3Btn' + resultsHolder[q].storyNum;
-                    var btnID4 = 'rss4Btn' + resultsHolder[q].storyNum;
-                    formatStorage[q] =
-                        '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 rssHolder"><p style="font-size: 10px; text-align: center;"><img src="' + resultsHolder[q].imgsrc + '" width="75" height="75" style="float: left"/>' +
-                        resultsHolder[q].title +
-                        '<br /><center><button type="button" class="btn btn-primary btn-xs" id="' + btnID1 + '">1</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID2 + '">2</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID3 + '">3</button> <button type="button" class="btn btn-primary btn-xs" id="' + btnID4 + '">4</button>' +
-                        '</center></p></div>';
-                }
-
-            },
-            error: function (xhr, status) {
-                console.log('ERROR Retrieving ILN API');
-            }
-        }).done(function() {
-            var joinRSS = formatStorage.join('');
-            $('#rssPreviewGeneral').html(joinRSS);
-            function buttonUpdateField(e) {
-                $('#rss1Btn'+e).click(function () {
-                    $('#title1').val(resultsHolder[e].title);
-                    $('#title1URL').val(resultsHolder[e].link);
-                });
-                $('#rss2Btn'+e).click(function () {
-                    $('#title2').val(resultsHolder[e].title);
-                    $('#title2URL').val(resultsHolder[e].link);
-                });
-                $('#rss3Btn'+e).click(function () {
-                    enableAdditionalContent();
-                    $('#title3').val(resultsHolder[e].title);
-                    $('#title3URL').val(resultsHolder[e].link);
-                });
-                $('#rss4Btn'+e).click(function () {
-                    enableAdditionalContent();
-                    $('#title4').val(resultsHolder[e].title);
-                    $('#title4URL').val(resultsHolder[e].link);
-                });
-
-            }
-            for(var n=0; n < 9; n++){ //makes nine buttons
-                buttonUpdateField(n);
-            }
-        });
-        equalHeight($("#rssPreviewGeneral").find(".row")); //makes sure that especially long titles don't break the table layout
-    }
-
 
     var rssFeedHelpers = {
         defaultImageCheck: function (imgURL) { //replaces undefined images with a default
