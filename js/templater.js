@@ -1268,6 +1268,19 @@ $(document).ready(function () {
                     template: 'PB8'
                 }
             }
+        },
+        ALPAC: {
+            link: 'https://www.wholesaledirectmetals.com/financial-wmds-to-take-down-world-economy/?cid=AmericanLibertySponsored&st-t=AmericanLibertySponsored', //default link to all sub-ads
+            shortCode: 'ALPAC',
+            longCode: 'This Week\'s Alpac Ad',
+            advertisements: {
+                0: {
+                    name: 'ALPAC1',
+                    description: 'This Week\'s Alpac Ad',
+                    link: 'https://www.wholesaledirectmetals.com/financial-wmds-to-take-down-world-economy/?cid=AmericanLibertySponsored&st-t=AmericanLibertySponsored',
+                    template: 'ALPAC1'
+                }
+            }
         }
     };
 
