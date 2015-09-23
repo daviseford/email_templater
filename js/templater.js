@@ -1214,6 +1214,19 @@ $(document).ready(function () {
                 }
             }
         },
+        INLINE: {
+            link: 'http://b79c75cgzvt1tyb3-m00an3o8d.hop.clickbank.net/?tid=', //default link to all sub-ads
+            shortCode: 'INLINE',
+            longCode: 'Inline Ads',
+            advertisements: {
+                0: {
+                    name: 'INLINE1',
+                    description: 'Expert warns America might NEVER recover from this attack',
+                    link: 'http://b79c75cgzvt1tyb3-m00an3o8d.hop.clickbank.net/?tid=',
+                    template: 'INLINE1'
+                }
+            }
+        },
         PB: {
             link: 'http://66f3d4ggyyp9ws4-1k5613v4rv.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'PB',
@@ -3195,6 +3208,21 @@ $(document).ready(function () {
         });
     }
 
+
+    function makeClearCacheBtn() {
+        $("#clearCacheBtn")
+            .button()
+            .show()
+            .mouseup(function(e) {
+                e.stopPropagation();
+                $(this)
+                    .removeClass('btn-primary')
+                    .addClass('btn-success')
+                    .text('Window Reloaded');
+                window.location.reload(true);
+            });
+    }
+    makeClearCacheBtn();
 
     //********************************
     //BEGIN POST-BUTTON CLICK ACTIONS
