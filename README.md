@@ -36,9 +36,10 @@ For example: 150523SAMPLEDBCAMPAIGN3
 1. Click the **Get Recent Stories** button   
   * This reads the RSS feed for the site you've selected.   
   * You will be shown the last 9 stories. 
+  * The Generator will use the first <img> tag that it finds in each RSS post. If there is no image in the post, the generator falls back on a default site logo.   
 2. Let's add our first story. Find a headline that you like, and click the **Add to Story 1** button underneath it.  
   * This will load the story's headline, description, image, and link into the Story 1 input form.  
-  * The description will automatically be stripped of stray HTML tags, and in-line links will be removed.  
+  * The description will automatically be stripped of stray HTML tags, and in-line links will be removed.   
 3. That was pretty easy! Go ahead and add 3 more stories, until all of the story forms are full.  
 4. If you need to, modify the headlines or descriptions now.  
 5. Fill in the **Subject Line**. This will be the first thing people see in their inbox - make it good!  
