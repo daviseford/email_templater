@@ -1279,6 +1279,12 @@ $(document).ready(function () {
                     description: 'Spotted! Russian Airplanes Patrolling All 4 US Coasts',
                     link: 'http://779648ijx6ud1w7fxbngwc0n60.hop.clickbank.net/?tid=',
                     template: 'PB8'
+                },
+                8: {
+                    name: 'PB9',
+                    description: 'Slash Your Lighting Bill By 90% and...?',
+                    link: 'http://secure.ultracart.com/aff/DC3ECFDC9930C9015005BA6289051500/index.html?subid=',
+                    template: 'PB9'
                 }
             }
         },
@@ -1778,7 +1784,7 @@ $(document).ready(function () {
             },
             PB: {
                 tmplLink: 'txt/saa_pb_Tmpl.htm',
-                emailCode: 'SL',
+                emailCode: 'PB',
                 shortCode: 'SAAPB',
                 longCode: 'Partner Briefing',
                 imgMaxWidth: 135,
