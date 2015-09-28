@@ -1224,6 +1224,12 @@ $(document).ready(function () {
                     description: 'Expert warns America might NEVER recover from this attack',
                     link: 'http://b79c75cgzvt1tyb3-m00an3o8d.hop.clickbank.net/?tid=',
                     template: 'INLINE1'
+                },
+                1: {
+                    name: 'INLINE2',
+                    description: 'Ex-military tell all',
+                    link: 'http://38c1e5i7zzx81mbp6o-4adf79s.hop.clickbank.net/?tid=',
+                    template: 'INLINE2'
                 }
             }
         },
