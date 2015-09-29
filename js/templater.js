@@ -1230,6 +1230,18 @@ $(document).ready(function () {
                     description: 'Ex-military tell all',
                     link: 'http://38c1e5i7zzx81mbp6o-4adf79s.hop.clickbank.net/?tid=',
                     template: 'INLINE2'
+                },
+                2: {
+                    name: 'INLINE3',
+                    description: 'Never change a light bulb again!',
+                    link: 'http://secure.ultracart.com/aff/D58214312A0F7901501AD990A7051400/index.html?subid=',
+                    template: 'INLINE3'
+                },
+                3: {
+                    name: 'INLINE4',
+                    description: 'My Evac Pack grab and go survival gear.',
+                    link: 'http://www.myevacpack.com/?subid=',
+                    template: 'INLINE4'
                 }
             }
         },
@@ -1463,6 +1475,24 @@ $(document).ready(function () {
                 emailCode: 'WIRDMS',
                 shortCode: 'ALPACWIRDMS',
                 longCode: 'Week In Review - DMS',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://americanlibertypac.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/880203000.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
+            BS: {
+                tmplLink: 'txt/alpac_bs_Tmpl.htm',
+                emailCode: 'BS',
+                shortCode: 'ALPACBS',
+                longCode: 'Black Swan Letter',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
                 productMenu: adReferenceWJMA,
