@@ -1242,6 +1242,12 @@ $(document).ready(function () {
                     description: 'My Evac Pack grab and go survival gear.',
                     link: 'http://www.myevacpack.com/?subid=',
                     template: 'INLINE4'
+                },
+                4: {
+                    name: 'INLINE5',
+                    description: 'Second Citizenship Summit',
+                    link: 'http://www.selfreliancecentral.com/2015/10/01/exclusive-announcement-for-americans-with-significant-assets-they-wish-to-protect/',
+                    template: 'INLINE5'
                 }
             }
         },
@@ -1305,20 +1311,20 @@ $(document).ready(function () {
                     template: 'PB9'
                 }
             }
-        },
-        ALPAC: {
-            link: 'https://www.wholesaledirectmetals.com/financial-wmds-to-take-down-world-economy/?cid=AmericanLibertySponsored&st-t=AmericanLibertySponsored', //default link to all sub-ads
-            shortCode: 'ALPAC',
-            longCode: 'This Week\'s Alpac Ad',
-            advertisements: {
-                0: {
-                    name: 'ALPAC1',
-                    description: 'This Week\'s Alpac Ad',
-                    link: 'https://www.wholesaledirectmetals.com/financial-wmds-to-take-down-world-economy/?cid=AmericanLibertySponsored&st-t=AmericanLibertySponsored',
-                    template: 'ALPAC1'
-                }
-            }
         }
+        //ALPAC: {
+        //    link: 'https://www.wholesaledirectmetals.com/financial-wmds-to-take-down-world-economy/?cid=AmericanLibertySponsored&st-t=AmericanLibertySponsored', //default link to all sub-ads
+        //    shortCode: 'ALPAC',
+        //    longCode: 'This Week\'s Alpac Ad',
+        //    advertisements: {
+        //        0: {
+        //            name: 'ALPAC1',
+        //            description: 'This Week\'s Alpac Ad',
+        //            link: 'https://www.wholesaledirectmetals.com/financial-wmds-to-take-down-world-economy/?cid=AmericanLibertySponsored&st-t=AmericanLibertySponsored',
+        //            template: 'ALPAC1'
+        //        }
+        //    }
+        //}
     };
 
 
