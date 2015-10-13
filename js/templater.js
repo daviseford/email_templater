@@ -1248,6 +1248,18 @@ $(document).ready(function () {
                     description: 'Second Citizenship Summit',
                     link: 'http://www.selfreliancecentral.com/2015/10/01/exclusive-announcement-for-americans-with-significant-assets-they-wish-to-protect/',
                     template: 'INLINE5'
+                },
+                5: {
+                    name: 'INLINE6',
+                    description: 'Sprout Inline Ad',
+                    link: 'http://secure.ultracart.com/aff/52B566103C6F2E015019C58035051400/index.html?subid=',
+                    template: 'INLINE6'
+                },
+                6: {
+                    name: 'INLINE7',
+                    description: 'Patriot Privacy Kit',
+                    link: 'http://73c965bh53n75y3dgh3nuhb86g.hop.clickbank.net/?tid=',
+                    template: 'INLINE7'
                 }
             }
         },
@@ -1309,6 +1321,12 @@ $(document).ready(function () {
                     description: 'Slash Your Lighting Bill By 90% and...?',
                     link: 'http://secure.ultracart.com/aff/DC3ECFDC9930C9015005BA6289051500/index.html?subid=',
                     template: 'PB9'
+                },
+                9: {
+                    name: 'PB10',
+                    description: 'BlackoutUSA PB',
+                    link: 'http://www.blackoutusa.org/vsl/index.php?hop=camsales1',
+                    template: 'PB10'
                 }
             }
         }
