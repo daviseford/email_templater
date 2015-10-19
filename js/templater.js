@@ -1530,6 +1530,60 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
+            TW1: {
+                tmplLink: 'txt/alpac_tw1_Tmpl.htm',
+                emailCode: 'TW1',
+                shortCode: 'ALPACTW1',
+                longCode: 'Tell Washington Letter (1)',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://americanlibertypac.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/880203000.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
+            TW2: {
+                tmplLink: 'txt/alpac_tw2_Tmpl.htm',
+                emailCode: 'TW2',
+                shortCode: 'ALPACTW2',
+                longCode: 'Tell Washington Letter (2)',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://americanlibertypac.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/880203000.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
+            OBAMA1: {
+                tmplLink: 'txt/alpac_obama1_Tmpl.htm',
+                emailCode: 'OBAMA1',
+                shortCode: 'ALPACOBAMA1',
+                longCode: 'Don\'t Let Obama Get Away With This Letter',
+                imgMaxWidth: 148,
+                imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://americanlibertypac.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/880203000.png',
+                feedStyle: function() {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
             WL: {
                 tmplLink: 'txt/alpac_wl_Tmpl.htm',
                 emailCode: 'WL',
@@ -1721,6 +1775,60 @@ $(document).ready(function () {
                 longCode: 'Partner Briefing',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://minutemanproject.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1081516611.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
+            BORDER: {
+                tmplLink: 'txt/jgm_border_Tmpl.htm',
+                emailCode: 'BORDER',
+                shortCode: 'JGMBORDER',
+                longCode: 'I Illegally Crossed The Border',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://minutemanproject.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1081516611.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
+            OBAMA1: {
+                tmplLink: 'txt/jgm_obama1_Tmpl.htm',
+                emailCode: 'OBAMA1',
+                shortCode: 'JGMBOBAMA1',
+                longCode: 'Obama\'s Border Terror Policy Letter',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://minutemanproject.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1081516611.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
+            OBAMA2: {
+                tmplLink: 'txt/jgm_obama2_Tmpl.htm',
+                emailCode: 'OBAMA2',
+                shortCode: 'JGMBOBAMA2',
+                longCode: 'Obama\'s Latest Act Is His Worst Yet',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
                 rssFeed: 'http://minutemanproject.com/feed',
                 defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1081516611.png',
