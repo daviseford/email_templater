@@ -56,8 +56,10 @@
 <file name="jgm_pb_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130863722303552509" remote="130863726220000000" Dst="2" />
 <file name="saa_pb_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130863722359575713" remote="130863726220000000" Dst="2" />
 <file name="alpac_bs_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130880143844945828" remote="130880234630000000" Dst="2" />
-<file name="alpac_btb_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897543984359191" remote="130897544010000000" Dst="2" />
 <file name="jgm_border_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897517805531847" remote="130897518700000000" Dst="2" />
-<file name="alpac_heart_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897543945946993" remote="130897543970000000" Dst="2" />
 <file name="alpac_obama1_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897543322161315" remote="130897543900000000" Dst="2" />
+<file name="alpac_obama2_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897643770367147" remote="130897644210000000" Dst="2" />
+<file name="saa_ss1_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130898211200290723" remote="130898212710000000" Dst="2" />
+<file name="saa_obama2_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130898217936930934" remote="130898218900000000" Dst="2" />
+<file name="saa_obama1_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130898215219335497" remote="130898218960000000" Dst="2" />
 </dwsync>
