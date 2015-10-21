@@ -1986,6 +1986,24 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
+            MC1: {
+                tmplLink: 'txt/saa_mc1_Tmpl.htm',
+                emailCode: 'MC1',
+                shortCode: 'SAAMC1',
+                longCode: 'Stop the Looting of Medicare Letter',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://senioramericansassociation.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1917859770.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
             OBAMA1: {
                 tmplLink: 'txt/saa_obama1_Tmpl.htm',
                 emailCode: 'OBAMA1',
@@ -2008,7 +2026,43 @@ $(document).ready(function () {
                 tmplLink: 'txt/saa_obama2_Tmpl.htm',
                 emailCode: 'OBAMA2',
                 shortCode: 'SAAOBAMA2',
-                longCode: 'Obama\'s Martial Law (Jade Helm) Letter',
+                longCode: 'Home Healthcare Hard Ask Letter',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://senioramericansassociation.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1917859770.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
+            OBAMA3: {
+                tmplLink: 'txt/saa_obama3_Tmpl.htm',
+                emailCode: 'OBAMA3',
+                shortCode: 'SAAOBAMA3',
+                longCode: 'Home Healthcare Survey Letter',
+                imgMaxWidth: 135,
+                imgMaxHeight: 135,
+                productMenu: adReferenceWJMA,
+                rssFeed: 'http://senioramericansassociation.com/feed',
+                defaultLogo: 'http://news.extras-americanlibertypac.com/IL/0/0/1/1101054001/1917859770.png',
+                feedStyle: function () {
+                    getRSSWithImage(this.rssFeed);
+                },
+                utmStyle: function () {
+                    var keycode = makeKeyCode();
+                    return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
+                }
+            },
+            OBAMA4: {
+                tmplLink: 'txt/saa_obama4_Tmpl.htm',
+                emailCode: 'OBAMA4',
+                shortCode: 'SAAOBAMA4',
+                longCode: 'Illegal Immigrants Taking Benefits Letter',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
