@@ -1530,10 +1530,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            TW1: {
-                tmplLink: 'txt/alpac_tw1_Tmpl.htm',
-                emailCode: 'TW1',
-                shortCode: 'ALPACTW1',
+            TATW1: {
+                tmplLink: 'txt/alpac_tatw1_Tmpl.htm',
+                emailCode: 'TATW1',
+                shortCode: 'ALPACTATW1',
                 longCode: 'Tell Washington Letter (1)',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
@@ -1548,10 +1548,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            TW2: {
-                tmplLink: 'txt/alpac_tw2_Tmpl.htm',
-                emailCode: 'TW2',
-                shortCode: 'ALPACTW2',
+            TATW2: {
+                tmplLink: 'txt/alpac_tatw2_Tmpl.htm',
+                emailCode: 'TATW2',
+                shortCode: 'ALPACTATW2',
                 longCode: 'Tell Washington Letter (2)',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
@@ -1566,10 +1566,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            OBAMA1: {
-                tmplLink: 'txt/alpac_obama1_Tmpl.htm',
-                emailCode: 'OBAMA1',
-                shortCode: 'ALPACOBAMA1',
+            TAOBAMA1: {
+                tmplLink: 'txt/alpac_taobama1_Tmpl.htm',
+                emailCode: 'TAOBAMA1',
+                shortCode: 'ALPACTAOBAMA1',
                 longCode: 'Don\'t Let Obama Get Away With This Letter',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
@@ -1584,10 +1584,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            OBAMA2: {
-                tmplLink: 'txt/alpac_obama2_Tmpl.htm',
-                emailCode: 'OBAMA2',
-                shortCode: 'ALPACOBAMA2',
+            TAOBAMA2: {
+                tmplLink: 'txt/alpac_taobama2_Tmpl.htm',
+                emailCode: 'TAOBAMA2',
+                shortCode: 'ALPACTAOBAMA2',
                 longCode: 'Jade Helm Survey Letter',
                 imgMaxWidth: 148,
                 imgMaxHeight: 148,
@@ -1804,10 +1804,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            BORDER: {
-                tmplLink: 'txt/jgm_border_Tmpl.htm',
-                emailCode: 'BORDER',
-                shortCode: 'JGMBORDER',
+            TABORDER: {
+                tmplLink: 'txt/jgm_taborder_Tmpl.htm',
+                emailCode: 'TABORDER',
+                shortCode: 'JGMTABORDER',
                 longCode: 'I Illegally Crossed The Border',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
@@ -1822,10 +1822,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            OBAMA1: {
-                tmplLink: 'txt/jgm_obama1_Tmpl.htm',
-                emailCode: 'OBAMA1',
-                shortCode: 'JGMBOBAMA1',
+            TAOBAMA1: {
+                tmplLink: 'txt/jgm_taobama1_Tmpl.htm',
+                emailCode: 'TAOBAMA1',
+                shortCode: 'JGMTAOBAMA1',
                 longCode: 'Obama\'s Border Terror Policy Letter',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
@@ -1840,10 +1840,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            OBAMA2: {
-                tmplLink: 'txt/jgm_obama2_Tmpl.htm',
-                emailCode: 'OBAMA2',
-                shortCode: 'JGMBOBAMA2',
+            TAOBAMA2: {
+                tmplLink: 'txt/jgm_taobama2_Tmpl.htm',
+                emailCode: 'TAOBAMA2',
+                shortCode: 'JGMTAOBAMA2',
                 longCode: 'Obama\'s Latest Act Is His Worst Yet',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
@@ -1986,10 +1986,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            MC1: {
-                tmplLink: 'txt/saa_mc1_Tmpl.htm',
-                emailCode: 'MC1',
-                shortCode: 'SAAMC1',
+            TAMC1: {
+                tmplLink: 'txt/saa_tamc1_Tmpl.htm',
+                emailCode: 'TAMC1',
+                shortCode: 'SAATAMC1',
                 longCode: 'Stop the Looting of Medicare Letter',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
@@ -2004,10 +2004,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            OBAMA1: {
-                tmplLink: 'txt/saa_obama1_Tmpl.htm',
-                emailCode: 'OBAMA1',
-                shortCode: 'SAAOBAMA1',
+            TAOBAMA1: {
+                tmplLink: 'txt/saa_taobama1_Tmpl.htm',
+                emailCode: 'TAOBAMA1',
+                shortCode: 'SAATAOBAMA1',
                 longCode: 'Obama\'s Tax On Life Saving Devices',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
@@ -2022,10 +2022,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            OBAMA2: {
-                tmplLink: 'txt/saa_obama2_Tmpl.htm',
-                emailCode: 'OBAMA2',
-                shortCode: 'SAAOBAMA2',
+            TAOBAMA2: {
+                tmplLink: 'txt/saa_taobama2_Tmpl.htm',
+                emailCode: 'TAOBAMA2',
+                shortCode: 'SAATAOBAMA2',
                 longCode: 'Home Healthcare Hard Ask Letter',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
@@ -2040,11 +2040,11 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            OBAMA3: {
-                tmplLink: 'txt/saa_obama3_Tmpl.htm',
-                emailCode: 'OBAMA3',
-                shortCode: 'SAAOBAMA3',
-                longCode: 'Home Healthcare Survey Letter',
+            TAOBAMA3: {
+                tmplLink: 'txt/saa_taobama3_Tmpl.htm',
+                emailCode: 'TAOBAMA3',
+                shortCode: 'SAATAOBAMA3',
+                longCode: 'Stop Looting Medicare Survey Letter',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
                 productMenu: adReferenceWJMA,
@@ -2058,10 +2058,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            OBAMA4: {
-                tmplLink: 'txt/saa_obama4_Tmpl.htm',
-                emailCode: 'OBAMA4',
-                shortCode: 'SAAOBAMA4',
+            TAOBAMA4: {
+                tmplLink: 'txt/saa_taobama4_Tmpl.htm',
+                emailCode: 'TAOBAMA4',
+                shortCode: 'SAATAOBAMA4',
                 longCode: 'Illegal Immigrants Taking Benefits Letter',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
@@ -2076,10 +2076,10 @@ $(document).ready(function () {
                     return '?utm_source=' + keycode + '&utm_medium=email&utm_campaign=' + keycode;
                 }
             },
-            SS1: {
-                tmplLink: 'txt/saa_ss1_Tmpl.htm',
-                emailCode: 'SS1',
-                shortCode: 'SAASS1',
+            TASS1: {
+                tmplLink: 'txt/saa_tass1_Tmpl.htm',
+                emailCode: 'TASS1',
+                shortCode: 'SAATASS1',
                 longCode: 'Social Security Letter (1)',
                 imgMaxWidth: 135,
                 imgMaxHeight: 135,
