@@ -1,6 +1,6 @@
 <?php
 //POST SECTION -- SETTING UP DATA FOR USE BELOW -- REFINE LATER //
-$post = file_get_contents('php://input'); 	//workaround for $_POST, this data arrives in the form of a URL
+$post = file_get_contents('php://input');    //workaround for $_POST, this data arrives in the form of a URL
 $postdec = json_decode($post, true);
 
 $clientCode = $postdec["clientCode"]; //e.g. ALPAC
@@ -11,31 +11,31 @@ $userName = 'dford@wjmassociates.com';
 $password = 'dfwjmdms4';
 
 // Pull in the NuSOAP code
-if ( PHP_VERSION >= 5 )
-  require_once('lib/nusoap_php5.php');
+if (PHP_VERSION >= 5)
+    require_once('lib/nusoap_php5.php');
 else
-  require_once('lib/nusoap_php4.php');
+    require_once('lib/nusoap_php4.php');
 
 // create client
-if ( PHP_VERSION >= 5 )
-  $lmapiClient = new nusoapclient( $wsdl_location, true );
+if (PHP_VERSION >= 5)
+    $lmapiClient = new nusoapclient($wsdl_location, true);
 else
-  $lmapiClient = new soapclient( $wsdl_location, true );
+    $lmapiClient = new soapclient($wsdl_location, true);
 
 
 //set basic authentication
-$lmapiClient->setCredentials($userName,$password, 'basic');
+$lmapiClient->setCredentials($userName, $password, 'basic');
 
 //make sure there was no error.
-$err= $lmapiClient->getError();
+$err = $lmapiClient->getError();
 if ($err) {
-  return false;
+    return false;
 }
 
 $lmapi = $lmapiClient->getProxy();
 
 //set basic authentication
-$lmapi->setCredentials($userName,$password, 'basic');
+$lmapi->setCredentials($userName, $password, 'basic');
 
 $servername = "testprocess.db";
 $username = "testuser1";
@@ -47,34 +47,36 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 
 //find the MySQL row, e.g. ALPAC
 $sql = "SELECT * FROM DMS WHERE clientCode = '$clientCode'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {		
-			
-		$listName = $row["listName"];
-		$headerTo = $row["headerTo"];
-		$headerFrom = $row["headerFrom"];				
-	}
+    while ($row = $result->fetch_assoc()) {
+
+        $listName = $row["listName"];
+        $headerTo = $row["headerTo"];
+        $headerFrom = $row["headerFrom"];
+    }
 } else {
-	//TODO: error handling here later
+    //TODO: error handling here later
 }
 
-function encodeToUtf8($string) {
-     return mb_convert_encoding($string, "UTF-8", mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true));
+function encodeToUtf8($string)
+{
+    return mb_convert_encoding($string, "UTF-8", mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true));
 }
 
-function encodeToIso($string) {
-     return mb_convert_encoding($string, "ISO-8859-1", mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true));
+function encodeToIso($string)
+{
+    return mb_convert_encoding($string, "ISO-8859-1", mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true));
 }
 
 //conversion, may mess with this
 $htmlConvert = $postdec["html"];
-$titleConvert = $postdec["title"]; 
+$titleConvert = $postdec["title"];
 
 //all credit to http://www.chuggnutt.com/html2text-source for the html to text conversion
 //I slightly modified it to remove the url generator, as it was giving links to my private blog!
@@ -86,55 +88,55 @@ require_once('class.html2text.inc');
 $h2t =& new html2text($htmlConvert);
 
 
-$content_Title = $postdec["keycode"]; 		//title = keycode
-$content_Native_Title = $titleConvert; 		
-$content_Description = $postdec["keycode"];	//cannot be NULL or empty
+$content_Title = $postdec["keycode"];        //title = keycode
+$content_Native_Title = $titleConvert;
+$content_Description = $postdec["keycode"];    //cannot be NULL or empty
 $content_HeaderTo = $headerTo;
-$content_HeaderFrom = $headerFrom; 			
+$content_HeaderFrom = $headerFrom;
 $content_HTML = $htmlConvert;
-$content_Text = $h2t->get_text(); 	//Simply call the get_text() method for the class to 
-									//convert the HTML to the plain text. 
-									//Store it into the variable.
+$content_Text = $h2t->get_text();    //Simply call the get_text() method for the class to
+//convert the HTML to the plain text.
+//Store it into the variable.
 
-		// Create Content
-        $DocPartText = array (
-		'MimePartName' => 'text',
-		'Body' => $content_Text, 
-		'Encoding' => '8bit', 
-		'CharSetID' => 16			//set CharSetID to 16 per James Beecher, DMS, 
-									//who found the fix for this encoding error.
-		);
-		
-        $DocPartHtml = array (
-			'MimePartName' => 'html', 
-			'Body' => $content_HTML, 
-			'Encoding' => '8bit', 
-			'CharSetID' => 16 		//set CharSetID to 16 per James Beecher, DMS,
-									//who found the fix for this encoding error.
-		);
-		
-		$DocParts = array ($DocPartText, $DocPartHtml);
-        
-		$contentStruct = array(
-			'NativeTitle' => '[TEST]'.$content_Native_Title, //prepends our testing naming convetion to the title
-			'Description' => $content_Description, 
-			'Title' => $content_Title, 
-			'HeaderTo' => $content_HeaderTo, 
-			'HeaderFrom' => $content_HeaderFrom, 
-			'DocType' => 'CONTENTv2', 
-			'DocParts' => $DocParts, 
-			'ListName' => $listName
-		);
+// Create Content
+$DocPartText = array(
+    'MimePartName' => 'text',
+    'Body' => $content_Text,
+    'Encoding' => '8bit',
+    'CharSetID' => 16            //set CharSetID to 16 per James Beecher, DMS,
+    //who found the fix for this encoding error.
+);
 
-        $result = $lmapi->CreateContent($contentStruct);
+$DocPartHtml = array(
+    'MimePartName' => 'html',
+    'Body' => $content_HTML,
+    'Encoding' => '8bit',
+    'CharSetID' => 16        //set CharSetID to 16 per James Beecher, DMS,
+    //who found the fix for this encoding error.
+);
 
-       	$contentStruct = array (
-	   		'ContentID' => (int)$result, 
-	   		'Description' => 'Modified description of the content', 
-	   		'Title' => 'Modified content title'
-	   	);
-				
-       echo $result;
-		
+$DocParts = array($DocPartText, $DocPartHtml);
+
+$contentStruct = array(
+    'NativeTitle' => '[TEST]' . $content_Native_Title, //prepends our testing naming convention to the title
+    'Description' => $content_Description,
+    'Title' => $content_Title,
+    'HeaderTo' => $content_HeaderTo,
+    'HeaderFrom' => $content_HeaderFrom,
+    'DocType' => 'CONTENTv2',
+    'DocParts' => $DocParts,
+    'ListName' => $listName
+);
+
+$result = $lmapi->CreateContent($contentStruct);
+
+$contentStruct = array(
+    'ContentID' => (int)$result,
+    'Description' => 'Modified description of the content',
+    'Title' => 'Modified content title'
+);
+
+echo $result;
+
 
 ?>

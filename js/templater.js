@@ -2298,6 +2298,20 @@ $(document).ready(function () {
         }
     };
 
+    function htmlEscape(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/[\u2018\u2019]/g, "'")
+            .replace(/[\u201C\u201D]/g, '"')
+            .replace(/[\u2013\u2014]/g, '-')
+            .replace(/[\u2026]/g, '...');
+            //.replace(/"/g, '&quot;')
+            //.replace(/'/g, '&#39;');
+        //.replace(/&/g, '&amp;')
+        //.replace(/</g, '&lt;')
+        //.replace(/>/g, '&gt;');
+    }
+
 
     //checks our template style for us, useful when doing keycodes
     function getTemplateStyle(){
@@ -2328,8 +2342,14 @@ $(document).ready(function () {
     }
 
     function imageDelay() {
+
+        var subjectInput = $('#subjectInput');
+        var subjectLine = subjectInput.val();
+        subjectInput.val(htmlEscape(subjectLine));
+        //replace quotes in subjectline
+
         $('#story1Form').find('input').each(urlFix); //remove existing utm stuff, other processing provided in urlFix
-        $('#story2Form').find('input').each(urlFix);
+        $('#story2Form').find('input').each(urlFix); //also removes 'smart' quotes and replaces them with standard ones
         $('#story3Form').find('input').each(urlFix);
         $('#story4Form').find('input').each(urlFix);
 
@@ -2346,9 +2366,11 @@ $(document).ready(function () {
         //#title1text-div > p:nth-child(1) > span
         //console.log('Stuff Before = ' + $('#title1text-div').html());
 
+
         function removeSpan(textDiv){
-            if ($('#' + textDiv).length) { //make sure it exists
-                var divHTMLValue = $('#' + textDiv).html();
+            var div = $('#' + textDiv);
+            if (div.length) { //make sure it exists
+                var divHTMLValue = div.html();
                 var strippedHTML = S(divHTMLValue).stripTags('span').s;
 
                 //console.log('current div = ' + textDiv);
@@ -2356,7 +2378,7 @@ $(document).ready(function () {
                 //console.log('someTestVar = ' + strippedHTML);
                 console.log('Removed span from ' + textDiv);
 
-                $('#' + textDiv).html(strippedHTML);
+                div.html(htmlEscape(strippedHTML));
             } else {
                 //console.log('Does not exist, error caught');
             }
@@ -2811,6 +2833,9 @@ $(document).ready(function () {
             var splitSeeMore = $.trim($(this).val().split(' - See more at:')[0]);
             $(this).val(splitSeeMore);
         }
+
+        var escapeThis = $(this).val();
+        $(this).val(htmlEscape(escapeThis));
 
     }
     //The urlFix scrubs links of anything extending past
