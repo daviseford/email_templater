@@ -1,6 +1,7 @@
 #optionsDiv {
     text-align: center;
 }
+
 .overflow {
     height: 500px;
     width: 325px;
@@ -19,10 +20,12 @@
     background-color: #f7f7f7;
     padding: 15px;
 }
+
 #RSSContainer {
     background-color: #f7f7f7;
     padding-bottom: 15px;
 }
+
 .rssRow {
     padding-top: 3px;
     padding-bottom: 3px;

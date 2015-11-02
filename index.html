@@ -1,10 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="Davis Ford" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="author" content="Davis Ford"/>
     <link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
@@ -14,7 +15,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
@@ -43,12 +44,12 @@
                 <label for="inlinedate">STEP 1<br>
                     Pick the mailing date</label>
                 <span id="inlinedate"></span>
-                <br />
+                <br/>
             </center>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="productDiv">
 
-            <label for="listSelect">STEP 2<br />Select a List</label><br>
+            <label for="listSelect">STEP 2<br/>Select a List</label><br>
             <select name="listSelect" id="listSelect">
                 <option value="ALPAC" selected="selected">ALPAC</option>
                 <option value="CRN">CRN</option>
@@ -58,17 +59,17 @@
                 <!-- <option value="EXAMPLE">EXAMPLE</option> -->
             </select>
 
-            <br />
+            <br/>
 
-            <label for="tmplSelect">STEP 3<br />Select an Email</label>
+            <label for="tmplSelect">STEP 3<br/>Select an Email</label>
             <br>
             <select name="tmplSelect" id="tmplSelect">
             </select>
 
-            <br />
+            <br/>
 
 
-            <label for="productSelect">STEP 4<br />Select a Product</label>
+            <label for="productSelect">STEP 4<br/>Select a Product</label>
             <br>
             <select name="productSelect" id="productSelect">
                 <option value="" selected="selected">None</option>
@@ -77,19 +78,22 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="keycodeDiv">
             <label for="keycodeInput" class="hidden-xs">Keycode</label>
-            <input class="form-control hidden-xs" type="text" id="keycodeInput" name="title1KEY" placeholder="This field will be automatically generated."/>
-            <br />
-            <br />
-            <br />
+            <input class="form-control hidden-xs" type="text" id="keycodeInput" name="title1KEY"
+                   placeholder="This field will be automatically generated."/>
+            <br/>
+            <br/>
+            <br/>
 
             <center>
                 <button class="btn btn-primary btn-lg" id="getRSSNewButton">
                     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                    Get Recent Stories</button>
-                <br />
-                <br />
+                    Get Recent Stories
+                </button>
+                <br/>
+                <br/>
                 <span class="loading" id="loader">
-                    <img src="http://daviseford.com/sites/default/files/email_templater/images/ajax-loader3.gif" alt="Fetching.."/>
+                    <img src="http://daviseford.com/sites/default/files/email_templater/images/ajax-loader3.gif"
+                         alt="Fetching.."/>
                 </span>
             </center>
         </div>
@@ -112,12 +116,13 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="subjectLine">
             <div class="form-group">
                 <label for="subjectInput">Subject Line: </label>
-                <input class="form-control" type="text" id="subjectInput" name="subjectInput" placeholder="Title of the email" style="width: 100%;"/>
+                <input class="form-control" type="text" id="subjectInput" name="subjectInput"
+                       placeholder="Title of the email" style="width: 100%;"/>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="checkBox">
             <div class="checkbox">
-                <br />
+                <br/>
                 <label class="bg-info">
                     <input type="checkbox" id="additionalContentCheckbox" name="additionalContentCheckbox"/>
                     <strong> Enable Stories 3 & 4</strong>
@@ -138,7 +143,8 @@
             <p style="text-align:center">
                 <button type="button" class="btn btn-primary btn-lg" id="generateHTML">
                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
-                    Generate HTML</button>
+                    Generate HTML
+                </button>
             </p>
         </div>
     </div>
@@ -152,10 +158,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <center>
-                    <br />
+                    <br/>
+
                     <form action="php/download.php" method="post" id="downloadForm">
-                        <textarea id="resultsTextArea" rows="10" class="form-control" cols="10" name="resultsTextArea"></textarea>
-                        <input type="hidden" name="keycodeHiddenForm" id="keycodeHiddenForm" />
+                        <textarea id="resultsTextArea" rows="10" class="form-control" cols="10"
+                                  name="resultsTextArea"></textarea>
+                        <input type="hidden" name="keycodeHiddenForm" id="keycodeHiddenForm"/>
                     </form>
                 </center>
             </div>
@@ -165,20 +173,24 @@
     <div class="row">
         <div class="col-lg-12" id="emailBtnDiv">
             <center>
-                <br />
+                <br/>
+
                 <div class="btn-group" role="group" aria-label="">
 
-                    <button class="btn btn-default btn-md" id="copyKeycode-button" data-clipboard-target="keycodeHiddenForm" title="Click to copy Keycode.">
+                    <button class="btn btn-default btn-md" id="copyKeycode-button"
+                            data-clipboard-target="keycodeHiddenForm" title="Click to copy Keycode.">
                         <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
                         Copy Keycode
                     </button>
 
-                    <button class="btn btn-default btn-md" id="copy-button" data-clipboard-target="resultsTextArea" title="Click to copy HTML.">
+                    <button class="btn btn-default btn-md" id="copy-button" data-clipboard-target="resultsTextArea"
+                            title="Click to copy HTML.">
                         <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
                         Copy HTML
                     </button>
 
-                    <button type="button" class="btn btn-default btn-md" id="downloadHTMLBtn" title="Download to local hard drive">
+                    <button type="button" class="btn btn-default btn-md" id="downloadHTMLBtn"
+                            title="Download to local hard drive">
                         <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
                         Download
                     </button>
@@ -213,8 +225,8 @@
                     </button>
 
                 </div>
-                <br />
-                <br />
+                <br/>
+                <br/>
             </center>
         </div>
         <div class="col-lg-12">
@@ -225,17 +237,17 @@
                 </div>
                 <div class="col-md-5">
                 </div>
-            </div>        
+            </div>
         </div>
         <div class="col-lg-12">
-                <p class="text-center">Developed by Davis Ford 2015
-                    <br />
-                    <a href="https://github.com/daviseford/email_templater" target="_blank">
-                        <img src="images/github-128-black.png" width="100" height="100" alt="Fork me on Github" />
-                    </a>
-                    <br />
-                    <button type="button" class="btn btn-primary" id="clearCacheBtn">Clear Cache</button>
-                </p>
+            <p class="text-center">Developed by Davis Ford 2015
+                <br/>
+                <a href="https://github.com/daviseford/email_templater" target="_blank">
+                    <img src="images/github-128-black.png" width="100" height="100" alt="Fork me on Github"/>
+                </a>
+                <br/>
+                <button type="button" class="btn btn-primary" id="clearCacheBtn">Clear Cache</button>
+            </p>
         </div>
     </div>
 </div>
@@ -258,20 +270,27 @@
 <!-- Loading CSS-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"/>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/>
 <link rel="stylesheet" type="text/css" href="css/templater.css"/>
 <link rel="stylesheet" type="text/css" href="css/sweet-alert.css">
 
 <!-- Loading Templates via JSRender -->
-<link rel="template/jsrender-multipart" type="text/html" href="txt/ad_templates.htm" />
-<link rel="template/jsrender-multipart" type="text/html" href="txt/addDiv_templates.htm" />
+<link rel="template/jsrender-multipart" type="text/html" href="txt/ad_templates.htm"/>
+<link rel="template/jsrender-multipart" type="text/html" href="txt/addDiv_templates.htm"/>
 
 <!-- Google Analytics -->
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
     ga('create', 'UA-55820654-2', 'auto');
     ga('require', 'linkid', 'linkid.js');
     ga('send', 'pageview');
