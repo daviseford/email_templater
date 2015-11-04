@@ -3360,6 +3360,7 @@ $(document).ready(function () {
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Yes, send it!",
                     cancelButtonText: "No, I forgot!",
+                    showLoaderOnConfirm: true,
                     closeOnConfirm: false,
                     closeOnCancel: true
                 },

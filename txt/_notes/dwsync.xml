@@ -28,7 +28,7 @@
 <file name="addDiv_templates.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130873183264854073" remote="130873185410000000" Dst="2" />
 <file name="src_db_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130833570093840091" remote="130833579410000000" Dst="2" />
 <file name="crn_ei_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130870787519746828" remote="130870789320000000" Dst="2" />
-<file name="src_ap_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130833570016565671" remote="130833579400000000" Dst="2" />
+<file name="src_ap_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130905975482407094" remote="130911272450000000" Dst="1" />
 <file name="crn_db_dms_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130870787754809683" remote="130870789320000000" Dst="2" />
 <file name="crn_db_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130870787672475911" remote="130870789320000000" Dst="2" />
 <file name="crn_sl_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130832608270018047" remote="130832609220000000" Dst="2" />
@@ -43,7 +43,7 @@
 <file name="saa_mr_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130873184652874817" remote="130873185430000000" Dst="2" />
 <file name="saa_sl_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130832626810000000" remote="130832627100000000" Dst="2" />
 <file name="saa_wl_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130832626828615337" remote="130832627110000000" Dst="2" />
-<file name="jgm_db_dms_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130870787303381850" remote="130870789330000000" Dst="2" />
+<file name="jgm_db_dms_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130911240775632476" remote="130911240890000000" Dst="1" />
 <file name="alpac_db_dms_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130873237408900778" remote="130873242520000000" Dst="2" />
 <file name="alpac_db_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130873237349607387" remote="130873242520000000" Dst="2" />
 <file name="alpac_mr_dms_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130873236876310316" remote="130897518710000000" Dst="2" />
@@ -56,18 +56,5 @@
 <file name="jgm_pb_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130863722303552509" remote="130863726220000000" Dst="2" />
 <file name="saa_pb_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130863722359575713" remote="130863726220000000" Dst="2" />
 <file name="alpac_bs_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130880143844945828" remote="130880234630000000" Dst="2" />
-<file name="jgm_border_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130898428843604106" remote="130899284010000000" Dst="2" />
-<file name="alpac_obama1_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897594965825164" remote="130898346470000000" Dst="2" />
-<file name="alpac_obama2_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897643770367147" remote="130897644210000000" Dst="2" />
-<file name="saa_ss1_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130898211200290723" remote="130898212710000000" Dst="2" />
-<file name="saa_obama2_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130899280092457376" remote="130899284020000000" Dst="2" />
-<file name="saa_obama1_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130898390597616561" remote="130898390680000000" Dst="2" />
-<file name="alpac_tw1_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897594965835164" remote="130898346480000000" Dst="2" />
 <file name="alpac_tw2_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897594965835164" remote="130898346480000000" Dst="2" />
-<file name="jgm_obama1_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897594965845165" remote="130898346490000000" Dst="2" />
-<file name="jgm_obama2_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897594965855165" remote="130898346490000000" Dst="2" />
-<file name="alpac_btb_Tmpl - Copy.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130897594965815163" remote="130899284010000000" Dst="2" />
-<file name="saa_mc1_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130899277933393885" remote="130899284020000000" Dst="2" />
-<file name="saa_obama3_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130899281572342021" remote="130899284030000000" Dst="2" />
-<file name="saa_obama4_Tmpl.htm" server="ssh.phx.nearlyfreespeech.net//home/public/sites/default/files/email_templater/" local="130899282846684909" remote="130899284030000000" Dst="2" />
 </dwsync>
