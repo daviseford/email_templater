@@ -36,12 +36,12 @@ $(document).ready(function () {
                 0: {
                     name: 'JGM1',
                     description: 'Secure The Border Sticker'
-                },
-                1: {
-                    name: 'JGM2',
-                    description: 'Inline - Revoke Executive Action',
-                    link: 'http://minutemanproject.rallycongress.com/17465/citizens-demand-to-congress-to-revoke-obamas-executive-action/'
                 }
+                //1: {
+                //    name: 'JGM2',
+                //    description: 'Inline - Revoke Executive Action',
+                //    link: 'http://minutemanproject.rallycongress.com/17465/citizens-demand-to-congress-to-revoke-obamas-executive-action/'
+                //}
             }
         },
         SAA: {
@@ -61,6 +61,7 @@ $(document).ready(function () {
                 }
             }
         },
+        /*
         BLACKOUTUSA: {
             link: 'http://b79c75cgzvt1tyb3-m00an3o8d.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'BLACKOUTUSA',
@@ -100,6 +101,7 @@ $(document).ready(function () {
                 }
             }
         },
+        */
         AMMO: {
             link: 'http://edc049of2--85y64zovssouv0y.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'AMMO',
@@ -256,6 +258,7 @@ $(document).ready(function () {
                 }
             }
         },
+        /*
         SAC: {
             link: 'http://38c1e5i7zzx81mbp6o-4adf79s.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'SAC',
@@ -463,6 +466,8 @@ $(document).ready(function () {
                 }
             }
         },
+        */
+        /*
         WTR: {
             link: 'http://7a2aa3ih5-0z4z0awl79rdvdn7.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'WTR',
@@ -510,6 +515,7 @@ $(document).ready(function () {
                 }
             }
         },
+        */
         HP: {
             link: 'http://7e0c82nhx3p0vn8g-jpmztgh3x.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'HP',
@@ -541,6 +547,7 @@ $(document).ready(function () {
                 }
             }
         },
+            /*
         SMD: {
             link: 'http://76cc96o8-yx6wvbkvqybon5o2j.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'SMD',
@@ -660,6 +667,8 @@ $(document).ready(function () {
                 }
             }
         },
+        */
+        /*
         BYL: {
             link: 'http://586f28j61xqz1ra4d8xzkcwp36.hop.clickbank.net/?tid=', //default link to all sub-ads
             shortCode: 'BYL',
@@ -747,6 +756,7 @@ $(document).ready(function () {
                 }
             }
         },
+        */
         PG: {
             link: 'http://secure.ultracart.com/aff/7F58F59BAAF154014EFF7C7F6F051400/index.html?subid=', //default link to all sub-ads
             shortCode: 'PG',
