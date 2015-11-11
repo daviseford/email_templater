@@ -1235,8 +1235,8 @@ $(document).ready(function () {
             advertisements: {
                 0: {
                     name: 'INLINE1',
-                    description: 'Expert warns America might NEVER recover from this attack',
-                    link: 'http://b79c75cgzvt1tyb3-m00an3o8d.hop.clickbank.net/?tid=',
+                    description: 'Profit From Secret Ingredient',
+                    link: 'http://assetstrategies.com/rare-strategic-metals-self-reliance-central',
                     template: 'INLINE1'
                 },
                 1: {
@@ -1274,12 +1274,6 @@ $(document).ready(function () {
                     description: 'Patriot Privacy Kit',
                     link: 'http://73c965bh53n75y3dgh3nuhb86g.hop.clickbank.net/?tid=',
                     template: 'INLINE7'
-                },
-                7: {
-                    name: 'INLINE8',
-                    description: 'Profit From Secret Ingredient',
-                    link: 'http://assetstrategies.com/rare-strategic-metals-self-reliance-central',
-                    template: 'INLINE8'
                 }
             }
         },
