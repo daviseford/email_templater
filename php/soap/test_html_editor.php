@@ -67,7 +67,9 @@
         getHtml.done(function (data) {
             console.log(data);
 
-            CKEDITOR.replace('editor1');// Replace the <textarea id="editor1"> with a CKEditor instance, using default configuration.
+            CKEDITOR.replace( 'editor1', { // Replace the <textarea id="editor1"> with a CKEditor instance, using default configuration.
+                extraAllowedContent: 'style;*[id,rel](*){*}'
+            } );
             CKEDITOR.instances.editor1.setData(data);
         })
     })
