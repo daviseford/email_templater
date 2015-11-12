@@ -14,6 +14,12 @@
  */
 
 /*
+ * DMS FUNCTIONS
+ * function selectContent($contentID)
+ * function importContent($contentID)
+ */
+
+/*
  * Connect to testSchema and execute a query
  * Returns the query result
  */
@@ -96,4 +102,33 @@ function encodeToUtf8($string)
 function encodeToIso($string)
 {
     return mb_convert_encoding($string, "ISO-8859-1", mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true));
+}
+
+/* DMS-RELATED FUNCTION */
+function importContent($contentID)
+{
+    $lmapi = returnLmapiClient();
+
+    $simpleMailingStruct = '';
+    if (!empty($contentID)) {
+        $simpleMailingStruct = $lmapi->ImportContent($contentID); //the result is a simpleMailingStruct
+    }
+
+    return $simpleMailingStruct;
+}
+
+/* DMS-RELATED FUNCTION */
+function selectContent($contentID)
+{
+    $lmapi = returnLmapiClient();
+
+    $contentStruct = '';
+    if (!empty($contentID)) {
+        $ar = array('ContentID = '.$contentID);
+        $contentStruct = $lmapi->SelectContent($ar)[0]; //the result is a contentStruct
+
+
+    }
+
+    return $contentStruct;
 }

@@ -79,36 +79,36 @@ $result = $lmapi->CreateContent($contentStruct);
 
 echo $result;
 
-if(is_int($result)) {
-    $result_escaped = mysql_escape_mimic($result);
-    $nativeTitle_escaped = mysql_escape_mimic($content_Native_Title);
-    $description_escaped = mysql_escape_mimic($content_Description);
-    $title_escaped = mysql_escape_mimic($content_Title);
-    $headerTo_escaped = mysql_escape_mimic($content_HeaderTo);
-    $headerFrom_escaped = mysql_escape_mimic($content_HeaderFrom);
-    $listName_escaped = mysql_escape_mimic($listName);
-    $html_escaped = mysql_escape_mimic($content_HTML);
-    $text_escaped = mysql_escape_mimic($content_Text);
-
-
-    $sql = "INSERT INTO `emailGenerator` SET
-`ContentID` = '$result_escaped',
-`NativeTitle` = '$nativeTitle_escaped',
-`Description` = '$description_escaped',
-`Title` = '$title_escaped',
-`HeaderTo` = '$headerTo_escaped',
-`HeaderFrom` = '$headerFrom_escaped',
-`ListName` = '$listName_escaped',
-`DocPartText_Body` = '$text_escaped',
-`DocPartHtml_Body` = '$html_escaped';";
-    $update_result = mySqlQuery($sql);
-
-    if ($update_result) {
-//        echo 'Success inserting email row';
-    } else {
-        echo 'Error: ' . $conn->error;
-    }
-}
+//if(is_int($result)) {
+//    $result_escaped = mysql_escape_mimic($result);
+//    $nativeTitle_escaped = mysql_escape_mimic($content_Native_Title);
+//    $description_escaped = mysql_escape_mimic($content_Description);
+//    $title_escaped = mysql_escape_mimic($content_Title);
+//    $headerTo_escaped = mysql_escape_mimic($content_HeaderTo);
+//    $headerFrom_escaped = mysql_escape_mimic($content_HeaderFrom);
+//    $listName_escaped = mysql_escape_mimic($listName);
+//    $html_escaped = mysql_escape_mimic($content_HTML);
+//    $text_escaped = mysql_escape_mimic($content_Text);
+//
+//
+//    $sql = "INSERT INTO `emailGenerator` SET
+//`ContentID` = '$result_escaped',
+//`NativeTitle` = '$nativeTitle_escaped',
+//`Description` = '$description_escaped',
+//`Title` = '$title_escaped',
+//`HeaderTo` = '$headerTo_escaped',
+//`HeaderFrom` = '$headerFrom_escaped',
+//`ListName` = '$listName_escaped',
+//`DocPartText_Body` = '$text_escaped',
+//`DocPartHtml_Body` = '$html_escaped';";
+//    $update_result = mySqlQuery($sql);
+//
+//    if ($update_result) {
+////        echo 'Success inserting email row';
+//    } else {
+//        echo 'Error: ' . $conn->error;
+//    }
+//}
 
 
 
